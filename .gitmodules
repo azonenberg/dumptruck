@@ -13,3 +13,6 @@
 [submodule "etl"]
 	path = etl
 	url = https://github.com/ETLCPP/etl
+[submodule "embedded-utils"]
+	path = embedded-utils
+	url = ../embedded-utils.git
