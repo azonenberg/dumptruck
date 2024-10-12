@@ -23,6 +23,8 @@
 * Staying 6L would be nice, but tricky
 	* That would allow oshpark 6L, this is slow enough fiber weave effect from the 106 PP is no factor
 	* Possible stackup: SGS SGS with power pours on L3/L4 around signals?
+		* Not great from an impedance matching perspective since the ground will couple and act as a CPWG but not provide a clean return path
+		* Can't get large clearances from signals because of the BGA via field
 * 8L probably better?
 	* Possible stackup: SGS PP SGS
 	* I really don't think 10L SGS GPPG SGS is necessary for this, but we do want four signal layers
