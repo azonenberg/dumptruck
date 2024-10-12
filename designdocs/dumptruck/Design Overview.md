@@ -1,44 +1,41 @@
-* Target power budget: 900 mA @ 5V using USB3 host on type-C connector 4.5W
-	* KSZ9031 assuming 2.5V AVDDH: 452 mW
-		* 1.2V @ 221 mA = 262 mW
-		* 1.8V @ 23.6 mA = 43 mW
-		* ONE OF
-			* 2.5V @ 58.8 mA = 147 mW
-			* 3.3V @ 67.4 mA = 222 mW
-	* STM32H735:
-		* Worst case if using SMPS: 3.3V @ 130 mA = 429 mW
-	* Whatever the DUT uses
-		* Random modern NAND (per die) total 546 mW
-			* 2.5 or 3.3V Vcc @ 100 mA = 330 mW
-			* 1.2V Vccq @  180 mA = 216 mW
-	* So far we're at total of 1.42W plus conversion losses
-	* XC7K160T minimum power: 2.81W:
-		* 474 mA @ 1.0V = 474 mW VCCINT (plus another 550 mA max during boot = 1.02W)
-		* 40 mA @ 1.8V = 72 mW VCCAUX (+50 mA max during boot = 162 mW)
-		* 2 mA @ 1.8V = 3.6 mW VCCAUX_IO (+40 mA *per bank* during boot = 579 mW)
-		* VCCIO mostly negligible (but + 40 mA per bank during boot)
-			* If we assume worst case 3.3V this is another 1.05W
-		* Plus whatever design itself uses
-		* EDIT: this also didn't account for VCCBRAM
-		* Per UG476: if all GTX quads are not used, can float or ground supply pins
-			* MGTAVCC
-			* MGTAVTT
-			* MGTAVCCAUX
-		* So all told 4.23W power budget plus conversion losses and VCCBRAM. Seems awfully tight for non-PD USB
-	* Alternate FPGA option: XC7S100-1FGGA484I
-		* Has 7 IO banks vs 8
-		* 16K slices vs 25K
-		* 120 BRAMs vs 325 (still has 480 kB SRAM)
-		* Both have 8 CMTs, we dont care about DSPs
-		* No GTX but we weren't gonna use those anyway
-		* Should be more than big enough
-		* Minimum power: 1.78W 
-			* 148 + 9mA @ 1V0 + 300 + 60 during boot = 517 mW
-			* 43 mA @ 1V8 + 140 during boot = 329 mW
-			* No GTX supplies
-			* No VCXAUX_IO
-			* 4 mA VCCO + 40 mA per bank = 284 mA
-				* Assume worst case 3.3V this is 937 mW
-		* So assuming design doesn't use much beyond boot surge, total power budget is 3.2W plus conversion losses. Comfortably fits in 4.5W target
-* Data link to host PC: 1000baseT via KSZ9031
-* Xilinx 7 series FPGA
+* Powered by USB-C, CC pin tieoff for 900 mA power budget @ 5V, no PD, no USB data
+	* One LTC3374A supplies all rails. 8 outputs among 4 phases
+		* Have 3 in stock
+	* Always-on 3V3_SB rail
+	* Remainder (1V0, 1V2, 1V8, 2V5, 3V3) sequenced by supervisor
+* STM32L431 rail sequencer / reset supervisor
+	* QFN32 or QFN48 package depending on IO needs
+	* GPIO for soft reset, power on/off
+	* Have 7 or 8 in inventory depending on which package we go with
+* Xilinx XC7S100-1FGGA484C
+	* Have 3 in stock
+	* Data link to host PC: 1000baseT via KSZ9031RNX
+		* Have 13 in stock
+	* HyperRAM footprint in case we want buffer on the FPGA
+		* Infineon S27KS0642GABHI030
+			* HyperBUS, 1.8V only, 200 MHz, 64 Mbit
+			* Have 10 in stock
+	* Boot flash: need minimum 32 Mbit
+		* ISSI IS25WP256D-JLLE
+			* 256 Mbit so room for multi-boot images
+			* QSPI, 1.8V only, 8x6 WSON
+			* Have 4 in stock
+* STM32H735 as main processor
+	* Have 9 in stock
+	* HyperRAM in case we want buffer on the MCU?
+		* Will need to account for OctoSPI errata, but this is probably OK if we're only using it for bulk data transfers.
+		* Do not have any 3.3V HyperRAM in inventory. Leave DNP'd footprint
+	* FMC to FPGA as primary I/O interface
+	* AT24MAC402 for MAC address
+		* Have a ton of these
+* Four separate socket connectors (interface TBD, 0.1" header or something else?) for DUT ZIF sockets / BGA breakouts. Each one goes to a dedicated FPGA IO bank running at the target VCCO
+* External 0.1" header with jumpers for muxing one of the four suitable IO rails as DUT Vcore
+	* Can also feed externally generated Vcore in for unusual voltage requirements
+	* No on-board variable Vcore supply
+	* ADC input from Vcore to MCU so we know which is selected
+* Software controlled load switch from muxed Vcore to DUT socket using NCP45560IMNTWG-H
+	* Slew rate controlled, load discharge, active high enable
+	* Requires external 3.3V supply
+	* Can switch loads from 0.5 to 13.5V
+	* Have 12 in stock
+	* Max rating 17A, total overkill, but hey I've got them on the shelf
