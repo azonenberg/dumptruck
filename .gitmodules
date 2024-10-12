@@ -1,0 +1,15 @@
+[submodule "antikernel-ipcores"]
+	path = antikernel-ipcores
+	url = ../antikernel-ipcores.git
+[submodule "common-embedded-platform"]
+	path = common-embedded-platform
+	url = ../common-embedded-platform.git
+[submodule "staticnet"]
+	path = staticnet
+	url = ../staticnet.git
+[submodule "stm32-cpp"]
+	path = stm32-cpp
+	url = ../stm32-cpp.git
+[submodule "etl"]
+	path = etl
+	url = https://github.com/ETLCPP/etl
