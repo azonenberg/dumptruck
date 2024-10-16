@@ -19,8 +19,7 @@ All banks are HR and generally drop-in interchangeable, EXCEPT:
 	* Can do whatever voltage, but LVCMOS18 is least power
 * FPGA - MCU interface
 	* All LVCMOS33 to interface to MCU at full voltage
-	* If we hook up optional addr/enable bits, we get 53 pins
-		* If we only route one chip select (should be fine as this is what our normal FPGA IP uses) we can use 50. Fully saturate one IO bank.
+	* If we hook up optional addr/enable bits, we get 37 pins
 	* Signals:
 		* clk
 		* nwait
