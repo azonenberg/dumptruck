@@ -33,9 +33,7 @@
 	* Can also feed externally generated Vcore in for unusual voltage requirements
 	* No on-board variable Vcore supply
 	* ADC input from Vcore to MCU so we know which is selected
-* Software controlled load switch from muxed Vcore to DUT socket using NCP45560IMNTWG-H
+* Software controlled load switch from muxed Vcore to DUT socket using NCP45525IMNTWG-H
 	* Slew rate controlled, load discharge, active high enable
 	* Requires external 3.3V supply
 	* Can switch loads from 0.5 to 13.5V
-	* Have 12 in stock
-	* Max rating 17A, total overkill, but hey I've got them on the shelf

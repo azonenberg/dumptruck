@@ -8,9 +8,11 @@
 	* 1V8: 0x88
 	* 1V2: 0x8a
 	* 1V0: 0x8c
-	* DUT_VDD: FIXME
-	* DUT_VCCIO: FIXME
-	* 
+	* DUT_VDD: 0x8e
+	* DUT_VCCIO 3V3: 0x90
+	* DUT_VCCIO 2V5: 0x92
+	* DUT_VCCIO 1V8: 0x94
+	* DUT_VCCIO 1V2: 0x96
 ## Main MCU bus
 * MAC EEPROM: 0xa0, 0xb0
 * Socket ID EEPROM: 0xa2

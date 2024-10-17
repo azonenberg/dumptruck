@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-14")
+		(date "2024-10-16")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -2983,26 +2983,6 @@
 						)
 					)
 					(number "Y15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "XC7Sx-xFGGA484x_4_0"
-				(pin bidirectional line
-					(at -5.08 59.69 0)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -10856,6 +10836,10 @@
 		(uuid "11e8c04b-d9a5-4202-bcd4-8605f88e67ed")
 	)
 	(no_connect
+		(at 224.79 58.42)
+		(uuid "1d67dc89-7c42-4336-8160-4421cdf584ba")
+	)
+	(no_connect
 		(at 224.79 116.84)
 		(uuid "23adbc67-6d24-4d87-97bb-b94ab32b95b3")
 	)
@@ -10870,10 +10854,6 @@
 	(no_connect
 		(at 224.79 91.44)
 		(uuid "344e0d33-6b9f-4679-a968-7905d2a08282")
-	)
-	(no_connect
-		(at 224.79 58.42)
-		(uuid "34f10e09-43a6-4551-b1fd-2276831c6693")
 	)
 	(no_connect
 		(at 224.79 93.98)
@@ -15648,9 +15628,6 @@
 		(pin "P9"
 			(uuid "a8461672-985c-4d36-8e59-bd136c970ce8")
 		)
-		(pin ""
-			(uuid "2c8bfe30-f678-482a-b09b-e92a4ed03222")
-		)
 		(pin "V12"
 			(uuid "9cbdb798-fdba-43f6-9b52-e68a0498b378")
 		)
@@ -19541,9 +19518,6 @@
 		(pin "P9"
 			(uuid "a8461672-985c-4d36-8e59-bd136c970ce9")
 		)
-		(pin ""
-			(uuid "2c8bfe30-f678-482a-b09b-e92a4ed03223")
-		)
 		(pin "V12"
 			(uuid "9cbdb798-fdba-43f6-9b52-e68a0498b379")
 		)
@@ -21968,9 +21942,6 @@
 		(pin "P9"
 			(uuid "a8461672-985c-4d36-8e59-bd136c970cea")
 		)
-		(pin ""
-			(uuid "2c8bfe30-f678-482a-b09b-e92a4ed03224")
-		)
 		(pin "V12"
 			(uuid "9cbdb798-fdba-43f6-9b52-e68a0498b37a")
 		)
@@ -24114,9 +24085,6 @@
 		)
 		(pin "P9"
 			(uuid "a8461672-985c-4d36-8e59-bd136c970ceb")
-		)
-		(pin ""
-			(uuid "2c8bfe30-f678-482a-b09b-e92a4ed03225")
 		)
 		(pin "V12"
 			(uuid "9cbdb798-fdba-43f6-9b52-e68a0498b37b")

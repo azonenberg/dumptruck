@@ -7,3 +7,7 @@
 	* I2C for ID EEPROM
 * 50x GPIOs
 * 22 grounds
+
+## Pinout
+1-14 support stuff, that leaves 66 left
+50x GPIO + 16 grounds = one ground per 3.125 signals
