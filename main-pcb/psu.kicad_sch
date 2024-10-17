@@ -182,6 +182,292 @@
 				)
 			)
 		)
+		(symbol "conn:CONN_01X07"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "CONN_01X07"
+				(at 2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Connector, single row, 01x07, pin header"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin_Header_Straight_1X* Pin_Header_Angled_1X* Socket_Strip_Straight_1X* Socket_Strip_Angled_1X*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CONN_01X07_0_1"
+				(rectangle
+					(start -1.27 -8.89)
+					(end 1.27 8.89)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -7.493)
+					(end 0.254 -7.747)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0.254 -5.207)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0.254 -2.667)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0.254 -0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0.254 2.413)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 5.207)
+					(end 0.254 4.953)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 7.747)
+					(end 0.254 7.493)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "CONN_01X07_1_1"
+				(pin passive line
+					(at -5.08 7.62 0)
+					(length 3.81)
+					(name "P1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "P2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "P3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "P4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "P5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "P6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 3.81)
+					(name "P7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "conn:CONN_COAXIAL"
 			(pin_names
 				(offset 1.016) hide)
@@ -6656,6 +6942,17 @@
 		)
 		(uuid "10c15bde-9a3c-45f5-af62-4328fb601df1")
 	)
+	(label "SUPER_I2C_SCL"
+		(at 139.7 241.3 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "11a105d8-9dc7-42dd-9fee-085251be0030")
+	)
 	(label "GND"
 		(at 167.64 135.89 180)
 		(fields_autoplaced yes)
@@ -6897,6 +7194,17 @@
 			(justify left bottom)
 		)
 		(uuid "1f3e46d2-aa00-4cbd-a398-d34bd5fcf0d8")
+	)
+	(label "DUT_VCCIO_EN"
+		(at 139.7 233.68 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "20762a5a-0807-455c-ba7d-376e61b6fb1c")
 	)
 	(label "GND"
 		(at 167.64 113.03 180)
@@ -7855,6 +8163,17 @@
 		)
 		(uuid "7b72194a-9a54-4584-acb2-20fa6c4c606a")
 	)
+	(label "GND"
+		(at 110.49 257.81 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7eb7a4c9-0f18-4f0b-a633-e4e238a7bd35")
+	)
 	(label "1V2"
 		(at 26.67 241.3 180)
 		(fields_autoplaced yes)
@@ -8096,6 +8415,17 @@
 			(justify right bottom)
 		)
 		(uuid "92b6e4e7-2859-445e-b7a2-c71d595450c2")
+	)
+	(label "LTC_PGOOD_ALL"
+		(at 139.7 228.6 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "93a936d6-6c12-43b5-83f6-194531011f7b")
 	)
 	(label "SUPER_I2C_SDA"
 		(at 353.06 82.55 180)
@@ -8581,6 +8911,17 @@
 		)
 		(uuid "b60d0952-31be-4636-b4dc-24191495ab38")
 	)
+	(label "DUT_VDD_EN"
+		(at 139.7 231.14 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b6eb63cf-fec7-4793-a084-2617219fbd3c")
+	)
 	(label "1V8_EN"
 		(at 255.27 181.61 180)
 		(fields_autoplaced yes)
@@ -8635,6 +8976,17 @@
 			(justify right bottom)
 		)
 		(uuid "be1b4b5f-5748-4496-b0c7-1deb18a492cb")
+	)
+	(label "INA_ALERT"
+		(at 139.7 236.22 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "be2b861b-6daa-4012-a9d3-3f7ee3b38aa6")
 	)
 	(label "SUPER_I2C_SDA"
 		(at 353.06 31.75 180)
@@ -8701,6 +9053,17 @@
 			(justify right bottom)
 		)
 		(uuid "c90e1128-db4f-4aab-9964-a6cf38b25b50")
+	)
+	(label "DUT_VDD"
+		(at 106.68 252.73 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c9226d90-c9ef-4aca-ab08-1b4bf8b52f3f")
 	)
 	(label "VBUS_SHOUT"
 		(at 101.6 31.75 0)
@@ -8966,6 +9329,17 @@
 		)
 		(uuid "dca6dcbe-a6f8-4433-aec9-c911e5d5b6e4")
 	)
+	(label "SUPER_I2C_SDA"
+		(at 139.7 238.76 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "de270e20-71c3-4dc5-ac06-6d532debe466")
+	)
 	(label "SUPER_UART_TX"
 		(at 276.86 226.06 180)
 		(fields_autoplaced yes)
@@ -9163,6 +9537,17 @@
 			(justify right bottom)
 		)
 		(uuid "ed3aaabc-0235-4dfb-90b7-6742bdfe72a9")
+	)
+	(label "GND"
+		(at 139.7 243.84 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ed60d435-6625-49e2-b421-06dd3f7e87f8")
 	)
 	(label "VBUS_SHOUT"
 		(at 68.58 184.15 180)
@@ -10183,6 +10568,91 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
 					(reference "U11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "conn:CONN_01X07")
+		(at 144.78 236.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1365a538-33ab-4ef6-b747-ee372324edde")
+		(property "Reference" "TP15"
+			(at 146.685 235.0078 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_01X07"
+			(at 146.685 237.4321 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector, single row, 01x07, pin header"
+			(at 144.78 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "0369ea4a-184b-41fb-9e96-fc0a67f870d6")
+		)
+		(pin "1"
+			(uuid "b6a6ebac-55e0-4a77-b8b6-03c1bd998289")
+		)
+		(pin "2"
+			(uuid "83e7b024-153a-4a33-82c6-8edce8a0208b")
+		)
+		(pin "7"
+			(uuid "3e3cad01-d2cf-478c-9c14-94dbc7236f4d")
+		)
+		(pin "4"
+			(uuid "98ba4c91-a7c6-42d4-a7a2-65d9f48b3297")
+		)
+		(pin "6"
+			(uuid "b024e31a-398d-4ee4-8fd2-ec72c88b0f3c")
+		)
+		(pin "5"
+			(uuid "1de63609-8004-47e9-bf25-26abe514889e")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
+					(reference "TP15")
 					(unit 1)
 				)
 			)
@@ -18387,6 +18857,76 @@
 		)
 	)
 	(symbol
+		(lib_id "conn:CONN_COAXIAL")
+		(at 110.49 252.73 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ce9cb274-f12a-40cf-845f-513d72a2305f")
+		(property "Reference" "TP16"
+			(at 113.03 251.811 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "U.FL"
+			(at 113.03 254.2353 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:CONN_U.FL_TE_1909763-1"
+			(at 110.49 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 110.49 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, ...)"
+			(at 110.49 252.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c1b9750c-2434-475b-a318-7e9c28b25c55")
+		)
+		(pin "2"
+			(uuid "4da263af-b715-44f3-83b2-2c0febc63618")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
+					(reference "TP16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "special-azonenberg:INA230")
 		(at 373.38 80.01 0)
 		(unit 1)
@@ -19016,18 +19556,18 @@
 		(fields_autoplaced yes)
 		(uuid "defbc4fc-a151-4753-b13c-573cfcff2af0")
 		(property "Reference" "JP1"
-			(at 34.29 204.4973 0)
+			(at 34.29 204.2928 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "JUMPER_PWROUT"
-			(at 34.29 206.9215 0)
+		(property "Value" "Jumper"
+			(at 34.29 206.7171 0)
 			(effects
 				(font
-					(size 1.016 1.016)
+					(size 1.27 1.27)
 				)
 			)
 		)

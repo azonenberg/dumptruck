@@ -12328,10 +12328,6 @@
 		(uuid "05c0efd2-ff18-4086-84f0-02ff8ba24442")
 	)
 	(no_connect
-		(at 340.36 35.56)
-		(uuid "0f858794-bd3f-4cce-8b2a-f0f01becc9f1")
-	)
-	(no_connect
 		(at 340.36 147.32)
 		(uuid "26b21bb1-66fe-4ec9-a5a4-1d8913f7ac35")
 	)
@@ -12688,6 +12684,16 @@
 			(type default)
 		)
 		(uuid "31d0de4f-0c03-46bf-b715-021070adc366")
+	)
+	(wire
+		(pts
+			(xy 351.79 212.09) (xy 355.6 212.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "329dbf8e-2d5a-4f6e-9646-cad64d5abca4")
 	)
 	(wire
 		(pts
@@ -13088,6 +13094,16 @@
 			(type default)
 		)
 		(uuid "7a318ca5-3a45-4662-91fe-5bef16b6237c")
+	)
+	(wire
+		(pts
+			(xy 351.79 205.74) (xy 355.6 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c328c11-af93-46ec-98a4-6349332a64d7")
 	)
 	(wire
 		(pts
@@ -14497,6 +14513,17 @@
 		)
 		(uuid "62ddabba-3137-496f-bcdb-ded162656994")
 	)
+	(label "FPGA_RAM_RST_N"
+		(at 355.6 212.09 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "630cb994-c611-400d-bd93-39db105db609")
+	)
 	(label "ETH_LED1_N_1V8"
 		(at 340.36 124.46 180)
 		(fields_autoplaced yes)
@@ -14507,6 +14534,17 @@
 			(justify right bottom)
 		)
 		(uuid "63a8fc77-9344-4bbc-94aa-66673153cd6a")
+	)
+	(label "FPGA_RAM_CS_N"
+		(at 355.6 205.74 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6406878f-b1cd-498a-8431-80a6a476173b")
 	)
 	(label "1V8"
 		(at 189.23 86.36 0)
@@ -14540,6 +14578,17 @@
 			(justify left bottom)
 		)
 		(uuid "6b376051-7d80-4281-957f-8f39468df1fc")
+	)
+	(label "1V8"
+		(at 340.36 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6bd2f833-c521-4c72-8888-5c2446aefe91")
 	)
 	(label "RGMII_TXD1"
 		(at 167.64 49.53 0)
@@ -15245,6 +15294,17 @@
 		)
 		(uuid "ceb9386e-df7d-4077-b289-67b3827e1455")
 	)
+	(label "1V8"
+		(at 344.17 205.74 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d227cd7b-d197-40fd-a898-ce845d92753e")
+	)
 	(label "FPGA_RAM_DQ4"
 		(at 375.92 173.99 0)
 		(fields_autoplaced yes)
@@ -15398,6 +15458,17 @@
 			(justify left bottom)
 		)
 		(uuid "e6c0f534-8119-4a6c-9d84-377facca0b78")
+	)
+	(label "1V8"
+		(at 344.17 212.09 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eaf77b63-0b6a-456f-aea0-fc3188eb5c20")
 	)
 	(label "ETH_RX_DV"
 		(at 185.42 73.66 0)
@@ -16972,6 +17043,73 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
 					(reference "C156")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:R")
+		(at 347.98 212.09 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2d971d68-f197-46d4-afcb-8149fd37c730")
+		(property "Reference" "R106"
+			(at 347.98 209.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 347.98 212.09 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
+			(at 347.98 213.868 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8dc85479-5226-48c1-be09-8845f467d5ea")
+		)
+		(pin "2"
+			(uuid "d181b648-3dc0-4c84-b429-abb2122c698d")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "R106")
 					(unit 1)
 				)
 			)
@@ -20553,6 +20691,73 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
 					(reference "R67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:R")
+		(at 347.98 205.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d7976a1d-8803-494b-8130-4c10859d5ce1")
+		(property "Reference" "R105"
+			(at 347.98 203.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10K"
+			(at 347.98 205.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
+			(at 347.98 207.518 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 347.98 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 347.98 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9a1995bb-635b-41e5-bfc0-eaec4910a27e")
+		)
+		(pin "2"
+			(uuid "ecb7a714-79d0-4717-9583-5484fd6d438e")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "R105")
 					(unit 1)
 				)
 			)
