@@ -16631,7 +16631,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:DFN_6_0.65MM_2x2MM_GDS"
 			(at 274.32 176.53 0)
 			(effects
 				(font
@@ -17916,7 +17916,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:DFN_6_0.65MM_2x2MM_GDS"
 			(at 274.32 157.48 0)
 			(effects
 				(font

@@ -630,12 +630,13 @@
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
+			(property "Value" "CONN_DUMPTRUCK_HOST"
+				(at -0.508 -5.334 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
 			(property "Footprint" ""
@@ -13283,7 +13284,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 79.7052 173.99 0)
 			(effects
 				(font
@@ -13353,7 +13354,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 47.9552 194.31 0)
 			(effects
 				(font
@@ -13491,7 +13492,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:DFN_8_0.5MM_2x2MM"
 			(at 52.07 172.72 0)
 			(effects
 				(font
@@ -13572,7 +13573,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "CONN_DUMPTRUCK_HOST"
 			(at 151.13 20.7399 0)
 			(effects
 				(font
@@ -13944,7 +13945,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "CONN_DUMPTRUCK_HOST"
 			(at 152.4 67.7299 0)
 			(effects
 				(font
@@ -14256,7 +14257,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 45.212 177.8 90)
 			(effects
 				(font
@@ -16003,7 +16004,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 87.63 151.892 90)
 			(effects
 				(font

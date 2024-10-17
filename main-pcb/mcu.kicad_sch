@@ -24456,7 +24456,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 201.93 0)
 			(effects
 				(font
@@ -26498,7 +26498,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 231.14 0)
 			(effects
 				(font
@@ -27914,7 +27914,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 287.9852 250.19 0)
 			(effects
 				(font
@@ -28712,7 +28712,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 271.018 259.08 90)
 			(effects
 				(font
@@ -29129,7 +29129,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0603_CAP_NOSILK"
 			(at 247.3452 250.19 0)
 			(effects
 				(font
@@ -30261,7 +30261,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 254 0)
 			(effects
 				(font
@@ -31336,7 +31336,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 260.0452 250.19 0)
 			(effects
 				(font
@@ -31406,7 +31406,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 274.0152 250.19 0)
 			(effects
 				(font
@@ -31473,7 +31473,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 212.09 0)
 			(effects
 				(font
@@ -31680,7 +31680,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 273.05 0)
 			(effects
 				(font
@@ -32006,7 +32006,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 243.84 0)
 			(effects
 				(font
@@ -32076,7 +32076,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 243.078 259.08 90)
 			(effects
 				(font
@@ -32870,7 +32870,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 262.89 0)
 			(effects
 				(font
@@ -36128,7 +36128,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 67.31 220.98 0)
 			(effects
 				(font

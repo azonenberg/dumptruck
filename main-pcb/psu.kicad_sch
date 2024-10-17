@@ -182,21 +182,21 @@
 				)
 			)
 		)
-		(symbol "conn:CONN_01X07"
+		(symbol "conn:CONN_01X08"
 			(pin_names
 				(offset 1.016) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "J"
-				(at 0 10.16 0)
+				(at 0 11.43 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "CONN_01X07"
+			(property "Value" "CONN_01X08"
 				(at 2.54 0 90)
 				(effects
 					(font
@@ -222,7 +222,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Connector, single row, 01x07, pin header"
+			(property "Description" "Connector, single row, 01x08, pin header"
 				(at 0 0 0)
 				(effects
 					(font
@@ -249,10 +249,10 @@
 					(hide yes)
 				)
 			)
-			(symbol "CONN_01X07_0_1"
+			(symbol "CONN_01X08_0_1"
 				(rectangle
-					(start -1.27 -8.89)
-					(end 1.27 8.89)
+					(start -1.27 -10.16)
+					(end 1.27 10.16)
 					(stroke
 						(width 0)
 						(type default)
@@ -262,8 +262,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 -7.493)
-					(end 0.254 -7.747)
+					(start -1.27 -8.763)
+					(end 0.254 -9.017)
 					(stroke
 						(width 0)
 						(type default)
@@ -273,8 +273,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 -4.953)
-					(end 0.254 -5.207)
+					(start -1.27 -6.223)
+					(end 0.254 -6.477)
 					(stroke
 						(width 0)
 						(type default)
@@ -284,8 +284,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 -2.413)
-					(end 0.254 -2.667)
+					(start -1.27 -3.683)
+					(end 0.254 -3.937)
 					(stroke
 						(width 0)
 						(type default)
@@ -295,8 +295,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 0.127)
-					(end 0.254 -0.127)
+					(start -1.27 -1.143)
+					(end 0.254 -1.397)
 					(stroke
 						(width 0)
 						(type default)
@@ -306,8 +306,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 2.667)
-					(end 0.254 2.413)
+					(start -1.27 1.397)
+					(end 0.254 1.143)
 					(stroke
 						(width 0)
 						(type default)
@@ -317,8 +317,8 @@
 					)
 				)
 				(rectangle
-					(start -1.27 5.207)
-					(end 0.254 4.953)
+					(start -1.27 3.937)
+					(end 0.254 3.683)
 					(stroke
 						(width 0)
 						(type default)
@@ -328,8 +328,19 @@
 					)
 				)
 				(rectangle
-					(start -1.27 7.747)
-					(end 0.254 7.493)
+					(start -1.27 6.477)
+					(end 0.254 6.223)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 9.017)
+					(end 0.254 8.763)
 					(stroke
 						(width 0)
 						(type default)
@@ -339,9 +350,9 @@
 					)
 				)
 			)
-			(symbol "CONN_01X07_1_1"
+			(symbol "CONN_01X08_1_1"
 				(pin passive line
-					(at -5.08 7.62 0)
+					(at -5.08 8.89 0)
 					(length 3.81)
 					(name "P1"
 						(effects
@@ -359,7 +370,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 5.08 0)
+					(at -5.08 6.35 0)
 					(length 3.81)
 					(name "P2"
 						(effects
@@ -377,7 +388,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 2.54 0)
+					(at -5.08 3.81 0)
 					(length 3.81)
 					(name "P3"
 						(effects
@@ -395,7 +406,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 0 0)
+					(at -5.08 1.27 0)
 					(length 3.81)
 					(name "P4"
 						(effects
@@ -413,7 +424,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 -2.54 0)
+					(at -5.08 -1.27 0)
 					(length 3.81)
 					(name "P5"
 						(effects
@@ -431,7 +442,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 -5.08 0)
+					(at -5.08 -3.81 0)
 					(length 3.81)
 					(name "P6"
 						(effects
@@ -449,7 +460,7 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 -7.62 0)
+					(at -5.08 -6.35 0)
 					(length 3.81)
 					(name "P7"
 						(effects
@@ -459,6 +470,24 @@
 						)
 					)
 					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -8.89 0)
+					(length 3.81)
+					(name "P8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -9604,6 +9633,17 @@
 		)
 		(uuid "f1e89351-b4cb-4b61-b93d-09496ebc266e")
 	)
+	(label "GND"
+		(at 139.7 226.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f288ac18-4ee8-4024-80a2-60ca88765214")
+	)
 	(label "SUPER_UART_RX"
 		(at 276.86 223.52 180)
 		(fields_autoplaced yes)
@@ -10003,7 +10043,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 44.45 22.352 90)
 			(effects
 				(font
@@ -10073,7 +10113,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 150.8252 172.72 0)
 			(effects
 				(font
@@ -10211,7 +10251,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_HEADER_2.54MM_1x2"
 			(at 34.29 220.98 0)
 			(effects
 				(font
@@ -10281,7 +10321,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 168.91 90)
 			(effects
 				(font
@@ -10574,91 +10614,6 @@
 		)
 	)
 	(symbol
-		(lib_id "conn:CONN_01X07")
-		(at 144.78 236.22 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1365a538-33ab-4ef6-b747-ee372324edde")
-		(property "Reference" "TP15"
-			(at 146.685 235.0078 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "CONN_01X07"
-			(at 146.685 237.4321 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 144.78 236.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 144.78 236.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Connector, single row, 01x07, pin header"
-			(at 144.78 236.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "3"
-			(uuid "0369ea4a-184b-41fb-9e96-fc0a67f870d6")
-		)
-		(pin "1"
-			(uuid "b6a6ebac-55e0-4a77-b8b6-03c1bd998289")
-		)
-		(pin "2"
-			(uuid "83e7b024-153a-4a33-82c6-8edce8a0208b")
-		)
-		(pin "7"
-			(uuid "3e3cad01-d2cf-478c-9c14-94dbc7236f4d")
-		)
-		(pin "4"
-			(uuid "98ba4c91-a7c6-42d4-a7a2-65d9f48b3297")
-		)
-		(pin "6"
-			(uuid "b024e31a-398d-4ee4-8fd2-ec72c88b0f3c")
-		)
-		(pin "5"
-			(uuid "1de63609-8004-47e9-bf25-26abe514889e")
-		)
-		(instances
-			(project "main-pcb"
-				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
-					(reference "TP15")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power-azonenberg:NCP45525")
 		(at 60.96 224.79 0)
 		(unit 1)
@@ -10684,7 +10639,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:DFN_8_0.5MM_2x2MM"
 			(at 60.96 224.79 0)
 			(effects
 				(font
@@ -10742,6 +10697,94 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
 					(reference "U10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "conn:CONN_01X08")
+		(at 144.78 234.95 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "145c4cec-d2ae-4d87-847e-43c5b4ed7535")
+		(property "Reference" "TP15"
+			(at 146.685 233.7378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "CONN_01X08"
+			(at 146.685 236.1621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:CONN_HEADER_2.54MM_1x8"
+			(at 144.78 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector, single row, 01x08, pin header"
+			(at 144.78 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "35e4c126-a72a-4c8b-a77b-30ccc705c787")
+		)
+		(pin "5"
+			(uuid "3ec2e7ba-6546-43f4-adf0-83b2c503265f")
+		)
+		(pin "2"
+			(uuid "145400c4-d35f-4775-aec8-4c80aff78429")
+		)
+		(pin "8"
+			(uuid "126b798c-0a63-42f5-80ed-73180ff1f681")
+		)
+		(pin "1"
+			(uuid "f986ef3e-d7e6-4ed9-9ad8-52902f659b84")
+		)
+		(pin "7"
+			(uuid "bc3c872c-772d-466c-b4f5-7aaac2f50403")
+		)
+		(pin "4"
+			(uuid "7ed0dcea-8cad-4571-ba46-b6d4e5105201")
+		)
+		(pin "3"
+			(uuid "09023e1f-0b3f-4bdd-a52a-0c8e37e62333")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
+					(reference "TP15")
 					(unit 1)
 				)
 			)
@@ -10843,7 +10886,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 96.52 203.962 90)
 			(effects
 				(font
@@ -10979,7 +11022,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 55.88 82.55 0)
 			(effects
 				(font
@@ -11046,7 +11089,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 84.328 90)
 			(effects
 				(font
@@ -11254,7 +11297,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 55.88 127 0)
 			(effects
 				(font
@@ -11797,7 +11840,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 128.778 90)
 			(effects
 				(font
@@ -11937,7 +11980,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 54.61 90)
 			(effects
 				(font
@@ -12285,7 +12328,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 154.94 215.9 0)
 			(effects
 				(font
@@ -12425,7 +12468,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 212.852 154.94 90)
 			(effects
 				(font
@@ -12746,7 +12789,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 51.308 90)
 			(effects
 				(font
@@ -13139,7 +13182,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 44.45 90)
 			(effects
 				(font
@@ -13279,7 +13322,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 87.63 90)
 			(effects
 				(font
@@ -13349,7 +13392,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 77.47 90)
 			(effects
 				(font
@@ -13627,7 +13670,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 154.94 205.74 0)
 			(effects
 				(font
@@ -14319,7 +14362,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 168.402 154.94 90)
 			(effects
 				(font
@@ -14481,7 +14524,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 53.34 49.53 0)
 			(effects
 				(font
@@ -14550,7 +14593,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 121.92 90)
 			(effects
 				(font
@@ -14760,7 +14803,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 132.08 90)
 			(effects
 				(font
@@ -15412,7 +15455,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 212.852 132.08 90)
 			(effects
 				(font
@@ -15552,7 +15595,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 102.87 0)
 			(effects
 				(font
@@ -15622,7 +15665,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 212.852 87.63 90)
 			(effects
 				(font
@@ -15786,7 +15829,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 179.07 90)
 			(effects
 				(font
@@ -15856,7 +15899,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 172.72 0)
 			(effects
 				(font
@@ -15924,7 +15967,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 55.88 149.86 0)
 			(effects
 				(font
@@ -15993,7 +16036,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 168.402 179.07 90)
 			(effects
 				(font
@@ -16360,7 +16403,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 150.8252 48.26 0)
 			(effects
 				(font
@@ -16684,7 +16727,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 175.768 90)
 			(effects
 				(font
@@ -16961,7 +17004,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 168.402 168.91 90)
 			(effects
 				(font
@@ -17028,7 +17071,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 105.918 90)
 			(effects
 				(font
@@ -17525,7 +17568,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 35.56 151.638 90)
 			(effects
 				(font
@@ -17663,7 +17706,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 53.34 173.99 0)
 			(effects
 				(font
@@ -17802,7 +17845,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 88.5952 226.06 0)
 			(effects
 				(font
@@ -18052,7 +18095,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 154.94 90)
 			(effects
 				(font
@@ -18259,7 +18302,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 212.852 54.61 90)
 			(effects
 				(font
@@ -18604,7 +18647,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_HEADER_2.54MM_1x2"
 			(at 34.29 241.3 0)
 			(effects
 				(font
@@ -18674,7 +18717,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 168.402 132.08 90)
 			(effects
 				(font
@@ -19048,7 +19091,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 56.8452 246.38 0)
 			(effects
 				(font
@@ -19116,7 +19159,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 105.41 25.908 90)
 			(effects
 				(font
@@ -19434,7 +19477,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 55.88 104.14 0)
 			(effects
 				(font
@@ -19503,7 +19546,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 81.28 0)
 			(effects
 				(font
@@ -19571,12 +19614,13 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_HEADER_2.54MM_1x2"
 			(at 34.29 210.82 0)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -19779,7 +19823,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 148.59 0)
 			(effects
 				(font
@@ -20463,7 +20507,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 48.26 0)
 			(effects
 				(font
@@ -20603,7 +20647,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 54.102 229.87 90)
 			(effects
 				(font
@@ -20811,7 +20855,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 179.832 144.78 90)
 			(effects
 				(font
@@ -20881,7 +20925,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
 			(at 136.8552 125.73 0)
 			(effects
 				(font
@@ -20949,7 +20993,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_HEADER_2.54MM_1x2"
 			(at 34.29 231.14 0)
 			(effects
 				(font
@@ -21019,7 +21063,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 212.852 179.07 90)
 			(effects
 				(font
@@ -21363,7 +21407,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_LED"
 			(at 154.94 195.58 0)
 			(effects
 				(font

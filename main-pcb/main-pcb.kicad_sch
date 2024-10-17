@@ -2237,7 +2237,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 60.96 137.668 90)
 			(effects
 				(font
@@ -2305,12 +2305,13 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 86.36 128.27 0)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -2484,12 +2485,13 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 66.675 128.27 0)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -2549,7 +2551,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
 			(at 60.96 135.128 90)
 			(effects
 				(font
