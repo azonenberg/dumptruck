@@ -4691,7 +4691,7 @@
 			(at 6 12 0)
 			(unlocked yes)
 			(layer "F.SilkS")
-			(uuid "16c70924-a1eb-4c05-aa0e-0904abd30333")
+			(uuid "adbe0918-d7dc-4375-8c9b-b9f118178d72")
 			(effects
 				(font
 					(size 0.75 0.75)
@@ -4703,7 +4703,7 @@
 			(at -10.5 12 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "bc0b9c15-1d4f-4af5-9ff6-ecf58bd8c823")
+			(uuid "443a47a9-9267-4f13-9b9c-d49865217c96")
 			(effects
 				(font
 					(size 0.508 0.457)
@@ -4716,7 +4716,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "88ec5e41-7605-4e8e-ad6e-86d2d29233d5")
+			(uuid "b5ce3360-efc2-49e8-856f-4e9b3eab6e16")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4728,7 +4728,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d4ab9f3e-279a-4a8d-bba8-d5f9b036c7ae")
+			(uuid "3c692d94-e381-4a02-b5fe-298ac922050b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4740,7 +4740,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "49a2cfaa-d95f-49ed-a840-b81075e6aa2e")
+			(uuid "73f3a7a7-d83b-4304-8f24-99a5fe887756")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4760,7 +4760,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "aff26510-8912-4621-85f6-8a3d27841650")
+			(uuid "41989364-df59-40ed-860c-3d39728ff843")
 		)
 		(fp_line
 			(start -11.5 11.5)
@@ -4770,7 +4770,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "bdf705e4-9872-4393-842c-0537520ed91d")
+			(uuid "5b30a76e-e4f0-444f-bf11-af6f0e0e34a4")
 		)
 		(fp_line
 			(start -11 -11.5)
@@ -4780,7 +4780,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "a95f8231-8622-4959-b35f-3f8614666b8b")
+			(uuid "80a70547-395d-4931-8608-fbfcca6efa2b")
 		)
 		(fp_line
 			(start 11.5 -11.5)
@@ -4790,7 +4790,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "ef79b5bc-25c3-4b79-90c1-d4df1d85124c")
+			(uuid "499e3534-dead-43c4-9f4d-de75bb6f72b7")
 		)
 		(fp_line
 			(start 11.5 11.5)
@@ -4800,7 +4800,7 @@
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "644df847-6362-43ec-b210-89d9957d1f8f")
+			(uuid "1141dd14-4bae-46f4-b339-7a09bcce3b75")
 		)
 		(pad "A1" smd circle
 			(at -10.5 -10.5)
@@ -4809,7 +4809,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "4057bf41-56be-4f42-8c99-cd0ff5b9b0eb")
+			(uuid "721291ad-54b1-4c14-a0df-f72e1136968e")
 		)
 		(pad "A2" smd circle
 			(at -9.5 -10.5)
@@ -4818,7 +4818,7 @@
 			(net 263 "/2V5 VCCIO socket/DUT_GPIO30")
 			(pinfunction "IO_L15N_T2_DQS_36")
 			(pintype "bidirectional")
-			(uuid "a9d2aebf-4a35-4fc6-968b-b148ac1e1eca")
+			(uuid "1092d3ce-a606-4016-9778-59912f0fd187")
 		)
 		(pad "A3" smd circle
 			(at -8.5 -10.5)
@@ -4827,7 +4827,7 @@
 			(net 445 "/2V5 VCCIO socket/DUT_GPIO28")
 			(pinfunction "IO_L14N_T2_SRCC_36")
 			(pintype "bidirectional")
-			(uuid "acd4c783-7624-4670-8ec5-02752d917b38")
+			(uuid "2df8dc0a-d5e6-442a-b582-f9adf30c5527")
 		)
 		(pad "A4" smd circle
 			(at -7.5 -10.5)
@@ -4836,7 +4836,7 @@
 			(net 282 "/2V5 VCCIO socket/DUT_GPIO27")
 			(pinfunction "IO_L14P_T2_SRCC_36")
 			(pintype "bidirectional")
-			(uuid "d9646f6f-000f-4dac-ab6b-abdd67daa67d")
+			(uuid "15d93b46-81ad-4064-b62c-aa8a18765b9a")
 		)
 		(pad "A5" smd circle
 			(at -6.5 -10.5)
@@ -4845,7 +4845,7 @@
 			(net 249 "/2V5 VCCIO socket/DUT_GPIO26")
 			(pinfunction "IO_L13N_T2_MRCC_36")
 			(pintype "bidirectional")
-			(uuid "5ada16a0-16b7-406f-96fa-7aac58c2772b")
+			(uuid "0b482376-33b4-437c-92cc-a0dd401ca765")
 		)
 		(pad "A6" smd circle
 			(at -5.5 -10.5)
@@ -4854,7 +4854,7 @@
 			(net 292 "/2V5 VCCIO socket/DUT_GPIO8")
 			(pinfunction "IO_L4N_T0_36")
 			(pintype "bidirectional")
-			(uuid "f6c52c15-636d-4df6-a978-025501ea32f4")
+			(uuid "62d29156-30b2-423c-bc2a-80ca9cca1bc0")
 		)
 		(pad "A7" smd circle
 			(at -4.5 -10.5)
@@ -4863,7 +4863,7 @@
 			(net 224 "/2V5 VCCIO socket/DUT_GPIO7")
 			(pinfunction "IO_L4P_T0_36")
 			(pintype "bidirectional")
-			(uuid "a1d7846b-abc1-4681-981d-9fbdef2073ed")
+			(uuid "991f834f-9419-4db8-b1b9-03adf156c654")
 		)
 		(pad "A8" smd circle
 			(at -3.5 -10.5)
@@ -4872,7 +4872,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "da5cd7ce-2c47-4dfe-b510-7ae0d99298ad")
+			(uuid "0f6ec94e-9327-4f5a-a10d-dc078fe570d3")
 		)
 		(pad "A9" smd circle
 			(at -2.5 -10.5)
@@ -4881,7 +4881,7 @@
 			(net 274 "/2V5 VCCIO socket/DUT_GPIO2")
 			(pinfunction "IO_L1N_T0_36")
 			(pintype "bidirectional")
-			(uuid "2fc3e356-a064-499a-9af7-92e2d66f60c5")
+			(uuid "4d115a8f-6979-4334-8707-011b3a5f2461")
 		)
 		(pad "A10" smd circle
 			(at -1.5 -10.5)
@@ -4890,7 +4890,7 @@
 			(net 517 "/2V5 VCCIO socket/DUT_GPIO4")
 			(pinfunction "IO_L2N_T0_36")
 			(pintype "bidirectional")
-			(uuid "4866d22c-af79-46ad-94dd-af94ab8426f0")
+			(uuid "90d0bb98-2a28-4725-bd02-af9bd4384565")
 		)
 		(pad "A11" smd circle
 			(at -0.5 -10.5)
@@ -4899,7 +4899,7 @@
 			(net 466 "/3V3 VCCIO socket/DUT_GPIO15")
 			(pinfunction "IO_L8P_T1_16")
 			(pintype "bidirectional")
-			(uuid "bef14932-525b-47ee-8c70-68cb3f641b09")
+			(uuid "76baedd1-2aa0-43a4-92a4-85ecda51a257")
 		)
 		(pad "A12" smd circle
 			(at 0.5 -10.5)
@@ -4908,7 +4908,7 @@
 			(net 248 "/3V3 VCCIO socket/DUT_GPIO16")
 			(pinfunction "IO_L8N_T1_16")
 			(pintype "bidirectional")
-			(uuid "a9ac1500-45e2-408a-bca0-d397b714b037")
+			(uuid "ef590175-2f5b-4ced-9362-c58084ab8d23")
 		)
 		(pad "A13" smd circle
 			(at 1.5 -10.5)
@@ -4917,7 +4917,7 @@
 			(net 368 "/3V3 VCCIO socket/DUT_GPIO18")
 			(pinfunction "IO_L9N_T1_DQS_16")
 			(pintype "bidirectional")
-			(uuid "6ee86d42-973a-4da2-96e1-e21b27509f56")
+			(uuid "d5a966d4-e6fc-4cdf-9427-4a03f788abc7")
 		)
 		(pad "A14" smd circle
 			(at 2.5 -10.5)
@@ -4926,7 +4926,7 @@
 			(net 492 "/3V3 VCCIO socket/DUT_GPIO34")
 			(pinfunction "IO_L17N_T2_16")
 			(pintype "bidirectional")
-			(uuid "179305d3-a87e-4e00-a1d6-2cb0794f9992")
+			(uuid "d5eea083-2d1f-44c3-98b6-59d02f3e523a")
 		)
 		(pad "A15" smd circle
 			(at 3.5 -10.5)
@@ -4935,7 +4935,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "b14cb79a-018b-4f11-b0d6-c30f5268bab0")
+			(uuid "b1e312be-8ed5-4e40-b069-7b463bab6dd7")
 		)
 		(pad "A16" smd circle
 			(at 4.5 -10.5)
@@ -4944,7 +4944,7 @@
 			(net 336 "/3V3 VCCIO socket/DUT_GPIO35")
 			(pinfunction "IO_L18P_T2_16")
 			(pintype "bidirectional")
-			(uuid "ca90e9f4-bd88-4dbb-a816-abd10a163eb6")
+			(uuid "a6bc82a2-47f3-4802-bca7-773e76e50b0d")
 		)
 		(pad "A17" smd circle
 			(at 5.5 -10.5)
@@ -4953,7 +4953,7 @@
 			(net 240 "/3V3 VCCIO socket/DUT_GPIO36")
 			(pinfunction "IO_L18N_T2_16")
 			(pintype "bidirectional")
-			(uuid "a08257f0-1a16-474b-8977-e214cda778e6")
+			(uuid "db9da208-9421-4ecb-ae37-e8bd0b15723e")
 		)
 		(pad "A18" smd circle
 			(at 6.5 -10.5)
@@ -4962,7 +4962,7 @@
 			(net 455 "/3V3 VCCIO socket/DUT_GPIO41")
 			(pinfunction "IO_L21P_T3_DQS_16")
 			(pintype "bidirectional")
-			(uuid "e47d3d9f-74f2-4e30-9638-469dbbc2d056")
+			(uuid "87c80f96-aad0-4262-b57c-573a21d9ff59")
 		)
 		(pad "A19" smd circle
 			(at 7.5 -10.5)
@@ -4971,7 +4971,7 @@
 			(net 215 "/3V3 VCCIO socket/DUT_GPIO42")
 			(pinfunction "IO_L21N_T3_DQS_16")
 			(pintype "bidirectional")
-			(uuid "c6da604d-be29-4db8-be8d-67943bde61c3")
+			(uuid "da5f5940-cc26-4a1d-a8c1-3aba342c07d8")
 		)
 		(pad "A20" smd circle
 			(at 8.5 -10.5)
@@ -4980,7 +4980,7 @@
 			(net 469 "/3V3 VCCIO socket/DUT_GPIO46")
 			(pinfunction "IO_L23N_T3_16")
 			(pintype "bidirectional")
-			(uuid "1c6f5ed0-f3f4-483f-b1ad-687f8b7fb88b")
+			(uuid "64403741-5136-4957-922d-66018f9a204f")
 		)
 		(pad "A21" smd circle
 			(at 9.5 -10.5)
@@ -4989,7 +4989,7 @@
 			(net 380 "/MCU/FMC_CLK")
 			(pinfunction "IO_0_15")
 			(pintype "bidirectional")
-			(uuid "1801c04b-9d69-43fd-a1ad-e73fc858befa")
+			(uuid "17b920d3-4443-4a0f-9333-9649fa587e13")
 		)
 		(pad "A22" smd circle
 			(at 10.5 -10.5)
@@ -4998,7 +4998,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "40a01505-c0a9-4623-ab88-4cd5023bc12d")
+			(uuid "8ec0bf94-7419-4338-a08d-1e6d4a40e1a7")
 		)
 		(pad "AA1" smd circle
 			(at -10.5 9.5)
@@ -5007,7 +5007,7 @@
 			(net 363 "/1V2 VCCIO socket/DUT_GPIO34")
 			(pinfunction "IO_L17N_T2_34")
 			(pintype "bidirectional")
-			(uuid "994f1454-8731-45cb-8e5a-bf51f17dce24")
+			(uuid "5d7f581d-4c06-41c9-aecd-52514c0535f7")
 		)
 		(pad "AA2" smd circle
 			(at -9.5 9.5)
@@ -5016,7 +5016,7 @@
 			(net 378 "/1V2 VCCIO socket/DUT_GPIO33")
 			(pinfunction "IO_L17P_T2_34")
 			(pintype "bidirectional")
-			(uuid "845be6c4-e57f-4503-85df-9197f773633e")
+			(uuid "95359833-3551-4dad-8907-8dd7d364d68d")
 		)
 		(pad "AA3" smd circle
 			(at -8.5 9.5)
@@ -5025,7 +5025,7 @@
 			(net 328 "/1V2 VCCIO socket/DUT_GPIO30")
 			(pinfunction "IO_L15N_T2_DQS_34")
 			(pintype "bidirectional")
-			(uuid "406378d4-dc2a-4c2d-91cc-58b775687321")
+			(uuid "e5440861-327d-4782-b38b-a2149e1683ba")
 		)
 		(pad "AA4" smd circle
 			(at -7.5 9.5)
@@ -5034,7 +5034,7 @@
 			(net 15 "/1V2")
 			(pinfunction "VCCO_34")
 			(pintype "power_in")
-			(uuid "0c65880b-d9be-4b79-9f04-1d473361f89e")
+			(uuid "908fda57-f9ba-4153-b4b1-765aafd15663")
 		)
 		(pad "AA5" smd circle
 			(at -6.5 9.5)
@@ -5043,7 +5043,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "4ba25ba6-721d-45be-bd72-fb80e8b7c844")
+			(uuid "57b3dd37-aa87-4271-8384-2c246673165d")
 		)
 		(pad "AA6" smd circle
 			(at -5.5 9.5)
@@ -5052,7 +5052,7 @@
 			(net 395 "/1V2 VCCIO socket/DUT_GPIO25")
 			(pinfunction "IO_L13P_T2_MRCC_34")
 			(pintype "bidirectional")
-			(uuid "6b7af520-49b7-450c-95c0-e001f3ce2f39")
+			(uuid "79c4f321-6677-443a-bc89-df8dfd4908cd")
 		)
 		(pad "AA7" smd circle
 			(at -4.5 9.5)
@@ -5061,7 +5061,7 @@
 			(net 511 "/1V2 VCCIO socket/DUT_GPIO45")
 			(pinfunction "IO_L23P_T3_34")
 			(pintype "bidirectional")
-			(uuid "ba2af55d-77b9-4dfb-902c-0a623d07e50b")
+			(uuid "bd1c80cf-0ae5-4dab-b23f-92c844386faa")
 		)
 		(pad "AA8" smd circle
 			(at -3.5 9.5)
@@ -5070,7 +5070,7 @@
 			(net 227 "/1V2 VCCIO socket/DUT_GPIO40")
 			(pinfunction "IO_L20N_T3_34")
 			(pintype "bidirectional")
-			(uuid "ee376e40-ceae-4aff-85af-6056378f7e21")
+			(uuid "74801492-cba6-4f47-80db-d639a3bdf87b")
 		)
 		(pad "AA9" smd circle
 			(at -2.5 9.5)
@@ -5079,7 +5079,7 @@
 			(net 294 "/1V2 VCCIO socket/DUT_GPIO47")
 			(pinfunction "IO_L24P_T3_34")
 			(pintype "bidirectional")
-			(uuid "49584e3c-191f-4c44-be71-d1c08b876682")
+			(uuid "0f46df20-20e6-418f-bb87-2a399217ff6a")
 		)
 		(pad "AA10" smd circle
 			(at -1.5 9.5)
@@ -5088,7 +5088,7 @@
 			(net 383 "/1V2 VCCIO socket/DUT_GPIO43")
 			(pinfunction "IO_L22P_T3_34")
 			(pintype "bidirectional")
-			(uuid "3db197e3-4f95-41a4-b383-6efae9514de7")
+			(uuid "aa197519-e04c-4a9a-8fd7-da34c122709c")
 		)
 		(pad "AA11" smd circle
 			(at -0.5 9.5)
@@ -5097,7 +5097,7 @@
 			(net 429 "unconnected-(U1D-IO_L19N_T3_VREF_13-PadAA11)")
 			(pinfunction "IO_L19N_T3_VREF_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "c6fa724b-0f7a-438b-bb99-b84cf71833a1")
+			(uuid "985a4112-2abb-4555-98d4-2b02491ea0ba")
 		)
 		(pad "AA12" smd circle
 			(at 0.5 9.5)
@@ -5106,7 +5106,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ef51674d-aaf5-4bf6-900f-3e7380017c26")
+			(uuid "75038ee6-0674-48dc-af85-ee19160b743a")
 		)
 		(pad "AA13" smd circle
 			(at 1.5 9.5)
@@ -5115,7 +5115,7 @@
 			(net 305 "unconnected-(U1D-IO_L15P_T2_DQS_13-PadAA13)")
 			(pinfunction "IO_L15P_T2_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5e45257e-945c-4257-936f-082344183e74")
+			(uuid "bab9bead-7b99-46e4-8eca-20f20125d9c9")
 		)
 		(pad "AA14" smd circle
 			(at 2.5 9.5)
@@ -5124,7 +5124,7 @@
 			(net 223 "unconnected-(U1D-IO_L12P_T1_MRCC_13-PadAA14)")
 			(pinfunction "IO_L12P_T1_MRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5045ddd9-e011-470c-bc85-40e3a73efb3d")
+			(uuid "6fae41eb-eb82-446f-a9b8-f3c49685d13b")
 		)
 		(pad "AA15" smd circle
 			(at 3.5 9.5)
@@ -5133,7 +5133,7 @@
 			(net 485 "unconnected-(U1D-IO_L9P_T1_DQS_13-PadAA15)")
 			(pinfunction "IO_L9P_T1_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "e5385690-a553-40a6-858f-e859ad32cdd9")
+			(uuid "264a0845-32ea-4703-a020-6c3262e37964")
 		)
 		(pad "AA16" smd circle
 			(at 4.5 9.5)
@@ -5142,7 +5142,7 @@
 			(net 501 "unconnected-(U1D-IO_L9N_T1_DQS_13-PadAA16)")
 			(pinfunction "IO_L9N_T1_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "2c918b7d-b30e-49b3-8496-b922186c25fd")
+			(uuid "43df6836-2f60-41f1-a8c1-46e70461dc12")
 		)
 		(pad "AA17" smd circle
 			(at 5.5 9.5)
@@ -5151,7 +5151,7 @@
 			(net 344 "unconnected-(U1D-IO_L8P_T1_13-PadAA17)")
 			(pinfunction "IO_L8P_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "4eb1081c-3f72-4154-ae08-0507986523c8")
+			(uuid "51d70bf9-09ce-4e02-9bb7-d1a6009d8fcc")
 		)
 		(pad "AA18" smd circle
 			(at 6.5 9.5)
@@ -5160,7 +5160,7 @@
 			(net 288 "unconnected-(U1D-IO_L7N_T1_13-PadAA18)")
 			(pinfunction "IO_L7N_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "a6eb8171-cba6-42ef-ac12-52d6e1fe18f3")
+			(uuid "4c7ab915-092e-4378-9565-5e11041139fe")
 		)
 		(pad "AA19" smd circle
 			(at 7.5 9.5)
@@ -5169,7 +5169,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "63f4829e-c2e3-400d-8503-332459e0e5e8")
+			(uuid "effbabf9-84a6-42a9-b852-cbbb7aac1813")
 		)
 		(pad "AA20" smd circle
 			(at 8.5 9.5)
@@ -5178,7 +5178,7 @@
 			(net 426 "/Ethernet/FPGA_RAM_DQ6")
 			(pinfunction "IO_L19N_T3_D25_VREF_14")
 			(pintype "bidirectional")
-			(uuid "66079c0b-3508-4ed2-a703-764859407fa3")
+			(uuid "1a20492b-c0e3-4095-8459-c3ed77448ae0")
 		)
 		(pad "AA21" smd circle
 			(at 9.5 9.5)
@@ -5187,7 +5187,7 @@
 			(net 116 "/Ethernet/ETH_LED2_N_1V8_INV")
 			(pinfunction "IO_L22P_T3_D21_14")
 			(pintype "bidirectional")
-			(uuid "a9323eaa-5a16-4cf3-af0a-d4bbbdc97683")
+			(uuid "1170b5ca-2e27-4480-ab5b-afe9163288a9")
 		)
 		(pad "AA22" smd circle
 			(at 10.5 9.5)
@@ -5196,7 +5196,7 @@
 			(net 165 "/Ethernet/ETH_LED1_N_1V8")
 			(pinfunction "IO_L20N_T3_D23_14")
 			(pintype "bidirectional")
-			(uuid "8993aff4-830c-47ec-997b-7462e74dfbdd")
+			(uuid "465f8bf2-7659-4316-9e42-3852d6dde117")
 		)
 		(pad "AB1" smd circle
 			(at -10.5 10.5)
@@ -5205,7 +5205,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "577772d2-3f65-4461-a1cc-10c3607b1191")
+			(uuid "c84a6d92-4c40-4ba2-aa0c-f3cc91eb7c92")
 		)
 		(pad "AB2" smd circle
 			(at -9.5 10.5)
@@ -5214,7 +5214,7 @@
 			(net 433 "/1V2 VCCIO socket/DUT_GPIO32")
 			(pinfunction "IO_L16N_T2_34")
 			(pintype "bidirectional")
-			(uuid "bc47cdf7-239e-4059-bb1f-bcae5b4d21e8")
+			(uuid "2504d731-cf89-42fc-a1ec-03c23b6b9a08")
 		)
 		(pad "AB3" smd circle
 			(at -8.5 10.5)
@@ -5223,7 +5223,7 @@
 			(net 394 "/1V2 VCCIO socket/DUT_GPIO31")
 			(pinfunction "IO_L16P_T2_34")
 			(pintype "bidirectional")
-			(uuid "c7a40823-250e-4b57-b779-c516b45b8a9d")
+			(uuid "e498b431-0b7a-414f-b675-65428fa929e4")
 		)
 		(pad "AB4" smd circle
 			(at -7.5 10.5)
@@ -5232,7 +5232,7 @@
 			(net 422 "/1V2 VCCIO socket/DUT_GPIO36")
 			(pinfunction "IO_L18N_T2_34")
 			(pintype "bidirectional")
-			(uuid "538c6636-fa40-421c-be48-8607d14f5ecf")
+			(uuid "3fc3fb44-2b0b-404d-ad1d-5a0e7cb2c949")
 		)
 		(pad "AB5" smd circle
 			(at -6.5 10.5)
@@ -5241,7 +5241,7 @@
 			(net 366 "/1V2 VCCIO socket/DUT_GPIO35")
 			(pinfunction "IO_L18P_T2_34")
 			(pintype "bidirectional")
-			(uuid "b41a0d86-09c4-4749-8f6a-8d66d8864a72")
+			(uuid "3d6ca96d-787e-48a3-8e5d-159cc9ab1286")
 		)
 		(pad "AB6" smd circle
 			(at -5.5 10.5)
@@ -5250,7 +5250,7 @@
 			(net 275 "/1V2 VCCIO socket/DUT_GPIO26")
 			(pinfunction "IO_L13N_T2_MRCC_34")
 			(pintype "bidirectional")
-			(uuid "3eed4980-75fc-40bf-b67a-7f27f0efa56b")
+			(uuid "4d8577c3-2f00-4f33-8190-37a8ed290349")
 		)
 		(pad "AB7" smd circle
 			(at -4.5 10.5)
@@ -5259,7 +5259,7 @@
 			(net 438 "/1V2 VCCIO socket/DUT_GPIO46")
 			(pinfunction "IO_L23N_T3_34")
 			(pintype "bidirectional")
-			(uuid "4ccbcca1-a61d-49f6-9fcf-b5a61c270b9a")
+			(uuid "cc19d7ec-5cb1-46b2-a604-395b6cf9f13a")
 		)
 		(pad "AB8" smd circle
 			(at -3.5 10.5)
@@ -5268,7 +5268,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "951bb229-b55e-4fbc-ad66-f8cc7360fbd4")
+			(uuid "26e66752-11d5-463c-97c9-dcc890bd992d")
 		)
 		(pad "AB9" smd circle
 			(at -2.5 10.5)
@@ -5277,7 +5277,7 @@
 			(net 343 "/1V2 VCCIO socket/DUT_GPIO48")
 			(pinfunction "IO_L24N_T3_34")
 			(pintype "bidirectional")
-			(uuid "9df33604-154d-46ea-9ee0-20c801a3ab2f")
+			(uuid "60b81a94-f382-4df3-b762-350dea0c9418")
 		)
 		(pad "AB10" smd circle
 			(at -1.5 10.5)
@@ -5286,7 +5286,7 @@
 			(net 505 "/1V2 VCCIO socket/DUT_GPIO44")
 			(pinfunction "IO_L22N_T3_34")
 			(pintype "bidirectional")
-			(uuid "95636e74-aaec-49fe-a074-9f57f641fe84")
+			(uuid "2e276e6b-d1bc-4054-9951-55ec10f8e4fe")
 		)
 		(pad "AB11" smd circle
 			(at -0.5 10.5)
@@ -5295,7 +5295,7 @@
 			(net 322 "unconnected-(U1D-IO_L17P_T2_13-PadAB11)")
 			(pinfunction "IO_L17P_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "a835d8f8-2151-42dc-b2a8-ebcf9aaf358d")
+			(uuid "b24c4605-e3eb-488f-839a-ca0a5e3425e1")
 		)
 		(pad "AB12" smd circle
 			(at 0.5 10.5)
@@ -5304,7 +5304,7 @@
 			(net 276 "unconnected-(U1D-IO_L17N_T2_13-PadAB12)")
 			(pinfunction "IO_L17N_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "6ce21a04-8b4a-4440-a94b-af6d1cafd6cb")
+			(uuid "88d7aed1-56be-4676-8420-ae602e819685")
 		)
 		(pad "AB13" smd circle
 			(at 1.5 10.5)
@@ -5313,7 +5313,7 @@
 			(net 222 "unconnected-(U1D-IO_L15N_T2_DQS_13-PadAB13)")
 			(pinfunction "IO_L15N_T2_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5b77b41a-20e6-42b8-af1b-af8f6a04b058")
+			(uuid "bfa0f0df-776d-4e99-9093-962b11c56961")
 		)
 		(pad "AB14" smd circle
 			(at 2.5 10.5)
@@ -5322,7 +5322,7 @@
 			(net 259 "unconnected-(U1D-IO_L12N_T1_MRCC_13-PadAB14)")
 			(pinfunction "IO_L12N_T1_MRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "20bf798c-d338-4f91-b337-877d4a56b638")
+			(uuid "d88a9235-3819-4df8-bb98-d6014d763d0c")
 		)
 		(pad "AB15" smd circle
 			(at 3.5 10.5)
@@ -5331,7 +5331,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "bae9171c-f42c-47f5-9ebf-48e90408198a")
+			(uuid "5d67af6a-d7e1-4718-9d74-9f4c0cb18e94")
 		)
 		(pad "AB16" smd circle
 			(at 4.5 10.5)
@@ -5340,7 +5340,7 @@
 			(net 496 "unconnected-(U1D-IO_L10P_T1_13-PadAB16)")
 			(pinfunction "IO_L10P_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "9cdb3c98-854b-48f0-af2e-b4799c90d4b2")
+			(uuid "c9a00497-34a5-4af2-89f9-19ff9270dab7")
 		)
 		(pad "AB17" smd circle
 			(at 5.5 10.5)
@@ -5349,7 +5349,7 @@
 			(net 321 "unconnected-(U1D-IO_L10N_T1_13-PadAB17)")
 			(pinfunction "IO_L10N_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "3e66bb02-20c3-451a-8f7a-3672190b9c93")
+			(uuid "94fd3387-d5fb-407b-abb8-0e03cc150808")
 		)
 		(pad "AB18" smd circle
 			(at 6.5 10.5)
@@ -5358,7 +5358,7 @@
 			(net 473 "unconnected-(U1D-IO_L8N_T1_13-PadAB18)")
 			(pinfunction "IO_L8N_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "e7468d88-a35e-455b-858e-f39cccf864dc")
+			(uuid "81f86b1b-f40a-4085-aa1e-b02a1a1f2f2d")
 		)
 		(pad "AB19" smd circle
 			(at 7.5 10.5)
@@ -5367,7 +5367,7 @@
 			(net 316 "unconnected-(U1E-IO_L23P_T3_D19_14-PadAB19)")
 			(pinfunction "IO_L23P_T3_D19_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "0d7fb2c1-5c8d-40db-ae77-4f15e26267ea")
+			(uuid "6fac31f7-f81e-4787-adfc-95adef91d88a")
 		)
 		(pad "AB20" smd circle
 			(at 8.5 10.5)
@@ -5376,7 +5376,7 @@
 			(net 335 "unconnected-(U1E-IO_L23N_T3_D18_14-PadAB20)")
 			(pinfunction "IO_L23N_T3_D18_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "0522b118-377a-4fd2-ba28-32fd37517b20")
+			(uuid "78460335-20b1-42e2-8542-db30d6199b2e")
 		)
 		(pad "AB21" smd circle
 			(at 9.5 10.5)
@@ -5385,7 +5385,7 @@
 			(net 269 "unconnected-(U1E-IO_L22N_T3_D20_14-PadAB21)")
 			(pinfunction "IO_L22N_T3_D20_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "f583e12d-9d66-47c1-8916-31b92c8042a0")
+			(uuid "ad16ce73-3221-4a7e-bfd5-83f918897074")
 		)
 		(pad "AB22" smd circle
 			(at 10.5 10.5)
@@ -5394,7 +5394,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "66fc2f10-bb96-45c7-831f-bb44d7ddf789")
+			(uuid "5acd8146-74c0-4f12-9867-34c58a7f3f3e")
 		)
 		(pad "B1" smd circle
 			(at -10.5 -9.5)
@@ -5403,7 +5403,7 @@
 			(net 220 "/2V5 VCCIO socket/DUT_GPIO34")
 			(pinfunction "IO_L17N_T2_36")
 			(pintype "bidirectional")
-			(uuid "2dc30954-15b4-4934-b8fa-133fa752b414")
+			(uuid "d85752f5-bc10-4181-9ff4-4ea02336309b")
 		)
 		(pad "B2" smd circle
 			(at -9.5 -9.5)
@@ -5412,7 +5412,7 @@
 			(net 354 "/2V5 VCCIO socket/DUT_GPIO33")
 			(pinfunction "IO_L17P_T2_36")
 			(pintype "bidirectional")
-			(uuid "359bed2e-3507-44c5-b8ae-4919d21905c9")
+			(uuid "e521c591-87b1-43bf-b09b-014a14372fc7")
 		)
 		(pad "B3" smd circle
 			(at -8.5 -9.5)
@@ -5421,7 +5421,7 @@
 			(net 439 "/2V5 VCCIO socket/DUT_GPIO29")
 			(pinfunction "IO_L15P_T2_DQS_36")
 			(pintype "bidirectional")
-			(uuid "541234fe-0434-4dc4-a6cc-dea6d30552e7")
+			(uuid "c38f73b6-4738-4a07-a393-6d6cf2ea95d4")
 		)
 		(pad "B4" smd circle
 			(at -7.5 -9.5)
@@ -5430,7 +5430,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "c5e7ea87-9a75-4297-8309-d04717137348")
+			(uuid "ed94aefe-e658-46ec-8988-b314a510b64c")
 		)
 		(pad "B5" smd circle
 			(at -6.5 -9.5)
@@ -5439,7 +5439,7 @@
 			(net 8 "/2V5")
 			(pinfunction "VCCO_36")
 			(pintype "power_in")
-			(uuid "9c775fb7-228b-40b5-8593-34bab7e116f8")
+			(uuid "02930ebf-000f-4688-a4cf-2110c589a9bf")
 		)
 		(pad "B6" smd circle
 			(at -5.5 -9.5)
@@ -5448,7 +5448,7 @@
 			(net 350 "/2V5 VCCIO socket/DUT_GPIO25")
 			(pinfunction "IO_L13P_T2_MRCC_36")
 			(pintype "bidirectional")
-			(uuid "d9697a8f-436c-4dd1-b75f-8c8a683d0392")
+			(uuid "76faa64c-01fb-4150-931a-f4d639bf9d76")
 		)
 		(pad "B7" smd circle
 			(at -4.5 -9.5)
@@ -5457,7 +5457,7 @@
 			(net 440 "/2V5 VCCIO socket/DUT_GPIO10")
 			(pinfunction "IO_L5N_T0_36")
 			(pintype "bidirectional")
-			(uuid "2789ca82-0416-485e-9093-e69deba0eaaa")
+			(uuid "b00c57fd-1d38-44e7-837d-3d621122f829")
 		)
 		(pad "B8" smd circle
 			(at -3.5 -9.5)
@@ -5466,7 +5466,7 @@
 			(net 400 "/2V5 VCCIO socket/DUT_GPIO9")
 			(pinfunction "IO_L5P_T0_36")
 			(pintype "bidirectional")
-			(uuid "61289b09-2f25-4b57-ad76-73a67cdf7f1f")
+			(uuid "6fce46f8-e957-4c83-912a-00e594392d48")
 		)
 		(pad "B9" smd circle
 			(at -2.5 -9.5)
@@ -5475,7 +5475,7 @@
 			(net 478 "/2V5 VCCIO socket/DUT_GPIO1")
 			(pinfunction "IO_L1P_T0_36")
 			(pintype "bidirectional")
-			(uuid "453fa818-7ff9-4e52-bbda-f8963bb56f0d")
+			(uuid "3d6bc2ca-fb6e-44f9-af46-42c2e3208d44")
 		)
 		(pad "B10" smd circle
 			(at -1.5 -9.5)
@@ -5484,7 +5484,7 @@
 			(net 285 "/2V5 VCCIO socket/DUT_GPIO3")
 			(pinfunction "IO_L2P_T0_36")
 			(pintype "bidirectional")
-			(uuid "138eef10-47a9-4e1c-9c9d-1eb40fcad7c3")
+			(uuid "958fce75-9c6c-408b-9f31-80be839f332c")
 		)
 		(pad "B11" smd circle
 			(at -0.5 -9.5)
@@ -5493,7 +5493,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "6499917e-731e-4d4f-a641-e97097942967")
+			(uuid "4df1429d-edfa-45f6-877d-5b6e82c9dd6a")
 		)
 		(pad "B12" smd circle
 			(at 0.5 -9.5)
@@ -5502,7 +5502,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_16")
 			(pintype "power_in")
-			(uuid "f4ed0ab8-e1f3-465b-bb16-fb66a337922a")
+			(uuid "a33f3b8b-4b92-435c-a87d-8b340bc41243")
 		)
 		(pad "B13" smd circle
 			(at 1.5 -9.5)
@@ -5511,7 +5511,7 @@
 			(net 417 "/3V3 VCCIO socket/DUT_GPIO17")
 			(pinfunction "IO_L9P_T1_DQS_16")
 			(pintype "bidirectional")
-			(uuid "c0e6bbc4-f678-443f-818e-573fefab898c")
+			(uuid "d80f6c8c-20b3-4070-9b01-bd14f31cfb0e")
 		)
 		(pad "B14" smd circle
 			(at 2.5 -9.5)
@@ -5520,7 +5520,7 @@
 			(net 384 "/3V3 VCCIO socket/DUT_GPIO33")
 			(pinfunction "IO_L17P_T2_16")
 			(pintype "bidirectional")
-			(uuid "e2c5146c-f45b-45a7-9383-e3a2b9c468c2")
+			(uuid "b8c308d8-a20f-4342-b0dc-3f8eb5c04635")
 		)
 		(pad "B15" smd circle
 			(at 3.5 -9.5)
@@ -5529,7 +5529,7 @@
 			(net 402 "/3V3 VCCIO socket/DUT_GPIO27")
 			(pinfunction "IO_L14P_T2_SRCC_16")
 			(pintype "bidirectional")
-			(uuid "cc4cb059-7e7f-4727-ad3d-b194f22c7a6e")
+			(uuid "2393b35d-57ad-48c5-8b82-3bc013f8daa8")
 		)
 		(pad "B16" smd circle
 			(at 4.5 -9.5)
@@ -5538,7 +5538,7 @@
 			(net 388 "/3V3 VCCIO socket/DUT_GPIO28")
 			(pinfunction "IO_L14N_T2_SRCC_16")
 			(pintype "bidirectional")
-			(uuid "1fb746a8-6658-4883-975d-3cbd78b1aa8b")
+			(uuid "e9636fe8-f4c4-47d7-9214-5f18a5d23434")
 		)
 		(pad "B17" smd circle
 			(at 5.5 -9.5)
@@ -5547,7 +5547,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_16")
 			(pintype "power_in")
-			(uuid "935001b9-963c-48cd-9dd7-e2335721b6b8")
+			(uuid "7180452a-064d-481b-a839-83d9ffa81053")
 		)
 		(pad "B18" smd circle
 			(at 6.5 -9.5)
@@ -5556,7 +5556,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "c9666d0f-b794-4002-8cab-ff525d931a15")
+			(uuid "5407ae9a-146e-47f8-b28b-0fb30be49024")
 		)
 		(pad "B19" smd circle
 			(at 7.5 -9.5)
@@ -5565,7 +5565,7 @@
 			(net 257 "/3V3 VCCIO socket/DUT_GPIO40")
 			(pinfunction "IO_L20N_T3_16")
 			(pintype "bidirectional")
-			(uuid "5a420000-8208-47f5-bfdd-9091f52d48ae")
+			(uuid "2184a9b9-f1a2-4fd1-bb2a-90d6c631f56a")
 		)
 		(pad "B20" smd circle
 			(at 8.5 -9.5)
@@ -5574,7 +5574,7 @@
 			(net 226 "/3V3 VCCIO socket/DUT_GPIO45")
 			(pinfunction "IO_L23P_T3_16")
 			(pintype "bidirectional")
-			(uuid "8f201fe4-dedb-4ca4-96ea-5e865ca8f2ca")
+			(uuid "df4584d4-d36e-430e-a8fa-0118c8d05939")
 		)
 		(pad "B21" smd circle
 			(at 9.5 -9.5)
@@ -5583,7 +5583,7 @@
 			(net 508 "/MCU/FMC_AD2")
 			(pinfunction "IO_L7P_T1_AD2P_15")
 			(pintype "bidirectional")
-			(uuid "d6d40a41-585c-46f7-b912-809daa92fd66")
+			(uuid "d7cfa6c1-b73c-444b-9912-d4fea6728da8")
 		)
 		(pad "B22" smd circle
 			(at 10.5 -9.5)
@@ -5592,7 +5592,7 @@
 			(net 484 "/MCU/FMC_AD3")
 			(pinfunction "IO_L7N_T1_AD2N_15")
 			(pintype "bidirectional")
-			(uuid "dd7301db-fd6b-4c05-9eed-280ff5df937d")
+			(uuid "3a468433-4386-40c6-a1e0-418836969eb4")
 		)
 		(pad "C1" smd circle
 			(at -10.5 -8.5)
@@ -5601,7 +5601,7 @@
 			(net 390 "/2V5 VCCIO socket/DUT_GPIO36")
 			(pinfunction "IO_L18N_T2_36")
 			(pintype "bidirectional")
-			(uuid "d82fbfba-138c-4aa6-bb57-d0aecec5a9df")
+			(uuid "04a1f732-605a-4fe8-9dbc-c96c178ff30e")
 		)
 		(pad "C2" smd circle
 			(at -9.5 -8.5)
@@ -5610,7 +5610,7 @@
 			(net 301 "/2V5 VCCIO socket/DUT_GPIO35")
 			(pinfunction "IO_L18P_T2_36")
 			(pintype "bidirectional")
-			(uuid "9e607c2f-a412-44f6-9e1d-14d1bfee0647")
+			(uuid "34ea4f9a-d0fa-4f31-a768-87c8b754cb45")
 		)
 		(pad "C3" smd circle
 			(at -8.5 -8.5)
@@ -5619,7 +5619,7 @@
 			(net 465 "/2V5 VCCIO socket/DUT_GPIO32")
 			(pinfunction "IO_L16N_T2_36")
 			(pintype "bidirectional")
-			(uuid "db3d6295-4110-4dc7-903f-f009b371cfa1")
+			(uuid "5914b17e-9c91-48a6-8d66-038b2c01544a")
 		)
 		(pad "C4" smd circle
 			(at -7.5 -8.5)
@@ -5628,7 +5628,7 @@
 			(net 374 "/2V5 VCCIO socket/DUT_GPIO31")
 			(pinfunction "IO_L16P_T2_36")
 			(pintype "bidirectional")
-			(uuid "783637ad-8810-4bf1-adbf-a114b0519dc9")
+			(uuid "db9b2427-29c5-42e6-b22d-912a152c2fc8")
 		)
 		(pad "C5" smd circle
 			(at -6.5 -8.5)
@@ -5637,7 +5637,7 @@
 			(net 319 "/2V5 VCCIO socket/DUT_GPIO14")
 			(pinfunction "IO_L7N_T1_36")
 			(pintype "bidirectional")
-			(uuid "e3f7b5b7-f2d1-435f-ba3e-8ab0d5622f5f")
+			(uuid "f3cdc25f-90c5-48d6-8713-fe9913d866bb")
 		)
 		(pad "C6" smd circle
 			(at -5.5 -8.5)
@@ -5646,7 +5646,7 @@
 			(net 218 "/2V5 VCCIO socket/DUT_GPIO13")
 			(pinfunction "IO_L7P_T1_36")
 			(pintype "bidirectional")
-			(uuid "7ca00032-b64c-4a1f-bd02-5079c519e319")
+			(uuid "b0a8823d-ace6-407d-ad91-24271b803cc5")
 		)
 		(pad "C7" smd circle
 			(at -4.5 -8.5)
@@ -5655,7 +5655,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "2a88e229-9436-4d20-9543-d7cbc5bd1ca1")
+			(uuid "440475a2-3060-4401-a63d-2beaba4343fb")
 		)
 		(pad "C8" smd circle
 			(at -3.5 -8.5)
@@ -5664,7 +5664,7 @@
 			(net 389 "/2V5 VCCIO socket/DUT_GPIO6")
 			(pinfunction "IO_L3N_T0_DQS_36")
 			(pintype "bidirectional")
-			(uuid "31eb451d-b257-4f5d-b18a-4fbdea8f645c")
+			(uuid "6cc89a5b-41d0-46dd-935c-e138134e25cd")
 		)
 		(pad "C9" smd circle
 			(at -2.5 -8.5)
@@ -5673,7 +5673,7 @@
 			(net 235 "/2V5 VCCIO socket/DUT_GPIO5")
 			(pinfunction "IO_L3P_T0_DQS_36")
 			(pintype "bidirectional")
-			(uuid "b8b91103-855a-4796-98d4-746642ee2aa9")
+			(uuid "7ad506a8-534b-4536-80aa-33382154e7dc")
 		)
 		(pad "C10" smd circle
 			(at -1.5 -8.5)
@@ -5682,7 +5682,7 @@
 			(net 320 "/3V3 VCCIO socket/DUT_GPIO19")
 			(pinfunction "IO_L10P_T1_16")
 			(pintype "bidirectional")
-			(uuid "fb1ffd09-49d4-43ba-8737-57881c158f0d")
+			(uuid "4fb77d98-f416-4aa4-9f70-79222a0015cf")
 		)
 		(pad "C11" smd circle
 			(at -0.5 -8.5)
@@ -5691,7 +5691,7 @@
 			(net 236 "/3V3 VCCIO socket/DUT_GPIO20")
 			(pinfunction "IO_L10N_T1_16")
 			(pintype "bidirectional")
-			(uuid "33bd00d5-93a6-442f-912c-a81501b5276b")
+			(uuid "ee4cffc1-c2ad-42ea-bc73-c0a89332a240")
 		)
 		(pad "C12" smd circle
 			(at 0.5 -8.5)
@@ -5700,7 +5700,7 @@
 			(net 307 "/3V3 VCCIO socket/DUT_GPIO24")
 			(pinfunction "IO_L12N_T1_MRCC_16")
 			(pintype "bidirectional")
-			(uuid "35796fed-c435-4ca3-bde5-c0a88dd568b6")
+			(uuid "5343ef23-e46c-4d70-8cd5-670bf47e398a")
 		)
 		(pad "C13" smd circle
 			(at 1.5 -8.5)
@@ -5709,7 +5709,7 @@
 			(net 369 "/3V3 VCCIO socket/DUT_GPIO14")
 			(pinfunction "IO_L7N_T1_16")
 			(pintype "bidirectional")
-			(uuid "b8a64a90-71cd-4753-a36f-39d00575a75d")
+			(uuid "e1b6f06f-071b-4c3c-8bc4-1f525f82d468")
 		)
 		(pad "C14" smd circle
 			(at 2.5 -8.5)
@@ -5718,7 +5718,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "f4206535-83f3-4756-9ae2-5392b0da2e19")
+			(uuid "72baa279-35ee-484f-853d-34e77ebc2aad")
 		)
 		(pad "C15" smd circle
 			(at 3.5 -8.5)
@@ -5727,7 +5727,7 @@
 			(net 486 "/3V3 VCCIO socket/DUT_GPIO25")
 			(pinfunction "IO_L13P_T2_MRCC_16")
 			(pintype "bidirectional")
-			(uuid "a7d8adbc-5bbc-4756-b208-2b7a124f53fe")
+			(uuid "9f69698f-a3a1-4062-8c0e-45d5beb04dd1")
 		)
 		(pad "C16" smd circle
 			(at 4.5 -8.5)
@@ -5736,7 +5736,7 @@
 			(net 448 "/3V3 VCCIO socket/DUT_GPIO26")
 			(pinfunction "IO_L13N_T2_MRCC_16")
 			(pintype "bidirectional")
-			(uuid "bf48a8c1-ea45-4817-b5d9-bc326ab51604")
+			(uuid "7ee68333-85c0-4746-8566-c3bac25babd2")
 		)
 		(pad "C17" smd circle
 			(at 5.5 -8.5)
@@ -5745,7 +5745,7 @@
 			(net 436 "/3V3 VCCIO socket/DUT_GPIO30")
 			(pinfunction "IO_L15N_T2_DQS_16")
 			(pintype "bidirectional")
-			(uuid "aa6d5c81-aedf-4d20-a39c-12e21cb4bc8b")
+			(uuid "1ce50918-8c3d-42de-b194-f158882e3b9f")
 		)
 		(pad "C18" smd circle
 			(at 6.5 -8.5)
@@ -5754,7 +5754,7 @@
 			(net 265 "/3V3 VCCIO socket/DUT_GPIO38")
 			(pinfunction "IO_L19N_T3_VREF_16")
 			(pintype "bidirectional")
-			(uuid "93c626e7-b4a9-48d4-8e74-3932839a2f71")
+			(uuid "7eb6c02a-7e58-444e-a378-082ecf535c1f")
 		)
 		(pad "C19" smd circle
 			(at 7.5 -8.5)
@@ -5763,7 +5763,7 @@
 			(net 232 "/3V3 VCCIO socket/DUT_GPIO39")
 			(pinfunction "IO_L20P_T3_16")
 			(pintype "bidirectional")
-			(uuid "b8d9e44d-a378-4ddb-ab63-9f80af509899")
+			(uuid "e061f4a1-d079-431f-b4d7-9c8ac2ed03bf")
 		)
 		(pad "C20" smd circle
 			(at 8.5 -8.5)
@@ -5772,7 +5772,7 @@
 			(net 261 "/MCU/FMC_AD5")
 			(pinfunction "IO_L8N_T1_AD10N_15")
 			(pintype "bidirectional")
-			(uuid "0a0d8562-f285-4d38-8289-171ae87a1b46")
+			(uuid "a74cc4a0-706b-4db5-86ea-80d00d5d4506")
 		)
 		(pad "C21" smd circle
 			(at 9.5 -8.5)
@@ -5781,7 +5781,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "aa3ce590-b4c5-46c2-9fa0-904d73d5d2b8")
+			(uuid "cd557ba9-77f5-492a-93c6-2a324b455b8b")
 		)
 		(pad "C22" smd circle
 			(at 10.5 -8.5)
@@ -5790,7 +5790,7 @@
 			(net 357 "/MCU/FMC_AD7")
 			(pinfunction "IO_L9N_T1_DQS_AD3N_15")
 			(pintype "bidirectional")
-			(uuid "e6ccaf0d-fe53-49a4-a7b9-cc28956f0ce8")
+			(uuid "6d3c6614-900a-4b5e-acac-5b6b521af060")
 		)
 		(pad "D1" smd circle
 			(at -10.5 -7.5)
@@ -5799,7 +5799,7 @@
 			(net 498 "/2V5 VCCIO socket/DUT_GPIO48")
 			(pinfunction "IO_L24N_T3_36")
 			(pintype "bidirectional")
-			(uuid "468787dd-b990-49f4-bc97-91f30f429090")
+			(uuid "6e163d69-9ab1-45dd-99f2-817f3790dd00")
 		)
 		(pad "D2" smd circle
 			(at -9.5 -7.5)
@@ -5808,7 +5808,7 @@
 			(net 303 "/2V5 VCCIO socket/DUT_GPIO46")
 			(pinfunction "IO_L23N_T3_36")
 			(pintype "bidirectional")
-			(uuid "ef356f93-b527-4f8d-bf43-f2ce4f80b9ae")
+			(uuid "ec043531-80f7-4a85-a942-0d32f4f0eaa8")
 		)
 		(pad "D3" smd circle
 			(at -8.5 -7.5)
@@ -5817,7 +5817,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "44214a0c-84c0-4ae9-b1b2-11577b745854")
+			(uuid "af4a5d56-53fe-44ca-a9c3-1cada2162ec6")
 		)
 		(pad "D4" smd circle
 			(at -7.5 -7.5)
@@ -5826,7 +5826,7 @@
 			(net 401 "/2V5 VCCIO socket/DUT_GPIO40")
 			(pinfunction "IO_L20N_T3_36")
 			(pintype "bidirectional")
-			(uuid "ab7f89cc-56b1-4ccd-8621-965f1159ac37")
+			(uuid "7987efe0-b991-4ce1-b391-b6b251e89a8c")
 		)
 		(pad "D5" smd circle
 			(at -6.5 -7.5)
@@ -5835,7 +5835,7 @@
 			(net 458 "/2V5 VCCIO socket/DUT_GPIO16")
 			(pinfunction "IO_L8N_T1_36")
 			(pintype "bidirectional")
-			(uuid "ba47584e-e8ba-41ff-aebd-3dcb4c926e02")
+			(uuid "2a7e109b-21d4-4001-b4bb-8d3afa8e9958")
 		)
 		(pad "D6" smd circle
 			(at -5.5 -7.5)
@@ -5844,7 +5844,7 @@
 			(net 499 "/2V5 VCCIO socket/DUT_GPIO15")
 			(pinfunction "IO_L8P_T1_36")
 			(pintype "bidirectional")
-			(uuid "96f7f290-db9a-47fc-9f36-febb378ec2b2")
+			(uuid "2c425e26-0037-4322-9147-b385cc6c42b3")
 		)
 		(pad "D7" smd circle
 			(at -4.5 -7.5)
@@ -5853,7 +5853,7 @@
 			(net 406 "/2V5 VCCIO socket/DUT_GPIO12")
 			(pinfunction "IO_L6N_T0_VREF_36")
 			(pintype "bidirectional")
-			(uuid "76447fe0-05e5-4354-833f-ed81e09d9384")
+			(uuid "d0f2c428-27ee-494d-88aa-d6e666f15245")
 		)
 		(pad "D8" smd circle
 			(at -3.5 -7.5)
@@ -5862,7 +5862,7 @@
 			(net 412 "/2V5 VCCIO socket/DUT_GPIO11")
 			(pinfunction "IO_L6P_T0_36")
 			(pintype "bidirectional")
-			(uuid "08370af3-1376-4d5a-b240-366cfa3c133d")
+			(uuid "6abc0874-fd13-47e1-91e4-87d6a6a23e3c")
 		)
 		(pad "D9" smd circle
 			(at -2.5 -7.5)
@@ -5871,7 +5871,7 @@
 			(net 495 "/FLASH_SCK")
 			(pinfunction "CCLK_0")
 			(pintype "output")
-			(uuid "f45b98b5-c08e-43a4-b05b-9dff889a3b9c")
+			(uuid "82b003cb-6525-4ac5-b080-efa50005ea7c")
 		)
 		(pad "D10" smd circle
 			(at -1.5 -7.5)
@@ -5880,7 +5880,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "5c16d586-6341-414f-ab0b-65ba1ec31dcb")
+			(uuid "46ee113c-049c-4000-a9df-7883e1d92b66")
 		)
 		(pad "D11" smd circle
 			(at -0.5 -7.5)
@@ -5889,7 +5889,7 @@
 			(net 392 "/3V3 VCCIO socket/DUT_GPIO6")
 			(pinfunction "IO_L3N_T0_DQS_16")
 			(pintype "bidirectional")
-			(uuid "787ff733-7f33-4ef4-b148-0c7908f495a9")
+			(uuid "d144343d-9e39-418a-9fff-79cfab0d70b4")
 		)
 		(pad "D12" smd circle
 			(at 0.5 -7.5)
@@ -5898,7 +5898,7 @@
 			(net 370 "/3V3 VCCIO socket/DUT_GPIO23")
 			(pinfunction "IO_L12P_T1_MRCC_16")
 			(pintype "bidirectional")
-			(uuid "270bb638-aa4a-4219-86f1-c0136ae9c701")
+			(uuid "cf597b20-1d79-4f58-b285-8037c66ba73c")
 		)
 		(pad "D13" smd circle
 			(at 1.5 -7.5)
@@ -5907,7 +5907,7 @@
 			(net 280 "/3V3 VCCIO socket/DUT_GPIO13")
 			(pinfunction "IO_L7P_T1_16")
 			(pintype "bidirectional")
-			(uuid "479d3783-0aeb-4a0f-9421-ca90f30129e1")
+			(uuid "2bb1574d-8ad0-423a-9b1c-ba2bee510f09")
 		)
 		(pad "D14" smd circle
 			(at 2.5 -7.5)
@@ -5916,7 +5916,7 @@
 			(net 456 "/3V3 VCCIO socket/DUT_GPIO21")
 			(pinfunction "IO_L11P_T1_SRCC_16")
 			(pintype "bidirectional")
-			(uuid "ada3f47e-44be-4ecf-8429-860d5dca3821")
+			(uuid "bef356c0-12be-4e54-83a3-69131265b1e3")
 		)
 		(pad "D15" smd circle
 			(at 3.5 -7.5)
@@ -5925,7 +5925,7 @@
 			(net 451 "/3V3 VCCIO socket/DUT_GPIO22")
 			(pinfunction "IO_L11N_T1_SRCC_16")
 			(pintype "bidirectional")
-			(uuid "9fb49e1a-3a0e-4478-884e-d6e13ad85256")
+			(uuid "ec71f373-43d7-4465-8e52-1a6edeffffcd")
 		)
 		(pad "D16" smd circle
 			(at 4.5 -7.5)
@@ -5934,7 +5934,7 @@
 			(net 216 "/3V3 VCCIO socket/DUT_GPIO29")
 			(pinfunction "IO_L15P_T2_DQS_16")
 			(pintype "bidirectional")
-			(uuid "58d7c2f2-d302-4343-95db-65c57c289ff6")
+			(uuid "44111f2b-aa86-4af9-955d-a6f4da2952e1")
 		)
 		(pad "D17" smd circle
 			(at 5.5 -7.5)
@@ -5943,7 +5943,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "756216b7-12e6-4da4-b92d-e47077a32d6f")
+			(uuid "bf00d5b1-73d8-4921-8659-8208e3144ec4")
 		)
 		(pad "D18" smd circle
 			(at 6.5 -7.5)
@@ -5952,7 +5952,7 @@
 			(net 346 "/3V3 VCCIO socket/DUT_GPIO37")
 			(pinfunction "IO_L19P_T3_16")
 			(pintype "bidirectional")
-			(uuid "b628e311-cfa9-4a87-bc5d-62e857a3256c")
+			(uuid "1c2f7f7e-c355-45f8-8f85-2b08bff5d15d")
 		)
 		(pad "D19" smd circle
 			(at 7.5 -7.5)
@@ -5961,7 +5961,7 @@
 			(net 391 "/3V3 VCCIO socket/DUT_GPIO48")
 			(pinfunction "IO_L24N_T3_16")
 			(pintype "bidirectional")
-			(uuid "571b81ac-b553-4186-9bbb-1a1d41f186f0")
+			(uuid "ea9ba547-8c75-45df-b7c2-0f82c7b77cd4")
 		)
 		(pad "D20" smd circle
 			(at 8.5 -7.5)
@@ -5970,7 +5970,7 @@
 			(net 212 "/MCU/FMC_AD4")
 			(pinfunction "IO_L8P_T1_AD10P_15")
 			(pintype "bidirectional")
-			(uuid "bb0a135f-ee09-402c-86ef-eb530fbf8acb")
+			(uuid "bf104787-a927-4df7-8ad0-7996860ff2de")
 		)
 		(pad "D21" smd circle
 			(at 9.5 -7.5)
@@ -5979,7 +5979,7 @@
 			(net 427 "/MCU/FMC_AD6")
 			(pinfunction "IO_L9P_T1_DQS_AD3P_15")
 			(pintype "bidirectional")
-			(uuid "f479f862-6494-4e44-bcf2-cae50276a1d5")
+			(uuid "5a2585a6-8a40-4e9f-ba29-1044904ed6df")
 		)
 		(pad "D22" smd circle
 			(at 10.5 -7.5)
@@ -5988,7 +5988,7 @@
 			(net 361 "/MCU/FMC_AD9")
 			(pinfunction "IO_L10N_T1_AD11N_15")
 			(pintype "bidirectional")
-			(uuid "94b0b19b-3f62-4f63-952d-0e02f6656ea3")
+			(uuid "67a1987d-6b27-4369-bcaa-9a3792345d62")
 		)
 		(pad "E1" smd circle
 			(at -10.5 -6.5)
@@ -5997,7 +5997,7 @@
 			(net 463 "/2V5 VCCIO socket/DUT_GPIO42")
 			(pinfunction "IO_L21N_T3_DQS_36")
 			(pintype "bidirectional")
-			(uuid "da2dc8a3-92ee-4da8-9b31-2d0d9b5fe1ae")
+			(uuid "d2b4725d-506f-4991-90a3-39a169f8010d")
 		)
 		(pad "E2" smd circle
 			(at -9.5 -6.5)
@@ -6006,7 +6006,7 @@
 			(net 333 "/2V5 VCCIO socket/DUT_GPIO47")
 			(pinfunction "IO_L24P_T3_36")
 			(pintype "bidirectional")
-			(uuid "efd8baea-32e3-45ba-aad4-4295e32b211d")
+			(uuid "e55755cd-b7dc-4c2f-b45e-542f1f60ea43")
 		)
 		(pad "E3" smd circle
 			(at -8.5 -6.5)
@@ -6015,7 +6015,7 @@
 			(net 494 "/2V5 VCCIO socket/DUT_GPIO45")
 			(pinfunction "IO_L23P_T3_36")
 			(pintype "bidirectional")
-			(uuid "cf526238-2ae2-4232-a5fd-6eeca62f3670")
+			(uuid "76b7f3a3-b41a-4423-873c-6c2ab6087dc9")
 		)
 		(pad "E4" smd circle
 			(at -7.5 -6.5)
@@ -6024,7 +6024,7 @@
 			(net 312 "/2V5 VCCIO socket/DUT_GPIO39")
 			(pinfunction "IO_L20P_T3_36")
 			(pintype "bidirectional")
-			(uuid "fe1aa46f-259d-4e32-9267-3e5eb0e2c71d")
+			(uuid "b910d815-95f5-44b6-bad0-f242d6f956d5")
 		)
 		(pad "E5" smd circle
 			(at -6.5 -6.5)
@@ -6033,7 +6033,7 @@
 			(net 355 "/2V5 VCCIO socket/DUT_GPIO20")
 			(pinfunction "IO_L10N_T1_36")
 			(pintype "bidirectional")
-			(uuid "e4b39856-c06f-4b54-8e33-b56b8372ca25")
+			(uuid "e382e0f7-74b7-48c4-84e6-887e35f0ec8d")
 		)
 		(pad "E6" smd circle
 			(at -5.5 -6.5)
@@ -6042,7 +6042,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "06cbb6aa-bafe-4043-b3c2-989371c01470")
+			(uuid "2c565f79-e7d2-4adc-8541-e396810cc225")
 		)
 		(pad "E7" smd circle
 			(at -4.5 -6.5)
@@ -6051,7 +6051,7 @@
 			(net 8 "/2V5")
 			(pinfunction "VCCO_36")
 			(pintype "power_in")
-			(uuid "af8b3f62-816d-40cc-98dc-839f8c3c690f")
+			(uuid "b100dd1e-dd3d-44cd-a284-a09512961092")
 		)
 		(pad "E8" smd circle
 			(at -3.5 -6.5)
@@ -6060,7 +6060,7 @@
 			(net 443 "/2V5 VCCIO socket/DUT_GPIO0")
 			(pinfunction "IO_0_36")
 			(pintype "bidirectional")
-			(uuid "76f65a81-3792-486b-a577-a4f78cd457e1")
+			(uuid "f2e71bd7-1ca9-482a-9006-afc42c4b504e")
 		)
 		(pad "E9" smd circle
 			(at -2.5 -6.5)
@@ -6069,7 +6069,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCBATT_0")
 			(pintype "power_in")
-			(uuid "75cea6d5-964a-4b66-afb9-8fd2a9be3a12")
+			(uuid "231143d1-c5f1-4dc3-8a04-a1b8e56046e1")
 		)
 		(pad "E10" smd circle
 			(at -1.5 -6.5)
@@ -6078,7 +6078,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_0")
 			(pintype "power_in")
-			(uuid "df4d9efe-3fce-4518-95b1-13f0dc76eb5c")
+			(uuid "afddd2a1-c41d-447e-ba9d-33c4667dc98e")
 		)
 		(pad "E11" smd circle
 			(at -0.5 -6.5)
@@ -6087,7 +6087,7 @@
 			(net 315 "/3V3 VCCIO socket/DUT_GPIO5")
 			(pinfunction "IO_L3P_T0_DQS_16")
 			(pintype "bidirectional")
-			(uuid "92643332-f0ce-467a-85c7-81990635e62a")
+			(uuid "3664f49d-9d96-4e32-86b6-498d4c19ddb8")
 		)
 		(pad "E12" smd circle
 			(at 0.5 -6.5)
@@ -6096,7 +6096,7 @@
 			(net 300 "/3V3 VCCIO socket/DUT_GPIO10")
 			(pinfunction "IO_L5N_T0_16")
 			(pintype "bidirectional")
-			(uuid "55c9e003-6c4e-4a0a-88a5-9fa52a17bece")
+			(uuid "1a582e4c-f8bb-4631-a705-7c4a941e6789")
 		)
 		(pad "E13" smd circle
 			(at 1.5 -6.5)
@@ -6105,7 +6105,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "6706cec2-b936-43e7-96a7-c1a79fa266a4")
+			(uuid "d95bf7b9-c36b-4a9e-acbb-03786b90c388")
 		)
 		(pad "E14" smd circle
 			(at 2.5 -6.5)
@@ -6114,7 +6114,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_16")
 			(pintype "power_in")
-			(uuid "73abeab3-d599-4248-a2e2-57456cf9823f")
+			(uuid "6ec8e69c-ba99-4465-b93e-d13c3d514107")
 		)
 		(pad "E15" smd circle
 			(at 3.5 -6.5)
@@ -6123,7 +6123,7 @@
 			(net 423 "/3V3 VCCIO socket/DUT_GPIO31")
 			(pinfunction "IO_L16P_T2_16")
 			(pintype "bidirectional")
-			(uuid "434a83e7-1eb2-4677-9e87-8e7c81a69ebe")
+			(uuid "2716cdfe-f9d0-4442-a4ef-b48c9c507308")
 		)
 		(pad "E16" smd circle
 			(at 4.5 -6.5)
@@ -6132,7 +6132,7 @@
 			(net 421 "/3V3 VCCIO socket/DUT_GPIO32")
 			(pinfunction "IO_L16N_T2_16")
 			(pintype "bidirectional")
-			(uuid "37c8f5ec-74e0-4c44-8010-83dcb138e3af")
+			(uuid "a43c3415-6d7a-4d5d-90db-19afbabb17e3")
 		)
 		(pad "E17" smd circle
 			(at 5.5 -6.5)
@@ -6141,7 +6141,7 @@
 			(net 299 "/3V3 VCCIO socket/DUT_GPIO43")
 			(pinfunction "IO_L22P_T3_16")
 			(pintype "bidirectional")
-			(uuid "f8b6ca57-285b-4f66-bb6e-a1c3cf7ccb9d")
+			(uuid "961dd830-bb44-4d20-833e-777d6c6c2cce")
 		)
 		(pad "E18" smd circle
 			(at 6.5 -6.5)
@@ -6150,7 +6150,7 @@
 			(net 449 "/3V3 VCCIO socket/DUT_GPIO44")
 			(pinfunction "IO_L22N_T3_16")
 			(pintype "bidirectional")
-			(uuid "a9045e55-ec6b-4548-8188-5d3ca50a564e")
+			(uuid "7b8a3868-40de-4b87-b5f1-7885a849dcd0")
 		)
 		(pad "E19" smd circle
 			(at 7.5 -6.5)
@@ -6159,7 +6159,7 @@
 			(net 491 "/3V3 VCCIO socket/DUT_GPIO47")
 			(pinfunction "IO_L24P_T3_16")
 			(pintype "bidirectional")
-			(uuid "4ed9a957-c5bc-48fd-b489-9fed98939908")
+			(uuid "df1b89a3-3e06-4c7c-88da-751aae1ea5ca")
 		)
 		(pad "E20" smd circle
 			(at 8.5 -6.5)
@@ -6168,7 +6168,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "bc4fee69-c940-48fd-8e05-a3b733ae0282")
+			(uuid "eedad05e-ba5d-48d0-8353-f4cb6975a41a")
 		)
 		(pad "E21" smd circle
 			(at 9.5 -6.5)
@@ -6177,7 +6177,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_15")
 			(pintype "power_in")
-			(uuid "9cdf014a-3132-4d2c-a232-3492bcb8b2f8")
+			(uuid "85f99218-06f1-4f4b-bc61-6f88853f8b9f")
 		)
 		(pad "E22" smd circle
 			(at 10.5 -6.5)
@@ -6186,7 +6186,7 @@
 			(net 447 "/MCU/FMC_AD8")
 			(pinfunction "IO_L10P_T1_AD11P_15")
 			(pintype "bidirectional")
-			(uuid "5397c5e4-63f8-41c8-b355-b2f9e836005c")
+			(uuid "61a2cf12-772e-447b-9e0a-53df803b2c84")
 		)
 		(pad "F1" smd circle
 			(at -10.5 -5.5)
@@ -6195,7 +6195,7 @@
 			(net 483 "/2V5 VCCIO socket/DUT_GPIO41")
 			(pinfunction "IO_L21P_T3_DQS_36")
 			(pintype "bidirectional")
-			(uuid "4858315e-c7f6-425a-a2ae-426dc9009ff9")
+			(uuid "45d6d830-1c4b-4d55-8eb2-9746a490e297")
 		)
 		(pad "F2" smd circle
 			(at -9.5 -5.5)
@@ -6204,7 +6204,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "111ec008-d50f-4a33-84b6-49300bdedd20")
+			(uuid "4120ad79-1f6c-49f8-be4a-f42d554fff22")
 		)
 		(pad "F3" smd circle
 			(at -8.5 -5.5)
@@ -6213,7 +6213,7 @@
 			(net 8 "/2V5")
 			(pinfunction "VCCO_36")
 			(pintype "power_in")
-			(uuid "9143639c-bd5d-4434-af29-2cb7caa06271")
+			(uuid "7dc3b800-171c-4150-bdef-50044d2c08e2")
 		)
 		(pad "F4" smd circle
 			(at -7.5 -5.5)
@@ -6222,7 +6222,7 @@
 			(net 381 "/2V5 VCCIO socket/DUT_GPIO49")
 			(pinfunction "IO_25_36")
 			(pintype "bidirectional")
-			(uuid "74cf256e-eb73-4a8e-b69c-1cf6ebb14ca8")
+			(uuid "c4516d17-6e81-4e69-9100-5a6dd92f1d1d")
 		)
 		(pad "F5" smd circle
 			(at -6.5 -5.5)
@@ -6231,7 +6231,7 @@
 			(net 434 "/2V5 VCCIO socket/DUT_GPIO19")
 			(pinfunction "IO_L10P_T1_36")
 			(pintype "bidirectional")
-			(uuid "2e5ab68d-c9fe-49cb-8540-b7e309c196a5")
+			(uuid "11bc719b-cd68-4535-bbb4-56f70e6a3d56")
 		)
 		(pad "F6" smd circle
 			(at -5.5 -5.5)
@@ -6240,7 +6240,7 @@
 			(net 278 "/2V5 VCCIO socket/DUT_GPIO24")
 			(pinfunction "IO_L12N_T1_MRCC_36")
 			(pintype "bidirectional")
-			(uuid "5f562b78-b054-4cbf-ad4a-9039adea8281")
+			(uuid "8e1bfaa3-38e4-4862-8a0e-810d073a62ea")
 		)
 		(pad "F7" smd circle
 			(at -4.5 -5.5)
@@ -6249,7 +6249,7 @@
 			(net 479 "/2V5 VCCIO socket/DUT_GPIO23")
 			(pinfunction "IO_L12P_T1_MRCC_36")
 			(pintype "bidirectional")
-			(uuid "c21c94a9-0d7e-4042-8699-0ffdee70be11")
+			(uuid "4ca6937d-9fa9-4a14-aa5e-7f3851bd9765")
 		)
 		(pad "F8" smd circle
 			(at -3.5 -5.5)
@@ -6258,7 +6258,7 @@
 			(net 464 "/2V5 VCCIO socket/DUT_GPIO18")
 			(pinfunction "IO_L9N_T1_DQS_36")
 			(pintype "bidirectional")
-			(uuid "f11ea7a7-3fd7-4c1e-b2fe-b2bffc5f5b01")
+			(uuid "7e3a89bb-a0a1-4e29-b5cd-f875d5379fc5")
 		)
 		(pad "F9" smd circle
 			(at -2.5 -5.5)
@@ -6267,7 +6267,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "b028a8dd-03c0-4e43-b30c-f5a70c1e41c7")
+			(uuid "efae96e8-fa41-4a48-9d37-97c8a8a4af7a")
 		)
 		(pad "F10" smd circle
 			(at -1.5 -5.5)
@@ -6276,7 +6276,7 @@
 			(net 337 "/3V3 VCCIO socket/DUT_GPIO4")
 			(pinfunction "IO_L2N_T0_16")
 			(pintype "bidirectional")
-			(uuid "8cc6634a-7014-458e-91da-16f1477c1c2c")
+			(uuid "d75eebb4-552c-42ff-9cd1-df3ed6b81252")
 		)
 		(pad "F11" smd circle
 			(at -0.5 -5.5)
@@ -6285,7 +6285,7 @@
 			(net 245 "/3V3 VCCIO socket/DUT_GPIO2")
 			(pinfunction "IO_L1N_T0_16")
 			(pintype "bidirectional")
-			(uuid "25b4290d-5294-4dcc-a9fe-b968df0c4cbb")
+			(uuid "a5d3716b-1dea-4603-afda-0c3198587492")
 		)
 		(pad "F12" smd circle
 			(at 0.5 -5.5)
@@ -6294,7 +6294,7 @@
 			(net 219 "/3V3 VCCIO socket/DUT_GPIO9")
 			(pinfunction "IO_L5P_T0_16")
 			(pintype "bidirectional")
-			(uuid "53ee9779-537c-4fb5-8c96-ba0e6f97cfa5")
+			(uuid "1719370e-9c41-4872-8758-47ee363e34d1")
 		)
 		(pad "F13" smd circle
 			(at 1.5 -5.5)
@@ -6303,7 +6303,7 @@
 			(net 371 "/3V3 VCCIO socket/DUT_GPIO7")
 			(pinfunction "IO_L4P_T0_16")
 			(pintype "bidirectional")
-			(uuid "c6dbdaeb-a8b7-4dc3-a0de-9598f8bd3791")
+			(uuid "91486f13-78f7-481d-880a-fd9b87a3c410")
 		)
 		(pad "F14" smd circle
 			(at 2.5 -5.5)
@@ -6312,7 +6312,7 @@
 			(net 284 "/3V3 VCCIO socket/DUT_GPIO8")
 			(pinfunction "IO_L4N_T0_16")
 			(pintype "bidirectional")
-			(uuid "480ed45d-56cd-4cc4-90d8-240be83f1b20")
+			(uuid "49802bba-2aa1-4cc2-85de-fdce0cb80a6a")
 		)
 		(pad "F15" smd circle
 			(at 3.5 -5.5)
@@ -6321,7 +6321,7 @@
 			(net 518 "/3V3 VCCIO socket/DUT_GPIO12")
 			(pinfunction "IO_L6N_T0_VREF_16")
 			(pintype "bidirectional")
-			(uuid "75850e97-7445-4a23-94de-d406d9a32ad0")
+			(uuid "562f95b4-1f39-4955-a27a-88658e34a287")
 		)
 		(pad "F16" smd circle
 			(at 4.5 -5.5)
@@ -6330,7 +6330,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "4ce5ff69-7f42-4626-a89b-cde175316569")
+			(uuid "e4769f32-f308-4902-a0ed-742e88de41aa")
 		)
 		(pad "F17" smd circle
 			(at 5.5 -5.5)
@@ -6339,7 +6339,7 @@
 			(net 353 "/MCU/FMC_NWAIT")
 			(pinfunction "IO_L1P_T0_AD0P_15")
 			(pintype "bidirectional")
-			(uuid "bbc86abd-fc32-4bb5-aa89-67788a1e8e53")
+			(uuid "f749d04f-fdc1-47f1-a6fd-a1534330b88c")
 		)
 		(pad "F18" smd circle
 			(at 6.5 -5.5)
@@ -6348,7 +6348,7 @@
 			(net 332 "/MCU/FMC_NOE")
 			(pinfunction "IO_L1N_T0_AD0N_15")
 			(pintype "bidirectional")
-			(uuid "66ed6544-42b3-4bab-8a57-51c73d557686")
+			(uuid "ab0f4688-28bd-4b85-ac47-a9841ea456a7")
 		)
 		(pad "F19" smd circle
 			(at 7.5 -5.5)
@@ -6357,7 +6357,7 @@
 			(net 452 "/MCU/FMC_AD12")
 			(pinfunction "IO_L12P_T1_MRCC_15")
 			(pintype "bidirectional")
-			(uuid "4dd3395e-51e2-445a-91b0-909c9924378d")
+			(uuid "53a38fd3-c5a2-4fe2-b053-9c6dd3a2e7e3")
 		)
 		(pad "F20" smd circle
 			(at 8.5 -5.5)
@@ -6366,7 +6366,7 @@
 			(net 342 "/MCU/FMC_AD13")
 			(pinfunction "IO_L12N_T1_MRCC_15")
 			(pintype "bidirectional")
-			(uuid "c447bb20-7ccb-40b8-8a78-e1e75689c863")
+			(uuid "22494412-1a38-4daa-8b62-5ac0e3869090")
 		)
 		(pad "F21" smd circle
 			(at 9.5 -5.5)
@@ -6375,7 +6375,7 @@
 			(net 247 "/MCU/FMC_AD10")
 			(pinfunction "IO_L11P_T1_SRCC_15")
 			(pintype "bidirectional")
-			(uuid "69398e41-5abb-4009-8ca0-1ea897ef82cd")
+			(uuid "647fff86-d529-4e4c-9b19-a2523cf78f81")
 		)
 		(pad "F22" smd circle
 			(at 10.5 -5.5)
@@ -6384,7 +6384,7 @@
 			(net 310 "/MCU/FMC_AD11")
 			(pinfunction "IO_L11N_T1_SRCC_15")
 			(pintype "bidirectional")
-			(uuid "d8ef513b-388f-45c3-ae09-60e08d924c2b")
+			(uuid "d6d41257-61cd-4ec8-9b33-097272325955")
 		)
 		(pad "G1" smd circle
 			(at -10.5 -4.5)
@@ -6393,7 +6393,7 @@
 			(net 243 "/2V5 VCCIO socket/DUT_GPIO44")
 			(pinfunction "IO_L22N_T3_36")
 			(pintype "bidirectional")
-			(uuid "056efa87-18d2-46ef-9201-0c25d10c0e46")
+			(uuid "3066e2be-3181-468e-9027-80d7b0f7f31a")
 		)
 		(pad "G2" smd circle
 			(at -9.5 -4.5)
@@ -6402,7 +6402,7 @@
 			(net 253 "/2V5 VCCIO socket/DUT_GPIO43")
 			(pinfunction "IO_L22P_T3_36")
 			(pintype "bidirectional")
-			(uuid "a8edd10f-ddf3-462a-86f8-b655de8e78ff")
+			(uuid "47cb0d3b-ff5b-4080-bb05-71a05fbe0a98")
 		)
 		(pad "G3" smd circle
 			(at -8.5 -4.5)
@@ -6411,7 +6411,7 @@
 			(net 329 "/2V5 VCCIO socket/DUT_GPIO38")
 			(pinfunction "IO_L19N_T3_VREF_36")
 			(pintype "bidirectional")
-			(uuid "2c464cfb-f46c-4379-8c0a-d56d0149ed21")
+			(uuid "7be16e75-3886-4fb9-8424-882776eec5b1")
 		)
 		(pad "G4" smd circle
 			(at -7.5 -4.5)
@@ -6420,7 +6420,7 @@
 			(net 246 "/2V5 VCCIO socket/DUT_GPIO37")
 			(pinfunction "IO_L19P_T3_36")
 			(pintype "bidirectional")
-			(uuid "f1d2bfb3-bea1-4ee5-b137-86044bc1dc69")
+			(uuid "46504fab-6fa5-4c8a-bd36-0dbc3e223e4d")
 		)
 		(pad "G5" smd circle
 			(at -6.5 -4.5)
@@ -6429,7 +6429,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ae2f440b-63d9-4d72-a1e2-c561bb7fb466")
+			(uuid "356437a4-85c1-4657-822a-a8ce5c08fdc7")
 		)
 		(pad "G6" smd circle
 			(at -5.5 -4.5)
@@ -6438,7 +6438,7 @@
 			(net 271 "/2V5 VCCIO socket/DUT_GPIO22")
 			(pinfunction "IO_L11N_T1_SRCC_36")
 			(pintype "bidirectional")
-			(uuid "65222f37-c110-4f58-9732-0f827ffac882")
+			(uuid "ddf7106b-5a83-4e13-b4c0-a2d187187484")
 		)
 		(pad "G7" smd circle
 			(at -4.5 -4.5)
@@ -6447,7 +6447,7 @@
 			(net 502 "/2V5 VCCIO socket/DUT_GPIO21")
 			(pinfunction "IO_L11P_T1_SRCC_36")
 			(pintype "bidirectional")
-			(uuid "e861e184-76ff-45aa-ba07-61a6873d39e5")
+			(uuid "e4483b54-108f-45b3-b7d5-862e4719189e")
 		)
 		(pad "G8" smd circle
 			(at -3.5 -4.5)
@@ -6456,7 +6456,7 @@
 			(net 268 "/2V5 VCCIO socket/DUT_GPIO17")
 			(pinfunction "IO_L9P_T1_DQS_36")
 			(pintype "bidirectional")
-			(uuid "a3a6494c-2b17-4648-a7ef-36ed98774fe0")
+			(uuid "5f9bad8d-08be-4fc1-acf5-2ad4856ca0fb")
 		)
 		(pad "G9" smd circle
 			(at -2.5 -4.5)
@@ -6465,7 +6465,7 @@
 			(net 60 "/FPGA support/FPGA_TCK")
 			(pinfunction "TCK_0")
 			(pintype "input")
-			(uuid "5295c863-40d9-4e1d-82f3-243f74577a15")
+			(uuid "ae1e867e-890c-4a75-88a4-943cd3c2a31b")
 		)
 		(pad "G10" smd circle
 			(at -1.5 -4.5)
@@ -6474,7 +6474,7 @@
 			(net 331 "/3V3 VCCIO socket/DUT_GPIO3")
 			(pinfunction "IO_L2P_T0_16")
 			(pintype "bidirectional")
-			(uuid "42be7cf7-b9de-472e-9480-c746a132a496")
+			(uuid "6c2ef1bb-3cea-493d-9980-bd985dbebe90")
 		)
 		(pad "G11" smd circle
 			(at -0.5 -4.5)
@@ -6483,7 +6483,7 @@
 			(net 228 "/3V3 VCCIO socket/DUT_GPIO1")
 			(pinfunction "IO_L1P_T0_16")
 			(pintype "bidirectional")
-			(uuid "2c25f0b9-b9a5-4e28-a808-6a75f6b9fd35")
+			(uuid "977d9ba5-fa18-4dc3-851b-8164d4fe5080")
 		)
 		(pad "G12" smd circle
 			(at 0.5 -4.5)
@@ -6492,7 +6492,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "1e451567-582b-4636-b196-27d505b0da7f")
+			(uuid "2289be7a-ba68-4386-95fa-5c04af1caa36")
 		)
 		(pad "G13" smd circle
 			(at 1.5 -4.5)
@@ -6501,7 +6501,7 @@
 			(net 252 "/3V3 VCCIO socket/DUT_GPIO0")
 			(pinfunction "IO_0_16")
 			(pintype "bidirectional")
-			(uuid "948d8be9-08d3-4afc-adf7-fe6bb77a665b")
+			(uuid "4f11706b-4f61-43a0-be17-2def55a5c2b8")
 		)
 		(pad "G14" smd circle
 			(at 2.5 -4.5)
@@ -6510,7 +6510,7 @@
 			(net 364 "/3V3 VCCIO socket/DUT_GPIO11")
 			(pinfunction "IO_L6P_T0_16")
 			(pintype "bidirectional")
-			(uuid "a9fa0ff8-2f16-4878-9e38-a4921a409fee")
+			(uuid "fae36660-a29e-4b84-965f-ccce9b0907c4")
 		)
 		(pad "G15" smd circle
 			(at 3.5 -4.5)
@@ -6519,7 +6519,7 @@
 			(net 410 "/3V3 VCCIO socket/DUT_GPIO49")
 			(pinfunction "IO_25_16")
 			(pintype "bidirectional")
-			(uuid "01981736-8cd8-4964-a429-71417f6220ef")
+			(uuid "9c6639b4-4dd2-4a22-8a90-535bbeb789eb")
 		)
 		(pad "G16" smd circle
 			(at 4.5 -4.5)
@@ -6528,7 +6528,7 @@
 			(net 255 "/MCU/FMC_NE2")
 			(pinfunction "IO_L4N_T0_15")
 			(pintype "bidirectional")
-			(uuid "5450ae84-bb77-42fb-8169-1095d953df71")
+			(uuid "77d8bb4d-5072-4dc1-a7ac-ff2f82b9d836")
 		)
 		(pad "G17" smd circle
 			(at 5.5 -4.5)
@@ -6537,7 +6537,7 @@
 			(net 404 "/MCU/FMC_NBL0")
 			(pinfunction "IO_L2N_T0_AD8N_15")
 			(pintype "bidirectional")
-			(uuid "8771b783-3cb8-4aad-ae7a-c0534ef88374")
+			(uuid "d7d6f7cc-93cc-4218-aa25-5d272b2557c9")
 		)
 		(pad "G18" smd circle
 			(at 6.5 -4.5)
@@ -6546,7 +6546,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_15")
 			(pintype "power_in")
-			(uuid "59e51462-c9ba-431d-abf3-3dee7a1bf479")
+			(uuid "5eeb118a-f79f-451a-8678-61013ff734bc")
 		)
 		(pad "G19" smd circle
 			(at 7.5 -4.5)
@@ -6555,7 +6555,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "20513423-4971-421a-9696-861ae704d059")
+			(uuid "be5f7cb3-f8a0-4849-bfe9-7f4f2f21c411")
 		)
 		(pad "G20" smd circle
 			(at 8.5 -4.5)
@@ -6564,7 +6564,7 @@
 			(net 217 "/MCU/FMC_A25")
 			(pinfunction "IO_L19N_T3_VREF_15")
 			(pintype "bidirectional")
-			(uuid "b5232e25-3e69-43a9-a26e-5bda9f93f1e1")
+			(uuid "136a8302-90fb-4f6a-8c39-7ef3e1635f49")
 		)
 		(pad "G21" smd circle
 			(at 9.5 -4.5)
@@ -6573,7 +6573,7 @@
 			(net 134 "/MCU/FPGA_LED_0")
 			(pinfunction "IO_L20P_T3_15")
 			(pintype "bidirectional")
-			(uuid "97157595-bcdd-48ee-b200-1e4a4cd6c11b")
+			(uuid "78ec82e2-da8d-4011-9637-c3594e6a42fc")
 		)
 		(pad "G22" smd circle
 			(at 10.5 -4.5)
@@ -6582,7 +6582,7 @@
 			(net 135 "/MCU/FPGA_LED_1")
 			(pinfunction "IO_L20N_T3_15")
 			(pintype "bidirectional")
-			(uuid "7bf6914d-e6c8-4f36-a7de-8bb87490d381")
+			(uuid "2489d91d-4193-4596-bf42-844640b2327a")
 		)
 		(pad "H1" smd circle
 			(at -10.5 -3.5)
@@ -6591,7 +6591,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "d820450d-f2c0-42c3-bb2e-9aaddab33464")
+			(uuid "04764b48-ab4f-444f-82a1-95ed53618ffe")
 		)
 		(pad "H2" smd circle
 			(at -9.5 -3.5)
@@ -6600,7 +6600,7 @@
 			(net 500 "/1V8 VCCIO socket/DUT_GPIO2")
 			(pinfunction "IO_L1N_T0_AD4N_35")
 			(pintype "bidirectional")
-			(uuid "3e0ab1fd-d3fa-42dc-8f03-ebcb09c12a1a")
+			(uuid "9d2da9b5-6e84-49ba-bbff-5eb74133c1bb")
 		)
 		(pad "H3" smd circle
 			(at -8.5 -3.5)
@@ -6609,7 +6609,7 @@
 			(net 516 "/1V8 VCCIO socket/DUT_GPIO4")
 			(pinfunction "IO_L2N_T0_AD12N_35")
 			(pintype "bidirectional")
-			(uuid "bb87ee37-8db9-4364-bd9a-358495f1e14c")
+			(uuid "e61b40a6-83e9-4291-8002-2a636aeb9a3b")
 		)
 		(pad "H4" smd circle
 			(at -7.5 -3.5)
@@ -6618,7 +6618,7 @@
 			(net 339 "/1V8 VCCIO socket/DUT_GPIO3")
 			(pinfunction "IO_L2P_T0_AD12P_35")
 			(pintype "bidirectional")
-			(uuid "177bc184-fb93-435f-bbce-2598b0e4ac7a")
+			(uuid "7bd1881f-d450-40cc-97df-09f0dea13412")
 		)
 		(pad "H5" smd circle
 			(at -6.5 -3.5)
@@ -6627,7 +6627,7 @@
 			(net 347 "/1V8 VCCIO socket/DUT_GPIO10")
 			(pinfunction "IO_L5N_T0_AD13N_35")
 			(pintype "bidirectional")
-			(uuid "6cde565b-3a49-4464-9297-2bd7143a63b5")
+			(uuid "6074b376-92d5-42bf-b8a1-5ce1d0f7105c")
 		)
 		(pad "H6" smd circle
 			(at -5.5 -3.5)
@@ -6636,7 +6636,7 @@
 			(net 314 "/1V8 VCCIO socket/DUT_GPIO9")
 			(pinfunction "IO_L5P_T0_AD13P_35")
 			(pintype "bidirectional")
-			(uuid "2c33bdce-87c8-4886-8fb3-36a0c009e958")
+			(uuid "38f7b62e-c901-40ad-9655-610d071832eb")
 		)
 		(pad "H7" smd circle
 			(at -4.5 -3.5)
@@ -6645,7 +6645,7 @@
 			(net 376 "/1V8 VCCIO socket/DUT_GPIO0")
 			(pinfunction "IO_0_35")
 			(pintype "bidirectional")
-			(uuid "06373bce-b483-4ef5-aa4a-c8315ef7d5f3")
+			(uuid "24b3c336-2740-41f6-b0fc-a52c5791fff8")
 		)
 		(pad "H8" smd circle
 			(at -3.5 -3.5)
@@ -6654,7 +6654,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "87fda279-b5b9-4082-beee-86c2643a85f9")
+			(uuid "c0ea4964-871e-48d8-9c54-912818c06020")
 		)
 		(pad "H9" smd circle
 			(at -2.5 -3.5)
@@ -6663,7 +6663,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCBRAM")
 			(pintype "power_in")
-			(uuid "0606ad11-bbe3-4d31-8733-6bb9e142f977")
+			(uuid "a12f005b-0686-43c9-9fcc-a0f95738f0aa")
 		)
 		(pad "H10" smd circle
 			(at -1.5 -3.5)
@@ -6672,7 +6672,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "f8b23157-e0ad-4040-acbd-0931d14802b8")
+			(uuid "f58f0f8e-8ffc-4954-9d02-a376480fa101")
 		)
 		(pad "H11" smd circle
 			(at -0.5 -3.5)
@@ -6681,7 +6681,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "5b3f67f1-b29a-43ef-9e0d-5e4398f29914")
+			(uuid "24480e9b-cd6e-4d1b-a8ae-1a717bbf820d")
 		)
 		(pad "H12" smd circle
 			(at 0.5 -3.5)
@@ -6690,7 +6690,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "a227bdeb-2e21-4132-a0bb-b04d3e6f360d")
+			(uuid "412ccf6d-74fb-4633-a5fc-7e6844d39e2e")
 		)
 		(pad "H13" smd circle
 			(at 1.5 -3.5)
@@ -6699,7 +6699,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "05bd0641-9629-47d0-b9a7-c0e58a6b1635")
+			(uuid "e3acf105-5c85-4f35-b895-e1b237dcd7bd")
 		)
 		(pad "H14" smd circle
 			(at 2.5 -3.5)
@@ -6708,7 +6708,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "00657614-b5e0-43ab-8eab-0501c7208653")
+			(uuid "eb8f9833-7899-433d-a33b-4eef420e252c")
 		)
 		(pad "H15" smd circle
 			(at 3.5 -3.5)
@@ -6717,7 +6717,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ca651d61-bb33-40c4-a27f-d75d4902abb8")
+			(uuid "afd02ff9-f946-409a-ab1c-b640982c7351")
 		)
 		(pad "H16" smd circle
 			(at 4.5 -3.5)
@@ -6726,7 +6726,7 @@
 			(net 468 "/MCU/FMC_NE1")
 			(pinfunction "IO_L4P_T0_15")
 			(pintype "bidirectional")
-			(uuid "33cb571a-613c-4248-9ddc-e7aeded306ac")
+			(uuid "dfdf8792-b8b6-4857-bdeb-4e55d196d506")
 		)
 		(pad "H17" smd circle
 			(at 5.5 -3.5)
@@ -6735,7 +6735,7 @@
 			(net 472 "/MCU/FMC_NWE")
 			(pinfunction "IO_L2P_T0_AD8P_15")
 			(pintype "bidirectional")
-			(uuid "0699c909-29d9-4ee4-bb0a-9a580074d907")
+			(uuid "370ddd55-88eb-497d-8f95-3c2f7fa5dbf4")
 		)
 		(pad "H18" smd circle
 			(at 6.5 -3.5)
@@ -6744,7 +6744,7 @@
 			(net 411 "/MCU/FMC_NL_NADV")
 			(pinfunction "IO_L3N_T0_DQS_AD1N_15")
 			(pintype "bidirectional")
-			(uuid "b88e8c7b-bc81-46eb-900f-1175e9fd6934")
+			(uuid "8d815c50-2b6b-4b43-a101-4b26853d4286")
 		)
 		(pad "H19" smd circle
 			(at 7.5 -3.5)
@@ -6753,7 +6753,7 @@
 			(net 509 "/MCU/FMC_A24")
 			(pinfunction "IO_L19P_T3_15")
 			(pintype "bidirectional")
-			(uuid "274ca477-3c8d-4f91-b187-6328605a14d3")
+			(uuid "b538221a-39b3-4bfd-91a5-80299bb45f4c")
 		)
 		(pad "H20" smd circle
 			(at 8.5 -3.5)
@@ -6762,7 +6762,7 @@
 			(net 136 "/MCU/FPGA_LED_2")
 			(pinfunction "IO_L21P_T3_DQS_15")
 			(pintype "bidirectional")
-			(uuid "0ecf2e24-41af-4ad8-864a-e3825d2e81c2")
+			(uuid "a8de442f-2fbc-4109-95ee-038699995134")
 		)
 		(pad "H21" smd circle
 			(at 9.5 -3.5)
@@ -6771,7 +6771,7 @@
 			(net 138 "/MCU/FPGA_LED_3")
 			(pinfunction "IO_L21N_T3_DQS_15")
 			(pintype "bidirectional")
-			(uuid "90576208-62ea-4d54-bff7-57f589a0be4a")
+			(uuid "7b799385-ed80-4d3b-ad37-cf731a9616f8")
 		)
 		(pad "H22" smd circle
 			(at 10.5 -3.5)
@@ -6780,7 +6780,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "d4cbb25c-23ac-4e8c-9676-503fde8e5e6d")
+			(uuid "8e6c394e-a08e-4483-a237-66617277c350")
 		)
 		(pad "J1" smd circle
 			(at -10.5 -2.5)
@@ -6789,7 +6789,7 @@
 			(net 272 "/1V8 VCCIO socket/DUT_GPIO6")
 			(pinfunction "IO_L3N_T0_DQS_AD5N_35")
 			(pintype "bidirectional")
-			(uuid "5fb4d0a2-a136-48e1-aa87-4bab2f38510a")
+			(uuid "8edd8ab0-988c-469e-bc12-9480190a7746")
 		)
 		(pad "J2" smd circle
 			(at -9.5 -2.5)
@@ -6798,7 +6798,7 @@
 			(net 414 "/1V8 VCCIO socket/DUT_GPIO5")
 			(pinfunction "IO_L3P_T0_DQS_AD5P_35")
 			(pintype "bidirectional")
-			(uuid "897fde6d-ab0d-4579-8205-19c4627a2ddf")
+			(uuid "12141405-0ced-4b56-911b-7dae3dffa292")
 		)
 		(pad "J3" smd circle
 			(at -8.5 -2.5)
@@ -6807,7 +6807,7 @@
 			(net 325 "/1V8 VCCIO socket/DUT_GPIO1")
 			(pinfunction "IO_L1P_T0_AD4P_35")
 			(pintype "bidirectional")
-			(uuid "94bd645d-7ac1-4851-b3d6-7218be612641")
+			(uuid "8ce0a877-8411-4337-bf3b-cd81aca4b03c")
 		)
 		(pad "J4" smd circle
 			(at -7.5 -2.5)
@@ -6816,7 +6816,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "e985030c-e9db-4480-9851-1b6ca8709879")
+			(uuid "0715fa4f-574b-44a9-b63a-be2f9557e776")
 		)
 		(pad "J5" smd circle
 			(at -6.5 -2.5)
@@ -6825,7 +6825,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_35")
 			(pintype "power_in")
-			(uuid "0b1c3c70-5b51-46be-9863-0765feea8ff2")
+			(uuid "60eb77a9-ff1d-45a3-8ee9-8892f6e6bed7")
 		)
 		(pad "J6" smd circle
 			(at -5.5 -2.5)
@@ -6834,7 +6834,7 @@
 			(net 281 "/1V8 VCCIO socket/DUT_GPIO12")
 			(pinfunction "IO_L6N_T0_VREF_35")
 			(pintype "bidirectional")
-			(uuid "27b785e5-a655-4fa6-b7da-43c924049b8b")
+			(uuid "bfb650ae-4833-4d6a-9e8b-d6abe9f00d47")
 		)
 		(pad "J7" smd circle
 			(at -4.5 -2.5)
@@ -6843,7 +6843,7 @@
 			(net 239 "/1V8 VCCIO socket/DUT_GPIO14")
 			(pinfunction "IO_L7N_T1_AD6N_35")
 			(pintype "bidirectional")
-			(uuid "112cb446-86e7-4ce1-b808-b3d4be1a4e3d")
+			(uuid "954db9e8-1258-4788-98ea-7bc6f55c641e")
 		)
 		(pad "J8" smd circle
 			(at -3.5 -2.5)
@@ -6852,7 +6852,7 @@
 			(net 214 "/1V8 VCCIO socket/DUT_GPIO13")
 			(pinfunction "IO_L7P_T1_AD6P_35")
 			(pintype "bidirectional")
-			(uuid "34be2d76-61d1-4637-8059-a486e1963f61")
+			(uuid "98a12f4e-9d84-408f-a426-3c513722db69")
 		)
 		(pad "J9" smd circle
 			(at -2.5 -2.5)
@@ -6861,7 +6861,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "0d12ad6f-ef7a-4ad5-bfae-46fe2f45a555")
+			(uuid "6aeb111f-8b94-4e47-ac43-66d9b523ce13")
 		)
 		(pad "J10" smd circle
 			(at -1.5 -2.5)
@@ -6870,7 +6870,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "f2219944-c0c9-4d6e-8a62-2761ead5dafe")
+			(uuid "ca2dc277-f11c-4827-aebf-0980501196c5")
 		)
 		(pad "J11" smd circle
 			(at -0.5 -2.5)
@@ -6879,7 +6879,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "10442562-3c78-4470-8c66-6249dcfe794f")
+			(uuid "3d2ac7c1-4f6d-46e6-b291-7139d813c1f7")
 		)
 		(pad "J12" smd circle
 			(at 0.5 -2.5)
@@ -6888,7 +6888,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "2cbbe422-0194-4cbd-b4ad-708938953a5d")
+			(uuid "b2d6ee2c-63d2-4a21-8d1d-570459a91698")
 		)
 		(pad "J13" smd circle
 			(at 1.5 -2.5)
@@ -6897,7 +6897,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "9a310a76-4869-4224-860b-e35566df15c3")
+			(uuid "1b7ec4cb-db45-4f23-bab2-1245059bec95")
 		)
 		(pad "J14" smd circle
 			(at 2.5 -2.5)
@@ -6906,7 +6906,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCAUX")
 			(pintype "power_in")
-			(uuid "afa4c389-ffb4-472e-b282-edeb4eb09ff4")
+			(uuid "e91afa1c-f0be-4550-8387-a334f1fc51ff")
 		)
 		(pad "J15" smd circle
 			(at 3.5 -2.5)
@@ -6915,7 +6915,7 @@
 			(net 327 "/MCU/FMC_AD1")
 			(pinfunction "IO_L6N_T0_VREF_15")
 			(pintype "bidirectional")
-			(uuid "ea5cbed7-30f4-4876-a60e-2ccc4b336b70")
+			(uuid "099b3da8-7554-454f-aeb5-73199a3cb90e")
 		)
 		(pad "J16" smd circle
 			(at 4.5 -2.5)
@@ -6924,7 +6924,7 @@
 			(net 602 "/LED_CTRL")
 			(pinfunction "IO_L5N_T0_AD9N_15")
 			(pintype "bidirectional")
-			(uuid "4701943c-3d37-4f78-bfba-1c3aa7c35b07")
+			(uuid "77a3ca41-a5a9-4059-a022-72ab8561f8f6")
 		)
 		(pad "J17" smd circle
 			(at 5.5 -2.5)
@@ -6933,7 +6933,7 @@
 			(net 507 "/MCU/FMC_NBL1")
 			(pinfunction "IO_L3P_T0_DQS_AD1P_15")
 			(pintype "bidirectional")
-			(uuid "43c732e7-385d-4570-88f5-1e7b097e1c2a")
+			(uuid "8bced7a8-7a2e-4e6a-9d77-fa1b966d7996")
 		)
 		(pad "J18" smd circle
 			(at 6.5 -2.5)
@@ -6942,7 +6942,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "8a46298f-b04f-492f-a8ce-82e8b55037fc")
+			(uuid "b89b7f3d-2d58-4931-8c21-ed7c8fc7bf0a")
 		)
 		(pad "J19" smd circle
 			(at 7.5 -2.5)
@@ -6951,7 +6951,7 @@
 			(net 420 "/MCU/FMC_A20")
 			(pinfunction "IO_L17P_T2_15")
 			(pintype "bidirectional")
-			(uuid "3cef9076-a886-4d6a-b023-8d7678c9ac4e")
+			(uuid "11ff90b5-aeed-4e6f-a773-82e3353b81af")
 		)
 		(pad "J20" smd circle
 			(at 8.5 -2.5)
@@ -6960,7 +6960,7 @@
 			(net 403 "/MCU/FMC_A21")
 			(pinfunction "IO_L17N_T2_15")
 			(pintype "bidirectional")
-			(uuid "23d5412c-fbfc-4f2e-afb1-a4efe880e06a")
+			(uuid "d7c21de0-2dbf-4a6e-981d-3bf213780b97")
 		)
 		(pad "J21" smd circle
 			(at 9.5 -2.5)
@@ -6969,7 +6969,7 @@
 			(net 99 "/MCU/FPGA_PMOD_DQ2")
 			(pinfunction "IO_L23P_T3_15")
 			(pintype "bidirectional")
-			(uuid "7a12f3de-0459-42b1-b99c-24f4bf41bff5")
+			(uuid "aba43341-a4ad-451f-9f4e-1b81b6da3e2c")
 		)
 		(pad "J22" smd circle
 			(at 10.5 -2.5)
@@ -6978,7 +6978,7 @@
 			(net 96 "/MCU/FPGA_PMOD_DQ3")
 			(pinfunction "IO_L23N_T3_15")
 			(pintype "bidirectional")
-			(uuid "922713de-ff37-4afb-a2b1-e4cec7a96067")
+			(uuid "91d3e404-fe9c-4952-88e0-d7eff61ee530")
 		)
 		(pad "K1" smd circle
 			(at -10.5 -1.5)
@@ -6987,7 +6987,7 @@
 			(net 273 "/1V8 VCCIO socket/DUT_GPIO28")
 			(pinfunction "IO_L14N_T2_SRCC_35")
 			(pintype "bidirectional")
-			(uuid "670a3ff3-4a8b-4d46-af61-14f381150e94")
+			(uuid "18321322-1532-43ba-accd-54be7993b08d")
 		)
 		(pad "K2" smd circle
 			(at -9.5 -1.5)
@@ -6996,7 +6996,7 @@
 			(net 382 "/1V8 VCCIO socket/DUT_GPIO8")
 			(pinfunction "IO_L4N_T0_35")
 			(pintype "bidirectional")
-			(uuid "8ec6f558-f5b6-4c61-81f2-fec274ff8a5d")
+			(uuid "26d457bd-dcd6-4564-a0fb-a170813f43ca")
 		)
 		(pad "K3" smd circle
 			(at -8.5 -1.5)
@@ -7005,7 +7005,7 @@
 			(net 296 "/1V8 VCCIO socket/DUT_GPIO7")
 			(pinfunction "IO_L4P_T0_35")
 			(pintype "bidirectional")
-			(uuid "10d2f018-f16d-4eed-90ee-968481be51fc")
+			(uuid "141ae21e-878f-4ead-96f3-19b3a1e88432")
 		)
 		(pad "K4" smd circle
 			(at -7.5 -1.5)
@@ -7014,7 +7014,7 @@
 			(net 515 "/1V8 VCCIO socket/DUT_GPIO20")
 			(pinfunction "IO_L10N_T1_AD15N_35")
 			(pintype "bidirectional")
-			(uuid "81b610d6-e0b4-404f-8ba7-b8dff0fdccbd")
+			(uuid "d2a37970-9592-4dc9-8c9b-09da31c086d8")
 		)
 		(pad "K5" smd circle
 			(at -6.5 -1.5)
@@ -7023,7 +7023,7 @@
 			(net 256 "/1V8 VCCIO socket/DUT_GPIO18")
 			(pinfunction "IO_L9N_T1_DQS_AD7N_35")
 			(pintype "bidirectional")
-			(uuid "f09bd636-c374-4477-8298-4d8a952f703e")
+			(uuid "74d95ccd-5e30-4368-a896-9ef9aa1ec762")
 		)
 		(pad "K6" smd circle
 			(at -5.5 -1.5)
@@ -7032,7 +7032,7 @@
 			(net 441 "/1V8 VCCIO socket/DUT_GPIO11")
 			(pinfunction "IO_L6P_T0_35")
 			(pintype "bidirectional")
-			(uuid "dcbeaa7b-a789-41b1-b378-67af45f3ad77")
+			(uuid "3e8b258f-8278-4ea0-a9fe-ceb25a642fdf")
 		)
 		(pad "K7" smd circle
 			(at -4.5 -1.5)
@@ -7041,7 +7041,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "cffd8872-17de-4f90-93fd-9f3ce5c2078d")
+			(uuid "a8f8e759-c9c1-4403-bbc0-abfdc611351a")
 		)
 		(pad "K8" smd circle
 			(at -3.5 -1.5)
@@ -7050,7 +7050,7 @@
 			(net 330 "/1V8 VCCIO socket/DUT_GPIO22")
 			(pinfunction "IO_L11N_T1_SRCC_35")
 			(pintype "bidirectional")
-			(uuid "ac4df838-49ae-4dd4-bfe8-b05a87b08bdf")
+			(uuid "281dd22c-788f-4bce-af09-ec4cf56c0d9c")
 		)
 		(pad "K9" smd circle
 			(at -2.5 -1.5)
@@ -7059,7 +7059,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCBRAM")
 			(pintype "power_in")
-			(uuid "7497c7ca-2f14-4aeb-a992-84597de45552")
+			(uuid "edbe569b-5769-4abb-9636-47213a3a7b1a")
 		)
 		(pad "K10" smd circle
 			(at -1.5 -1.5)
@@ -7068,7 +7068,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "feba0328-d9d5-4034-a7c9-f05edb55f936")
+			(uuid "db4d4972-447d-475a-9f15-973c95716e61")
 		)
 		(pad "K11" smd circle
 			(at -0.5 -1.5)
@@ -7077,7 +7077,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCADC_0")
 			(pintype "power_in")
-			(uuid "d406e617-654e-4138-8ebf-7ca1e1b9493c")
+			(uuid "2140f4ef-4601-4988-b85c-2f37fa870f6b")
 		)
 		(pad "K12" smd circle
 			(at 0.5 -1.5)
@@ -7086,7 +7086,7 @@
 			(net 1 "/GND")
 			(pinfunction "GNDADC_0")
 			(pintype "power_in")
-			(uuid "1dc7625f-30fb-4c11-82bc-32697c507053")
+			(uuid "9fcf3ab1-95b8-4d95-81ae-a1efbe3c9023")
 		)
 		(pad "K13" smd circle
 			(at 1.5 -1.5)
@@ -7095,7 +7095,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "b3a7651b-d7d2-4c0c-8be0-ea46184a3245")
+			(uuid "9aae0c0d-e7cf-4852-b280-8fc7294889d2")
 		)
 		(pad "K14" smd circle
 			(at 2.5 -1.5)
@@ -7104,7 +7104,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "0eddecce-089d-471b-947d-93892ccbb43b")
+			(uuid "c7d10bb0-2f25-4b85-923e-5a1dced7f9c6")
 		)
 		(pad "K15" smd circle
 			(at 3.5 -1.5)
@@ -7113,7 +7113,7 @@
 			(net 399 "/MCU/FMC_AD0")
 			(pinfunction "IO_L6P_T0_15")
 			(pintype "bidirectional")
-			(uuid "6a39ca7a-b860-4478-b2d2-5c343e5f7293")
+			(uuid "8263e54c-5238-400e-b47c-c1d6a4407d91")
 		)
 		(pad "K16" smd circle
 			(at 4.5 -1.5)
@@ -7122,7 +7122,7 @@
 			(net 405 "/MCU/FMC_NE3")
 			(pinfunction "IO_L5P_T0_AD9P_15")
 			(pintype "bidirectional")
-			(uuid "1c51ea88-e767-4317-a196-790e125329e5")
+			(uuid "cdca2c84-40d3-4ffa-bec0-a28dd8aca8ed")
 		)
 		(pad "K17" smd circle
 			(at 5.5 -1.5)
@@ -7131,7 +7131,7 @@
 			(net 489 "/MCU/FMC_A17")
 			(pinfunction "IO_L15N_T2_DQS_15")
 			(pintype "bidirectional")
-			(uuid "43d2025a-845a-4718-b2d7-bf2511fc4687")
+			(uuid "f698607c-da35-447b-af98-0ccc6e91b5a1")
 		)
 		(pad "K18" smd circle
 			(at 6.5 -1.5)
@@ -7140,7 +7140,7 @@
 			(net 254 "/MCU/FMC_A18")
 			(pinfunction "IO_L16P_T2_15")
 			(pintype "bidirectional")
-			(uuid "9d3f5d57-2c23-4e97-973c-be409084b759")
+			(uuid "d39be241-b728-4a21-bbc5-487f6b7fc7df")
 		)
 		(pad "K19" smd circle
 			(at 7.5 -1.5)
@@ -7149,7 +7149,7 @@
 			(net 306 "/MCU/FMC_A19")
 			(pinfunction "IO_L16N_T2_15")
 			(pintype "bidirectional")
-			(uuid "5123831a-acfc-42a1-ba9b-72cd68f3debf")
+			(uuid "ac3f7e54-a045-471a-9f0e-fbb1e1036f1f")
 		)
 		(pad "K20" smd circle
 			(at 8.5 -1.5)
@@ -7158,7 +7158,7 @@
 			(net 9 "/3V3")
 			(pinfunction "VCCO_15")
 			(pintype "power_in")
-			(uuid "6d52beba-0c0e-49d8-94a3-2d6571a24008")
+			(uuid "c62258ad-cdb0-4199-9946-d24bbdb38487")
 		)
 		(pad "K21" smd circle
 			(at 9.5 -1.5)
@@ -7167,7 +7167,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "335a58fc-8994-4eb2-98e5-24ed72bd1723")
+			(uuid "0b882b5e-33ae-4cec-8522-112fab2b0714")
 		)
 		(pad "K22" smd circle
 			(at 10.5 -1.5)
@@ -7176,7 +7176,7 @@
 			(net 98 "/MCU/FPGA_PMOD_DQ1")
 			(pinfunction "IO_L22N_T3_15")
 			(pintype "bidirectional")
-			(uuid "06758d74-3f58-4acc-b83b-8dae72854f2d")
+			(uuid "c3d956fc-ae92-4bd8-b67c-6ac22e6e44e5")
 		)
 		(pad "L1" smd circle
 			(at -10.5 -0.5)
@@ -7185,7 +7185,7 @@
 			(net 244 "/1V8 VCCIO socket/DUT_GPIO27")
 			(pinfunction "IO_L14P_T2_SRCC_35")
 			(pintype "bidirectional")
-			(uuid "ea889527-936c-4954-bb34-60edf5614b19")
+			(uuid "df98a51a-9f9e-4fd5-ae0c-2683b106b2a7")
 		)
 		(pad "L2" smd circle
 			(at -9.5 -0.5)
@@ -7194,7 +7194,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_35")
 			(pintype "power_in")
-			(uuid "ab102c42-56af-488b-bce8-65c9e0b094b8")
+			(uuid "75977ac5-29bb-4c6f-ae66-2c5c32be439d")
 		)
 		(pad "L3" smd circle
 			(at -8.5 -0.5)
@@ -7203,7 +7203,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "0c5fc9b8-69ec-46f4-bbe5-7e96c409a9bf")
+			(uuid "2818c0c0-a264-4023-b9e4-4f85b3c8d6f1")
 		)
 		(pad "L4" smd circle
 			(at -7.5 -0.5)
@@ -7212,7 +7212,7 @@
 			(net 512 "/1V8 VCCIO socket/DUT_GPIO19")
 			(pinfunction "IO_L10P_T1_AD15P_35")
 			(pintype "bidirectional")
-			(uuid "3f500e89-b3a0-4f10-8131-113828c4d1db")
+			(uuid "2dd53e2b-94c3-4200-9169-f64ff97fa07d")
 		)
 		(pad "L5" smd circle
 			(at -6.5 -0.5)
@@ -7221,7 +7221,7 @@
 			(net 396 "/1V8 VCCIO socket/DUT_GPIO17")
 			(pinfunction "IO_L9P_T1_DQS_AD7P_35")
 			(pintype "bidirectional")
-			(uuid "e982f6d7-b5bb-4f01-b607-57d30657abec")
+			(uuid "ad02ad78-0741-4370-99ac-3d1dab5ebafd")
 		)
 		(pad "L6" smd circle
 			(at -5.5 -0.5)
@@ -7230,7 +7230,7 @@
 			(net 460 "/1V8 VCCIO socket/DUT_GPIO16")
 			(pinfunction "IO_L8N_T1_AD14N_35")
 			(pintype "bidirectional")
-			(uuid "869a8a25-d896-4ebc-862e-c95a29f58832")
+			(uuid "ddacbaf2-25f1-45ce-8b2b-d12c50cb6497")
 		)
 		(pad "L7" smd circle
 			(at -4.5 -0.5)
@@ -7239,7 +7239,7 @@
 			(net 409 "/1V8 VCCIO socket/DUT_GPIO15")
 			(pinfunction "IO_L8P_T1_AD14P_35")
 			(pintype "bidirectional")
-			(uuid "aed81be1-bfc5-4e75-bbc8-ac66acf4917e")
+			(uuid "a1da8c9e-b680-4a11-a952-8ef01c6d0471")
 		)
 		(pad "L8" smd circle
 			(at -3.5 -0.5)
@@ -7248,7 +7248,7 @@
 			(net 213 "/1V8 VCCIO socket/DUT_GPIO21")
 			(pinfunction "IO_L11P_T1_SRCC_35")
 			(pintype "bidirectional")
-			(uuid "58f246ec-02e0-4ae9-9200-6110af57253a")
+			(uuid "8be5c8fb-88c4-4f06-904c-7890a3e52450")
 		)
 		(pad "L9" smd circle
 			(at -2.5 -0.5)
@@ -7257,7 +7257,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "3244a801-e749-46f5-a067-e9b8e3cb5435")
+			(uuid "9d138ffb-8ac9-4a01-a580-80d6ca370e05")
 		)
 		(pad "L10" smd circle
 			(at -1.5 -0.5)
@@ -7266,7 +7266,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "e8e89d30-23c3-445f-baed-96890d75d313")
+			(uuid "685157b7-d6d9-489f-8658-5dd151042502")
 		)
 		(pad "L11" smd circle
 			(at -0.5 -0.5)
@@ -7275,7 +7275,7 @@
 			(net 1 "/GND")
 			(pinfunction "VREFN_0")
 			(pintype "input")
-			(uuid "28bbba49-26f6-48da-abec-d5168719bdd3")
+			(uuid "aaaee9fc-5f98-4999-a8b2-e29ec4c3ebef")
 		)
 		(pad "L12" smd circle
 			(at 0.5 -0.5)
@@ -7284,7 +7284,7 @@
 			(net 1 "/GND")
 			(pinfunction "VP_0")
 			(pintype "input")
-			(uuid "e4bddfd8-cd2c-4a29-8d21-e69c77a7fc11")
+			(uuid "cb351986-8c3b-448b-bebf-74682d028cf7")
 		)
 		(pad "L13" smd circle
 			(at 1.5 -0.5)
@@ -7293,7 +7293,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ef800511-b250-4186-8abd-fb7b52dcd46c")
+			(uuid "ff672e32-c900-4fb3-92b4-097c68f194a4")
 		)
 		(pad "L14" smd circle
 			(at 2.5 -0.5)
@@ -7302,7 +7302,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCAUX")
 			(pintype "power_in")
-			(uuid "d9d84b4b-3d48-460c-8312-a6b267b33148")
+			(uuid "cda849b2-528d-4dea-8487-ddded03ec5c9")
 		)
 		(pad "L15" smd circle
 			(at 3.5 -0.5)
@@ -7311,7 +7311,7 @@
 			(net 95 "/MCU/FPGA_PMOD_DQ7")
 			(pinfunction "IO_L13N_T2_MRCC_15")
 			(pintype "bidirectional")
-			(uuid "f908dc4a-2540-4098-a0a5-7ee2fbb0ca8d")
+			(uuid "5b539764-55c1-4249-a406-9cf4cb16c45f")
 		)
 		(pad "L16" smd circle
 			(at 4.5 -0.5)
@@ -7320,7 +7320,7 @@
 			(net 377 "/MCU/FMC_A16")
 			(pinfunction "IO_L15P_T2_DQS_15")
 			(pintype "bidirectional")
-			(uuid "a975f2da-c98f-4fbd-a4d5-7e35f864e266")
+			(uuid "4fd2809e-f14e-425f-be51-07a714d29599")
 		)
 		(pad "L17" smd circle
 			(at 5.5 -0.5)
@@ -7329,7 +7329,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "c1ca0eac-2656-4e57-9bec-28e52dd8a968")
+			(uuid "e915985d-dba6-4ed8-9cb4-8240d6d58d32")
 		)
 		(pad "L18" smd circle
 			(at 6.5 -0.5)
@@ -7338,7 +7338,7 @@
 			(net 295 "/MCU/FMC_A22")
 			(pinfunction "IO_L18P_T2_15")
 			(pintype "bidirectional")
-			(uuid "ae5ac639-7ac4-4646-8696-95499a300004")
+			(uuid "e3b101e7-e3cd-46f4-a59a-ee80d0cd5f8d")
 		)
 		(pad "L19" smd circle
 			(at 7.5 -0.5)
@@ -7347,7 +7347,7 @@
 			(net 446 "/MCU/FMC_A23")
 			(pinfunction "IO_L18N_T2_15")
 			(pintype "bidirectional")
-			(uuid "340f799c-a9de-4943-8d1d-0953f7c2514a")
+			(uuid "1614a293-07d4-4c86-b58e-9e064d22f960")
 		)
 		(pad "L20" smd circle
 			(at 8.5 -0.5)
@@ -7356,7 +7356,7 @@
 			(net 97 "/MCU/FPGA_PMOD_DQ4")
 			(pinfunction "IO_L24P_T3_RS1_15")
 			(pintype "bidirectional")
-			(uuid "51fd62f2-eec9-4c33-982a-08064d0336e1")
+			(uuid "8668f43a-3d44-4774-9249-4b9bb16c8fed")
 		)
 		(pad "L21" smd circle
 			(at 9.5 -0.5)
@@ -7365,7 +7365,7 @@
 			(net 100 "/MCU/FPGA_PMOD_DQ5")
 			(pinfunction "IO_L24N_T3_RS0_15")
 			(pintype "bidirectional")
-			(uuid "5bbc2408-e91b-447f-960c-02186cc3681d")
+			(uuid "b5d395c3-b222-4965-934e-f90f69fce412")
 		)
 		(pad "L22" smd circle
 			(at 10.5 -0.5)
@@ -7374,7 +7374,7 @@
 			(net 101 "/MCU/FPGA_PMOD_DQ0")
 			(pinfunction "IO_L22P_T3_15")
 			(pintype "bidirectional")
-			(uuid "1c61ac02-78f8-4255-9587-60f8065a303a")
+			(uuid "63eeb48b-8ae2-4760-872e-7166124e71c7")
 		)
 		(pad "M1" smd circle
 			(at -10.5 0.5)
@@ -7383,7 +7383,7 @@
 			(net 250 "/1V8 VCCIO socket/DUT_GPIO30")
 			(pinfunction "IO_L15N_T2_DQS_35")
 			(pintype "bidirectional")
-			(uuid "67f1af82-1e61-4c2b-a5fb-1a9fcd6f2363")
+			(uuid "7a93f063-0e6e-41d6-948d-69f480783176")
 		)
 		(pad "M2" smd circle
 			(at -9.5 0.5)
@@ -7392,7 +7392,7 @@
 			(net 488 "/1V8 VCCIO socket/DUT_GPIO29")
 			(pinfunction "IO_L15P_T2_DQS_35")
 			(pintype "bidirectional")
-			(uuid "b0df1cba-f4d4-4834-a122-bd8f8d68e730")
+			(uuid "23664657-3766-472d-b965-6ba62de78e2b")
 		)
 		(pad "M3" smd circle
 			(at -8.5 0.5)
@@ -7401,7 +7401,7 @@
 			(net 229 "/1V8 VCCIO socket/DUT_GPIO26")
 			(pinfunction "IO_L13N_T2_MRCC_35")
 			(pintype "bidirectional")
-			(uuid "e4096d4f-4e4a-4bd7-ae4c-8c9102c00d58")
+			(uuid "1d04adc8-3049-4b42-a732-bca2a2ce4270")
 		)
 		(pad "M4" smd circle
 			(at -7.5 0.5)
@@ -7410,7 +7410,7 @@
 			(net 238 "/1V8 VCCIO socket/DUT_GPIO25")
 			(pinfunction "IO_L13P_T2_MRCC_35")
 			(pintype "bidirectional")
-			(uuid "9bcccae9-5ed6-49e4-aea0-7d256b8f9096")
+			(uuid "e2831ea0-e2ef-407b-886d-379c8a734651")
 		)
 		(pad "M5" smd circle
 			(at -6.5 0.5)
@@ -7419,7 +7419,7 @@
 			(net 482 "/1V8 VCCIO socket/DUT_GPIO40")
 			(pinfunction "IO_L20N_T3_35")
 			(pintype "bidirectional")
-			(uuid "f8a0ad8f-8fce-4e87-a1f1-ba93d253ac16")
+			(uuid "437e55f6-0d8f-40ef-a061-c59c21222775")
 		)
 		(pad "M6" smd circle
 			(at -5.5 0.5)
@@ -7428,7 +7428,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "531d4f3b-e335-43bd-a3b5-0663c472d6bb")
+			(uuid "1ed537bb-a316-4c46-8755-c8303562d3fc")
 		)
 		(pad "M7" smd circle
 			(at -4.5 0.5)
@@ -7437,7 +7437,7 @@
 			(net 358 "/1V8 VCCIO socket/DUT_GPIO24")
 			(pinfunction "IO_L12N_T1_MRCC_35")
 			(pintype "bidirectional")
-			(uuid "426a5677-d4fd-4932-916a-885662a2ba29")
+			(uuid "46ec0134-b0ff-4a1d-ad89-e0e2428121a1")
 		)
 		(pad "M8" smd circle
 			(at -3.5 0.5)
@@ -7446,7 +7446,7 @@
 			(net 309 "/1V8 VCCIO socket/DUT_GPIO23")
 			(pinfunction "IO_L12P_T1_MRCC_35")
 			(pintype "bidirectional")
-			(uuid "11772616-6d52-4eee-a036-818e7c8b9a02")
+			(uuid "6d17a324-3cf9-465d-93d6-ab565e8dcf3b")
 		)
 		(pad "M9" smd circle
 			(at -2.5 0.5)
@@ -7455,7 +7455,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCBRAM")
 			(pintype "power_in")
-			(uuid "a0fa91cf-deaf-4cc4-8139-f8bd6998a44a")
+			(uuid "e185f7aa-872b-4557-bf54-75e1c735a00e")
 		)
 		(pad "M10" smd circle
 			(at -1.5 0.5)
@@ -7464,7 +7464,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "143767cb-96bd-4e70-b82c-702f581e4c1c")
+			(uuid "9b31f0bb-b47d-4e53-86fd-18e0b13b60bc")
 		)
 		(pad "M11" smd circle
 			(at -0.5 0.5)
@@ -7473,7 +7473,7 @@
 			(net 1 "/GND")
 			(pinfunction "VN_0")
 			(pintype "input")
-			(uuid "b9266c97-e98f-4d5a-aa2a-84246c549d67")
+			(uuid "d12accb9-03a0-41f1-a68b-900b2569999a")
 		)
 		(pad "M12" smd circle
 			(at 0.5 0.5)
@@ -7482,7 +7482,7 @@
 			(net 1 "/GND")
 			(pinfunction "VREFP_0")
 			(pintype "input")
-			(uuid "248eadda-1426-4b03-a056-1bff26e09d3d")
+			(uuid "83a11bfa-1789-4532-a09d-ea0e588a5626")
 		)
 		(pad "M13" smd circle
 			(at 1.5 0.5)
@@ -7491,7 +7491,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "1353219a-58d9-46d8-abcc-f6ec41f1e5dc")
+			(uuid "27284ff2-8e44-4683-85c2-dfdc76478af0")
 		)
 		(pad "M14" smd circle
 			(at 2.5 0.5)
@@ -7500,7 +7500,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "49f0019c-4473-4dce-b428-b17da851e659")
+			(uuid "c824249f-12a8-4ef7-993d-a80aa02f051c")
 		)
 		(pad "M15" smd circle
 			(at 3.5 0.5)
@@ -7509,7 +7509,7 @@
 			(net 147 "/MCU/FPGA_CLK_25MHZ")
 			(pinfunction "IO_L13P_T2_MRCC_15")
 			(pintype "bidirectional")
-			(uuid "2f22db22-9eba-47c6-8e99-ac4ba304d318")
+			(uuid "3037e8db-fc8a-4e0d-89f6-d65bb4d9e94c")
 		)
 		(pad "M16" smd circle
 			(at 4.5 0.5)
@@ -7518,7 +7518,7 @@
 			(net 94 "/MCU/FPGA_PMOD_DQ6")
 			(pinfunction "IO_25_15")
 			(pintype "bidirectional")
-			(uuid "0fc1f284-99d0-48d9-9766-919f9df611ce")
+			(uuid "c9d93086-ce22-4012-9da5-8a9622bdb799")
 		)
 		(pad "M17" smd circle
 			(at 5.5 0.5)
@@ -7527,7 +7527,7 @@
 			(net 493 "/MCU/FMC_AD14")
 			(pinfunction "IO_L14P_T2_SRCC_15")
 			(pintype "bidirectional")
-			(uuid "2ac965e9-9f27-4dc4-b088-f36331d39349")
+			(uuid "a6d0a331-94f9-4949-976c-1f4ec0687b4c")
 		)
 		(pad "M18" smd circle
 			(at 6.5 0.5)
@@ -7536,7 +7536,7 @@
 			(net 454 "/MCU/FMC_AD15")
 			(pinfunction "IO_L14N_T2_SRCC_15")
 			(pintype "bidirectional")
-			(uuid "725bac4d-c9f8-444b-b56e-b5befd3c8e6c")
+			(uuid "92284982-fd7b-47f8-a67f-2e4179e479b1")
 		)
 		(pad "M19" smd circle
 			(at 7.5 0.5)
@@ -7545,7 +7545,7 @@
 			(net 7 "/1V8")
 			(pinfunction "IO_L3P_T0_DQS_PUDC_B_14")
 			(pintype "bidirectional")
-			(uuid "c19a06b8-28f6-4f2a-b974-952024dde195")
+			(uuid "3b0cd41a-570c-48ee-9edb-d5ac3459595f")
 		)
 		(pad "M20" smd circle
 			(at 8.5 0.5)
@@ -7554,7 +7554,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "d9f8a053-9b24-484c-92ed-59b35a7ef713")
+			(uuid "74be49c1-3993-47f0-8d6e-24092e1d94aa")
 		)
 		(pad "M21" smd circle
 			(at 9.5 0.5)
@@ -7563,7 +7563,7 @@
 			(net 178 "Net-(U1E-IO_L1P_T0_D00_MOSI_14)")
 			(pinfunction "IO_L1P_T0_D00_MOSI_14")
 			(pintype "bidirectional")
-			(uuid "4558ef03-e901-4ce2-965e-57716c522073")
+			(uuid "4f32c9f8-0c0a-4e3b-b6e1-0c75859c40da")
 		)
 		(pad "M22" smd circle
 			(at 10.5 0.5)
@@ -7572,7 +7572,7 @@
 			(net 179 "Net-(U1E-IO_L1N_T0_D01_DIN_14)")
 			(pinfunction "IO_L1N_T0_D01_DIN_14")
 			(pintype "bidirectional")
-			(uuid "aa7135fb-aecc-45a0-82a6-5284c15bb232")
+			(uuid "4111693c-cea2-4fd2-a8a2-960ad18905e9")
 		)
 		(pad "N1" smd circle
 			(at -10.5 1.5)
@@ -7581,7 +7581,7 @@
 			(net 317 "/1V8 VCCIO socket/DUT_GPIO34")
 			(pinfunction "IO_L17N_T2_35")
 			(pintype "bidirectional")
-			(uuid "96d13f94-865f-43ee-9cee-0f8ac0ce62fd")
+			(uuid "0e07e274-911b-46f3-a3e4-78e1e6854f67")
 		)
 		(pad "N2" smd circle
 			(at -9.5 1.5)
@@ -7590,7 +7590,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "3ceaeeb1-038e-4786-8e8e-5a2736d4ae5c")
+			(uuid "6124eafb-e5b7-4ce2-8e64-ec86ca70af5e")
 		)
 		(pad "N3" smd circle
 			(at -8.5 1.5)
@@ -7599,7 +7599,7 @@
 			(net 338 "/1V8 VCCIO socket/DUT_GPIO32")
 			(pinfunction "IO_L16N_T2_35")
 			(pintype "bidirectional")
-			(uuid "301b433b-82ad-4078-ae10-dee974dbb421")
+			(uuid "c82654a7-d633-4abe-a9c6-53a306ee0f04")
 		)
 		(pad "N4" smd circle
 			(at -7.5 1.5)
@@ -7608,7 +7608,7 @@
 			(net 291 "/1V8 VCCIO socket/DUT_GPIO31")
 			(pinfunction "IO_L16P_T2_35")
 			(pintype "bidirectional")
-			(uuid "e66eaf01-aa96-49e2-8d3a-1fae0da75c71")
+			(uuid "45aa9784-bd13-425e-bbb8-167f4c30a436")
 		)
 		(pad "N5" smd circle
 			(at -6.5 1.5)
@@ -7617,7 +7617,7 @@
 			(net 367 "/1V8 VCCIO socket/DUT_GPIO39")
 			(pinfunction "IO_L20P_T3_35")
 			(pintype "bidirectional")
-			(uuid "c81c0308-e4e1-4ada-a63b-0f6ada5820f1")
+			(uuid "f18685a9-6a64-48c9-b2f7-942a33df1e81")
 		)
 		(pad "N6" smd circle
 			(at -5.5 1.5)
@@ -7626,7 +7626,7 @@
 			(net 408 "/1V8 VCCIO socket/DUT_GPIO42")
 			(pinfunction "IO_L21N_T3_DQS_35")
 			(pintype "bidirectional")
-			(uuid "fdba69fe-0f43-46d2-8e9a-4ac66bd1fb31")
+			(uuid "0b09cc58-4427-4fc9-95c5-844205179783")
 		)
 		(pad "N7" smd circle
 			(at -4.5 1.5)
@@ -7635,7 +7635,7 @@
 			(net 225 "/1V8 VCCIO socket/DUT_GPIO44")
 			(pinfunction "IO_L22N_T3_35")
 			(pintype "bidirectional")
-			(uuid "16876770-5ded-481b-963a-ecf8b0175dc9")
+			(uuid "80e63337-59ed-424d-bda9-1b50fe3e86a7")
 		)
 		(pad "N8" smd circle
 			(at -3.5 1.5)
@@ -7644,7 +7644,7 @@
 			(net 313 "/1V8 VCCIO socket/DUT_GPIO38")
 			(pinfunction "IO_L19N_T3_VREF_35")
 			(pintype "bidirectional")
-			(uuid "b286ffa9-a3b8-486a-a96c-5c836d9aed98")
+			(uuid "5568ce46-f684-49d2-ba52-feed33c1162d")
 		)
 		(pad "N9" smd circle
 			(at -2.5 1.5)
@@ -7653,7 +7653,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "3a138c1e-54f5-4f3c-9354-c257a56700e5")
+			(uuid "5a677d66-4f9a-4580-aa8e-a964b2491864")
 		)
 		(pad "N10" smd circle
 			(at -1.5 1.5)
@@ -7662,7 +7662,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "d41af825-a1ab-4f4f-9667-53561a579a27")
+			(uuid "ec821546-5d96-4024-9a4b-c3d46ba85c39")
 		)
 		(pad "N11" smd circle
 			(at -0.5 1.5)
@@ -7671,7 +7671,7 @@
 			(net 1 "/GND")
 			(pinfunction "DXN_0")
 			(pintype "passive")
-			(uuid "5ceacae4-2de4-46cd-9e02-f58afd0d4c0f")
+			(uuid "7524f7e9-f445-42e9-9743-29b22289708d")
 		)
 		(pad "N12" smd circle
 			(at 0.5 1.5)
@@ -7680,7 +7680,7 @@
 			(net 1 "/GND")
 			(pinfunction "DXP_0")
 			(pintype "passive")
-			(uuid "3bbfc9fd-2274-4a93-886f-7e7b5b5953af")
+			(uuid "f2f849a1-7d2a-4305-97b9-7700b68c579f")
 		)
 		(pad "N13" smd circle
 			(at 1.5 1.5)
@@ -7689,7 +7689,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "25d55143-6fc8-4fd8-b459-5d6567ca75cc")
+			(uuid "ae1154b0-6fd2-4226-8eaa-eadcab254048")
 		)
 		(pad "N14" smd circle
 			(at 2.5 1.5)
@@ -7698,7 +7698,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCAUX")
 			(pintype "power_in")
-			(uuid "9e77f525-8c03-4746-9eea-4026c2779b03")
+			(uuid "ea0d6a65-d436-47ad-bf26-7ec249011f47")
 		)
 		(pad "N15" smd circle
 			(at 3.5 1.5)
@@ -7707,7 +7707,7 @@
 			(net 503 "unconnected-(U1E-IO_0_14-PadN15)")
 			(pinfunction "IO_0_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "4145c0ed-fc5b-4022-8ead-95bc9a3f23da")
+			(uuid "a738c7d6-b3ce-45d3-a689-7cb8d20688f0")
 		)
 		(pad "N16" smd circle
 			(at 4.5 1.5)
@@ -7716,7 +7716,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "8c1494e7-3e93-4895-ba53-5e70a16856a7")
+			(uuid "b5408eb1-e65d-4789-ad78-95a5ff87b7c2")
 		)
 		(pad "N17" smd circle
 			(at 5.5 1.5)
@@ -7725,7 +7725,7 @@
 			(net 177 "Net-(U1E-IO_L6P_T0_FCS_B_14)")
 			(pinfunction "IO_L6P_T0_FCS_B_14")
 			(pintype "bidirectional")
-			(uuid "d1549de4-49fc-4ace-a107-f358d2604c13")
+			(uuid "33a00b42-a61a-4a47-8e27-b0522f9c2035")
 		)
 		(pad "N18" smd circle
 			(at 6.5 1.5)
@@ -7734,7 +7734,7 @@
 			(net 428 "unconnected-(U1E-IO_L6N_T0_D08_VREF_14-PadN18)")
 			(pinfunction "IO_L6N_T0_D08_VREF_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "64c2444a-c5a9-46d7-a09d-fa3bf2bded78")
+			(uuid "d6303213-8019-4524-8c5d-315fda6287a8")
 		)
 		(pad "N19" smd circle
 			(at 7.5 1.5)
@@ -7743,7 +7743,7 @@
 			(net 161 "/Ethernet/ETH_RX_DV")
 			(pinfunction "IO_L3N_T0_DQS_EMCCLK_14")
 			(pintype "bidirectional")
-			(uuid "d97e8c61-ac42-4311-8a08-161f86140d22")
+			(uuid "95957372-2873-458f-996b-be806551ce0d")
 		)
 		(pad "N20" smd circle
 			(at 8.5 1.5)
@@ -7752,7 +7752,7 @@
 			(net 157 "/Ethernet/ETH_RXD1")
 			(pinfunction "IO_L5P_T0_D06_14")
 			(pintype "bidirectional")
-			(uuid "79b0d6a3-12a7-42c4-8a7f-a0658381e10c")
+			(uuid "74865b21-2b3b-4c0a-a154-65cfab8f0c99")
 		)
 		(pad "N21" smd circle
 			(at 9.5 1.5)
@@ -7761,7 +7761,7 @@
 			(net 180 "Net-(U1E-IO_L2P_T0_D02_14)")
 			(pinfunction "IO_L2P_T0_D02_14")
 			(pintype "bidirectional")
-			(uuid "f835aa69-c7ad-4467-a150-a87fea635436")
+			(uuid "133f6faa-dbbb-4e9c-b038-3d30d367d382")
 		)
 		(pad "N22" smd circle
 			(at 10.5 1.5)
@@ -7770,7 +7770,7 @@
 			(net 181 "Net-(U1E-IO_L2N_T0_D03_14)")
 			(pinfunction "IO_L2N_T0_D03_14")
 			(pintype "bidirectional")
-			(uuid "8cf5ccd9-81eb-4d91-83ae-041c02534cd9")
+			(uuid "23bea2aa-c184-48f5-ab50-0799e5cdd62b")
 		)
 		(pad "P1" smd circle
 			(at -10.5 2.5)
@@ -7779,7 +7779,7 @@
 			(net 283 "/1V8 VCCIO socket/DUT_GPIO33")
 			(pinfunction "IO_L17P_T2_35")
 			(pintype "bidirectional")
-			(uuid "6b735545-1651-466c-802a-8805eef2b0ed")
+			(uuid "ae3ecac0-fccc-45bf-985f-9842fc8c94e5")
 		)
 		(pad "P2" smd circle
 			(at -9.5 2.5)
@@ -7788,7 +7788,7 @@
 			(net 504 "/1V8 VCCIO socket/DUT_GPIO36")
 			(pinfunction "IO_L18N_T2_35")
 			(pintype "bidirectional")
-			(uuid "508b6e28-798f-4565-b3f6-09b9c31d65c6")
+			(uuid "fd79aaf2-0247-48c7-93e6-d94717905d57")
 		)
 		(pad "P3" smd circle
 			(at -8.5 2.5)
@@ -7797,7 +7797,7 @@
 			(net 231 "/1V8 VCCIO socket/DUT_GPIO35")
 			(pinfunction "IO_L18P_T2_35")
 			(pintype "bidirectional")
-			(uuid "ed100c5a-2e6d-4688-802a-8290301dba42")
+			(uuid "b2618602-f582-48c9-b778-dbaf70213e72")
 		)
 		(pad "P4" smd circle
 			(at -7.5 2.5)
@@ -7806,7 +7806,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_35")
 			(pintype "power_in")
-			(uuid "fb59a9ca-5aaa-4a8e-9d2f-18566df62940")
+			(uuid "079ac629-5775-4207-aa99-26e2dcc24cc2")
 		)
 		(pad "P5" smd circle
 			(at -6.5 2.5)
@@ -7815,7 +7815,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "6edfb5b7-7ea8-4d82-88cd-4262275fab52")
+			(uuid "9e90265f-7ac2-4a34-b1c9-4e1495c987ef")
 		)
 		(pad "P6" smd circle
 			(at -5.5 2.5)
@@ -7824,7 +7824,7 @@
 			(net 340 "/1V8 VCCIO socket/DUT_GPIO41")
 			(pinfunction "IO_L21P_T3_DQS_35")
 			(pintype "bidirectional")
-			(uuid "3355eba1-285b-4d18-826a-a3e9c4dde0a9")
+			(uuid "4a1e3b8f-85ce-4513-9da9-5866deca9203")
 		)
 		(pad "P7" smd circle
 			(at -4.5 2.5)
@@ -7833,7 +7833,7 @@
 			(net 373 "/1V8 VCCIO socket/DUT_GPIO43")
 			(pinfunction "IO_L22P_T3_35")
 			(pintype "bidirectional")
-			(uuid "7be2711b-d0cb-4143-b44b-8ff113370eb1")
+			(uuid "32ca23c5-13cf-4698-a025-0114cc143e12")
 		)
 		(pad "P8" smd circle
 			(at -3.5 2.5)
@@ -7842,7 +7842,7 @@
 			(net 287 "/1V8 VCCIO socket/DUT_GPIO37")
 			(pinfunction "IO_L19P_T3_35")
 			(pintype "bidirectional")
-			(uuid "13957d7c-9d1f-46cf-a1da-329d0d08e6df")
+			(uuid "55bfaca4-e929-491f-a44c-56e3ab67f6e7")
 		)
 		(pad "P9" smd circle
 			(at -2.5 2.5)
@@ -7851,7 +7851,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCBRAM")
 			(pintype "power_in")
-			(uuid "fb06b1df-9a5c-4644-a641-65d1a19ec34d")
+			(uuid "e872c81e-ed1a-457d-973e-e6295e1dcca7")
 		)
 		(pad "P10" smd circle
 			(at -1.5 2.5)
@@ -7860,7 +7860,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "e1fef7a7-d2ec-4f18-952e-5cfed8083f1a")
+			(uuid "fd3151ee-5ff8-4a78-a1c1-b7fac9c4f15b")
 		)
 		(pad "P11" smd circle
 			(at -0.5 2.5)
@@ -7869,7 +7869,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "3fc0b73b-ecf7-4d5d-ab34-10e6b19d82c1")
+			(uuid "831c9372-da48-426e-8f7f-25cf0e50595c")
 		)
 		(pad "P12" smd circle
 			(at 0.5 2.5)
@@ -7878,7 +7878,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "02f50b87-6a43-42ff-8308-c9660e11bf5b")
+			(uuid "9e6d63a0-8691-4208-9067-c26cc75ec591")
 		)
 		(pad "P13" smd circle
 			(at 1.5 2.5)
@@ -7887,7 +7887,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "901d8c66-acaf-4e4b-a3c6-d0618d041ad4")
+			(uuid "dda325e5-4f9e-4886-96cc-c4e6899b266a")
 		)
 		(pad "P14" smd circle
 			(at 2.5 2.5)
@@ -7896,7 +7896,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "589d8f44-aa87-48db-bac2-3d79d96a313a")
+			(uuid "a78272f4-a064-4a70-9dc4-6a779d0298c1")
 		)
 		(pad "P15" smd circle
 			(at 3.5 2.5)
@@ -7905,7 +7905,7 @@
 			(net 169 "/Ethernet/ETH_MDIO")
 			(pinfunction "IO_L13P_T2_MRCC_14")
 			(pintype "bidirectional")
-			(uuid "4771e774-fdb0-4e1a-94bf-dd64ada8f8f6")
+			(uuid "4f63972c-83f1-4a1b-8739-cbf61600444c")
 		)
 		(pad "P16" smd circle
 			(at 4.5 2.5)
@@ -7914,7 +7914,7 @@
 			(net 459 "/Ethernet/ETH_MDC")
 			(pinfunction "IO_L13N_T2_MRCC_14")
 			(pintype "bidirectional")
-			(uuid "cec26484-b346-49a0-939a-1db553aa18ce")
+			(uuid "e82b1657-60ee-4ebb-9249-b78f754c649b")
 		)
 		(pad "P17" smd circle
 			(at 5.5 2.5)
@@ -7923,7 +7923,7 @@
 			(net 341 "/Ethernet/FPGA_RAM_CLK_P")
 			(pinfunction "IO_L14P_T2_SRCC_14")
 			(pintype "bidirectional")
-			(uuid "e45ed91a-3038-4307-a500-72dfcc2c6c23")
+			(uuid "5e66b0de-5a91-43f6-b22c-3a3611ca2e20")
 		)
 		(pad "P18" smd circle
 			(at 6.5 2.5)
@@ -7932,7 +7932,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_14")
 			(pintype "power_in")
-			(uuid "ba2809b6-dfd5-43a9-b622-b1c76276bd7a")
+			(uuid "1adce4e5-16ea-4e2f-85bf-f908475b84ab")
 		)
 		(pad "P19" smd circle
 			(at 7.5 2.5)
@@ -7941,7 +7941,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "9086b0af-f6e6-431f-ab22-ba7e2ec62324")
+			(uuid "f1a67474-bbf8-41e8-bf79-229cf8474fdb")
 		)
 		(pad "P20" smd circle
 			(at 8.5 2.5)
@@ -7950,7 +7950,7 @@
 			(net 158 "/Ethernet/ETH_RXD0")
 			(pinfunction "IO_L5N_T0_D07_14")
 			(pintype "bidirectional")
-			(uuid "4339b909-7c93-46f5-9cfb-1788ad89d437")
+			(uuid "7cb57903-5912-4f6a-ac19-da17306915da")
 		)
 		(pad "P21" smd circle
 			(at 9.5 2.5)
@@ -7959,7 +7959,7 @@
 			(net 152 "/Ethernet/ETH_RXD3")
 			(pinfunction "IO_L4P_T0_D04_14")
 			(pintype "bidirectional")
-			(uuid "d8aeb53e-3934-4e9f-851b-b011a07d3072")
+			(uuid "949ab234-0239-4e3f-b62e-f7ffb9c4d71c")
 		)
 		(pad "P22" smd circle
 			(at 10.5 2.5)
@@ -7968,7 +7968,7 @@
 			(net 155 "/Ethernet/ETH_RXD2")
 			(pinfunction "IO_L4N_T0_D05_14")
 			(pintype "bidirectional")
-			(uuid "84955be7-aef7-47cc-aab4-56bdf70c9637")
+			(uuid "b7b4c24a-8e03-4665-8ee7-ea132aaba2fd")
 		)
 		(pad "R1" smd circle
 			(at -10.5 3.5)
@@ -7977,7 +7977,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "f8894bc9-6db6-435e-9fab-4725d2e802fb")
+			(uuid "cc7b01ef-3306-40aa-8d8a-0bd19adc462e")
 		)
 		(pad "R2" smd circle
 			(at -9.5 3.5)
@@ -7986,7 +7986,7 @@
 			(net 467 "/1V2 VCCIO socket/DUT_GPIO0")
 			(pinfunction "IO_0_34")
 			(pintype "bidirectional")
-			(uuid "7517b2f0-b47d-40d3-8268-f6221c01f7bb")
+			(uuid "24447ffc-6e2e-48ba-a305-1bb7d8c67cec")
 		)
 		(pad "R3" smd circle
 			(at -8.5 3.5)
@@ -7995,7 +7995,7 @@
 			(net 497 "/1V8 VCCIO socket/DUT_GPIO49")
 			(pinfunction "IO_25_35")
 			(pintype "bidirectional")
-			(uuid "cff3b54a-8df1-4b09-8c6e-de3493c39de7")
+			(uuid "d58130df-ff8a-4c16-9a34-bf91b084fe36")
 		)
 		(pad "R4" smd circle
 			(at -7.5 3.5)
@@ -8004,7 +8004,7 @@
 			(net 251 "/1V8 VCCIO socket/DUT_GPIO48")
 			(pinfunction "IO_L24N_T3_35")
 			(pintype "bidirectional")
-			(uuid "f6702e9c-7832-40da-9493-3536affa1d5b")
+			(uuid "d250ca26-bab2-495d-9f8b-4ccac4dbde24")
 		)
 		(pad "R5" smd circle
 			(at -6.5 3.5)
@@ -8013,7 +8013,7 @@
 			(net 277 "/1V8 VCCIO socket/DUT_GPIO47")
 			(pinfunction "IO_L24P_T3_35")
 			(pintype "bidirectional")
-			(uuid "59a05731-2c41-44ac-8db3-3985decd8166")
+			(uuid "668f6982-251a-4f63-9bcb-d6940a4a3093")
 		)
 		(pad "R6" smd circle
 			(at -5.5 3.5)
@@ -8022,7 +8022,7 @@
 			(net 476 "/1V8 VCCIO socket/DUT_GPIO46")
 			(pinfunction "IO_L23N_T3_35")
 			(pintype "bidirectional")
-			(uuid "9d3c8a49-92d5-4bc9-b72c-d2210b561221")
+			(uuid "330d4c74-8767-47cf-a81f-1898d12bca59")
 		)
 		(pad "R7" smd circle
 			(at -4.5 3.5)
@@ -8031,7 +8031,7 @@
 			(net 453 "/1V8 VCCIO socket/DUT_GPIO45")
 			(pinfunction "IO_L23P_T3_35")
 			(pintype "bidirectional")
-			(uuid "cfb1f970-de2d-44f9-ab81-c8a5a3d5290e")
+			(uuid "d6bad0a1-1396-4f0d-a529-258bb357f894")
 		)
 		(pad "R8" smd circle
 			(at -3.5 3.5)
@@ -8040,7 +8040,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "2ce47fda-d4d5-4680-8e66-244e23ec3d6f")
+			(uuid "3bc7bed3-e42f-49fd-b960-0a688b2c202e")
 		)
 		(pad "R9" smd circle
 			(at -2.5 3.5)
@@ -8049,7 +8049,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ac2686c6-29cd-4e50-8639-31cddc343b90")
+			(uuid "f19831bc-d931-4751-b879-acf84891bc5a")
 		)
 		(pad "R10" smd circle
 			(at -1.5 3.5)
@@ -8058,7 +8058,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "2907087f-c2b7-4c32-a143-87c99510d543")
+			(uuid "1d1482cf-bbb3-44d4-b439-5b4ea0f9db4d")
 		)
 		(pad "R11" smd circle
 			(at -0.5 3.5)
@@ -8067,7 +8067,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "56d13836-b549-4946-bea4-f20137b5fae2")
+			(uuid "6d9bacba-b7fb-4619-b1c0-1bcc6203b647")
 		)
 		(pad "R12" smd circle
 			(at 0.5 3.5)
@@ -8076,7 +8076,7 @@
 			(net 6 "/1V0")
 			(pinfunction "VCCINT")
 			(pintype "power_in")
-			(uuid "88d202f4-0b20-42f1-a38e-91aec19536b9")
+			(uuid "2165f604-3dda-4dc7-8f81-0dc741c7828b")
 		)
 		(pad "R13" smd circle
 			(at 1.5 3.5)
@@ -8085,7 +8085,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "9b7e8f0e-dd8c-4aa0-b060-68b125728641")
+			(uuid "90d174b8-e6ff-423d-93f0-3ae731285ec1")
 		)
 		(pad "R14" smd circle
 			(at 2.5 3.5)
@@ -8094,7 +8094,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCAUX")
 			(pintype "power_in")
-			(uuid "8a9523b9-a696-4daa-9cac-843c79a3867d")
+			(uuid "e3ea6aad-00a0-438f-9e1c-4d8443bd5dd3")
 		)
 		(pad "R15" smd circle
 			(at 3.5 3.5)
@@ -8103,7 +8103,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "8f4905dc-f836-4358-9c0b-c51282eb1070")
+			(uuid "f6713579-7ac3-4e28-810d-23595df23e23")
 		)
 		(pad "R16" smd circle
 			(at 4.5 3.5)
@@ -8112,7 +8112,7 @@
 			(net 407 "/Ethernet/FPGA_RAM_DQS")
 			(pinfunction "IO_L16P_T2_CSI_B_14")
 			(pintype "bidirectional")
-			(uuid "de2d7092-6f82-48ab-9752-cedc921d7e4a")
+			(uuid "83d30627-15e4-40db-9fd9-da44324b8338")
 		)
 		(pad "R17" smd circle
 			(at 5.5 3.5)
@@ -8121,7 +8121,7 @@
 			(net 270 "/Ethernet/FPGA_RAM_DQ0")
 			(pinfunction "IO_L16N_T2_D31_14")
 			(pintype "bidirectional")
-			(uuid "2c8e5455-f392-4d30-8629-e57cc937b8cb")
+			(uuid "acdb413a-f0b0-4683-826d-31a38ff2a6ad")
 		)
 		(pad "R18" smd circle
 			(at 6.5 3.5)
@@ -8130,7 +8130,7 @@
 			(net 241 "/Ethernet/FPGA_RAM_CLK_N")
 			(pinfunction "IO_L14N_T2_SRCC_14")
 			(pintype "bidirectional")
-			(uuid "7ebabafe-7091-4716-a1e6-a5681815c996")
+			(uuid "00913a69-3065-472d-bd99-ca859298286e")
 		)
 		(pad "R19" smd circle
 			(at 7.5 3.5)
@@ -8139,7 +8139,7 @@
 			(net 234 "/Ethernet/FPGA_RAM_DQ1")
 			(pinfunction "IO_L17P_T2_D30_14")
 			(pintype "bidirectional")
-			(uuid "254e85bd-d3a3-4513-9d00-4561e120e539")
+			(uuid "53db2722-9665-4fab-b838-d79b51fb41f9")
 		)
 		(pad "R20" smd circle
 			(at 8.5 3.5)
@@ -8148,7 +8148,7 @@
 			(net 477 "/Ethernet/FPGA_RAM_DQ2")
 			(pinfunction "IO_L17N_T2_D29_14")
 			(pintype "bidirectional")
-			(uuid "8627c416-6c15-43f6-a030-134a26947fed")
+			(uuid "4efa0af2-74fa-4fea-b7fa-af4fe84a4005")
 		)
 		(pad "R21" smd circle
 			(at 9.5 3.5)
@@ -8157,7 +8157,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_14")
 			(pintype "power_in")
-			(uuid "d0999f60-b3f1-4784-a8b9-a7b8dc4db899")
+			(uuid "57537363-bf98-4ffe-9840-a0e1c57ef35b")
 		)
 		(pad "R22" smd circle
 			(at 10.5 3.5)
@@ -8166,7 +8166,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "8f1a02f6-47c8-456f-a493-291480690ca8")
+			(uuid "699e556e-4b11-4710-906f-ae87a21e1310")
 		)
 		(pad "T1" smd circle
 			(at -10.5 4.5)
@@ -8175,7 +8175,7 @@
 			(net 510 "/1V2 VCCIO socket/DUT_GPIO49")
 			(pinfunction "IO_25_34")
 			(pintype "bidirectional")
-			(uuid "898ffa58-9ebc-4f93-884e-f37d2ac76891")
+			(uuid "dd9cea41-bdb8-4318-99c4-a84e9a376e0d")
 		)
 		(pad "T2" smd circle
 			(at -9.5 4.5)
@@ -8184,7 +8184,7 @@
 			(net 442 "/1V2 VCCIO socket/DUT_GPIO24")
 			(pinfunction "IO_L12N_T1_MRCC_34")
 			(pintype "bidirectional")
-			(uuid "8dad5d72-0ace-49dd-aeaa-7ae01a9db033")
+			(uuid "682a02ea-fdc1-4301-81a0-5efb3b1e1228")
 		)
 		(pad "T3" smd circle
 			(at -8.5 4.5)
@@ -8193,7 +8193,7 @@
 			(net 360 "/1V2 VCCIO socket/DUT_GPIO23")
 			(pinfunction "IO_L12P_T1_MRCC_34")
 			(pintype "bidirectional")
-			(uuid "1b2a7526-975d-4a19-8ea6-0e1e48bc2d1b")
+			(uuid "f1c80c09-e26c-46f6-baba-48a0de8e1c65")
 		)
 		(pad "T4" smd circle
 			(at -7.5 4.5)
@@ -8202,7 +8202,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "685d20dd-fbb5-42c1-8df5-01fd3f8a34ec")
+			(uuid "993fe4c6-f8da-4a2d-bedc-195a1ee35217")
 		)
 		(pad "T5" smd circle
 			(at -6.5 4.5)
@@ -8211,7 +8211,7 @@
 			(net 419 "/1V2 VCCIO socket/DUT_GPIO7")
 			(pinfunction "IO_L4P_T0_34")
 			(pintype "bidirectional")
-			(uuid "797bdf34-dd89-46b8-82e5-adae0090a3a7")
+			(uuid "f594206d-401a-4c95-992d-5d2061f709c0")
 		)
 		(pad "T6" smd circle
 			(at -5.5 4.5)
@@ -8220,7 +8220,7 @@
 			(net 514 "/1V2 VCCIO socket/DUT_GPIO4")
 			(pinfunction "IO_L2N_T0_34")
 			(pintype "bidirectional")
-			(uuid "7d7ac414-9b16-4d00-b7b2-44e7641f624e")
+			(uuid "226ad9d0-5401-403f-bc95-680c6ed098c5")
 		)
 		(pad "T7" smd circle
 			(at -4.5 4.5)
@@ -8229,7 +8229,7 @@
 			(net 356 "/1V2 VCCIO socket/DUT_GPIO3")
 			(pinfunction "IO_L2P_T0_34")
 			(pintype "bidirectional")
-			(uuid "aaf2f934-adb2-4918-87ce-281d0faffa36")
+			(uuid "a54763d9-8a4e-4200-8166-5b255e65ce9b")
 		)
 		(pad "T8" smd circle
 			(at -3.5 4.5)
@@ -8238,7 +8238,7 @@
 			(net 431 "/1V2 VCCIO socket/DUT_GPIO11")
 			(pinfunction "IO_L6P_T0_34")
 			(pintype "bidirectional")
-			(uuid "14b7bb8e-3dca-4e4b-a9b8-cd70ace2ad54")
+			(uuid "19f622d5-1fd9-44df-8702-d6ae81f01ace")
 		)
 		(pad "T9" smd circle
 			(at -2.5 4.5)
@@ -8247,7 +8247,7 @@
 			(net 490 "/FPGA support/FPGA_INIT")
 			(pinfunction "INIT_B_0")
 			(pintype "bidirectional")
-			(uuid "c7969dac-3c01-448d-a0cd-c4d18c5a1025")
+			(uuid "554ce351-5e0e-4077-a60f-aece889807e4")
 		)
 		(pad "T10" smd circle
 			(at -1.5 4.5)
@@ -8256,7 +8256,7 @@
 			(net 1 "/GND")
 			(pinfunction "M1")
 			(pintype "input")
-			(uuid "cdc7ca19-45e5-49ff-9072-cfc8a8ebeef6")
+			(uuid "85ae8613-1374-40fa-b62f-2612d37998a0")
 		)
 		(pad "T11" smd circle
 			(at -0.5 4.5)
@@ -8265,7 +8265,7 @@
 			(net 7 "/1V8")
 			(pinfunction "M0")
 			(pintype "input")
-			(uuid "a8e0d574-7bbe-43f7-8fa0-664380952e65")
+			(uuid "041353c0-9431-4b44-af29-b55d69c8d570")
 		)
 		(pad "T12" smd circle
 			(at 0.5 4.5)
@@ -8274,7 +8274,7 @@
 			(net 480 "unconnected-(U1D-IO_L2P_T0_13-PadT12)")
 			(pinfunction "IO_L2P_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "444ba605-aaf4-4cd8-b679-54f6ebc249f7")
+			(uuid "da1b00d4-e35f-4da0-b0bb-1253dd3cc2d1")
 		)
 		(pad "T13" smd circle
 			(at 1.5 4.5)
@@ -8283,7 +8283,7 @@
 			(net 413 "unconnected-(U1D-IO_L2N_T0_13-PadT13)")
 			(pinfunction "IO_L2N_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "4849c8e4-e592-4673-afe2-4150665d017c")
+			(uuid "725304b5-6ade-4cf9-8b4b-3c4ed11827e3")
 		)
 		(pad "T14" smd circle
 			(at 2.5 4.5)
@@ -8292,7 +8292,7 @@
 			(net 362 "unconnected-(U1D-IO_L1P_T0_13-PadT14)")
 			(pinfunction "IO_L1P_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "f98b6a7b-3558-4feb-bff4-753fdeb55e1b")
+			(uuid "679853fc-3f1d-42f7-955d-afbc4483bd36")
 		)
 		(pad "T15" smd circle
 			(at 3.5 4.5)
@@ -8301,7 +8301,7 @@
 			(net 308 "unconnected-(U1D-IO_0_13-PadT15)")
 			(pinfunction "IO_0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "7597d9c1-cb3c-48c7-ad42-21c13a53d08d")
+			(uuid "647676dd-5734-42ea-8ed5-c448ff131ca7")
 		)
 		(pad "T16" smd circle
 			(at 4.5 4.5)
@@ -8310,7 +8310,7 @@
 			(net 457 "unconnected-(U1E-IO_25_14-PadT16)")
 			(pinfunction "IO_25_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "39d9ce81-c521-4db1-a23e-45002302395b")
+			(uuid "209e22cf-aa7c-4fdd-80af-b76b592cb194")
 		)
 		(pad "T17" smd circle
 			(at 5.5 4.5)
@@ -8319,7 +8319,7 @@
 			(net 205 "/Ethernet/FPGA_RAM_CS_N")
 			(pinfunction "IO_L15P_T2_DQS_RDWR_B_14")
 			(pintype "bidirectional")
-			(uuid "422e69a3-79d0-4a3d-b72b-17ab44af44bb")
+			(uuid "4a792a79-4a06-4308-bcc1-80d249bf7203")
 		)
 		(pad "T18" smd circle
 			(at 6.5 4.5)
@@ -8328,7 +8328,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "33bdc60c-f0b4-4dcf-af54-02f6d0e9f7ae")
+			(uuid "6be3dcbe-802e-477b-a82f-222abee29503")
 		)
 		(pad "T19" smd circle
 			(at 7.5 4.5)
@@ -8337,7 +8337,7 @@
 			(net 462 "/Ethernet/FPGA_RAM_DQ3")
 			(pinfunction "IO_L18P_T2_D28_14")
 			(pintype "bidirectional")
-			(uuid "0862d3ff-f14f-4a17-a36c-baed164e1e15")
+			(uuid "93c15733-81f1-4d45-915c-bcca32c7caea")
 		)
 		(pad "T20" smd circle
 			(at 8.5 4.5)
@@ -8346,7 +8346,7 @@
 			(net 461 "/Ethernet/FPGA_RAM_DQ4")
 			(pinfunction "IO_L18N_T2_D27_14")
 			(pintype "bidirectional")
-			(uuid "faf1fd04-ec17-43d2-a486-f82ab2cd59ef")
+			(uuid "398fcda6-ff76-4784-a593-d9a6f820d6de")
 		)
 		(pad "T21" smd circle
 			(at 9.5 4.5)
@@ -8355,7 +8355,7 @@
 			(net 230 "/Ethernet/RGMII_TXD0")
 			(pinfunction "IO_L7P_T1_D09_14")
 			(pintype "bidirectional")
-			(uuid "c4bf724a-74b5-4d77-9713-fd92a704cab6")
+			(uuid "174352a9-c72a-442b-baf8-1bec02a6c068")
 		)
 		(pad "T22" smd circle
 			(at 10.5 4.5)
@@ -8364,7 +8364,7 @@
 			(net 475 "/Ethernet/RGMII_TXD1")
 			(pinfunction "IO_L7N_T1_D10_14")
 			(pintype "bidirectional")
-			(uuid "8bd639dc-4301-446e-b456-ba0d17ee6f0b")
+			(uuid "8b5a1112-4811-4116-9635-68b95acf011a")
 		)
 		(pad "U1" smd circle
 			(at -10.5 5.5)
@@ -8373,7 +8373,7 @@
 			(net 290 "/1V2 VCCIO socket/DUT_GPIO18")
 			(pinfunction "IO_L9N_T1_DQS_34")
 			(pintype "bidirectional")
-			(uuid "e226d3ea-98c8-4671-853c-24f308544e46")
+			(uuid "0126d2b4-8d46-44ea-b7dc-7aa94b48e124")
 		)
 		(pad "U2" smd circle
 			(at -9.5 5.5)
@@ -8382,7 +8382,7 @@
 			(net 387 "/1V2 VCCIO socket/DUT_GPIO17")
 			(pinfunction "IO_L9P_T1_DQS_34")
 			(pintype "bidirectional")
-			(uuid "ac403f99-f500-4ac5-b356-5b7a2ae130a3")
+			(uuid "80539f36-0cfe-414b-8317-d574bff6dd2d")
 		)
 		(pad "U3" smd circle
 			(at -8.5 5.5)
@@ -8391,7 +8391,7 @@
 			(net 326 "/1V2 VCCIO socket/DUT_GPIO22")
 			(pinfunction "IO_L11N_T1_SRCC_34")
 			(pintype "bidirectional")
-			(uuid "cce5d234-a0c6-4d68-8a52-9f00c34a928f")
+			(uuid "662951d3-8f0f-4cbb-9aeb-bfe559e6f7a3")
 		)
 		(pad "U4" smd circle
 			(at -7.5 5.5)
@@ -8400,7 +8400,7 @@
 			(net 286 "/1V2 VCCIO socket/DUT_GPIO21")
 			(pinfunction "IO_L11P_T1_SRCC_34")
 			(pintype "bidirectional")
-			(uuid "42a752ea-9f5c-4c38-8416-83ce93d53a11")
+			(uuid "c8c9da67-8a5e-4463-82a7-0e466f142f65")
 		)
 		(pad "U5" smd circle
 			(at -6.5 5.5)
@@ -8409,7 +8409,7 @@
 			(net 359 "/1V2 VCCIO socket/DUT_GPIO8")
 			(pinfunction "IO_L4N_T0_34")
 			(pintype "bidirectional")
-			(uuid "1ecbe64a-4d05-43cd-91a0-e455da39d833")
+			(uuid "c42ff0e0-3751-400d-8370-e2c14e302f8e")
 		)
 		(pad "U6" smd circle
 			(at -5.5 5.5)
@@ -8418,7 +8418,7 @@
 			(net 15 "/1V2")
 			(pinfunction "VCCO_34")
 			(pintype "power_in")
-			(uuid "67e34e52-9f44-444c-b3d9-3496123cc9b1")
+			(uuid "70dbee52-55ba-4c25-a162-bb39648645c3")
 		)
 		(pad "U7" smd circle
 			(at -4.5 5.5)
@@ -8427,7 +8427,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "49060aa1-7b21-4496-ac48-c331e54dae7e")
+			(uuid "fd42ad1f-ba32-4bf4-97d2-db7cfc40f237")
 		)
 		(pad "U8" smd circle
 			(at -3.5 5.5)
@@ -8436,7 +8436,7 @@
 			(net 430 "/1V2 VCCIO socket/DUT_GPIO12")
 			(pinfunction "IO_L6N_T0_VREF_34")
 			(pintype "bidirectional")
-			(uuid "dfd8cb35-8fd6-4b78-a390-80730335ab5e")
+			(uuid "5857460f-9773-497d-9124-0d2cab3181df")
 		)
 		(pad "U9" smd circle
 			(at -2.5 5.5)
@@ -8445,7 +8445,7 @@
 			(net 324 "/FPGA_DONE")
 			(pinfunction "DONE_0")
 			(pintype "output")
-			(uuid "d54d041e-971e-4969-972e-092ac3c40d41")
+			(uuid "3ece4519-11e8-4daf-9e42-5176ea620709")
 		)
 		(pad "U10" smd circle
 			(at -1.5 5.5)
@@ -8454,7 +8454,7 @@
 			(net 1 "/GND")
 			(pinfunction "M2_0")
 			(pintype "input")
-			(uuid "62ded84e-5aa0-44f6-bfe5-3b5dec86ab7a")
+			(uuid "9ffc3832-e980-44ce-9ba7-2e3be1f27c1d")
 		)
 		(pad "U11" smd circle
 			(at -0.5 5.5)
@@ -8463,7 +8463,7 @@
 			(net 352 "/FPGA support/FPGA_RST_N")
 			(pinfunction "PROGRAM_B_0")
 			(pintype "input")
-			(uuid "aa38cfcb-2e17-4e4f-a9e3-e86d65d6a02b")
+			(uuid "f0a18d7f-9f7e-4d27-af34-0426796696a4")
 		)
 		(pad "U12" smd circle
 			(at 0.5 5.5)
@@ -8472,7 +8472,7 @@
 			(net 298 "unconnected-(U1D-IO_L4P_T0_13-PadU12)")
 			(pinfunction "IO_L4P_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "3f400ccf-c442-417d-8a3e-516cbcc8427a")
+			(uuid "4dff3aa4-2672-45dc-a57b-1ca1020688f6")
 		)
 		(pad "U13" smd circle
 			(at 1.5 5.5)
@@ -8481,7 +8481,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_13")
 			(pintype "power_in")
-			(uuid "323d2c3c-d6a0-4f3f-b16c-ae365061f054")
+			(uuid "8210b86e-cdc1-468f-ba2d-936d66610813")
 		)
 		(pad "U14" smd circle
 			(at 2.5 5.5)
@@ -8490,7 +8490,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "07c315d3-e95b-4000-a66c-36df731476cb")
+			(uuid "81422230-2fc5-4471-96c6-c27e869160f5")
 		)
 		(pad "U15" smd circle
 			(at 3.5 5.5)
@@ -8499,7 +8499,7 @@
 			(net 297 "unconnected-(U1D-IO_L1N_T0_13-PadU15)")
 			(pinfunction "IO_L1N_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "387ce660-b918-4325-8943-8f07ff1980b9")
+			(uuid "78e4b580-3b42-4f4d-be8a-d573fcfa39d8")
 		)
 		(pad "U16" smd circle
 			(at 4.5 5.5)
@@ -8508,7 +8508,7 @@
 			(net 435 "unconnected-(U1D-IO_L6P_T0_13-PadU16)")
 			(pinfunction "IO_L6P_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "30cc92ea-69a4-458e-a885-61debc1cdbc8")
+			(uuid "22e03725-9174-49e6-b488-29eda00053e0")
 		)
 		(pad "U17" smd circle
 			(at 5.5 5.5)
@@ -8517,7 +8517,7 @@
 			(net 206 "/Ethernet/FPGA_RAM_RST_N")
 			(pinfunction "IO_L15N_T2_DQS_DOUT_CSO_B_14")
 			(pintype "bidirectional")
-			(uuid "98b72a92-a55f-485a-b945-4c028cc5372c")
+			(uuid "e1056440-416c-4fc0-a5b8-8b4412b33462")
 		)
 		(pad "U18" smd circle
 			(at 6.5 5.5)
@@ -8526,7 +8526,7 @@
 			(net 162 "/Ethernet/ETH_RX_CLK")
 			(pinfunction "IO_L12P_T1_MRCC_14")
 			(pintype "bidirectional")
-			(uuid "afb0abd4-5039-4d0b-9b8e-856107908691")
+			(uuid "1d518486-19f1-42ac-9fb7-27af1e222521")
 		)
 		(pad "U19" smd circle
 			(at 7.5 5.5)
@@ -8535,7 +8535,7 @@
 			(net 386 "unconnected-(U1E-IO_L12N_T1_MRCC_14-PadU19)")
 			(pinfunction "IO_L12N_T1_MRCC_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "410c1e38-8f64-4780-bd07-e1d52d913b36")
+			(uuid "fd3a5b5f-1bca-4ae9-b899-6a634f86e367")
 		)
 		(pad "U20" smd circle
 			(at 8.5 5.5)
@@ -8544,7 +8544,7 @@
 			(net 262 "/Ethernet/FPGA_RAM_PSC_P")
 			(pinfunction "IO_L11P_T1_SRCC_14")
 			(pintype "bidirectional")
-			(uuid "aee5621f-cd61-4a08-835a-a68cab3f37fc")
+			(uuid "2383074d-7eb9-4c88-9322-6a1696f76f77")
 		)
 		(pad "U21" smd circle
 			(at 9.5 5.5)
@@ -8553,7 +8553,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "ee2e0eaa-4d6e-4e3b-8817-b86373caf667")
+			(uuid "fa1a357b-9036-4802-a66e-c449310e3431")
 		)
 		(pad "U22" smd circle
 			(at 10.5 5.5)
@@ -8562,7 +8562,7 @@
 			(net 470 "/Ethernet/RGMII_TX_CLK")
 			(pinfunction "IO_L9P_T1_DQS_14")
 			(pintype "bidirectional")
-			(uuid "fa167797-4a2c-4504-bb41-2f221990ef91")
+			(uuid "bfc40f88-f673-4cdc-9dde-5315d6478aeb")
 		)
 		(pad "V1" smd circle
 			(at -10.5 6.5)
@@ -8571,7 +8571,7 @@
 			(net 233 "/1V2 VCCIO socket/DUT_GPIO13")
 			(pinfunction "IO_L7P_T1_34")
 			(pintype "bidirectional")
-			(uuid "644e222b-9630-4a2d-b4e9-ab4d22167260")
+			(uuid "ab812606-b22d-461a-8952-2a1cfde74253")
 		)
 		(pad "V2" smd circle
 			(at -9.5 6.5)
@@ -8580,7 +8580,7 @@
 			(net 15 "/1V2")
 			(pinfunction "VCCO_34")
 			(pintype "power_in")
-			(uuid "51485284-42fd-42f0-87b3-1ccaee9923d2")
+			(uuid "aadf5d11-8c3b-420b-a643-591fb96c5c3d")
 		)
 		(pad "V3" smd circle
 			(at -8.5 6.5)
@@ -8589,7 +8589,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "a96d7715-159b-4809-8aa8-32b4673082bc")
+			(uuid "d5542c5b-8c70-4a6a-bca8-ccbe96b439c3")
 		)
 		(pad "V4" smd circle
 			(at -7.5 6.5)
@@ -8598,7 +8598,7 @@
 			(net 266 "/1V2 VCCIO socket/DUT_GPIO6")
 			(pinfunction "IO_L3N_T0_DQS_34")
 			(pintype "bidirectional")
-			(uuid "addc1666-327b-412d-acfd-423b279ba1a7")
+			(uuid "e7b7408e-6aa3-452e-9291-157676f50c93")
 		)
 		(pad "V5" smd circle
 			(at -6.5 6.5)
@@ -8607,7 +8607,7 @@
 			(net 416 "/1V2 VCCIO socket/DUT_GPIO5")
 			(pinfunction "IO_L3P_T0_DQS_34")
 			(pintype "bidirectional")
-			(uuid "1b616dca-2fdf-4282-9950-db3679cb3c5a")
+			(uuid "695c8fb5-128b-4af2-a8dc-7f78524960c6")
 		)
 		(pad "V6" smd circle
 			(at -5.5 6.5)
@@ -8616,7 +8616,7 @@
 			(net 450 "/1V2 VCCIO socket/DUT_GPIO10")
 			(pinfunction "IO_L5N_T0_34")
 			(pintype "bidirectional")
-			(uuid "9423ee8f-e5f9-4dda-b794-7942b1b0aa5a")
+			(uuid "bd35bdb5-4dde-4c51-acca-da134b762b0f")
 		)
 		(pad "V7" smd circle
 			(at -4.5 6.5)
@@ -8625,7 +8625,7 @@
 			(net 385 "/1V2 VCCIO socket/DUT_GPIO9")
 			(pinfunction "IO_L5P_T0_34")
 			(pintype "bidirectional")
-			(uuid "83f602d1-a5c8-4248-8e1e-a83e046f350d")
+			(uuid "2411ca12-c657-43fe-892d-e724d3487ff1")
 		)
 		(pad "V8" smd circle
 			(at -3.5 6.5)
@@ -8634,7 +8634,7 @@
 			(net 311 "/1V2 VCCIO socket/DUT_GPIO37")
 			(pinfunction "IO_L19P_T3_34")
 			(pintype "bidirectional")
-			(uuid "318d7456-02e2-4ed1-9e6b-9766bcc68253")
+			(uuid "cca3639f-b23d-4bc2-a380-06bb225891e0")
 		)
 		(pad "V9" smd circle
 			(at -2.5 6.5)
@@ -8643,7 +8643,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_0")
 			(pintype "power_in")
-			(uuid "0f025fe6-ef73-461c-865b-8823cc907b2b")
+			(uuid "8f2603ee-735c-4018-b10c-385c31057a49")
 		)
 		(pad "V10" smd circle
 			(at -1.5 6.5)
@@ -8652,7 +8652,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "c7b3a179-714a-4650-be15-011950a5614f")
+			(uuid "ebe3358f-243c-485d-be00-8c031dcc9d52")
 		)
 		(pad "V11" smd circle
 			(at -0.5 6.5)
@@ -8661,7 +8661,7 @@
 			(net 1 "/GND")
 			(pinfunction "CFGBVS_0")
 			(pintype "input")
-			(uuid "d6ea7669-16df-4fc3-9d89-f40de181522d")
+			(uuid "51f56181-05c6-4e92-a556-671b4ce16767")
 		)
 		(pad "V12" smd circle
 			(at 0.5 6.5)
@@ -8670,7 +8670,7 @@
 			(net 379 "unconnected-(U1D-IO_L13P_T2_MRCC_13-PadV12)")
 			(pinfunction "IO_L13P_T2_MRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "2a2b1447-173c-4281-af9c-3cf904e12783")
+			(uuid "9aff79be-7402-47b7-8c24-42bebb343d76")
 		)
 		(pad "V13" smd circle
 			(at 1.5 6.5)
@@ -8679,7 +8679,7 @@
 			(net 258 "unconnected-(U1D-IO_L4N_T0_13-PadV13)")
 			(pinfunction "IO_L4N_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "24b574e8-5931-4de7-950f-c05a610d113b")
+			(uuid "2bd2f5d0-81a4-4cc6-bdd0-11efd0ef6035")
 		)
 		(pad "V14" smd circle
 			(at 2.5 6.5)
@@ -8688,7 +8688,7 @@
 			(net 318 "unconnected-(U1D-IO_L3P_T0_DQS_13-PadV14)")
 			(pinfunction "IO_L3P_T0_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "a356861f-cd8c-42c9-bc93-37cd14c54afa")
+			(uuid "bfde6277-7a03-456f-927b-d387de8215bf")
 		)
 		(pad "V15" smd circle
 			(at 3.5 6.5)
@@ -8697,7 +8697,7 @@
 			(net 375 "unconnected-(U1D-IO_L3N_T0_DQS_13-PadV15)")
 			(pinfunction "IO_L3N_T0_DQS_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5ca98423-359f-45d6-82f0-bc98132c724e")
+			(uuid "2872a284-cf00-44bc-8761-7ba1080e55cd")
 		)
 		(pad "V16" smd circle
 			(at 4.5 6.5)
@@ -8706,7 +8706,7 @@
 			(net 289 "unconnected-(U1D-IO_L6N_T0_VREF_13-PadV16)")
 			(pinfunction "IO_L6N_T0_VREF_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "6c0787cc-24e6-4099-a598-6ba170dfeb7a")
+			(uuid "08ebecf7-a563-4216-bc39-d4832f67e713")
 		)
 		(pad "V17" smd circle
 			(at 5.5 6.5)
@@ -8715,7 +8715,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "772071de-6439-47db-9a11-f9b9243f1082")
+			(uuid "1730e9c0-3aa5-4d48-8462-6b76468c3183")
 		)
 		(pad "V18" smd circle
 			(at 6.5 6.5)
@@ -8724,7 +8724,7 @@
 			(net 304 "unconnected-(U1E-IO_L24P_T3_D17_14-PadV18)")
 			(pinfunction "IO_L24P_T3_D17_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "f207e832-8409-4863-a7f6-8b2c5ae233f3")
+			(uuid "34bfd866-1752-4e0e-8cfd-78a5ce55742d")
 		)
 		(pad "V19" smd circle
 			(at 7.5 6.5)
@@ -8733,7 +8733,7 @@
 			(net 365 "unconnected-(U1E-IO_L24N_T3_D16_14-PadV19)")
 			(pinfunction "IO_L24N_T3_D16_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "1c1d8261-040c-44fc-85f2-39a6920ca85e")
+			(uuid "b082fdb0-9bf0-4ce5-8c58-f9a04a979929")
 		)
 		(pad "V20" smd circle
 			(at 8.5 6.5)
@@ -8742,7 +8742,7 @@
 			(net 398 "/Ethernet/FPGA_RAM_PSC_N")
 			(pinfunction "IO_L11N_T1_SRCC_14")
 			(pintype "bidirectional")
-			(uuid "6bb1e668-bbc8-4a5b-b26e-96ff7c262a3a")
+			(uuid "0a3035e9-c82a-4336-80a4-ba47811e99b5")
 		)
 		(pad "V21" smd circle
 			(at 9.5 6.5)
@@ -8751,7 +8751,7 @@
 			(net 345 "/Ethernet/RGMII_TXD2")
 			(pinfunction "IO_L8P_T1_D11_14")
 			(pintype "bidirectional")
-			(uuid "f2114e03-914d-4305-ba12-434aa70b763b")
+			(uuid "9dc83ee2-4a0e-4751-9ca2-af55c756dd44")
 		)
 		(pad "V22" smd circle
 			(at 10.5 6.5)
@@ -8760,7 +8760,7 @@
 			(net 372 "/Ethernet/RGMII_TX_EN")
 			(pinfunction "IO_L9N_T1_DQS_D13_14")
 			(pintype "bidirectional")
-			(uuid "452b8407-b6b7-4e4f-a2ce-d4b50b9d460a")
+			(uuid "e4e5b06f-491f-4686-85aa-b307922e7885")
 		)
 		(pad "W1" smd circle
 			(at -10.5 7.5)
@@ -8769,7 +8769,7 @@
 			(net 267 "/1V2 VCCIO socket/DUT_GPIO14")
 			(pinfunction "IO_L7N_T1_34")
 			(pintype "bidirectional")
-			(uuid "cd4fc885-0dab-47c2-85ca-8245a20c4ff8")
+			(uuid "4785e2b8-7322-4e4f-8aec-7b83e774c240")
 		)
 		(pad "W2" smd circle
 			(at -9.5 7.5)
@@ -8778,7 +8778,7 @@
 			(net 425 "/1V2 VCCIO socket/DUT_GPIO15")
 			(pinfunction "IO_L8P_T1_34")
 			(pintype "bidirectional")
-			(uuid "674f5d23-b72a-4d0a-a6b9-83591bff8159")
+			(uuid "64c2a769-bb18-46f1-94d9-995b5fc13c7a")
 		)
 		(pad "W3" smd circle
 			(at -8.5 7.5)
@@ -8787,7 +8787,7 @@
 			(net 397 "/1V2 VCCIO socket/DUT_GPIO19")
 			(pinfunction "IO_L10P_T1_34")
 			(pintype "bidirectional")
-			(uuid "bfd05262-1ac3-4b84-bcbd-3fe198db552f")
+			(uuid "115314c3-ac6e-4fe0-99ee-cb571a1043ad")
 		)
 		(pad "W4" smd circle
 			(at -7.5 7.5)
@@ -8796,7 +8796,7 @@
 			(net 323 "/1V2 VCCIO socket/DUT_GPIO2")
 			(pinfunction "IO_L1N_T0_34")
 			(pintype "bidirectional")
-			(uuid "64ae1ba8-e90b-43a5-8d28-3a4d427b237f")
+			(uuid "8735fdce-0b0a-4c26-b502-2b95b80540d1")
 		)
 		(pad "W5" smd circle
 			(at -6.5 7.5)
@@ -8805,7 +8805,7 @@
 			(net 264 "/1V2 VCCIO socket/DUT_GPIO1")
 			(pinfunction "IO_L1P_T0_34")
 			(pintype "bidirectional")
-			(uuid "c4d40646-bb03-4c97-a69e-e17c366fb2dc")
+			(uuid "1cec6036-0841-4b78-a4ed-58981b996507")
 		)
 		(pad "W6" smd circle
 			(at -5.5 7.5)
@@ -8814,7 +8814,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "f453ad20-535c-4831-840b-8d14235e1cf9")
+			(uuid "f80cb3ec-a847-4412-a988-d4035a4b65cb")
 		)
 		(pad "W7" smd circle
 			(at -4.5 7.5)
@@ -8823,7 +8823,7 @@
 			(net 474 "/1V2 VCCIO socket/DUT_GPIO41")
 			(pinfunction "IO_L21P_T3_DQS_34")
 			(pintype "bidirectional")
-			(uuid "049e5319-c064-449d-b874-fd17fc674ef6")
+			(uuid "6c160e7a-d10b-41e6-8507-3771dc24f0fe")
 		)
 		(pad "W8" smd circle
 			(at -3.5 7.5)
@@ -8832,7 +8832,7 @@
 			(net 481 "/1V2 VCCIO socket/DUT_GPIO38")
 			(pinfunction "IO_L19N_T3_VREF_34")
 			(pintype "bidirectional")
-			(uuid "3c6f4459-7dcf-42a8-9d67-49670cdae350")
+			(uuid "76b6e6a3-f29b-433f-9f9c-0ee0d469ad10")
 		)
 		(pad "W9" smd circle
 			(at -2.5 7.5)
@@ -8841,7 +8841,7 @@
 			(net 55 "/FPGA support/FPGA_TDI")
 			(pinfunction "TDI_0")
 			(pintype "input")
-			(uuid "a99537cb-ef9b-4b7a-ae55-82543bced7ae")
+			(uuid "448f6e9e-d313-476f-ab83-f08183589dae")
 		)
 		(pad "W10" smd circle
 			(at -1.5 7.5)
@@ -8850,7 +8850,7 @@
 			(net 124 "Net-(U1A-TDO_0)")
 			(pinfunction "TDO_0")
 			(pintype "output")
-			(uuid "e194784e-aacb-41eb-ab5e-cd0d019fd5b2")
+			(uuid "349541fe-1ff1-458a-918b-3bad22041980")
 		)
 		(pad "W11" smd circle
 			(at -0.5 7.5)
@@ -8859,7 +8859,7 @@
 			(net 506 "unconnected-(U1D-IO_L16P_T2_13-PadW11)")
 			(pinfunction "IO_L16P_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "94a3c436-5144-481b-8bd7-4cba51ac4783")
+			(uuid "aff353bf-eccc-4ef6-a3d9-40e6a2f76ef7")
 		)
 		(pad "W12" smd circle
 			(at 0.5 7.5)
@@ -8868,7 +8868,7 @@
 			(net 415 "unconnected-(U1D-IO_L13N_T2_MRCC_13-PadW12)")
 			(pinfunction "IO_L13N_T2_MRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "ffc2554e-0ad3-48a7-ad6e-fb470cd0fb37")
+			(uuid "ee6c5532-f727-488c-be78-474d3d478fcf")
 		)
 		(pad "W13" smd circle
 			(at 1.5 7.5)
@@ -8877,7 +8877,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "81609e88-32a0-4ec7-a135-0541d02e6165")
+			(uuid "55f26a65-532f-4a01-b8c9-a8caec8f6ca8")
 		)
 		(pad "W14" smd circle
 			(at 2.5 7.5)
@@ -8886,7 +8886,7 @@
 			(net 513 "unconnected-(U1D-IO_L14P_T2_SRCC_13-PadW14)")
 			(pinfunction "IO_L14P_T2_SRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "d19d6e49-8d92-4bb8-a49a-45945c42e070")
+			(uuid "52e38ed4-bc6d-4696-a99d-d465fcfa050e")
 		)
 		(pad "W15" smd circle
 			(at 3.5 7.5)
@@ -8895,7 +8895,7 @@
 			(net 444 "unconnected-(U1D-IO_L5P_T0_13-PadW15)")
 			(pinfunction "IO_L5P_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "0ddf4d85-88b8-4eed-add0-2ce40717de23")
+			(uuid "78f92f49-7094-4e23-8d67-989ce8884c87")
 		)
 		(pad "W16" smd circle
 			(at 4.5 7.5)
@@ -8904,7 +8904,7 @@
 			(net 221 "unconnected-(U1D-IO_L5N_T0_13-PadW16)")
 			(pinfunction "IO_L5N_T0_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "b759ba54-02c9-4df0-b329-b7413c9f1968")
+			(uuid "48eb7d13-8393-4dc9-af94-484d0e8956a5")
 		)
 		(pad "W17" smd circle
 			(at 5.5 7.5)
@@ -8913,7 +8913,7 @@
 			(net 348 "unconnected-(U1D-IO_L11P_T1_SRCC_13-PadW17)")
 			(pinfunction "IO_L11P_T1_SRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "6f4e44eb-894a-48e1-9ac8-2345528cd703")
+			(uuid "ebb92baf-25d4-48bf-8917-8f2fa877cbb4")
 		)
 		(pad "W18" smd circle
 			(at 6.5 7.5)
@@ -8922,7 +8922,7 @@
 			(net 151 "/Ethernet/ETH_LED2_N_1V8")
 			(pinfunction "IO_L21P_T3_DQS_14")
 			(pintype "bidirectional")
-			(uuid "9e4ddf4a-31d5-4313-8559-91f509b0f523")
+			(uuid "af9b0a68-bec7-4dbf-a184-0fad1330fc80")
 		)
 		(pad "W19" smd circle
 			(at 7.5 7.5)
@@ -8931,7 +8931,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_14")
 			(pintype "power_in")
-			(uuid "894c1fbf-3fab-4fc1-94dc-fe5d5fcb56ce")
+			(uuid "63c1f589-4146-4d52-91a0-082d74f28bcd")
 		)
 		(pad "W20" smd circle
 			(at 8.5 7.5)
@@ -8940,7 +8940,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "6511ae40-ebf6-47f9-b4e3-a6fe2ab0c759")
+			(uuid "acd91937-c6ab-47e1-b450-ba14759ac8fd")
 		)
 		(pad "W21" smd circle
 			(at 9.5 7.5)
@@ -8949,7 +8949,7 @@
 			(net 520 "unconnected-(U1E-IO_L10P_T1_D14_14-PadW21)")
 			(pinfunction "IO_L10P_T1_D14_14")
 			(pintype "bidirectional+no_connect")
-			(uuid "723f1f5a-e514-470f-88ab-3d26de04145b")
+			(uuid "f514f8fa-462f-40d4-8759-d057dc0d822c")
 		)
 		(pad "W22" smd circle
 			(at 10.5 7.5)
@@ -8958,7 +8958,7 @@
 			(net 302 "/Ethernet/RGMII_TXD3")
 			(pinfunction "IO_L8N_T1_D12_14")
 			(pintype "bidirectional")
-			(uuid "fef40d36-d1be-4ef9-b84a-a8e2b1468663")
+			(uuid "2757bd29-f09b-47d8-a732-252693b4d4aa")
 		)
 		(pad "Y1" smd circle
 			(at -10.5 8.5)
@@ -8967,7 +8967,7 @@
 			(net 437 "/1V2 VCCIO socket/DUT_GPIO16")
 			(pinfunction "IO_L8N_T1_34")
 			(pintype "bidirectional")
-			(uuid "f4541420-0d6e-4737-bcc5-3c33893d4af1")
+			(uuid "ba683164-69ec-4f59-8264-fcd1ebd07001")
 		)
 		(pad "Y2" smd circle
 			(at -9.5 8.5)
@@ -8976,7 +8976,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "2bb433c5-5771-4c32-af23-9df864c69e25")
+			(uuid "55bdb6d5-f98c-4155-ba22-9f17b9f5848d")
 		)
 		(pad "Y3" smd circle
 			(at -8.5 8.5)
@@ -8985,7 +8985,7 @@
 			(net 519 "/1V2 VCCIO socket/DUT_GPIO20")
 			(pinfunction "IO_L10N_T1_34")
 			(pintype "bidirectional")
-			(uuid "91bb6110-de0e-462f-bfd1-9e443abccd69")
+			(uuid "e2e111e8-73de-486f-b207-072bcb16ab51")
 		)
 		(pad "Y4" smd circle
 			(at -7.5 8.5)
@@ -8994,7 +8994,7 @@
 			(net 293 "/1V2 VCCIO socket/DUT_GPIO29")
 			(pinfunction "IO_L15P_T2_DQS_34")
 			(pintype "bidirectional")
-			(uuid "3d2d959f-0396-4878-a8f0-d2416769c34a")
+			(uuid "24f96f04-be86-4f6b-8f77-48338ef3002a")
 		)
 		(pad "Y5" smd circle
 			(at -6.5 8.5)
@@ -9003,7 +9003,7 @@
 			(net 349 "/1V2 VCCIO socket/DUT_GPIO28")
 			(pinfunction "IO_L14N_T2_SRCC_34")
 			(pintype "bidirectional")
-			(uuid "ac24e53d-c63e-463d-83aa-a65f56f97adb")
+			(uuid "8b30799e-473e-4c77-af39-cc0d1ea8cb92")
 		)
 		(pad "Y6" smd circle
 			(at -5.5 8.5)
@@ -9012,7 +9012,7 @@
 			(net 242 "/1V2 VCCIO socket/DUT_GPIO27")
 			(pinfunction "IO_L14P_T2_SRCC_34")
 			(pintype "bidirectional")
-			(uuid "22e470f2-5fc0-4e89-b956-82c7267ebf80")
+			(uuid "aea4bd1b-ba5d-4cc2-be7d-df8ddd31ebab")
 		)
 		(pad "Y7" smd circle
 			(at -4.5 8.5)
@@ -9021,7 +9021,7 @@
 			(net 432 "/1V2 VCCIO socket/DUT_GPIO42")
 			(pinfunction "IO_L21N_T3_DQS_34")
 			(pintype "bidirectional")
-			(uuid "4717672d-aad2-4edd-94e3-b451520fb6f8")
+			(uuid "4d81aef8-b674-4be6-baf5-f4ea25700499")
 		)
 		(pad "Y8" smd circle
 			(at -3.5 8.5)
@@ -9030,7 +9030,7 @@
 			(net 351 "/1V2 VCCIO socket/DUT_GPIO39")
 			(pinfunction "IO_L20P_T3_34")
 			(pintype "bidirectional")
-			(uuid "d1d63467-23cd-468c-a710-b1b5aebd415f")
+			(uuid "3b45bebd-22aa-4c92-9297-d0289f3531d3")
 		)
 		(pad "Y9" smd circle
 			(at -2.5 8.5)
@@ -9039,7 +9039,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "5da9f5de-43e0-4826-bf74-4a515ca98b2e")
+			(uuid "73563e39-5c17-4ca7-baab-ace803a14870")
 		)
 		(pad "Y10" smd circle
 			(at -1.5 8.5)
@@ -9048,7 +9048,7 @@
 			(net 59 "/FPGA support/FPGA_TMS")
 			(pinfunction "TMS_0")
 			(pintype "input")
-			(uuid "630e89a3-c26d-45ed-8057-cc5b070dcb14")
+			(uuid "6b358a04-8bfd-4e67-8716-0893c2140aaa")
 		)
 		(pad "Y11" smd circle
 			(at -0.5 8.5)
@@ -9057,7 +9057,7 @@
 			(net 279 "unconnected-(U1D-IO_L16N_T2_13-PadY11)")
 			(pinfunction "IO_L16N_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "61bddd85-56f0-487a-a849-c37abfaffad3")
+			(uuid "82747899-2c42-416e-a834-d93b2e63900e")
 		)
 		(pad "Y12" smd circle
 			(at 0.5 8.5)
@@ -9066,7 +9066,7 @@
 			(net 487 "unconnected-(U1D-IO_L18P_T2_13-PadY12)")
 			(pinfunction "IO_L18P_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "1ad7e373-c9ef-40a3-8799-06794f23e8f6")
+			(uuid "1ee10cd2-3d0e-48c1-a1bb-28c9654276af")
 		)
 		(pad "Y13" smd circle
 			(at 1.5 8.5)
@@ -9075,7 +9075,7 @@
 			(net 237 "unconnected-(U1D-IO_L18N_T2_13-PadY13)")
 			(pinfunction "IO_L18N_T2_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5d66be14-1158-448b-966b-be03450bce91")
+			(uuid "253eb384-b5fa-4f1a-9c2b-5d7950518a44")
 		)
 		(pad "Y14" smd circle
 			(at 2.5 8.5)
@@ -9084,7 +9084,7 @@
 			(net 393 "unconnected-(U1D-IO_L14N_T2_SRCC_13-PadY14)")
 			(pinfunction "IO_L14N_T2_SRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "9e523a8e-1ad1-43e5-9523-c3291836ac75")
+			(uuid "ebde7834-daf3-43ab-b6bf-8cd066b019e6")
 		)
 		(pad "Y15" smd circle
 			(at 3.5 8.5)
@@ -9093,7 +9093,7 @@
 			(net 7 "/1V8")
 			(pinfunction "VCCO_13")
 			(pintype "power_in")
-			(uuid "6a090438-0314-4b2f-b118-366a9c373ce5")
+			(uuid "8c10f563-6a75-4388-9be3-87080f6e2529")
 		)
 		(pad "Y16" smd circle
 			(at 4.5 8.5)
@@ -9102,7 +9102,7 @@
 			(net 1 "/GND")
 			(pinfunction "GND")
 			(pintype "power_in")
-			(uuid "7e3ec968-f9e4-4e13-91d8-7b5501dede11")
+			(uuid "0c83e29a-0fb2-4358-a0da-d88a8562e4d7")
 		)
 		(pad "Y17" smd circle
 			(at 5.5 8.5)
@@ -9111,7 +9111,7 @@
 			(net 424 "unconnected-(U1D-IO_L11N_T1_SRCC_13-PadY17)")
 			(pinfunction "IO_L11N_T1_SRCC_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "79930dd1-7550-41da-8552-791d692df331")
+			(uuid "02be2fac-8c97-4f90-90df-76be8879a72d")
 		)
 		(pad "Y18" smd circle
 			(at 6.5 8.5)
@@ -9120,7 +9120,7 @@
 			(net 260 "unconnected-(U1D-IO_L7P_T1_13-PadY18)")
 			(pinfunction "IO_L7P_T1_13")
 			(pintype "bidirectional+no_connect")
-			(uuid "5cd80dda-29d6-4848-aa37-80e139ef0611")
+			(uuid "9e477608-f83f-4d14-94e7-df42c7fe34c8")
 		)
 		(pad "Y19" smd circle
 			(at 7.5 8.5)
@@ -9129,7 +9129,7 @@
 			(net 117 "/Ethernet/ETH_LED1_N_1V8_INV")
 			(pinfunction "IO_L21N_T3_DQS_D22_14")
 			(pintype "bidirectional")
-			(uuid "8ad3b174-2a1a-48d5-8347-9b14f2a314d6")
+			(uuid "d24b6d20-9b75-457c-ae91-5503bc2f9f92")
 		)
 		(pad "Y20" smd circle
 			(at 8.5 8.5)
@@ -9138,7 +9138,7 @@
 			(net 471 "/Ethernet/FPGA_RAM_DQ5")
 			(pinfunction "IO_L19P_T3_D26_14")
 			(pintype "bidirectional")
-			(uuid "6fed16ca-bb09-496f-b46b-98c6f18d82db")
+			(uuid "0cc779bd-6783-4d8a-af3c-5d9684ee776c")
 		)
 		(pad "Y21" smd circle
 			(at 9.5 8.5)
@@ -9147,7 +9147,7 @@
 			(net 418 "/Ethernet/ETH_RST_N")
 			(pinfunction "IO_L10N_T1_D15_14")
 			(pintype "bidirectional")
-			(uuid "cc16b673-8bfe-4435-a915-db2b352e9a63")
+			(uuid "c55df2e6-741e-4137-899f-341b4df84cab")
 		)
 		(pad "Y22" smd circle
 			(at 10.5 8.5)
@@ -9156,9 +9156,9 @@
 			(net 334 "/Ethernet/FPGA_RAM_DQ7")
 			(pinfunction "IO_L20P_T3_D24_14")
 			(pintype "bidirectional")
-			(uuid "e13385a9-d486-44ae-92fa-fea7802a9be1")
+			(uuid "6806eca3-0a19-41e1-a227-e6704c35ba7e")
 		)
-		(model ":share:Generic/User Library-FBGA484.STEP"
+		(model ":SHARE:Generic/User Library-FBGA484.STEP"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -44245,6 +44245,17 @@
 			(pinfunction "SHIELD")
 			(pintype "passive")
 			(uuid "cb42b5c6-6154-4922-94d7-0b269c18f4f1")
+		)
+		(model "/ceph/fast/home/azonenberg/code/3rdparty/kicad-libs/3rdparty/lain/USB4500-03-0-A.stp"
+			(offset
+				(xyz -0.5 -2 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
 		)
 	)
 	(footprint "azonenberg_pcb:EIA_0805_CAP_NOSILK"
