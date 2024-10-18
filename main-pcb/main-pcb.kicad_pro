@@ -247,12 +247,7 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [
-      "lib_symbol_issues|368300|1435100|66a99640-b1af-4f6c-8b57-26c7e1dad299|00000000-0000-0000-0000-000000000000|||",
-      "pin_to_pin|317500|1270000|447c238e-f26a-4536-b2c5-a2855a848062|b8d2eeb0-b5f6-4221-a79d-456c649520a8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553",
-      "pin_to_pin|685800|1892300|3f4602c5-d601-48a5-a1ce-0c84259463c9|00fe3a86-7f87-4cc7-b30d-13a8e46fd50f|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8",
-      "pin_to_pin|685800|495300|85c66124-551e-4649-a0d0-ec4e28e04411|afe9687c-1f63-42db-a054-fb48be414bac|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8|/e33e9f2b-a48c-455d-96ec-c7304b1720d3/c31e93e8-5dfd-466b-836e-d6a72c1fdcf8"
-    ],
+    "erc_exclusions": [],
     "meta": {
       "version": 0
     },
@@ -645,6 +640,10 @@
     [
       "0a1e5a7c-b848-45cd-a3bc-e7f3bda10553",
       "Ethernet"
+    ],
+    [
+      "1a903078-379e-42ff-9c17-351e224d1198",
+      "RGB LEDs"
     ]
   ],
   "text_variables": {}

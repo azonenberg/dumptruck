@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-16")
+		(date "2024-10-17")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -17248,10 +17248,6 @@
 		(uuid "ce8f242e-e441-4613-aca0-2bc3727d56bb")
 	)
 	(no_connect
-		(at 353.06 78.74)
-		(uuid "cefe307e-638f-460b-bc36-33d4e96aae22")
-	)
-	(no_connect
 		(at 100.33 119.38)
 		(uuid "cf4ed9e5-b5e2-4ba6-b299-2289a65092a2")
 	)
@@ -18823,17 +18819,6 @@
 			(justify left bottom)
 		)
 		(uuid "03071ddb-0d6e-4e07-b1f4-152dce6d1afc")
-	)
-	(text "TODO: RGB socket indicator LEDs?"
-		(exclude_from_sim no)
-		(at 288.544 126.238 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "1f4d60ad-7d80-4887-941f-e5d2efe3c3bf")
 	)
 	(text "MCU VDD decoupling"
 		(exclude_from_sim no)
@@ -21602,6 +21587,18 @@
 			(justify right)
 		)
 		(uuid "63fe6780-fe19-46e5-b88f-c3125a5dc0e1")
+	)
+	(hierarchical_label "LED_CTRL"
+		(shape output)
+		(at 353.06 78.74 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6b902475-93d0-4108-8d26-686f0dac7d81")
 	)
 	(hierarchical_label "PRSNT_1V8"
 		(shape input)

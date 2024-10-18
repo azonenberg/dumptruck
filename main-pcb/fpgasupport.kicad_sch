@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-16")
+		(date "2024-10-17")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -14909,7 +14909,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 138.1252 161.29 0)
 			(effects
 				(font
@@ -16774,7 +16774,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 124.1552 190.5 0)
 			(effects
 				(font
@@ -17050,7 +17050,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 124.1552 214.63 0)
 			(effects
 				(font
@@ -18870,7 +18870,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 124.1552 248.92 0)
 			(effects
 				(font
@@ -20944,7 +20944,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 124.1552 262.89 0)
 			(effects
 				(font
@@ -21224,7 +21224,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 124.1552 161.29 0)
 			(effects
 				(font
@@ -25512,7 +25512,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1210_CAP_NOSILK"
 			(at 150.8252 161.29 0)
 			(effects
 				(font

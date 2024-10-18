@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-16")
+		(date "2024-10-17")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -13652,7 +13652,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 80.9752 161.29 0)
 			(effects
 				(font
@@ -13790,7 +13790,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_SAMTEC_BTE-040-01-F-D-A-K"
 			(at 138.43 160.02 0)
 			(effects
 				(font
@@ -14094,7 +14094,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:EIA_1206_CAP_NOSILK"
 			(at 205.4352 30.48 0)
 			(effects
 				(font
@@ -14256,7 +14256,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "azonenberg_pcb:CONN_SAMTEC_BTE-040-01-F-D-A-K"
 			(at 138.43 64.77 0)
 			(effects
 				(font
