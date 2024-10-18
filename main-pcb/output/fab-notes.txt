@@ -1,0 +1,65 @@
+Part number:        dumptruck-mainboard v0.1
+
+General fabrication notes
+
+    * Boards are be individually routed.
+    * Board material is Shengyi S1000-2 (see stackup notes)
+    * Blue solder mask on both sides of board.
+    * White silkscreen text on both sides of board.
+    * Pad finish is ENIG.
+    * Finished board thickness is 1.6 mm.
+    * Place UL mark and date code in the area marked on the "F. Fab" gerber layer.
+    * Vias to be filled with nonconductive epoxy and plated over.
+
+Impedances
+
+    Control to within 10%.
+
+    Layer 1 microstrip (ref to layer 2 ground).
+    Layer 10 microstrip (ref to layer 9 ground).
+        130 μm trace = 50 ohm
+
+    Layer 3 stripline (ref to layer 2/4 ground).
+    Layer 8 stripline (ref to layer 7/9 ground).
+        100 μm trace = 50 ohm
+
+Suggested stackup
+    1    35 μm (1 oz) copper            Signal
+         76 μm S1000-2 1078 prepreg
+    2    35 μm (1 oz) copper            Ground
+        100 μm S1000-2 core
+    3    17 μm (0.5 oz) copper          Signal
+        118 μm S1000-2M
+    4    35 μm (1 oz) copper            Ground
+        100 μm S1000-2M
+    5    35 μm (1 oz) copper            Power
+        500 μm S1000-2M
+    6    35 μm (1 oz) copper            Power
+        100 μm S1000-2M
+    7    35 μm (1 oz) copper            Ground
+        118 μm S1000-2M
+    8    17 μm (0.5 oz) copper          Signal
+        100 μm S1000-2 core
+    9    35 μm (1 oz) copper            Ground
+         76 μm S1000-2 1078 prepreg
+    10   35 μm (1 oz) copper            Signal
+
+File naming
+    mainboard-Edge_Cuts.gbr   Board outline
+    main-pcb.drl              Through-board plated holes
+    mainboard-F_SilkS.gbr     Front silkscreen
+    mainboard-F.Fab.gbr       Shows requested location of date code and UL marking
+    mainboard-F_Mask.gbr      Front solder mask
+    mainboard-F_Cu.gbr        Layer 1 copper
+    mainboard-In1_Cu.gbr      Layer 2 copper
+    mainboard-In2_Cu.gbr      Layer 3 copper
+    mainboard-In3_Cu.gbr      Layer 4 copper
+    mainboard-In4_Cu.gbr      Layer 5 copper
+    mainboard-In5_Cu.gbr      Layer 6 copper
+    mainboard-In6_Cu.gbr      Layer 7 copper
+    mainboard-In7_Cu.gbr      Layer 8 copper
+    mainboard-In8_Cu.gbr      Layer 9 copper
+    mainboard-B_Cu.gbr        Layer 10 copper
+    mainboard-B_Mask.gbr      Back solder mask
+    mainboard-B_SilkS.gbr     Back silkscreen
+    main-pcb.d356             Electrical test netlist
