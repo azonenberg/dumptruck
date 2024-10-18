@@ -5937,6 +5937,16 @@
 	)
 	(wire
 		(pts
+			(xy 59.69 15.24) (xy 59.69 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91837c7d-e060-4bec-9226-d89fc56edc62")
+	)
+	(wire
+		(pts
 			(xy 170.18 81.28) (xy 170.18 83.82)
 		)
 		(stroke
@@ -7983,17 +7993,6 @@
 		)
 		(uuid "686f7543-bc79-445e-9304-82d7d1e41398")
 	)
-	(label "VBUS_SHOUT"
-		(at 53.34 24.13 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6870ac02-7877-44b6-a6ea-a56bc0c96cc7")
-	)
 	(label "SUPER_FAULT_LED"
 		(at 255.27 93.98 180)
 		(fields_autoplaced yes)
@@ -9836,6 +9835,18 @@
 			(justify right)
 		)
 		(uuid "5f219235-fce3-4c0d-95ed-5507052ad718")
+	)
+	(hierarchical_label "VBUS_SHOUT"
+		(shape output)
+		(at 59.69 15.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7f6a9b28-34fa-46ba-8c86-db5546f635fb")
 	)
 	(hierarchical_label "3V3_SB"
 		(shape output)

@@ -1614,6 +1614,12 @@
 		)
 	)
 	(junction
+		(at 201.93 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4f65367f-6b92-4b04-b07a-6ac7b403eddf")
+	)
+	(junction
 		(at 123.19 182.88)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1638,6 +1644,12 @@
 		(uuid "b7a9f89d-5a38-41a0-8a7f-8d6673656145")
 	)
 	(junction
+		(at 93.98 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb67d4a5-07c5-4179-921a-a5e8137efa34")
+	)
+	(junction
 		(at 123.19 176.53)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1648,8 +1660,24 @@
 		(uuid "3045ced2-05fe-4c02-898c-06890dd77a94")
 	)
 	(no_connect
+		(at 52.07 146.05)
+		(uuid "97bc1997-ca97-468c-bb27-68cda93ce45e")
+	)
+	(no_connect
 		(at 52.07 158.75)
 		(uuid "cceb352f-3190-4727-9926-c212d46e1b6c")
+	)
+	(no_connect
+		(at 52.07 148.59)
+		(uuid "cfce0b83-5c67-4ba4-9f6a-cffcc8e44ccb")
+	)
+	(no_connect
+		(at 52.07 143.51)
+		(uuid "f426cd77-1b01-4a24-9349-9ca24cf80e14")
+	)
+	(no_connect
+		(at 52.07 140.97)
+		(uuid "f4e761c9-05e8-4b3b-a174-18ee00483906")
 	)
 	(wire
 		(pts
@@ -1703,16 +1731,6 @@
 	)
 	(wire
 		(pts
-			(xy 52.07 140.97) (xy 52.07 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c0bdb90-6c21-47cd-bae7-97c348fd80e8")
-	)
-	(wire
-		(pts
 			(xy 52.07 128.27) (xy 60.96 128.27)
 		)
 		(stroke
@@ -1750,6 +1768,16 @@
 			(type default)
 		)
 		(uuid "3bab4260-8ff1-4dd2-b2cc-4dc758806992")
+	)
+	(wire
+		(pts
+			(xy 201.93 139.7) (xy 201.93 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4279a777-f0ea-4cd3-9cec-b3e70cfba230")
 	)
 	(wire
 		(pts
@@ -1810,6 +1838,16 @@
 			(type default)
 		)
 		(uuid "71dbf1b9-f176-4262-bb63-294f40c84df9")
+	)
+	(wire
+		(pts
+			(xy 201.93 133.35) (xy 201.93 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e179355-fed3-4d55-a957-b2505b8bc982")
 	)
 	(wire
 		(pts
@@ -1880,16 +1918,6 @@
 			(type default)
 		)
 		(uuid "b7ba4f84-f8c5-448f-bdde-f1f6e10d35f7")
-	)
-	(wire
-		(pts
-			(xy 52.07 146.05) (xy 52.07 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be5482f6-f82a-4d3a-acd8-e35347643db3")
 	)
 	(wire
 		(pts
@@ -2124,7 +2152,7 @@
 		)
 		(uuid "1986e762-b5e3-4664-ae5b-ebb21f9f8c38")
 	)
-	(label "VBUS"
+	(label "VBUS_SHOUT"
 		(at 207.01 113.03 180)
 		(fields_autoplaced yes)
 		(effects
@@ -2542,6 +2570,17 @@
 		)
 		(uuid "6aad43f6-5589-478a-b0e2-f0c512357dc3")
 	)
+	(label "GND"
+		(at 93.98 135.89 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6b4effcb-4e27-41f5-97c5-43d96ebae69c")
+	)
 	(label "I2C_SDA"
 		(at 163.83 53.34 180)
 		(fields_autoplaced yes)
@@ -2642,6 +2681,17 @@
 		(uuid "824dcbf0-9483-46c6-8763-e5f78f784528")
 	)
 	(label "GND"
+		(at 201.93 133.35 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "83e4c793-46fe-4651-acfe-147335962b06")
+	)
+	(label "GND"
 		(at 147.32 148.59 0)
 		(fields_autoplaced yes)
 		(effects
@@ -2717,6 +2767,17 @@
 			(justify left bottom)
 		)
 		(uuid "ae7a1450-b0f7-420d-aabb-c7f21c561838")
+	)
+	(label "VBUS_SHOUT"
+		(at 41.91 36.83 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b12e83cc-5e7a-4025-b45d-7bb2e9ffac50")
 	)
 	(label "1V8"
 		(at 76.2 29.21 0)
@@ -3053,6 +3114,73 @@
 		)
 	)
 	(symbol
+		(lib_id "conn:CONN_01X01")
+		(at 207.01 139.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0c1c6d43-78fe-4eb3-b90d-c19d11a92b5b")
+		(property "Reference" "TP18"
+			(at 208.915 138.4878 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GROUND"
+			(at 208.915 140.9121 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:TESTPOINT_SMT_KEYSTONE_5016"
+			(at 207.01 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector, single row, 01x01, pin header"
+			(at 207.01 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c3da6e33-5ece-45cd-b033-df8505d48cf7")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3"
+					(reference "TP18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "special-azonenberg:MECHANICAL")
 		(at 91.44 163.83 0)
 		(unit 1)
@@ -3337,6 +3465,73 @@
 		)
 	)
 	(symbol
+		(lib_id "conn:CONN_01X01")
+		(at 207.01 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b5cb630-3595-413c-a26b-edfbc318941c")
+		(property "Reference" "TP20"
+			(at 208.915 144.8378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GROUND"
+			(at 208.915 147.2621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:TESTPOINT_SMT_KEYSTONE_5016"
+			(at 207.01 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector, single row, 01x01, pin header"
+			(at 207.01 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4b9a4f21-30d4-476d-8509-db82b77afacd")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3"
+					(reference "TP20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "passive-azonenberg:INDUCTOR_PWROUT")
 		(at 86.36 128.27 270)
 		(unit 1)
@@ -3398,6 +3593,76 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3"
 					(reference "L8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:C")
+		(at 93.98 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5f3bd629-c744-4fd1-9eb6-15b1f6a25820")
+		(property "Reference" "C208"
+			(at 96.901 130.8678 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.47 uF"
+			(at 96.901 133.2921 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
+			(at 94.9452 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 93.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 93.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8bbc07c8-c219-4ed2-a2cf-941236cefe5c")
+		)
+		(pin "2"
+			(uuid "4aceebf3-2448-44a9-b445-d46bb2494872")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3"
+					(reference "C208")
 					(unit 1)
 				)
 			)
@@ -4045,6 +4310,73 @@
 	)
 	(symbol
 		(lib_id "conn:CONN_01X01")
+		(at 207.01 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e5510dc1-05c5-4361-baf4-8a1e1130ebe7")
+		(property "Reference" "TP19"
+			(at 208.915 132.1378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GROUND"
+			(at 208.915 134.5621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:TESTPOINT_SMT_KEYSTONE_5016"
+			(at 207.01 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Connector, single row, 01x01, pin header"
+			(at 207.01 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c2522615-7347-4385-b479-c0626887017a")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3"
+					(reference "TP19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "conn:CONN_01X01")
 		(at 128.27 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4566,7 +4898,7 @@
 	)
 	(sheet
 		(at 207.01 111.125)
-		(size 20.32 25.4)
+		(size 20.32 10.795)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -4586,7 +4918,7 @@
 			)
 		)
 		(property "Sheetfile" "rgb.kicad_sch"
-			(at 207.01 137.1096 0)
+			(at 207.01 122.5046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5325,6 +5657,16 @@
 				(justify left)
 			)
 			(uuid "01ba3928-9fa2-495a-baa8-90cb9dde628e")
+		)
+		(pin "VBUS_SHOUT" output
+			(at 41.91 36.83 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "d7729ce6-797e-40f4-877c-92afbfff5492")
 		)
 		(instances
 			(project "main-pcb"

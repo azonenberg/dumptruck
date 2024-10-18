@@ -15997,7 +15997,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "DNP"
 			(at 48.768 179.0121 0)
 			(effects
 				(font
