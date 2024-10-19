@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-18")
+		(date "2024-10-19")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -14121,18 +14121,17 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "5c0923ab-62a5-4872-a142-2c0976abc168")
 		(property "Reference" "R4"
-			(at 144.78 210.7395 90)
+			(at 144.526 213.36 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "TBD"
-			(at 144.78 213.1638 90)
+		(property "Value" "4.7K"
+			(at 144.78 216.154 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16097,18 +16096,17 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "8b44dbfc-eba5-422d-a6dd-aa03ea70153b")
 		(property "Reference" "R3"
-			(at 144.78 200.5795 90)
+			(at 145.034 203.454 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "TBD"
-			(at 144.78 203.0038 90)
+		(property "Value" "33K"
+			(at 144.78 205.994 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20134,18 +20132,17 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "e6a9ea10-6f60-4d41-a30c-4f6b5b2d258b")
 		(property "Reference" "R2"
-			(at 144.78 190.4195 90)
+			(at 144.78 193.294 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "TBD"
-			(at 144.78 192.8438 90)
+		(property "Value" "33K"
+			(at 144.78 195.58 90)
 			(effects
 				(font
 					(size 1.27 1.27)

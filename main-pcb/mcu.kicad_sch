@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-18")
+		(date "2024-10-19")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -21713,7 +21713,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 212.09 90)
 			(effects
 				(font
@@ -23511,7 +23511,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 201.93 90)
 			(effects
 				(font
@@ -23578,7 +23578,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 231.14 90)
 			(effects
 				(font
@@ -25692,7 +25692,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 243.84 90)
 			(effects
 				(font
@@ -27767,7 +27767,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 220.98 90)
 			(effects
 				(font
@@ -32926,7 +32926,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 273.05 90)
 			(effects
 				(font
@@ -36050,7 +36050,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 262.89 90)
 			(effects
 				(font
@@ -36184,7 +36184,7 @@
 				)
 			)
 		)
-		(property "Value" "470"
+		(property "Value" "33K"
 			(at 57.15 254 90)
 			(effects
 				(font

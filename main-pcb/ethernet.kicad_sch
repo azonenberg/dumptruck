@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-18")
+		(date "2024-10-19")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -12024,6 +12024,12 @@
 		)
 	)
 	(junction
+		(at 372.11 226.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "002a878f-afa6-40ce-b7a2-8e549cb666ae")
+	)
+	(junction
 		(at 80.01 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12066,6 +12072,12 @@
 		(uuid "25c03806-116b-4f16-bae0-f9f9830bfc65")
 	)
 	(junction
+		(at 358.14 218.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "28023f80-b775-4f94-8c7b-a91cd2fcfc09")
+	)
+	(junction
 		(at 111.76 152.4)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12106,6 +12118,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "488ad2f3-9ebc-42a5-a6ef-c13c0b65b079")
+	)
+	(junction
+		(at 358.14 226.06)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4b347ee8-480d-491c-901b-db347d12feb0")
 	)
 	(junction
 		(at 83.82 181.61)
@@ -12246,6 +12264,12 @@
 		(uuid "a31dedba-5ea2-4a9a-a046-b43d1061946b")
 	)
 	(junction
+		(at 372.11 218.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ad354a08-815a-48d7-8719-f635c5f96759")
+	)
+	(junction
 		(at 111.76 144.78)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12324,8 +12348,8 @@
 		(uuid "fbf3e8f8-9c4a-42d8-ba94-b3c158e6f37c")
 	)
 	(no_connect
-		(at 340.36 144.78)
-		(uuid "05c0efd2-ff18-4086-84f0-02ff8ba24442")
+		(at 340.36 111.76)
+		(uuid "0cf816e8-456b-47d3-a23c-f54929e4b421")
 	)
 	(no_connect
 		(at 340.36 147.32)
@@ -12336,10 +12360,6 @@
 		(uuid "294a66e5-af60-46f4-96b7-3bff7ecf85dc")
 	)
 	(no_connect
-		(at 340.36 142.24)
-		(uuid "40212896-1371-4861-9ff0-1eb2c08b9791")
-	)
-	(no_connect
 		(at 340.36 83.82)
 		(uuid "42bf610b-999c-427a-b83d-88cb284c05cd")
 	)
@@ -12348,28 +12368,32 @@
 		(uuid "44517991-f68a-4abf-bb47-e1fda8011627")
 	)
 	(no_connect
-		(at 340.36 139.7)
-		(uuid "63ee3bc9-7d73-418d-b072-43b5d3e69d3a")
+		(at 340.36 114.3)
+		(uuid "44c1d949-b47b-49b5-b959-1ea6c99bfc30")
 	)
 	(no_connect
-		(at 340.36 71.12)
-		(uuid "70fb62f5-a9ae-4056-80bf-c1fb177bb205")
+		(at 340.36 101.6)
+		(uuid "4995777a-f6e1-4f86-b8e1-bec301e67862")
+	)
+	(no_connect
+		(at 340.36 93.98)
+		(uuid "4e94023e-f591-4626-8985-f5e403558cd8")
+	)
+	(no_connect
+		(at 340.36 76.2)
+		(uuid "7c0efd2a-0cbb-4e43-82c3-ae2ac08c77ba")
 	)
 	(no_connect
 		(at 340.36 53.34)
 		(uuid "9fa64cd9-3fd2-4a30-84fd-de8fd5a7c50f")
 	)
 	(no_connect
-		(at 340.36 134.62)
-		(uuid "a2917477-b5f3-478b-b1d9-9bd0ab627aaf")
-	)
-	(no_connect
 		(at 110.49 76.2)
 		(uuid "a5c38d10-e20d-4727-b8a1-e662f8491b35")
 	)
 	(no_connect
-		(at 340.36 137.16)
-		(uuid "cdd7edeb-0c27-4ec1-a096-2d65922cea2a")
+		(at 340.36 96.52)
+		(uuid "c4e86930-0c01-4f08-853e-06cef89c4552")
 	)
 	(no_connect
 		(at 340.36 22.86)
@@ -12464,6 +12488,16 @@
 			(type default)
 		)
 		(uuid "1353ee3c-882f-450a-8253-925de002d584")
+	)
+	(wire
+		(pts
+			(xy 345.44 218.44) (xy 358.14 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "143096e2-547b-4f9d-87eb-311eceb73737")
 	)
 	(wire
 		(pts
@@ -13147,6 +13181,16 @@
 	)
 	(wire
 		(pts
+			(xy 345.44 226.06) (xy 358.14 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84a12e89-4959-4fa8-b732-9f207f225411")
+	)
+	(wire
+		(pts
 			(xy 58.42 55.88) (xy 62.23 55.88)
 		)
 		(stroke
@@ -13387,6 +13431,16 @@
 	)
 	(wire
 		(pts
+			(xy 358.14 226.06) (xy 372.11 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad233ca0-8aaa-48da-a51d-3bc9f37b8f1d")
+	)
+	(wire
+		(pts
 			(xy 105.41 210.82) (xy 119.38 210.82)
 		)
 		(stroke
@@ -13454,6 +13508,16 @@
 			(type default)
 		)
 		(uuid "b8d0fbe0-c651-4cec-b7e9-70e11641d8d8")
+	)
+	(wire
+		(pts
+			(xy 358.14 218.44) (xy 372.11 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc23544f-e5d4-436c-b50f-45d16deaf1bd")
 	)
 	(wire
 		(pts
@@ -13637,6 +13701,16 @@
 	)
 	(wire
 		(pts
+			(xy 372.11 226.06) (xy 386.08 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e64e528a-ad76-49d2-9693-06dbdd27f459")
+	)
+	(wire
+		(pts
 			(xy 96.52 173.99) (xy 83.82 173.99)
 		)
 		(stroke
@@ -13694,6 +13768,16 @@
 			(type default)
 		)
 		(uuid "f342bf89-7c7e-40d7-9762-e23df39c626a")
+	)
+	(wire
+		(pts
+			(xy 372.11 218.44) (xy 386.08 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3f30b0b-a889-437f-a552-34faa4959442")
 	)
 	(wire
 		(pts
@@ -13830,6 +13914,26 @@
 			(justify left bottom)
 		)
 		(uuid "68e8bd72-0038-4244-8940-7ec0080659ff")
+	)
+	(text "Clock inverted for routing"
+		(exclude_from_sim no)
+		(at 307.086 122.174 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6cb65da7-8884-4a26-b8e0-c522e1618ff9")
+	)
+	(text "Clock inverted for routing"
+		(exclude_from_sim no)
+		(at 306.578 137.16 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b28373d3-8459-4bc7-8e4d-4c37760120c7")
 	)
 	(text "Strap: PHYADR[1:0] = 2'b00"
 		(exclude_from_sim no)
@@ -14019,7 +14123,7 @@
 		(uuid "1338fd20-9642-4425-add7-62c0279036c9")
 	)
 	(label "FPGA_RAM_DQ3"
-		(at 340.36 111.76 180)
+		(at 340.36 73.66 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14052,7 +14156,7 @@
 		(uuid "16be08bf-5bc7-49ee-9115-209e1826dd18")
 	)
 	(label "ETH_RST_N"
-		(at 340.36 73.66 180)
+		(at 340.36 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14063,7 +14167,7 @@
 		(uuid "16d6d6a7-1ff9-459f-91da-1d0d90c54e17")
 	)
 	(label "FPGA_RAM_DQS"
-		(at 340.36 101.6 180)
+		(at 340.36 132.08 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14162,7 +14266,7 @@
 		(uuid "1e91e383-4cbe-44b6-9945-e287fded3426")
 	)
 	(label "FPGA_RAM_DQ0"
-		(at 340.36 104.14 180)
+		(at 340.36 144.78 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14184,7 +14288,7 @@
 		(uuid "22fe1a28-d753-4971-b17e-0cdcee9b0e79")
 	)
 	(label "ETH_LED2_N_1V8_INV"
-		(at 340.36 132.08 180)
+		(at 340.36 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14239,7 +14343,7 @@
 		(uuid "3227f183-b28c-40d1-86fe-9bd18aec5b29")
 	)
 	(label "FPGA_RAM_DQ5"
-		(at 340.36 116.84 180)
+		(at 340.36 142.24 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14316,7 +14420,7 @@
 		(uuid "3e1447a1-67f8-449a-8347-1235b497f5bc")
 	)
 	(label "FPGA_RAM_DQ2"
-		(at 340.36 109.22 180)
+		(at 340.36 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14393,7 +14497,7 @@
 		(uuid "55af39b2-0e6c-4252-bb78-07cb6396e02c")
 	)
 	(label "ETH_LED1_N_1V8_INV"
-		(at 340.36 129.54 180)
+		(at 340.36 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14525,7 +14629,7 @@
 		(uuid "630cb994-c611-400d-bd93-39db105db609")
 	)
 	(label "ETH_LED1_N_1V8"
-		(at 340.36 124.46 180)
+		(at 340.36 109.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14590,6 +14694,17 @@
 		)
 		(uuid "6bd2f833-c521-4c72-8888-5c2446aefe91")
 	)
+	(label "GND"
+		(at 345.44 226.06 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6c301dbe-564f-4dc4-8c2d-227b060761b1")
+	)
 	(label "RGMII_TXD1"
 		(at 167.64 49.53 0)
 		(fields_autoplaced yes)
@@ -14624,7 +14739,7 @@
 		(uuid "74c5e0f4-51fc-4b48-95f4-9144e2f40099")
 	)
 	(label "ETH_LED2_N_1V8"
-		(at 340.36 127 180)
+		(at 340.36 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14712,7 +14827,7 @@
 		(uuid "7c315ad4-f131-4faa-8984-b8ab3398a136")
 	)
 	(label "FPGA_RAM_CLK_P"
-		(at 340.36 91.44 180)
+		(at 340.36 139.7 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14723,7 +14838,7 @@
 		(uuid "7d07d39e-16bc-4f36-a3fb-53ae872a0b9b")
 	)
 	(label "FPGA_RAM_PSC_P"
-		(at 340.36 76.2 180)
+		(at 340.36 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14754,6 +14869,17 @@
 			(justify right bottom)
 		)
 		(uuid "7f1587e1-f6c3-46f2-a95f-25193226fb24")
+	)
+	(label "1V8"
+		(at 345.44 218.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7f36d09f-93e0-4fa7-b9b6-553d4265da09")
 	)
 	(label "RGMII_TX_EN"
 		(at 340.36 68.58 180)
@@ -14789,7 +14915,7 @@
 		(uuid "85d88b4f-133c-4ed6-ac13-7739d4dc1627")
 	)
 	(label "FPGA_RAM_DQ4"
-		(at 340.36 114.3 180)
+		(at 340.36 63.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14800,7 +14926,7 @@
 		(uuid "86936db6-ccb3-47c5-ba76-de7a2d2239aa")
 	)
 	(label "FPGA_RAM_DQ1"
-		(at 340.36 106.68 180)
+		(at 340.36 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14822,7 +14948,7 @@
 		(uuid "88ce1c88-a5a0-4b54-9010-d9bb4bedcadb")
 	)
 	(label "FPGA_RAM_DQ7"
-		(at 340.36 121.92 180)
+		(at 340.36 129.54 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15009,7 +15135,7 @@
 		(uuid "a5d3665e-34fd-42d1-96ed-682930c16757")
 	)
 	(label "FPGA_RAM_DQ6"
-		(at 340.36 119.38 180)
+		(at 340.36 127 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15185,7 +15311,7 @@
 		(uuid "bfb95962-2ad5-4112-848f-1f9e198340a0")
 	)
 	(label "RGMII_TXD3"
-		(at 340.36 63.5 180)
+		(at 340.36 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15196,7 +15322,7 @@
 		(uuid "c188e69b-66c2-4420-912c-19ce90f2694c")
 	)
 	(label "FPGA_RAM_CLK_N"
-		(at 340.36 93.98 180)
+		(at 340.36 137.16 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15427,7 +15553,7 @@
 		(uuid "e454cf64-1bc5-4493-87c8-37a0b0742768")
 	)
 	(label "FPGA_RAM_RST_N"
-		(at 340.36 99.06 180)
+		(at 340.36 71.12 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15438,7 +15564,7 @@
 		(uuid "e4dfd981-4c72-4932-afc5-75c664fcd6a3")
 	)
 	(label "FPGA_RAM_PSC_N"
-		(at 340.36 78.74 180)
+		(at 340.36 121.92 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15636,7 +15762,7 @@
 		(uuid "fdc8f7bb-0432-4ecd-81b5-0c090735f297")
 	)
 	(label "FPGA_RAM_CS_N"
-		(at 340.36 96.52 180)
+		(at 340.36 134.62 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -16194,6 +16320,76 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
 					(reference "C151")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:C")
+		(at 345.44 222.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0dacabe4-e1b6-41f8-9b15-371bcdd16653")
+		(property "Reference" "C216"
+			(at 348.361 221.0378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.7 uF"
+			(at 348.361 223.4621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0603_CAP_NOSILK"
+			(at 346.4052 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 345.44 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 345.44 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "71b11614-e810-4f09-93f1-dd2da4d70375")
+		)
+		(pin "2"
+			(uuid "bfe1f0d2-92f7-4663-82be-d1faa2963470")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "C216")
 					(unit 1)
 				)
 			)
@@ -18040,6 +18236,76 @@
 	)
 	(symbol
 		(lib_id "device:C")
+		(at 372.11 222.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "59fef821-25bf-42e9-a0a1-254bf9e942c2")
+		(property "Reference" "C218"
+			(at 375.031 221.0378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.47 uF"
+			(at 375.031 223.4621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
+			(at 373.0752 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 372.11 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 372.11 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b94e1e59-c877-46c0-9967-c0f9d6546275")
+		)
+		(pin "2"
+			(uuid "9b072f72-e839-4867-a0eb-500eeb26d8e9")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "C218")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:C")
 		(at 64.77 161.29 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -19404,6 +19670,76 @@
 		)
 	)
 	(symbol
+		(lib_id "device:C")
+		(at 386.08 222.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "91533fc9-6570-403a-9d19-68e36f2758dc")
+		(property "Reference" "C219"
+			(at 389.001 221.0378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.47 uF"
+			(at 389.001 223.4621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
+			(at 387.0452 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 386.08 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 386.08 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "85ef251f-5b8a-404f-b5d5-f773db90f244")
+		)
+		(pin "2"
+			(uuid "823c31b2-215d-4b17-86d6-89fbf8b39ea1")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "C219")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "device:R")
 		(at 226.06 64.77 270)
 		(unit 1)
@@ -19939,6 +20275,76 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
 					(reference "C159")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:C")
+		(at 358.14 222.25 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ad64bac6-4bce-4c4c-9621-cae5217c1af4")
+		(property "Reference" "C217"
+			(at 361.061 221.0378 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.47 uF"
+			(at 361.061 223.4621 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_CAP_NOSILK"
+			(at 359.1052 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 358.14 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 358.14 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "23c48bb4-98be-44b3-9a5a-4b2ae8c39535")
+		)
+		(pin "2"
+			(uuid "b75a26d0-2d84-444f-a197-5af8c49e46e2")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/0a1e5a7c-b848-45cd-a3bc-e7f3bda10553"
+					(reference "C217")
 					(unit 1)
 				)
 			)
