@@ -11760,7 +11760,7 @@
 		(uuid "a5239973-db37-45de-9d1d-13895939532d")
 	)
 	(label "DUT_GPIO16"
-		(at 46.99 59.69 180)
+		(at 46.99 34.29 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11771,7 +11771,7 @@
 		(uuid "02866e11-e384-4ed8-8927-0c14e00573bf")
 	)
 	(label "DUT_GPIO26"
-		(at 46.99 85.09 180)
+		(at 46.99 97.79 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11826,7 +11826,7 @@
 		(uuid "09d70cd9-6ccd-4b38-a3c6-b3cac77c29d3")
 	)
 	(label "DUT_GPIO23"
-		(at 46.99 77.47 180)
+		(at 46.99 92.71 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11848,7 +11848,7 @@
 		(uuid "0c392417-6ad4-4534-9335-ca01e0a99651")
 	)
 	(label "DUT_GPIO1"
-		(at 46.99 21.59 180)
+		(at 46.99 72.39 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11881,7 +11881,7 @@
 		(uuid "0e7912ac-a2bd-41e5-b7ec-37c006620ec2")
 	)
 	(label "DUT_GPIO28"
-		(at 46.99 90.17 180)
+		(at 46.99 85.09 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11925,7 +11925,7 @@
 		(uuid "11b84b0a-5d73-4bd4-8762-8411143e297a")
 	)
 	(label "DUT_GPIO21"
-		(at 46.99 72.39 180)
+		(at 46.99 90.17 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11969,7 +11969,7 @@
 		(uuid "159394d6-8c10-4292-a812-6c00f37ad256")
 	)
 	(label "DUT_GPIO39"
-		(at 46.99 118.11 180)
+		(at 46.99 140.97 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11991,7 +11991,7 @@
 		(uuid "1d8b87a9-3b06-4cd7-a28a-9946afe6ef96")
 	)
 	(label "DUT_GPIO44"
-		(at 46.99 130.81 180)
+		(at 46.99 82.55 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12002,7 +12002,7 @@
 		(uuid "1ef997a0-21e8-48f1-a03f-2c09a204e929")
 	)
 	(label "DUT_GPIO17"
-		(at 46.99 62.23 180)
+		(at 46.99 59.69 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12013,7 +12013,7 @@
 		(uuid "1ff16f61-e125-4a80-8904-1a9237dcc39a")
 	)
 	(label "DUT_GPIO33"
-		(at 46.99 102.87 180)
+		(at 46.99 138.43 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12024,7 +12024,7 @@
 		(uuid "265b98bc-f546-4c85-b25f-7787dec89e6d")
 	)
 	(label "DUT_GPIO25"
-		(at 46.99 82.55 180)
+		(at 46.99 95.25 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12057,7 +12057,7 @@
 		(uuid "2b0ff54d-520f-48e8-a0d3-03bc7f29f905")
 	)
 	(label "DUT_GPIO6"
-		(at 46.99 34.29 180)
+		(at 46.99 62.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12079,7 +12079,7 @@
 		(uuid "2fe47636-c11e-4ca9-b1df-6205ac38cae3")
 	)
 	(label "DUT_GPIO46"
-		(at 46.99 135.89 180)
+		(at 46.99 39.37 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12123,7 +12123,7 @@
 		(uuid "37efe77d-ffd9-4f43-ad60-63966dd08885")
 	)
 	(label "DUT_GPIO41"
-		(at 46.99 123.19 180)
+		(at 46.99 135.89 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12145,7 +12145,7 @@
 		(uuid "388a4ebc-ec1b-47dc-abb8-2d71d941e6f9")
 	)
 	(label "DUT_GPIO11"
-		(at 46.99 46.99 180)
+		(at 46.99 118.11 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12156,7 +12156,7 @@
 		(uuid "39e371ac-9389-434e-802e-a0f13670155c")
 	)
 	(label "DUT_GPIO24"
-		(at 46.99 80.01 180)
+		(at 46.99 87.63 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12244,7 +12244,7 @@
 		(uuid "4a3f4096-828b-4d78-b3e4-e8f93ed14771")
 	)
 	(label "DUT_GPIO42"
-		(at 46.99 125.73 180)
+		(at 46.99 36.83 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12255,7 +12255,7 @@
 		(uuid "4aef2b84-6beb-4444-91ca-e0afe7cd94cc")
 	)
 	(label "DUT_GPIO38"
-		(at 46.99 115.57 180)
+		(at 46.99 41.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12277,7 +12277,7 @@
 		(uuid "53735c58-e90f-4777-b3bd-1bd078fa8109")
 	)
 	(label "DUT_GPIO20"
-		(at 46.99 69.85 180)
+		(at 46.99 31.75 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12299,7 +12299,7 @@
 		(uuid "56ef114f-a2af-4475-833a-b0ef9a43f565")
 	)
 	(label "DUT_GPIO9"
-		(at 46.99 41.91 180)
+		(at 46.99 143.51 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12332,7 +12332,7 @@
 		(uuid "5f0ffce5-b68a-4e2b-9833-0c12ebae6194")
 	)
 	(label "DUT_GPIO49"
-		(at 46.99 143.51 180)
+		(at 46.99 102.87 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12354,7 +12354,7 @@
 		(uuid "61a03119-e873-4327-91fd-7fc2d1cd27fb")
 	)
 	(label "DUT_GPIO5"
-		(at 46.99 31.75 180)
+		(at 46.99 115.57 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12365,7 +12365,7 @@
 		(uuid "641959ec-260a-45a4-9c9f-af9b407d7ef2")
 	)
 	(label "DUT_GPIO0"
-		(at 46.99 19.05 180)
+		(at 46.99 64.77 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12398,7 +12398,7 @@
 		(uuid "6ef61c7d-deff-467a-9fa2-84508cddd9cf")
 	)
 	(label "DUT_GPIO2"
-		(at 46.99 24.13 180)
+		(at 46.99 77.47 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12431,7 +12431,7 @@
 		(uuid "7faaeee9-c4fe-45d3-b4d9-61c5af1a4487")
 	)
 	(label "DUT_GPIO35"
-		(at 46.99 107.95 180)
+		(at 46.99 125.73 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12453,7 +12453,7 @@
 		(uuid "891b8fb5-dbc4-48fa-af02-bb4a3bc2ce29")
 	)
 	(label "DUT_GPIO34"
-		(at 46.99 105.41 180)
+		(at 46.99 21.59 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12475,7 +12475,7 @@
 		(uuid "8afebf89-fa2d-41a2-a2cf-58986a48d966")
 	)
 	(label "DUT_GPIO36"
-		(at 46.99 110.49 180)
+		(at 46.99 24.13 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12519,7 +12519,7 @@
 		(uuid "97bfd3e3-80dc-46df-9c0f-c73aca518a1f")
 	)
 	(label "DUT_GPIO18"
-		(at 46.99 64.77 180)
+		(at 46.99 19.05 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12552,7 +12552,7 @@
 		(uuid "9cac685f-9321-4235-a3e4-c201bca87e65")
 	)
 	(label "DUT_GPIO30"
-		(at 46.99 95.25 180)
+		(at 46.99 26.67 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12585,7 +12585,7 @@
 		(uuid "a8898211-bdf8-49e5-95ee-2e6bafb25eaf")
 	)
 	(label "DUT_GPIO13"
-		(at 46.99 52.07 180)
+		(at 46.99 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12596,7 +12596,7 @@
 		(uuid "a8e4703c-9494-4b04-870e-2af478b2e29b")
 	)
 	(label "DUT_GPIO31"
-		(at 46.99 97.79 180)
+		(at 46.99 123.19 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12640,7 +12640,7 @@
 		(uuid "b3790542-2229-43ed-b687-c34eb50e77df")
 	)
 	(label "DUT_GPIO40"
-		(at 46.99 120.65 180)
+		(at 46.99 44.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12695,7 +12695,7 @@
 		(uuid "c2a73b9e-0caf-4cbc-87b2-d8f5ad51fde8")
 	)
 	(label "DUT_GPIO47"
-		(at 46.99 138.43 180)
+		(at 46.99 105.41 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12706,7 +12706,7 @@
 		(uuid "c3de0942-fea3-4d39-a741-dfa8313a0fad")
 	)
 	(label "DUT_GPIO48"
-		(at 46.99 140.97 180)
+		(at 46.99 54.61 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12761,7 +12761,7 @@
 		(uuid "cddd464a-6154-482e-964f-38c5fa7b739a")
 	)
 	(label "DUT_GPIO10"
-		(at 46.99 44.45 180)
+		(at 46.99 52.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12772,7 +12772,7 @@
 		(uuid "d727313d-e895-4278-a4f2-75f22ea2934d")
 	)
 	(label "DUT_GPIO27"
-		(at 46.99 87.63 180)
+		(at 46.99 130.81 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12794,7 +12794,7 @@
 		(uuid "d8db8023-6eb2-49dd-bf46-cad74521673e")
 	)
 	(label "DUT_GPIO43"
-		(at 46.99 128.27 180)
+		(at 46.99 110.49 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12805,7 +12805,7 @@
 		(uuid "da0846d8-3872-43df-b5f7-44f5129bbc74")
 	)
 	(label "DUT_GPIO32"
-		(at 46.99 100.33 180)
+		(at 46.99 29.21 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12838,7 +12838,7 @@
 		(uuid "de3685e8-1a2c-41a7-9e55-b3b4bd6b8d75")
 	)
 	(label "DUT_GPIO14"
-		(at 46.99 54.61 180)
+		(at 46.99 46.99 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12860,7 +12860,7 @@
 		(uuid "e03baaa3-7584-4e6f-a59c-c5c7516e981f")
 	)
 	(label "DUT_GPIO22"
-		(at 46.99 74.93 180)
+		(at 46.99 100.33 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12882,7 +12882,7 @@
 		(uuid "e3e4b498-88c8-4b57-92b7-3b5523149e79")
 	)
 	(label "DUT_GPIO45"
-		(at 46.99 133.35 180)
+		(at 46.99 107.95 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12904,7 +12904,7 @@
 		(uuid "e7cad2d2-b8ed-4098-8d2f-6fa4ab0b9e8a")
 	)
 	(label "DUT_GPIO29"
-		(at 46.99 92.71 180)
+		(at 46.99 128.27 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12915,7 +12915,7 @@
 		(uuid "e9f9dcb3-a149-40dd-9349-3817228c42dc")
 	)
 	(label "DUT_GPIO37"
-		(at 46.99 113.03 180)
+		(at 46.99 133.35 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12937,7 +12937,7 @@
 		(uuid "eb9c6ae0-eda1-4e17-aac7-c8d8e6505011")
 	)
 	(label "DUT_GPIO4"
-		(at 46.99 29.21 180)
+		(at 46.99 80.01 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12948,7 +12948,7 @@
 		(uuid "eba5c3ca-b528-46df-accb-9f0444f1898e")
 	)
 	(label "DUT_GPIO15"
-		(at 46.99 57.15 180)
+		(at 46.99 120.65 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -12992,7 +12992,7 @@
 		(uuid "eed3238c-d7e0-4bd8-b42b-d788a4ca5591")
 	)
 	(label "DUT_GPIO7"
-		(at 46.99 36.83 180)
+		(at 46.99 113.03 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13014,7 +13014,7 @@
 		(uuid "f259fde5-7b8c-44a3-ac0b-03f84fc42dbd")
 	)
 	(label "DUT_GPIO8"
-		(at 46.99 39.37 180)
+		(at 46.99 57.15 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -13080,7 +13080,7 @@
 		(uuid "fd00540d-138c-48af-bae5-f6445cc7534d")
 	)
 	(label "DUT_GPIO3"
-		(at 46.99 26.67 180)
+		(at 46.99 74.93 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
