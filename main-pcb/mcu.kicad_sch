@@ -17076,6 +17076,10 @@
 		(uuid "055b7a01-e86e-4f9f-8dfc-a96e50e21704")
 	)
 	(no_connect
+		(at 143.51 31.75)
+		(uuid "061a5a7d-3338-4525-b9dd-7c303e402cd8")
+	)
+	(no_connect
 		(at 195.58 91.44)
 		(uuid "080749a9-a63e-4e91-9ca9-e400d322c6d5")
 	)
@@ -17112,10 +17116,6 @@
 		(uuid "23d1295d-77d8-4347-874f-6d8c0e17b97f")
 	)
 	(no_connect
-		(at 100.33 57.15)
-		(uuid "24889230-174d-4b1e-b6c0-8927c4e5da7b")
-	)
-	(no_connect
 		(at 143.51 121.92)
 		(uuid "2685d4b6-e7cd-4884-b115-4eb853b1417d")
 	)
@@ -17126,6 +17126,10 @@
 	(no_connect
 		(at 100.33 124.46)
 		(uuid "34e32563-dfca-4524-87d5-fec3f29d07cb")
+	)
+	(no_connect
+		(at 143.51 44.45)
+		(uuid "3c062677-b8d2-4410-9ad4-38138a523ebb")
 	)
 	(no_connect
 		(at 143.51 52.07)
@@ -17140,12 +17144,12 @@
 		(uuid "42aa1c76-996e-4b7b-8179-8fca5c42f009")
 	)
 	(no_connect
-		(at 143.51 111.76)
-		(uuid "43d94ca8-5043-4449-a711-81ca3e94e016")
-	)
-	(no_connect
 		(at 195.58 104.14)
 		(uuid "457ab630-9fb0-4619-ab0c-deb68d7bf6ea")
+	)
+	(no_connect
+		(at 100.33 116.84)
+		(uuid "46249713-1145-457f-a4b6-47ab48d3e114")
 	)
 	(no_connect
 		(at 100.33 52.07)
@@ -17192,10 +17196,6 @@
 		(uuid "84c6eb59-46c2-4b8b-b21a-261d80acf9cc")
 	)
 	(no_connect
-		(at 100.33 64.77)
-		(uuid "875b7cfb-ef4e-458e-837c-2814cbbac655")
-	)
-	(no_connect
 		(at 100.33 46.99)
 		(uuid "8e5ea6ba-36f3-440a-8fa5-4c4063b317de")
 	)
@@ -17232,10 +17232,6 @@
 		(uuid "b5a2a025-d567-4c77-8fd4-430b79b3e135")
 	)
 	(no_connect
-		(at 143.51 36.83)
-		(uuid "b81b9080-f0a0-4772-88a3-c1372305680a")
-	)
-	(no_connect
 		(at 163.83 247.65)
 		(uuid "c327a620-d481-4993-91e0-0466f6b31f63")
 	)
@@ -17256,6 +17252,10 @@
 		(uuid "cf4ed9e5-b5e2-4ba6-b299-2289a65092a2")
 	)
 	(no_connect
+		(at 100.33 59.69)
+		(uuid "d252b95d-5ba4-411d-bdf8-291415e0be18")
+	)
+	(no_connect
 		(at 143.51 124.46)
 		(uuid "d254960c-d790-4503-b379-47a87a9124b2")
 	)
@@ -17268,16 +17268,20 @@
 		(uuid "de3b7d95-acca-4dfe-a6e2-7a70de8e4415")
 	)
 	(no_connect
-		(at 143.51 93.98)
-		(uuid "e1589828-eefa-42c2-8843-b2de761f69fd")
-	)
-	(no_connect
 		(at 143.51 109.22)
 		(uuid "e672ce02-5b52-474b-b597-b6531a779925")
 	)
 	(no_connect
 		(at 195.58 36.83)
 		(uuid "e97487b0-1058-46bc-873e-70ed42b4d96e")
+	)
+	(no_connect
+		(at 100.33 31.75)
+		(uuid "e9fcd697-35f3-4249-8c62-f988013f3653")
+	)
+	(no_connect
+		(at 100.33 121.92)
+		(uuid "f0ec98a5-eb5b-466a-8f56-aa8c7dab71d6")
 	)
 	(no_connect
 		(at 143.51 114.3)
@@ -17290,10 +17294,6 @@
 	(no_connect
 		(at 143.51 64.77)
 		(uuid "fab38806-2ed0-4d78-91f4-7af7fbdb4579")
-	)
-	(no_connect
-		(at 143.51 106.68)
-		(uuid "fc48eadc-7e1d-4c80-844f-9e50c96421ef")
 	)
 	(no_connect
 		(at 143.51 54.61)
@@ -18931,7 +18931,7 @@
 		(uuid "0718c7d9-f765-4b01-a448-00fb8787ff9f")
 	)
 	(label "MCU_PMOD_DQ2"
-		(at 100.33 62.23 180)
+		(at 143.51 41.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19008,7 +19008,7 @@
 		(uuid "0faf2578-a708-46b1-bae4-1ea57fd068b5")
 	)
 	(label "MCU_PMOD_DQ4"
-		(at 49.53 116.84 180)
+		(at 100.33 64.77 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19151,7 +19151,7 @@
 		(uuid "1d74f452-e536-4c9a-a69b-68cc8fa18da9")
 	)
 	(label "MCU_PMOD_DQ1"
-		(at 100.33 121.92 180)
+		(at 143.51 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19250,7 +19250,7 @@
 		(uuid "22b00efe-c526-4365-9cdf-659825815730")
 	)
 	(label "MCU_LED_3"
-		(at 143.51 101.6 180)
+		(at 100.33 57.15 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19437,7 +19437,7 @@
 		(uuid "343b83a7-3d82-4072-a961-22e92d75f971")
 	)
 	(label "MCU_PMOD_DQ5"
-		(at 49.53 119.38 180)
+		(at 143.51 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19481,7 +19481,7 @@
 		(uuid "383f002b-7a05-4ba4-af39-ec66b85f1ae0")
 	)
 	(label "FMC_A16"
-		(at 353.06 165.1 180)
+		(at 353.06 139.7 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19712,7 +19712,7 @@
 		(uuid "4d3ab365-84ef-48a9-b0cb-cd8067d7591e")
 	)
 	(label "MCU_PMOD_DQ6"
-		(at 100.33 31.75 180)
+		(at 143.51 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19899,7 +19899,7 @@
 		(uuid "5b7d594a-f26d-4ef5-9210-cd40b805f64f")
 	)
 	(label "FMC_AD1"
-		(at 353.06 83.82 180)
+		(at 353.06 165.1 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19987,7 +19987,7 @@
 		(uuid "63902902-712a-4201-831b-05862effe898")
 	)
 	(label "MCU_LED_2"
-		(at 143.51 116.84 180)
+		(at 49.53 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20108,7 +20108,7 @@
 		(uuid "6d54da3b-faf4-438d-ae1e-7dae8af95c17")
 	)
 	(label "MCU_PMOD_DQ0"
-		(at 100.33 59.69 180)
+		(at 100.33 62.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20141,7 +20141,7 @@
 		(uuid "7049dd82-be59-4b1e-8460-28d509a2767d")
 	)
 	(label "MCU_LED_0"
-		(at 143.51 31.75 180)
+		(at 143.51 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20152,7 +20152,7 @@
 		(uuid "70bfab30-82ca-473e-b113-3b325d0368bd")
 	)
 	(label "MCU_PMOD_DQ3"
-		(at 143.51 44.45 180)
+		(at 49.53 41.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20218,7 +20218,7 @@
 		(uuid "748ede90-87ff-4e53-b00c-0e26469b68d7")
 	)
 	(label "FMC_A25"
-		(at 353.06 78.74 180)
+		(at 353.06 132.08 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20372,7 +20372,7 @@
 		(uuid "82cb8a7b-6a0d-454b-aee5-58e0526e54e3")
 	)
 	(label "FMC_AD7"
-		(at 353.06 68.58 180)
+		(at 353.06 83.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20493,7 +20493,7 @@
 		(uuid "92dfc3bc-021b-4639-9b92-d76b058d821d")
 	)
 	(label "FMC_AD6"
-		(at 353.06 134.62 180)
+		(at 353.06 73.66 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20515,7 +20515,7 @@
 		(uuid "93e307fc-6b30-4b31-acad-e1adbcab6d1b")
 	)
 	(label "FMC_NBL1"
-		(at 353.06 66.04 180)
+		(at 353.06 137.16 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20537,7 +20537,7 @@
 		(uuid "97661f39-cb54-4575-a826-ed1eb45d9614")
 	)
 	(label "FMC_AD12"
-		(at 353.06 132.08 180)
+		(at 353.06 66.04 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20570,7 +20570,7 @@
 		(uuid "9848d255-f1a3-4353-8f65-0130e79fca40")
 	)
 	(label "FMC_AD9"
-		(at 353.06 139.7 180)
+		(at 353.06 68.58 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20768,7 +20768,7 @@
 		(uuid "ac82f0ca-c3da-4d8a-8b6c-26bba4ef8182")
 	)
 	(label "FMC_A22"
-		(at 353.06 137.16 180)
+		(at 353.06 134.62 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20834,7 +20834,7 @@
 		(uuid "b2cbcff4-53d1-4e63-b7d5-4abb5be3a247")
 	)
 	(label "FMC_AD8"
-		(at 353.06 73.66 180)
+		(at 353.06 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20845,7 +20845,7 @@
 		(uuid "b4fa0dc4-2175-4410-b4f6-e80f61cc6712")
 	)
 	(label "MCU_PMOD_DQ7"
-		(at 143.51 41.91 180)
+		(at 143.51 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20856,7 +20856,7 @@
 		(uuid "b54b5894-6362-42c3-9d44-dcc7cd7d0da0")
 	)
 	(label "MCU_LED_1"
-		(at 100.33 116.84 180)
+		(at 49.53 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21614,7 +21614,7 @@
 	)
 	(hierarchical_label "PRSNT_1V2"
 		(shape input)
-		(at 49.53 41.91 180)
+		(at 143.51 36.83 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
