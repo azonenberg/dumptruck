@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-19")
+		(date "2024-10-20")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -11065,6 +11065,16 @@
 	)
 	(wire
 		(pts
+			(xy 165.1 22.86) (xy 167.64 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "011a3373-f046-4744-9253-95610122f853")
+	)
+	(wire
+		(pts
 			(xy 30.48 68.58) (xy 30.48 71.12)
 		)
 		(stroke
@@ -13115,6 +13125,16 @@
 	)
 	(wire
 		(pts
+			(xy 175.26 22.86) (xy 185.42 22.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c922aeae-1690-4da7-a586-ad214cc7fe33")
+	)
+	(wire
+		(pts
 			(xy 199.39 142.24) (xy 212.09 142.24)
 		)
 		(stroke
@@ -14289,7 +14309,7 @@
 	)
 	(hierarchical_label "FPGA_FLASH_SCK"
 		(shape output)
-		(at 165.1 22.86 0)
+		(at 185.42 22.86 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -23408,6 +23428,73 @@
 			(project "main-pcb"
 				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/7cd2e806-1202-4934-b0af-c6f98384d647"
 					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "device:R")
+		(at 171.45 22.86 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c7db796b-aa27-43fb-a807-74fb946cb010")
+		(property "Reference" "R110"
+			(at 175.26 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "33"
+			(at 171.45 22.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "azonenberg_pcb:EIA_0402_RES_NOSILK"
+			(at 171.45 24.638 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 171.45 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 171.45 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "824c7a92-61d1-461c-bda1-6dd8a4f35cef")
+		)
+		(pin "2"
+			(uuid "11059c45-966b-4244-b12b-54d6c4d97524")
+		)
+		(instances
+			(project "main-pcb"
+				(path "/e33e9f2b-a48c-455d-96ec-c7304b1720d3/7cd2e806-1202-4934-b0af-c6f98384d647"
+					(reference "R110")
 					(unit 1)
 				)
 			)

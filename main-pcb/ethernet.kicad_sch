@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-19")
+		(date "2024-10-20")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -12348,8 +12348,8 @@
 		(uuid "fbf3e8f8-9c4a-42d8-ba94-b3c158e6f37c")
 	)
 	(no_connect
-		(at 340.36 111.76)
-		(uuid "0cf816e8-456b-47d3-a23c-f54929e4b421")
+		(at 340.36 88.9)
+		(uuid "07b82d30-6cd9-4039-a876-0d7543a5c337")
 	)
 	(no_connect
 		(at 340.36 147.32)
@@ -12360,28 +12360,24 @@
 		(uuid "294a66e5-af60-46f4-96b7-3bff7ecf85dc")
 	)
 	(no_connect
-		(at 340.36 83.82)
-		(uuid "42bf610b-999c-427a-b83d-88cb284c05cd")
-	)
-	(no_connect
 		(at 167.64 95.25)
 		(uuid "44517991-f68a-4abf-bb47-e1fda8011627")
-	)
-	(no_connect
-		(at 340.36 114.3)
-		(uuid "44c1d949-b47b-49b5-b959-1ea6c99bfc30")
 	)
 	(no_connect
 		(at 340.36 101.6)
 		(uuid "4995777a-f6e1-4f86-b8e1-bec301e67862")
 	)
 	(no_connect
-		(at 340.36 93.98)
-		(uuid "4e94023e-f591-4626-8985-f5e403558cd8")
+		(at 340.36 104.14)
+		(uuid "6a297452-93cc-449d-ae56-d8cb4001dcf9")
 	)
 	(no_connect
-		(at 340.36 76.2)
-		(uuid "7c0efd2a-0cbb-4e43-82c3-ae2ac08c77ba")
+		(at 340.36 91.44)
+		(uuid "7168ca94-40a8-4209-801a-64be28b36a65")
+	)
+	(no_connect
+		(at 340.36 99.06)
+		(uuid "77058f7c-b1c7-4ca8-a992-f5ba62f5878d")
 	)
 	(no_connect
 		(at 340.36 53.34)
@@ -12394,6 +12390,10 @@
 	(no_connect
 		(at 340.36 96.52)
 		(uuid "c4e86930-0c01-4f08-853e-06cef89c4552")
+	)
+	(no_connect
+		(at 340.36 86.36)
+		(uuid "cc4739a3-553d-40e1-916e-5b77652e75bd")
 	)
 	(no_connect
 		(at 340.36 22.86)
@@ -14156,7 +14156,7 @@
 		(uuid "16be08bf-5bc7-49ee-9115-209e1826dd18")
 	)
 	(label "ETH_RST_N"
-		(at 340.36 91.44 180)
+		(at 340.36 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14288,7 +14288,7 @@
 		(uuid "22fe1a28-d753-4971-b17e-0cdcee9b0e79")
 	)
 	(label "ETH_LED2_N_1V8_INV"
-		(at 340.36 104.14 180)
+		(at 340.36 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14739,7 +14739,7 @@
 		(uuid "74c5e0f4-51fc-4b48-95f4-9144e2f40099")
 	)
 	(label "ETH_LED2_N_1V8"
-		(at 340.36 99.06 180)
+		(at 340.36 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14772,7 +14772,7 @@
 		(uuid "77ed0821-294a-4692-a428-6e016b2db2fa")
 	)
 	(label "ETH_MDC"
-		(at 340.36 88.9 180)
+		(at 340.36 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15201,7 +15201,7 @@
 		(uuid "b2723945-3639-4f64-8d8e-13faa7edceaa")
 	)
 	(label "ETH_MDIO"
-		(at 340.36 86.36 180)
+		(at 340.36 83.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font

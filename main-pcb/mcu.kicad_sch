@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-19")
+		(date "2024-10-20")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -17076,8 +17076,8 @@
 		(uuid "055b7a01-e86e-4f9f-8dfc-a96e50e21704")
 	)
 	(no_connect
-		(at 49.53 119.38)
-		(uuid "0885a348-a912-4211-a2f2-210ab4a96312")
+		(at 195.58 91.44)
+		(uuid "080749a9-a63e-4e91-9ca9-e400d322c6d5")
 	)
 	(no_connect
 		(at 49.53 54.61)
@@ -17100,12 +17100,8 @@
 		(uuid "12ef88d1-de6c-40b3-9eef-95c5f6db564b")
 	)
 	(no_connect
-		(at 49.53 46.99)
-		(uuid "197abf1e-9af6-48ca-aeb6-23c7fd629fd7")
-	)
-	(no_connect
-		(at 100.33 31.75)
-		(uuid "19860fac-7192-45a7-85a2-e1889be083a6")
+		(at 195.58 106.68)
+		(uuid "17a123d3-af77-40c4-917f-2f347a9898e5")
 	)
 	(no_connect
 		(at 143.51 26.67)
@@ -17116,16 +17112,16 @@
 		(uuid "23d1295d-77d8-4347-874f-6d8c0e17b97f")
 	)
 	(no_connect
+		(at 100.33 57.15)
+		(uuid "24889230-174d-4b1e-b6c0-8927c4e5da7b")
+	)
+	(no_connect
 		(at 143.51 121.92)
 		(uuid "2685d4b6-e7cd-4884-b115-4eb853b1417d")
 	)
 	(no_connect
 		(at 100.33 114.3)
 		(uuid "2878f9f8-20b5-45cd-bf72-062237601bee")
-	)
-	(no_connect
-		(at 100.33 57.15)
-		(uuid "33020a9b-f7a3-4d97-b059-938e3fbbe679")
 	)
 	(no_connect
 		(at 100.33 124.46)
@@ -17146,6 +17142,10 @@
 	(no_connect
 		(at 143.51 111.76)
 		(uuid "43d94ca8-5043-4449-a711-81ca3e94e016")
+	)
+	(no_connect
+		(at 195.58 104.14)
+		(uuid "457ab630-9fb0-4619-ab0c-deb68d7bf6ea")
 	)
 	(no_connect
 		(at 100.33 52.07)
@@ -17216,6 +17216,10 @@
 		(uuid "9e6ef733-8850-4d35-b9b6-9a3500d5c536")
 	)
 	(no_connect
+		(at 195.58 99.06)
+		(uuid "9fe4effb-eeae-4f40-bb3f-4ee8b300d598")
+	)
+	(no_connect
 		(at 49.53 34.29)
 		(uuid "b098e732-d361-4f7d-a065-1b86f50fb556")
 	)
@@ -17242,6 +17246,10 @@
 	(no_connect
 		(at 195.58 46.99)
 		(uuid "cda00d51-ca7e-4931-a4b1-e249ac4381c0")
+	)
+	(no_connect
+		(at 195.58 96.52)
+		(uuid "ce70f613-8bd1-4e40-9e4c-3b237591e67d")
 	)
 	(no_connect
 		(at 100.33 119.38)
@@ -17272,20 +17280,12 @@
 		(uuid "e97487b0-1058-46bc-873e-70ed42b4d96e")
 	)
 	(no_connect
-		(at 100.33 59.69)
-		(uuid "eb447977-fc36-46b1-b60e-62813e4d6bca")
-	)
-	(no_connect
 		(at 143.51 114.3)
 		(uuid "f187d3e3-10de-4070-ba41-a90f39aacc5f")
 	)
 	(no_connect
 		(at 241.3 238.76)
 		(uuid "f221f88e-68b8-4302-bb0a-c3fa867f1dd1")
-	)
-	(no_connect
-		(at 49.53 116.84)
-		(uuid "f7a699ba-646c-424f-b4b0-89111c1319e2")
 	)
 	(no_connect
 		(at 143.51 64.77)
@@ -18920,7 +18920,7 @@
 		(uuid "06089074-81a8-40d2-a887-46c6581ab36d")
 	)
 	(label "FMC_A23"
-		(at 353.06 170.18 180)
+		(at 353.06 154.94 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18942,7 +18942,7 @@
 		(uuid "08449d54-e498-464a-aa5a-bf33129d4cf6")
 	)
 	(label "FMC_A20"
-		(at 353.06 137.16 180)
+		(at 353.06 167.64 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -18986,7 +18986,7 @@
 		(uuid "0c7f4aeb-3025-4545-bfd0-40c8e9dd4f9f")
 	)
 	(label "FMC_A19"
-		(at 353.06 78.74 180)
+		(at 353.06 160.02 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19008,7 +19008,7 @@
 		(uuid "0faf2578-a708-46b1-bae4-1ea57fd068b5")
 	)
 	(label "MCU_PMOD_DQ4"
-		(at 195.58 104.14 180)
+		(at 49.53 116.84 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19129,7 +19129,7 @@
 		(uuid "1b0d35bd-a33e-4678-af0c-1c01ee949cda")
 	)
 	(label "FMC_AD10"
-		(at 353.06 147.32 180)
+		(at 353.06 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19437,7 +19437,7 @@
 		(uuid "343b83a7-3d82-4072-a961-22e92d75f971")
 	)
 	(label "MCU_PMOD_DQ5"
-		(at 195.58 96.52 180)
+		(at 49.53 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19503,7 +19503,7 @@
 		(uuid "3cc8f085-6eb8-41e5-866e-498f21565d98")
 	)
 	(label "FMC_A17"
-		(at 353.06 152.4 180)
+		(at 353.06 63.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19569,7 +19569,7 @@
 		(uuid "43b94a62-34e3-4eca-920e-23238e82bfd1")
 	)
 	(label "FMC_NBL0"
-		(at 353.06 63.5 180)
+		(at 353.06 152.4 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19712,7 +19712,7 @@
 		(uuid "4d3ab365-84ef-48a9-b0cb-cd8067d7591e")
 	)
 	(label "MCU_PMOD_DQ6"
-		(at 195.58 99.06 180)
+		(at 100.33 31.75 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19811,7 +19811,7 @@
 		(uuid "549fa038-594f-4a5b-b841-d45c9becfd5c")
 	)
 	(label "FMC_NOE"
-		(at 353.06 58.42 180)
+		(at 353.06 157.48 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19877,7 +19877,7 @@
 		(uuid "58b1481e-0df1-4227-9d3f-73f495842296")
 	)
 	(label "FMC_AD13"
-		(at 353.06 114.3 180)
+		(at 353.06 149.86 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19998,7 +19998,7 @@
 		(uuid "6501ddc5-88aa-4846-8cd3-4b6332358c95")
 	)
 	(label "MCU_HYPERRAM_RST_N"
-		(at 195.58 91.44 180)
+		(at 49.53 46.99 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20108,7 +20108,7 @@
 		(uuid "6d54da3b-faf4-438d-ae1e-7dae8af95c17")
 	)
 	(label "MCU_PMOD_DQ0"
-		(at 195.58 106.68 180)
+		(at 100.33 59.69 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20218,7 +20218,7 @@
 		(uuid "748ede90-87ff-4e53-b00c-0e26469b68d7")
 	)
 	(label "FMC_A25"
-		(at 353.06 149.86 180)
+		(at 353.06 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20306,7 +20306,7 @@
 		(uuid "7d79fdef-3388-4a34-b8ad-ce990e5c2768")
 	)
 	(label "FMC_AD15"
-		(at 353.06 160.02 180)
+		(at 353.06 147.32 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20361,7 +20361,7 @@
 		(uuid "82059049-aa07-4c16-8180-3e7c6afdf315")
 	)
 	(label "FMC_AD11"
-		(at 353.06 68.58 180)
+		(at 353.06 55.88 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20372,7 +20372,7 @@
 		(uuid "82cb8a7b-6a0d-454b-aee5-58e0526e54e3")
 	)
 	(label "FMC_AD7"
-		(at 353.06 55.88 180)
+		(at 353.06 68.58 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20570,7 +20570,7 @@
 		(uuid "9848d255-f1a3-4353-8f65-0130e79fca40")
 	)
 	(label "FMC_AD9"
-		(at 353.06 154.94 180)
+		(at 353.06 139.7 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20768,7 +20768,7 @@
 		(uuid "ac82f0ca-c3da-4d8a-8b6c-26bba4ef8182")
 	)
 	(label "FMC_A22"
-		(at 353.06 167.64 180)
+		(at 353.06 137.16 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20790,7 +20790,7 @@
 		(uuid "ad4243c9-3863-49ad-ac54-f99afbee209b")
 	)
 	(label "FMC_AD14"
-		(at 353.06 157.48 180)
+		(at 353.06 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21494,7 +21494,7 @@
 		(uuid "f6c36ee9-da9c-48b7-8b9c-6e3795282773")
 	)
 	(label "FMC_A21"
-		(at 353.06 139.7 180)
+		(at 353.06 170.18 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -33057,7 +33057,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "bec90e09-d3dd-40bb-ab47-0221fdf24a50")
 		(property "Reference" "U1"
 			(at 384.175 115.1008 0)
