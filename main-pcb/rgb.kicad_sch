@@ -723,7 +723,7 @@
 	)
 	(text "1V2 IO"
 		(exclude_from_sim no)
-		(at 186.69 88.138 0)
+		(at 72.136 87.122 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -756,7 +756,7 @@
 	)
 	(text "2V5 IO"
 		(exclude_from_sim no)
-		(at 110.49 88.138 0)
+		(at 148.082 87.884 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -767,7 +767,7 @@
 	)
 	(text "1V8 IO"
 		(exclude_from_sim no)
-		(at 148.59 88.138 0)
+		(at 110.236 87.122 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -778,7 +778,7 @@
 	)
 	(text "3V3 IO"
 		(exclude_from_sim no)
-		(at 72.39 88.138 0)
+		(at 186.436 88.646 0)
 		(effects
 			(font
 				(size 1.27 1.27)

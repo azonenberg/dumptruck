@@ -29,15 +29,15 @@ Suggested stackup
     2    35 μm (1 oz) copper            Ground
         100 μm S1000-2 core
     3    17 μm (0.5 oz) copper          Signal
-        118 μm S1000-2M
+        118 μm S1000-2
     4    35 μm (1 oz) copper            Ground
-        100 μm S1000-2M
+        100 μm S1000-2
     5    35 μm (1 oz) copper            Power
-        500 μm S1000-2M
+        500 μm S1000-2
     6    35 μm (1 oz) copper            Power
-        100 μm S1000-2M
+        100 μm S1000-2
     7    35 μm (1 oz) copper            Ground
-        118 μm S1000-2M
+        118 μm S1000-2
     8    17 μm (0.5 oz) copper          Signal
         100 μm S1000-2 core
     9    35 μm (1 oz) copper            Ground
