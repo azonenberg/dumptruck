@@ -8280,7 +8280,7 @@
 		(uuid "8654b62f-1e87-4b7c-bfff-897bc4e3f211")
 	)
 	(label "1V0_EN"
-		(at 255.27 83.82 180)
+		(at 255.27 176.53 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8423,7 +8423,7 @@
 		(uuid "905a709c-9789-42d2-b9c4-5c62d95bcdce")
 	)
 	(label "3V3_EN"
-		(at 255.27 91.44 180)
+		(at 255.27 168.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8951,7 +8951,7 @@
 		(uuid "b6eb63cf-fec7-4793-a084-2617219fbd3c")
 	)
 	(label "1V8_EN"
-		(at 255.27 181.61 180)
+		(at 255.27 171.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9766,7 +9766,7 @@
 	)
 	(hierarchical_label "FPGA_INIT"
 		(shape bidirectional)
-		(at 255.27 171.45 180)
+		(at 255.27 181.61 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9982,7 +9982,7 @@
 	)
 	(hierarchical_label "FPGA_RST_N"
 		(shape output)
-		(at 255.27 176.53 180)
+		(at 255.27 83.82 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10018,7 +10018,7 @@
 	)
 	(hierarchical_label "FPGA_DONE"
 		(shape input)
-		(at 255.27 168.91 180)
+		(at 255.27 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font

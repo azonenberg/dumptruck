@@ -14288,7 +14288,7 @@
 		(uuid "22fe1a28-d753-4971-b17e-0cdcee9b0e79")
 	)
 	(label "ETH_LED2_N_1V8_INV"
-		(at 340.36 40.64 180)
+		(at 340.36 43.18 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14497,7 +14497,7 @@
 		(uuid "55af39b2-0e6c-4252-bb78-07cb6396e02c")
 	)
 	(label "ETH_LED1_N_1V8_INV"
-		(at 340.36 43.18 180)
+		(at 340.36 40.64 180)
 		(fields_autoplaced yes)
 		(effects
 			(font

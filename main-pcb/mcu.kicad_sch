@@ -21542,7 +21542,7 @@
 	)
 	(hierarchical_label "PRSNT_2V5"
 		(shape input)
-		(at 143.51 119.38 180)
+		(at 143.51 62.23 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21602,7 +21602,7 @@
 	)
 	(hierarchical_label "PRSNT_1V8"
 		(shape input)
-		(at 143.51 62.23 180)
+		(at 143.51 57.15 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21614,7 +21614,7 @@
 	)
 	(hierarchical_label "PRSNT_1V2"
 		(shape input)
-		(at 195.58 36.83 180)
+		(at 143.51 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21686,7 +21686,7 @@
 	)
 	(hierarchical_label "PRSNT_3V3"
 		(shape input)
-		(at 143.51 57.15 180)
+		(at 195.58 36.83 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
