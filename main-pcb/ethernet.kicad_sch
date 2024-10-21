@@ -14024,7 +14024,7 @@
 		(uuid "05c6cfcd-16b6-4a7f-b7db-fe8d02434f5a")
 	)
 	(label "ETH_RX_DV"
-		(at 340.36 38.1 180)
+		(at 340.36 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14090,7 +14090,7 @@
 		(uuid "10ab1c5e-7820-4b1d-959f-13e89f585cbc")
 	)
 	(label "ETH_RXD2"
-		(at 340.36 43.18 180)
+		(at 340.36 48.26 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14156,7 +14156,7 @@
 		(uuid "16be08bf-5bc7-49ee-9115-209e1826dd18")
 	)
 	(label "ETH_RST_N"
-		(at 340.36 111.76 180)
+		(at 340.36 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14288,7 +14288,7 @@
 		(uuid "22fe1a28-d753-4971-b17e-0cdcee9b0e79")
 	)
 	(label "ETH_LED2_N_1V8_INV"
-		(at 340.36 114.3 180)
+		(at 340.36 40.64 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14354,7 +14354,7 @@
 		(uuid "3345ddd5-4306-409c-9e56-c3a7920c00e5")
 	)
 	(label "ETH_RXD1"
-		(at 340.36 45.72 180)
+		(at 340.36 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14387,7 +14387,7 @@
 		(uuid "3aa309bd-180e-4b26-a065-c6019d480dce")
 	)
 	(label "ETH_RXD3"
-		(at 340.36 40.64 180)
+		(at 340.36 45.72 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14497,7 +14497,7 @@
 		(uuid "55af39b2-0e6c-4252-bb78-07cb6396e02c")
 	)
 	(label "ETH_LED1_N_1V8_INV"
-		(at 340.36 106.68 180)
+		(at 340.36 43.18 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14519,7 +14519,7 @@
 		(uuid "5748c9a7-95e6-43bd-81a7-97948af81b14")
 	)
 	(label "ETH_RXD0"
-		(at 340.36 48.26 180)
+		(at 340.36 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14772,7 +14772,7 @@
 		(uuid "77ed0821-294a-4692-a428-6e016b2db2fa")
 	)
 	(label "ETH_MDC"
-		(at 340.36 93.98 180)
+		(at 340.36 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14882,7 +14882,7 @@
 		(uuid "7f36d09f-93e0-4fa7-b9b6-553d4265da09")
 	)
 	(label "RGMII_TX_EN"
-		(at 340.36 76.2 180)
+		(at 340.36 38.1 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15244,7 +15244,7 @@
 		)
 		(uuid "b4611679-97c8-47e4-8edd-d404feb4d635")
 	)
-	(label "3V3"
+	(label "1V8"
 		(at 234.95 45.72 0)
 		(fields_autoplaced yes)
 		(effects
