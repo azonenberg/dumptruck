@@ -14541,7 +14541,7 @@
 		(uuid "5a82acc3-c66d-4032-8516-d42b03d063c3")
 	)
 	(label "RGMII_TXD1"
-		(at 340.36 58.42 180)
+		(at 340.36 66.04 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14629,7 +14629,7 @@
 		(uuid "630cb994-c611-400d-bd93-39db105db609")
 	)
 	(label "ETH_LED1_N_1V8"
-		(at 340.36 109.22 180)
+		(at 340.36 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14672,7 +14672,7 @@
 		)
 		(uuid "66e63de9-2977-458a-85a2-2b3932c2c55e")
 	)
-	(label "3V3"
+	(label "1V8"
 		(at 233.68 88.9 0)
 		(fields_autoplaced yes)
 		(effects
@@ -14739,7 +14739,7 @@
 		(uuid "74c5e0f4-51fc-4b48-95f4-9144e2f40099")
 	)
 	(label "ETH_LED2_N_1V8"
-		(at 340.36 76.2 180)
+		(at 340.36 109.22 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14882,7 +14882,7 @@
 		(uuid "7f36d09f-93e0-4fa7-b9b6-553d4265da09")
 	)
 	(label "RGMII_TX_EN"
-		(at 340.36 68.58 180)
+		(at 340.36 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15058,7 +15058,7 @@
 		(uuid "986738d1-1877-46f1-9747-06a9255cef41")
 	)
 	(label "RGMII_TX_CLK"
-		(at 340.36 66.04 180)
+		(at 340.36 60.96 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15311,7 +15311,7 @@
 		(uuid "bfb95962-2ad5-4112-848f-1f9e198340a0")
 	)
 	(label "RGMII_TXD3"
-		(at 340.36 78.74 180)
+		(at 340.36 68.58 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -15696,7 +15696,7 @@
 		(uuid "f6115e79-eaac-4969-bf8f-5c6d090d95a1")
 	)
 	(label "RGMII_TXD2"
-		(at 340.36 60.96 180)
+		(at 340.36 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
