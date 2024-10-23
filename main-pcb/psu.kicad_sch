@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-20")
+		(date "2024-10-23")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -7125,7 +7125,7 @@
 		(uuid "1a6c1537-9202-455e-b183-2bc9c6b9ec3f")
 	)
 	(label "SOFT_RST"
-		(at 255.27 176.53 180)
+		(at 255.27 179.07 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9171,7 +9171,7 @@
 		(uuid "cad83b16-4d71-4ffb-b3d1-b47cde40fbc1")
 	)
 	(label "SOFT_PWR"
-		(at 255.27 179.07 180)
+		(at 255.27 176.53 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
