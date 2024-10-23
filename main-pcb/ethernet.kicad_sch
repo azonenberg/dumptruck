@@ -14024,7 +14024,7 @@
 		(uuid "05c6cfcd-16b6-4a7f-b7db-fe8d02434f5a")
 	)
 	(label "ETH_RX_DV"
-		(at 340.36 111.76 180)
+		(at 340.36 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -14519,7 +14519,7 @@
 		(uuid "5748c9a7-95e6-43bd-81a7-97948af81b14")
 	)
 	(label "ETH_RXD0"
-		(at 340.36 106.68 180)
+		(at 340.36 111.76 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
