@@ -6883,7 +6883,7 @@
 		(uuid "09d12b3d-c9e1-4c3f-ab33-6eb82e4459d1")
 	)
 	(label "1V2_EN"
-		(at 255.27 148.59 180)
+		(at 255.27 168.91 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7125,7 +7125,7 @@
 		(uuid "1a6c1537-9202-455e-b183-2bc9c6b9ec3f")
 	)
 	(label "SOFT_RST"
-		(at 255.27 168.91 180)
+		(at 255.27 176.53 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7290,7 +7290,7 @@
 		(uuid "23f7e880-a5a3-4e85-bbc5-3ca1a29b361f")
 	)
 	(label "1V8_DIV2"
-		(at 255.27 68.58 180)
+		(at 255.27 143.51 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -7433,7 +7433,7 @@
 		(uuid "37031df3-093c-4468-8473-89291399c15a")
 	)
 	(label "LTC_VTEMP"
-		(at 255.27 143.51 180)
+		(at 255.27 63.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8632,7 +8632,7 @@
 		(uuid "a1148231-4d78-4e54-bb4e-fadfdd12634e")
 	)
 	(label "3V3_DIV2"
-		(at 255.27 63.5 180)
+		(at 255.27 66.04 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -8951,7 +8951,7 @@
 		(uuid "b6eb63cf-fec7-4793-a084-2617219fbd3c")
 	)
 	(label "1V8_EN"
-		(at 255.27 171.45 180)
+		(at 255.27 148.59 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9127,7 +9127,7 @@
 		(uuid "c9f3b1e7-f5d7-41b6-8d4f-7016b47d21af")
 	)
 	(label "LTC_PGOOD_ALL"
-		(at 255.27 176.53 180)
+		(at 255.27 171.45 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -9204,7 +9204,7 @@
 		(uuid "cd84d7ef-a351-4d04-a5a5-825d3af16105")
 	)
 	(label "2V5_DIV2"
-		(at 255.27 66.04 180)
+		(at 255.27 68.58 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
