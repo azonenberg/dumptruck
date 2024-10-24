@@ -597,6 +597,10 @@
 		(color 0 0 0 0)
 		(uuid "ad55ec03-e74b-4116-b998-414c9ceedd81")
 	)
+	(no_connect
+		(at 271.78 69.85)
+		(uuid "565be8df-4c18-44fb-8f8e-a892a6107462")
+	)
 	(wire
 		(pts
 			(xy 157.48 69.85) (xy 171.45 69.85)
