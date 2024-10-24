@@ -6,7 +6,7 @@
 	(paper "A3")
 	(title_block
 		(title "DUMPTRUCK flash dumper")
-		(date "2024-10-23")
+		(date "2024-10-24")
 		(rev "0.1")
 		(company "Antikernel Labs")
 		(comment 1 "Andrew D. Zonenberg")
@@ -17064,6 +17064,10 @@
 		(uuid "fb020cfe-b740-4685-88dc-fd4668fb0043")
 	)
 	(no_connect
+		(at 100.33 57.15)
+		(uuid "0100ec82-6966-4c2e-8878-0fd412672d9b")
+	)
+	(no_connect
 		(at 195.58 93.98)
 		(uuid "047df11c-4853-45a1-89bf-22958190fc04")
 	)
@@ -17116,8 +17120,8 @@
 		(uuid "2878f9f8-20b5-45cd-bf72-062237601bee")
 	)
 	(no_connect
-		(at 100.33 124.46)
-		(uuid "34e32563-dfca-4524-87d5-fec3f29d07cb")
+		(at 49.53 116.84)
+		(uuid "321422b8-160b-4cba-be1b-9d62c502b2f9")
 	)
 	(no_connect
 		(at 143.51 44.45)
@@ -17142,6 +17146,10 @@
 	(no_connect
 		(at 100.33 116.84)
 		(uuid "46249713-1145-457f-a4b6-47ab48d3e114")
+	)
+	(no_connect
+		(at 49.53 119.38)
+		(uuid "4ac0664a-d378-4c7c-87b1-3f934cf302d5")
 	)
 	(no_connect
 		(at 100.33 52.07)
@@ -17248,10 +17256,6 @@
 		(uuid "ce70f613-8bd1-4e40-9e4c-3b237591e67d")
 	)
 	(no_connect
-		(at 100.33 119.38)
-		(uuid "cf4ed9e5-b5e2-4ba6-b299-2289a65092a2")
-	)
-	(no_connect
 		(at 100.33 59.69)
 		(uuid "d252b95d-5ba4-411d-bdf8-291415e0be18")
 	)
@@ -17278,10 +17282,6 @@
 	(no_connect
 		(at 49.53 31.75)
 		(uuid "ea7cda37-22c2-4050-b74d-89681aec1a36")
-	)
-	(no_connect
-		(at 100.33 121.92)
-		(uuid "f0ec98a5-eb5b-466a-8f56-aa8c7dab71d6")
 	)
 	(no_connect
 		(at 143.51 114.3)
@@ -19129,7 +19129,7 @@
 		(uuid "1b0d35bd-a33e-4678-af0c-1c01ee949cda")
 	)
 	(label "FMC_AD10"
-		(at 353.06 114.3 180)
+		(at 353.06 63.5 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19250,7 +19250,7 @@
 		(uuid "22b00efe-c526-4365-9cdf-659825815730")
 	)
 	(label "MCU_LED_3"
-		(at 100.33 57.15 180)
+		(at 100.33 121.92 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19503,7 +19503,7 @@
 		(uuid "3cc8f085-6eb8-41e5-866e-498f21565d98")
 	)
 	(label "FMC_A17"
-		(at 353.06 63.5 180)
+		(at 353.06 147.32 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19877,7 +19877,7 @@
 		(uuid "58b1481e-0df1-4227-9d3f-73f495842296")
 	)
 	(label "FMC_AD13"
-		(at 353.06 149.86 180)
+		(at 353.06 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -19987,7 +19987,7 @@
 		(uuid "63902902-712a-4201-831b-05862effe898")
 	)
 	(label "MCU_LED_2"
-		(at 49.53 116.84 180)
+		(at 100.33 124.46 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20306,7 +20306,7 @@
 		(uuid "7d79fdef-3388-4a34-b8ad-ce990e5c2768")
 	)
 	(label "FMC_AD15"
-		(at 353.06 147.32 180)
+		(at 353.06 114.3 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20493,7 +20493,7 @@
 		(uuid "92dfc3bc-021b-4639-9b92-d76b058d821d")
 	)
 	(label "FMC_AD6"
-		(at 353.06 73.66 180)
+		(at 353.06 71.12 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20537,7 +20537,7 @@
 		(uuid "97661f39-cb54-4575-a826-ed1eb45d9614")
 	)
 	(label "FMC_AD12"
-		(at 353.06 66.04 180)
+		(at 353.06 60.96 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20570,7 +20570,7 @@
 		(uuid "9848d255-f1a3-4353-8f65-0130e79fca40")
 	)
 	(label "FMC_AD9"
-		(at 353.06 68.58 180)
+		(at 353.06 66.04 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20790,7 +20790,7 @@
 		(uuid "ad4243c9-3863-49ad-ac54-f99afbee209b")
 	)
 	(label "FMC_AD14"
-		(at 353.06 58.42 180)
+		(at 353.06 149.86 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20834,7 +20834,7 @@
 		(uuid "b2cbcff4-53d1-4e63-b7d5-4abb5be3a247")
 	)
 	(label "FMC_AD8"
-		(at 353.06 78.74 180)
+		(at 353.06 73.66 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -20856,7 +20856,7 @@
 		(uuid "b54b5894-6362-42c3-9d44-dcc7cd7d0da0")
 	)
 	(label "MCU_LED_1"
-		(at 49.53 119.38 180)
+		(at 100.33 119.38 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21296,7 +21296,7 @@
 		(uuid "de7ef80a-3f5f-474d-8e73-0dce42b9e74b")
 	)
 	(label "FMC_AD5"
-		(at 353.06 71.12 180)
+		(at 353.06 68.58 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -21395,7 +21395,7 @@
 		(uuid "eb92cc52-fc44-489e-ac4e-16be37a82757")
 	)
 	(label "FMC_AD4"
-		(at 353.06 60.96 180)
+		(at 353.06 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
