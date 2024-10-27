@@ -584,7 +584,7 @@ set_property PACKAGE_PIN AA22 [get_ports ram_clk_psc_p]
 # Clock constraints
 
 create_clock -period 40.000 -name clk_25mhz -waveform {0.000 20.000} [get_ports clk_25mhz]
-create_clock -period 7.273 -name fmc_clk [get_ports fmc_clk]
+create_clock -period 8.000 -name fmc_clk -waveform {0.000 4.000} [get_ports fmc_clk]
 
 create_generated_clock -name clk_125mhz -source [get_pins eth_pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins eth_pll/CLKOUT0]
 create_generated_clock -name clk_250mhz -source [get_pins eth_pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins eth_pll/CLKOUT1]
@@ -597,12 +597,15 @@ set_max_delay -datapath_only -from [get_cells -hierarchical -filter { NAME =~  "
 set_max_delay -from [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*dout0_reg*" }] -to [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*dout1_reg*" }] 4.000
 
 # Async clock domains
-set_clock_groups -asynchronous -group [get_clocks clk_125mhz] -group [get_clocks rgmii_rxc]
-set_clock_groups -asynchronous -group [get_clocks pclk_raw] -group [get_clocks clk_125mhz_raw]
 set_clock_groups -asynchronous -group [get_clocks clk_125mhz] -group [get_clocks pclk_raw]
-set_clock_groups -asynchronous -group [get_clocks rgmii_rx_clk] -group [get_clocks pclk_raw]
-set_clock_groups -asynchronous -group [get_clocks pclk_raw] -group [get_clocks rgmii_rx_clk]
 set_clock_groups -asynchronous -group [get_clocks clk_25mhz] -group [get_clocks pclk_raw]
+
+######################################################
+# Floorplanning
+
+create_pblock pblock_crypt25519
+add_cells_to_pblock [get_pblocks pblock_crypt25519] [get_cells -quiet [list crypt25519]]
+resize_pblock [get_pblocks pblock_crypt25519] -add {CLOCKREGION_X0Y0:CLOCKREGION_X1Y0}
 
 ######################################################
 # Put the timestamp in the bitstream USERCODE
@@ -611,9 +614,4 @@ set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
 
 ######################################################
 # Debug stuff
-
-set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
-set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
-set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
-connect_debug_port dbg_hub/clk [get_nets clk_125mhz]
 

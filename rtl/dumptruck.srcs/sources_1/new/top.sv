@@ -257,6 +257,8 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// APB root bridge
 
+	//TODO: very large segment for hyperram? or do we want to add AHB or something for that?
+
 	//Two 16-bit bus segments at 0xc000_0000 (APB1) and c001_0000 (APB2)
 	//APB1 has 1 kB address space per peripheral and is for small stuff
 	//APB2 has 4 kB address space per peripheral and is only used for Ethernet
@@ -287,8 +289,9 @@ module top(
 	// APB bridge for small peripherals
 
 	//APB1
-	localparam NUM_APB1_PERIPHERALS = 13;
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb1[NUM_APB1_PERIPHERALS-1:0]();
+	localparam NUM_APB1_PERIPHERALS = 14;
+	localparam APB1_ADDR_WIDTH		= 10;
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb1[NUM_APB1_PERIPHERALS-1:0]();
 	APBBridge #(
 		.BASE_ADDR(32'h0000_0000),
 		.BLOCK_SIZE(32'h400),
@@ -303,7 +306,8 @@ module top(
 
 	//APB2
 	localparam NUM_APB2_PERIPHERALS = 2;
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(12), .USER_WIDTH(0)) apb2[NUM_APB2_PERIPHERALS-1:0]();
+	localparam APB2_ADDR_WIDTH		= 12;
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB2_ADDR_WIDTH), .USER_WIDTH(0)) apb2[NUM_APB2_PERIPHERALS-1:0]();
 	APBBridge #(
 		.BASE_ADDR(32'h0000_0000),
 		.BLOCK_SIZE(32'h1000),
@@ -320,7 +324,7 @@ module top(
 	wire[31:0]	gpioa_in;
 	wire[31:0]	gpioa_tris;
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpioa();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpioa();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpioa(
 		.upstream(apb1[0]),
 		.downstream(apb_gpioa));
@@ -360,7 +364,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Device information (c000_0400)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_devinfo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_devinfo();
 	APBRegisterSlice #(.DOWN_REG(0), .UP_REG(1)) regslice_apb_devinfo(
 		.upstream(apb1[1]),
 		.downstream(apb_devinfo));
@@ -373,7 +377,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// MDIO transciever (c000_0800)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_mdio();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_mdio();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_mdio(
 		.upstream(apb1[2]),
 		.downstream(apb_mdio));
@@ -440,7 +444,7 @@ module top(
 		);
 
 	//SPI bus controller
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_flash();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_flash();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_flash(
 		.upstream(apb1[3]),
 		.downstream(apb_flash));
@@ -457,7 +461,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// XADC for on-die sensors (c000_1000)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_xadc();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_xadc();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_xadc(
 		.upstream(apb1[4]),
 		.downstream(apb_xadc));
@@ -469,7 +473,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Dummy GPIO for bank 16 at 3.3V (c000_1400 and c000_1800)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank16_lo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank16_lo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank16_lo(
 		.upstream(apb1[5]),
 		.downstream(apb_gpio_bank16_lo));
@@ -486,7 +490,7 @@ module top(
 		.gpio_tris(gpio_bank16_lo_tris)
 	);
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank16_hi();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank16_hi();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank16_hi(
 		.upstream(apb1[6]),
 		.downstream(apb_gpio_bank16_hi));
@@ -527,7 +531,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Dummy GPIO for bank 36 at 2.5V (c000_1c00 and c000_2000)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank36_lo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank36_lo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank36_lo(
 		.upstream(apb1[7]),
 		.downstream(apb_gpio_bank36_lo));
@@ -544,7 +548,7 @@ module top(
 		.gpio_tris(gpio_bank36_lo_tris)
 	);
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank36_hi();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank36_hi();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank36_hi(
 		.upstream(apb1[8]),
 		.downstream(apb_gpio_bank36_hi));
@@ -585,7 +589,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Dummy GPIO for bank 35 at 1.8V (c000_2400 and c000_2800)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank35_lo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank35_lo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank35_lo(
 		.upstream(apb1[9]),
 		.downstream(apb_gpio_bank35_lo));
@@ -602,7 +606,7 @@ module top(
 		.gpio_tris(gpio_bank35_lo_tris)
 	);
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank35_hi();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank35_hi();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank35_hi(
 		.upstream(apb1[10]),
 		.downstream(apb_gpio_bank35_hi));
@@ -643,7 +647,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Dummy GPIO for bank 34 at 1.2V (c000_2c00 and c000_3000)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank34_lo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank34_lo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank34_lo(
 		.upstream(apb1[11]),
 		.downstream(apb_gpio_bank34_lo));
@@ -660,7 +664,7 @@ module top(
 		.gpio_tris(gpio_bank34_lo_tris)
 	);
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank34_hi();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb_gpio_bank34_hi();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank34_hi(
 		.upstream(apb1[12]),
 		.downstream(apb_gpio_bank34_hi));
@@ -699,6 +703,20 @@ module top(
 	end
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Curve25519 crypto_scalarmult accelerator (c000_3400)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) cryptBus();
+
+	//Curve25519 accelerator (0x00_1c00)
+	APBRegisterSlice #(.UP_REG(1), .DOWN_REG(0))
+		apb_regslice_crypt( .upstream(apb1[13]), .downstream(cryptBus) );
+
+	APB_Curve25519 crypt25519(
+		.apb(cryptBus)
+	);
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Ethernet RX FIFO (c001_0000)
 
 	APB_EthernetRxBuffer_x32 eth_rx_fifo(
@@ -712,7 +730,7 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Ethernet TX FIFO (c001_1000)
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(12), .USER_WIDTH(0)) apb_tx_fifo();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB2_ADDR_WIDTH), .USER_WIDTH(0)) apb_tx_fifo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(0)) regslice_apb_tx_fifo(
 		.upstream(apb2[1]),
 		.downstream(apb_tx_fifo));
