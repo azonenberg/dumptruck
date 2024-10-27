@@ -573,7 +573,7 @@ set_property IOSTANDARD LVCMOS18 [get_ports ram_clk_p]
 set_property IOSTANDARD LVCMOS18 [get_ports ram_clk_psc_n]
 set_property IOSTANDARD LVCMOS18 [get_ports ram_clk_psc_p]
 set_property IOSTANDARD LVCMOS18 [get_ports ram_cs_n]
-set_property IOSTANDARD LVCMOS18 [get_ports fmc_ne2]
+set_property IOSTANDARD LVCMOS33 [get_ports fmc_ne2]
 set_property IOSTANDARD LVCMOS18 [get_ports ram_dqs]
 set_property PACKAGE_PIN AA21 [get_ports ram_dqs]
 set_property PACKAGE_PIN AB20 [get_ports ram_clk_p]
@@ -592,10 +592,22 @@ create_generated_clock -name clk_250mhz -source [get_pins eth_pll/CLKIN1] -maste
 ######################################################
 # CDC constraints
 
-set_clock_groups -asynchronous -group [get_clocks {clk_125mhz}] -group [get_clocks {rgmii_rxc}]
-
+# Synchronizer max delays
 set_max_delay -datapath_only -from [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*a_ff*" }] -to [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*reg_b*" }] 4.000
 set_max_delay -from [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*dout0_reg*" }] -to [get_cells -hierarchical -filter { NAME =~  "*sync*" && NAME =~  "*dout1_reg*" }] 4.000
+
+# Async clock domains
+set_clock_groups -asynchronous -group [get_clocks clk_125mhz] -group [get_clocks rgmii_rxc]
+set_clock_groups -asynchronous -group [get_clocks pclk_raw] -group [get_clocks clk_125mhz_raw]
+set_clock_groups -asynchronous -group [get_clocks clk_125mhz] -group [get_clocks pclk_raw]
+set_clock_groups -asynchronous -group [get_clocks rgmii_rx_clk] -group [get_clocks pclk_raw]
+set_clock_groups -asynchronous -group [get_clocks pclk_raw] -group [get_clocks rgmii_rx_clk]
+set_clock_groups -asynchronous -group [get_clocks clk_25mhz] -group [get_clocks pclk_raw]
+
+######################################################
+# Put the timestamp in the bitstream USERCODE
+
+set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
 
 ######################################################
 # Debug stuff
@@ -604,3 +616,4 @@ set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
 set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
 set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
 connect_debug_port dbg_hub/clk [get_nets clk_125mhz]
+

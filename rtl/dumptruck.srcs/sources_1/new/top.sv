@@ -287,7 +287,7 @@ module top(
 	// APB bridge for small peripherals
 
 	//APB1
-	localparam NUM_APB1_PERIPHERALS = 5;
+	localparam NUM_APB1_PERIPHERALS = 13;
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb1[NUM_APB1_PERIPHERALS-1:0]();
 	APBBridge #(
 		.BASE_ADDR(32'h0000_0000),
@@ -465,6 +465,238 @@ module top(
 	APB_XADC xadc(
 		.apb(apb_xadc)
 	);
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dummy GPIO for bank 16 at 3.3V (c000_1400 and c000_1800)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank16_lo();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank16_lo(
+		.upstream(apb1[5]),
+		.downstream(apb_gpio_bank16_lo));
+
+	wire[31:0] gpio_bank16_lo_out;
+	wire[31:0] gpio_bank16_lo_in;
+	wire[31:0] gpio_bank16_lo_tris;
+
+	APB_GPIO gpio_bank16_lo(
+		.apb(apb_gpio_bank16_lo),
+
+		.gpio_out(gpio_bank16_lo_out),
+		.gpio_in(gpio_bank16_lo_in),
+		.gpio_tris(gpio_bank16_lo_tris)
+	);
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank16_hi();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank16_hi(
+		.upstream(apb1[6]),
+		.downstream(apb_gpio_bank16_hi));
+
+	wire[31:0] gpio_bank16_hi_out;
+	wire[31:0] gpio_bank16_hi_in;
+	wire[31:0] gpio_bank16_hi_tris;
+
+	APB_GPIO gpio_bank16_hi(
+		.apb(apb_gpio_bank16_hi),
+
+		.gpio_out(gpio_bank16_hi_out),
+		.gpio_in(gpio_bank16_hi_in),
+		.gpio_tris(gpio_bank16_hi_tris)
+	);
+
+	//Tie off high inputs
+	assign gpio_bank16_hi_in[31:18] = 0;
+
+	for(genvar g=0; g<32; g++) begin: iobuf_bank16
+		IOBUF iobuf_lo(
+			.I(gpio_bank16_lo_out[g]),
+			.IO(bank16_io_3v3[g]),
+			.O(gpio_bank16_lo_in[g]),
+			.T(gpio_bank16_lo_tris[g])
+		);
+
+		if(g < 18) begin
+			IOBUF iobuf_hi(
+				.I(gpio_bank16_hi_out[g]),
+				.IO(bank16_io_3v3[g+32]),
+				.O(gpio_bank16_hi_in[g]),
+				.T(gpio_bank16_hi_tris[g])
+			);
+		end
+	end
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dummy GPIO for bank 36 at 2.5V (c000_1c00 and c000_2000)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank36_lo();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank36_lo(
+		.upstream(apb1[7]),
+		.downstream(apb_gpio_bank36_lo));
+
+	wire[31:0] gpio_bank36_lo_out;
+	wire[31:0] gpio_bank36_lo_in;
+	wire[31:0] gpio_bank36_lo_tris;
+
+	APB_GPIO gpio_bank36_lo(
+		.apb(apb_gpio_bank36_lo),
+
+		.gpio_out(gpio_bank36_lo_out),
+		.gpio_in(gpio_bank36_lo_in),
+		.gpio_tris(gpio_bank36_lo_tris)
+	);
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank36_hi();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank36_hi(
+		.upstream(apb1[8]),
+		.downstream(apb_gpio_bank36_hi));
+
+	wire[31:0] gpio_bank36_hi_out;
+	wire[31:0] gpio_bank36_hi_in;
+	wire[31:0] gpio_bank36_hi_tris;
+
+	APB_GPIO gpio_bank36_hi(
+		.apb(apb_gpio_bank36_hi),
+
+		.gpio_out(gpio_bank36_hi_out),
+		.gpio_in(gpio_bank36_hi_in),
+		.gpio_tris(gpio_bank36_hi_tris)
+	);
+
+	//Tie off high inputs
+	assign gpio_bank36_hi_in[31:18] = 0;
+
+	for(genvar g=0; g<32; g++) begin: iobuf_bank36
+		IOBUF iobuf_lo(
+			.I(gpio_bank36_lo_out[g]),
+			.IO(bank36_io_2v5[g]),
+			.O(gpio_bank36_lo_in[g]),
+			.T(gpio_bank36_lo_tris[g])
+		);
+
+		if(g < 18) begin
+			IOBUF iobuf_hi(
+				.I(gpio_bank36_hi_out[g]),
+				.IO(bank36_io_2v5[g+32]),
+				.O(gpio_bank36_hi_in[g]),
+				.T(gpio_bank36_hi_tris[g])
+			);
+		end
+	end
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dummy GPIO for bank 35 at 1.8V (c000_2400 and c000_2800)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank35_lo();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank35_lo(
+		.upstream(apb1[9]),
+		.downstream(apb_gpio_bank35_lo));
+
+	wire[31:0] gpio_bank35_lo_out;
+	wire[31:0] gpio_bank35_lo_in;
+	wire[31:0] gpio_bank35_lo_tris;
+
+	APB_GPIO gpio_bank35_lo(
+		.apb(apb_gpio_bank35_lo),
+
+		.gpio_out(gpio_bank35_lo_out),
+		.gpio_in(gpio_bank35_lo_in),
+		.gpio_tris(gpio_bank35_lo_tris)
+	);
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank35_hi();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank35_hi(
+		.upstream(apb1[10]),
+		.downstream(apb_gpio_bank35_hi));
+
+	wire[31:0] gpio_bank35_hi_out;
+	wire[31:0] gpio_bank35_hi_in;
+	wire[31:0] gpio_bank35_hi_tris;
+
+	APB_GPIO gpio_bank35_hi(
+		.apb(apb_gpio_bank35_hi),
+
+		.gpio_out(gpio_bank35_hi_out),
+		.gpio_in(gpio_bank35_hi_in),
+		.gpio_tris(gpio_bank35_hi_tris)
+	);
+
+	//Tie off high inputs
+	assign gpio_bank35_hi_in[31:18] = 0;
+
+	for(genvar g=0; g<32; g++) begin: iobuf_bank35
+		IOBUF iobuf_lo(
+			.I(gpio_bank35_lo_out[g]),
+			.IO(bank35_io_1v8[g]),
+			.O(gpio_bank35_lo_in[g]),
+			.T(gpio_bank35_lo_tris[g])
+		);
+
+		if(g < 18) begin
+			IOBUF iobuf_hi(
+				.I(gpio_bank35_hi_out[g]),
+				.IO(bank35_io_1v8[g+32]),
+				.O(gpio_bank35_hi_in[g]),
+				.T(gpio_bank35_hi_tris[g])
+			);
+		end
+	end
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Dummy GPIO for bank 34 at 1.2V (c000_2c00 and c000_3000)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank34_lo();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank34_lo(
+		.upstream(apb1[11]),
+		.downstream(apb_gpio_bank34_lo));
+
+	wire[31:0] gpio_bank34_lo_out;
+	wire[31:0] gpio_bank34_lo_in;
+	wire[31:0] gpio_bank34_lo_tris;
+
+	APB_GPIO gpio_bank34_lo(
+		.apb(apb_gpio_bank34_lo),
+
+		.gpio_out(gpio_bank34_lo_out),
+		.gpio_in(gpio_bank34_lo_in),
+		.gpio_tris(gpio_bank34_lo_tris)
+	);
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(10), .USER_WIDTH(0)) apb_gpio_bank34_hi();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_gpio_bank34_hi(
+		.upstream(apb1[12]),
+		.downstream(apb_gpio_bank34_hi));
+
+	wire[31:0] gpio_bank34_hi_out;
+	wire[31:0] gpio_bank34_hi_in;
+	wire[31:0] gpio_bank34_hi_tris;
+
+	APB_GPIO gpio_bank34_hi(
+		.apb(apb_gpio_bank34_hi),
+
+		.gpio_out(gpio_bank34_hi_out),
+		.gpio_in(gpio_bank34_hi_in),
+		.gpio_tris(gpio_bank34_hi_tris)
+	);
+
+	//Tie off high inputs
+	assign gpio_bank34_hi_in[31:18] = 0;
+
+	for(genvar g=0; g<32; g++) begin: iobuf_bank34
+		IOBUF iobuf_lo(
+			.I(gpio_bank34_lo_out[g]),
+			.IO(bank34_io_1v2[g]),
+			.O(gpio_bank34_lo_in[g]),
+			.T(gpio_bank34_lo_tris[g])
+		);
+
+		if(g < 18) begin
+			IOBUF iobuf_hi(
+				.I(gpio_bank34_hi_out[g]),
+				.IO(bank34_io_1v2[g+32]),
+				.O(gpio_bank34_hi_in[g]),
+				.T(gpio_bank34_hi_tris[g])
+			);
+		end
+	end
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Ethernet RX FIFO (c001_0000)
