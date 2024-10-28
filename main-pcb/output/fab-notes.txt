@@ -1,4 +1,4 @@
-Part number:        dumptruck-mainboard v0.1
+Part number:        dumptruck-main-pcb v0.1
 
 General fabrication notes
 
@@ -45,21 +45,21 @@ Suggested stackup
     10   35 μm (1 oz) copper            Signal
 
 File naming
-    mainboard-Edge_Cuts.gbr   Board outline
-    main-pcb.drl              Through-board plated holes
-    mainboard-F_SilkS.gbr     Front silkscreen
-    mainboard-F.Fab.gbr       Shows requested location of date code and UL marking
-    mainboard-F_Mask.gbr      Front solder mask
-    mainboard-F_Cu.gbr        Layer 1 copper
-    mainboard-In1_Cu.gbr      Layer 2 copper
-    mainboard-In2_Cu.gbr      Layer 3 copper
-    mainboard-In3_Cu.gbr      Layer 4 copper
-    mainboard-In4_Cu.gbr      Layer 5 copper
-    mainboard-In5_Cu.gbr      Layer 6 copper
-    mainboard-In6_Cu.gbr      Layer 7 copper
-    mainboard-In7_Cu.gbr      Layer 8 copper
-    mainboard-In8_Cu.gbr      Layer 9 copper
-    mainboard-B_Cu.gbr        Layer 10 copper
-    mainboard-B_Mask.gbr      Back solder mask
-    mainboard-B_SilkS.gbr     Back silkscreen
-    main-pcb.d356             Electrical test netlist
+    main-pcb-Edge_Cuts.gbr   Board outline
+    main-pcb.drl             Through-board plated holes
+    main-pcb-F_SilkS.gbr     Front silkscreen
+    main-pcb-F.Fab.gbr       Shows requested location of date code and UL marking
+    main-pcb-F_Mask.gbr      Front solder mask
+    main-pcb-F_Cu.gbr        Layer 1 copper
+    main-pcb-In1_Cu.gbr      Layer 2 copper
+    main-pcb-In2_Cu.gbr      Layer 3 copper
+    main-pcb-In3_Cu.gbr      Layer 4 copper
+    main-pcb-In4_Cu.gbr      Layer 5 copper
+    main-pcb-In5_Cu.gbr      Layer 6 copper
+    main-pcb-In6_Cu.gbr      Layer 7 copper
+    main-pcb-In7_Cu.gbr      Layer 8 copper
+    main-pcb-In8_Cu.gbr      Layer 9 copper
+    main-pcb-B_Cu.gbr        Layer 10 copper
+    main-pcb-B_Mask.gbr      Back solder mask
+    main-pcb-B_SilkS.gbr     Back silkscreen
+    main-pcb.d356            Electrical test netlist
