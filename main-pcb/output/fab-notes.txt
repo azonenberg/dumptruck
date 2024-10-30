@@ -1,4 +1,4 @@
-Part number:        dumptruck-main-pcb v0.1
+Part number:        dumptruck-main-pcb v0.1b
 
 General fabrication notes
 
@@ -26,7 +26,7 @@ Impedances
 Suggested stackup
     1    35 μm (1 oz) copper            Signal
          76 μm S1000-2 1078 prepreg
-    2    35 μm (1 oz) copper            Ground
+    2    17 μm (0.5 oz) copper          Ground
         100 μm S1000-2 core
     3    17 μm (0.5 oz) copper          Signal
         118 μm S1000-2
@@ -40,7 +40,7 @@ Suggested stackup
         118 μm S1000-2
     8    17 μm (0.5 oz) copper          Signal
         100 μm S1000-2 core
-    9    35 μm (1 oz) copper            Ground
+    9    17 μm (0.5 oz) copper          Ground
          76 μm S1000-2 1078 prepreg
     10   35 μm (1 oz) copper            Signal
 
