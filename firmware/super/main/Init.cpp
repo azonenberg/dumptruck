@@ -31,6 +31,7 @@
 #include "SupervisorSPIServer.h"
 #include "LEDTask.h"
 #include "ButtonTask.h"
+#include <math.h>
 
 //TODO: fix this path somehow?
 #include "../../../../common-ibc/firmware/main/regids.h"
@@ -45,68 +46,63 @@ GPIOPin g_sysokLED(&GPIOH, 0, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Power rail descriptors
 
-//TODO: ADC-feedback rail descriptor type
 GPIOPin g_1v0_en(&GPIOH, 1, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnable g_1v0("1V0", g_1v0_en, g_logTimer, 50);
+RailDescriptorWithEnableAndADC g_1v0("1V0", g_1v0_en, 16, 0.95, 1.05, 2.0, g_logTimer, 50);
 
-/*
-GPIOPin g_1v0_en(&GPIOB, 15, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_1v0_pgood(&GPIOA, 8, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnableAndPGood g_1v0("1V0", g_1v0_en, g_1v0_pgood, g_logTimer, 75);
+GPIOPin g_1v2_en(&GPIOB, 10, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+RailDescriptorWithEnableAndADC g_1v2("1V2", g_1v2_en, 8, 1.15, 1.25, 2.0, g_logTimer, 50);
 
-GPIOPin g_1v2_en(&GPIOA, 2, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_1v2_pgood(&GPIOA, 1, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnableAndPGood g_1v2("1V2", g_1v2_en, g_1v2_pgood, g_logTimer, 75);
+GPIOPin g_1v8_en(&GPIOB, 2, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+RailDescriptorWithEnableAndADC g_1v8("1V8", g_1v8_en, 15, 1.75, 1.85, 2.0, g_logTimer, 50);
 
-GPIOPin g_1v8_en(&GPIOA, 11, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_1v8_pgood(&GPIOB, 14, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnableAndPGood g_1v8("1V8", g_1v8_en, g_1v8_pgood, g_logTimer, 75);
+GPIOPin g_3v3_en(&GPIOC, 15, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+RailDescriptorWithEnableAndADC g_3v3("3V3", g_3v3_en, 6, 3.15, 3.35, 2.0, g_logTimer, 50);
 
-GPIOPin g_3v3_en(&GPIOB, 12, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_3v3_pgood(&GPIOB, 13, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnableAndPGood g_3v3("3V3", g_3v3_en, g_3v3_pgood, g_logTimer, 75);
+GPIOPin g_2v5_en(&GPIOC, 13, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+RailDescriptorWithEnableAndADC g_2v5("2V5", g_2v5_en, 7, 2.45, 2.55, 2.0, g_logTimer, 50);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Power rail sequence
-*/
+
 etl::vector g_powerSequence
 {
 	//VCCINT - VCCAUX - VCCO for the FPGA
-	(RailDescriptor*)&g_1v0/*,
+	(RailDescriptor*)&g_1v0,
 	&g_1v8,
+	&g_2v5,
 	&g_3v3,
 
 	//1V2 rail for the PHY should come up after 3.3V rail (note 1 on page 62)
-	&g_1v2*/
+	&g_1v2
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reset descriptors
 
 //Active low edge triggered reset
-GPIOPin g_fpgaResetN(&GPIOA, 8, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+GPIOPin g_fpgaResetN(&GPIOA, 8, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW, 0, true);	//open drain with pull to 1.8V on board
 ActiveLowResetDescriptor g_fpgaResetDescriptor(g_fpgaResetN, "FPGA PROG");
-/*
+
 //Active low level triggered delay-boot flag
 //Use this as the "FPGA is done booting" indicator
-GPIOPin g_fpgaInitN(&GPIOA, 3, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW, 0, true);
-GPIOPin g_fpgaDone(&GPIOB, 2, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-ActiveLowResetDescriptorWithActiveHighDone g_fpgaInitDescriptor(g_fpgaInitN, g_fpgaDone, "FPGA INIT");
+//Note: DONE pin here is active *low* due to inverting level shifter on the board
+GPIOPin g_fpgaInitN(&GPIOB, 15, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW, 0, true);
+GPIOPin g_fpgaDone(&GPIOA, 11, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
+ActiveLowResetDescriptorWithActiveLowDone g_fpgaInitDescriptor(g_fpgaInitN, g_fpgaDone, "FPGA INIT");
 
 //MCU reset comes at the end
-GPIOPin g_mcuResetN(&GPIOA, 3, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+GPIOPin g_mcuResetN(&GPIOB, 12, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
 ActiveLowResetDescriptor g_mcuResetDescriptor(g_mcuResetN, "MCU");
-*/
+
 etl::vector g_resetSequence
 {
 	//First boot the FPGA
-	(ResetDescriptor*)&g_fpgaResetDescriptor/*,	//need to cast at least one entry to base class
+	(ResetDescriptor*)&g_fpgaResetDescriptor,	//need to cast at least one entry to base class
 												//for proper template deduction
 	&g_fpgaInitDescriptor,
 
 	//then release the MCU
 	&g_mcuResetDescriptor,
-	*/
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,17 +138,15 @@ void App_Init()
 	g_tasks.push_back(&buttonTask);
 	g_tasks.push_back(&g_super);
 	//g_tasks.push_back(&spiserver);
+	g_timerTasks.push_back(&ledTask);
 
-	//No external pull on this pin
-	//g_mcuReady.SetPullMode(GPIOPin::PULL_DOWN);
+	//Add external pull due to reworked level shifter
+	g_fpgaDone.SetPullMode(GPIOPin::PULL_UP);
 
 	//wait 2 sec in case of problems
 	g_logTimer.Sleep(2 * 1000 * 10);
 
 	g_super.PowerOn();
-
-	//Read ADC voltage for 1V0 rail
-	//TODO: scale by using INA230 on 3v3_SB?
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

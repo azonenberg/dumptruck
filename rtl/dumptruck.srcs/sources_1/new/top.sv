@@ -318,6 +318,15 @@ module top(
 	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// DEBUG BLINKY
+
+	logic[23:0] count = 0;
+	always_ff @(posedge clk_25mhz) begin
+		count	<= count + 1;
+	end
+	assign led = count[23:20];
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// GPIO core (c000_0000)
 
 	wire[31:0]	gpioa_out;
@@ -343,7 +352,7 @@ module top(
 	assign gpioa_in[23:7] = 0;
 
 	//LEDs
-	assign led				= gpioa_out[3:0];
+	//assign led				= gpioa_out[3:0];
 	assign gpioa_in[3:0]	= led;
 
 	//Ethernet
