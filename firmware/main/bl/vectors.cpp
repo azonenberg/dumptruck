@@ -239,7 +239,7 @@ fnptr __attribute__((section(".vector"))) vectorTable[] =
 extern "C" const char
 	__attribute__((section(".fwid")))
 	__attribute__((used))
-	g_firmwareID[] = "trigger-crossbar-bl-main";
+	g_firmwareID[] = "dumptruck-bl-main";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Stub for unused interrupts

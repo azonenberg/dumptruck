@@ -191,12 +191,12 @@ void InitITM();
 
 void BSP_Init()
 {
-	/*
 	InitRTC();
-	InitSupervisor();
-	InitFMC();
-	InitFPGA();
+	//InitSupervisor();
+	//InitFMC();
+	//InitFPGA();
 	DoInitKVS();
+	/*
 	InitI2C();
 	InitEEPROM();
 	InitManagementPHY();
@@ -303,9 +303,6 @@ void BSP_InitUART()
 	NVIC_EnableIRQ(52);
 
 	g_logTimer.Sleep(10);	//wait for UART pins to be high long enough to remove any glitches during powerup
-
-	//Clear screen and move cursor to X0Y0
-	g_cliUART.Printf("\x1b[2J\x1b[0;0H");
 }
 
 void BSP_InitLog()
@@ -382,7 +379,7 @@ void InitFMC()
 	//Map the PSRAM bank in slot 1 (0xc0000000) as strongly ordered / device memory
 	fmc.SetPsramBankAs1();
 }
-
+*/
 void InitRTC()
 {
 	g_log("Initializing RTC...\n");
@@ -392,7 +389,7 @@ void InitRTC()
 	//Turn on the RTC APB clock so we can configure it, then set the clock source for it in the RCC
 	RCCHelper::Enable(&_RTC);
 	RTC::SetClockFromHSE(50);
-}*/
+}
 
 void DoInitKVS()
 {
@@ -403,9 +400,9 @@ void DoInitKVS()
 		small (SSH keys, IP addresses, etc). A 1024-entry log is a nice round number, and comes out to 64 kB or 50%,
 		leaving the remaining 64 kB or 50% for data.
 	 */
-	//static STM32StorageBank left(reinterpret_cast<uint8_t*>(0x080c0000), 0x20000);
-	//static STM32StorageBank right(reinterpret_cast<uint8_t*>(0x080e0000), 0x20000);
-	//InitKVS(&left, &right, 1024);
+	static STM32StorageBank left(reinterpret_cast<uint8_t*>(0x080c0000), 0x20000);
+	static STM32StorageBank right(reinterpret_cast<uint8_t*>(0x080e0000), 0x20000);
+	InitKVS(&left, &right, 1024);
 }
 /*
 void InitI2C()

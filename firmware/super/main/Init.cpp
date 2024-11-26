@@ -143,9 +143,6 @@ void App_Init()
 	//Add external pull due to reworked level shifter
 	g_fpgaDone.SetPullMode(GPIOPin::PULL_UP);
 
-	//wait 2 sec in case of problems
-	g_logTimer.Sleep(2 * 1000 * 10);
-
 	g_super.PowerOn();
 }
 
