@@ -18,9 +18,10 @@ target_link_options(bootloader
 
 target_link_libraries(bootloader
 	bsp
-	common-embedded-platform-core
-	common-embedded-platform-services
 	common-embedded-platform-bootloader
+	common-embedded-platform-core
+	common-embedded-platform-fpga
+	common-embedded-platform-services
 	embedded-cli
 	embedded-utils
 	microkvs

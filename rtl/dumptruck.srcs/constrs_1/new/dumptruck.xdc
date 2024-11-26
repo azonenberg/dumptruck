@@ -584,7 +584,7 @@ set_property PACKAGE_PIN AA22 [get_ports ram_clk_psc_p]
 # Clock constraints
 
 create_clock -period 40.000 -name clk_25mhz -waveform {0.000 20.000} [get_ports clk_25mhz]
-create_clock -period 8.000 -name fmc_clk -waveform {0.000 4.000} [get_ports fmc_clk]
+create_clock -period 10.000 -name fmc_clk -waveform {0.000 5.000} [get_ports fmc_clk]
 
 create_generated_clock -name clk_125mhz -source [get_pins eth_pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins eth_pll/CLKOUT0]
 create_generated_clock -name clk_250mhz -source [get_pins eth_pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins eth_pll/CLKOUT1]

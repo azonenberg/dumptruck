@@ -47,7 +47,7 @@ void TrimSpaces(char* str);
 /**
 	@brief Mapping of link speed IDs to printable names
  */
-static const char* g_linkSpeedNamesLong[] =
+const char* g_linkSpeedNamesLong[] =
 {
 	"10 Mbps",
 	"100 Mbps",
@@ -109,6 +109,9 @@ MACAddress g_macAddress;
 ///@brief Our IPv4 address
 IPv4Config g_ipConfig;
 
+///@brief Our IPv6 address
+IPv6Config g_ipv6Config;
+
 ///@brief Ethernet protocol stack
 EthernetProtocol* g_ethProtocol = nullptr;
 
@@ -144,12 +147,6 @@ uint8_t g_basetLinkSpeed = 0;
 ///@brief The DHCP client
 //ManagementDHCPClient* g_dhcpClient = nullptr;
 
-///@brief USERCODE of the FPGA (build timestamp)
-uint32_t g_usercode = 0;
-
-///@brief FPGA die serial number
-uint8_t g_fpgaSerial[8] = {0};
-
 ///@brief IRQ line to the FPGA
 APB_GPIOPin* g_ethIRQ = nullptr;
 
@@ -173,8 +170,11 @@ SPI<64, 64> g_superSPI(&SPI4, true, 64);
 ///@brief Version string for supervisor MCU
 char g_superVersion[20] = {0};
 
-///@brief Version string for IBC board
-char g_ibcHwVersion[20] = {0};
+///@brief Log destination
+LogSink<MAX_LOG_SINKS>* g_logSink;
+
+///@brief SPI flash controller for FPGA
+APB_SpiFlashInterface* g_fpgaFlash;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Globals
@@ -193,15 +193,14 @@ void BSP_Init()
 {
 	InitRTC();
 	//InitSupervisor();
-	//InitFMC();
-	//InitFPGA();
+	InitFMC();
+	InitFPGA();
+	InitFPGAFlash();
 	DoInitKVS();
-	/*
 	InitI2C();
 	InitEEPROM();
 	InitManagementPHY();
 	InitIP();
-	*/
 	InitITM();
 
 	App_Init();
@@ -255,7 +254,7 @@ void BSP_InitClocks()
 		40,		//12.5 * 40 = 500 MHz at the VCO
 		1,		//div P (primary output 500 MHz)
 		10,		//div Q (50 MHz kernel clock)
-		5,		//div R (100 MHz SWO Manchester bit clock, 50 Mbps data rate)
+		10,		//div R (50 MHz SWO Manchester bit clock, 25 Mbps data rate)
 		RCCHelper::CLOCK_SOURCE_HSE
 	);
 
@@ -266,10 +265,10 @@ void BSP_InitClocks()
 		2,		//PLL2
 		25,		//input is 25 MHz from the HSE
 		2,		//25/2 = 12.5 MHz at the PFD
-		22,		//12.5 * 22 = 275 MHz at the VCO
+		16,		//12.5 * 16 = 200 MHz at the VCO
 		32,		//div P (not used for now)
 		32,		//div Q (not used for now)
-		1,		//div R (275 MHz FMC kernel clock = 137.5 MHz FMC clock)
+		1,		//div R (200 MHz FMC kernel clock = 100 MHz FMC clock)
 		RCCHelper::CLOCK_SOURCE_HSE
 	);
 
@@ -307,18 +306,17 @@ void BSP_InitUART()
 
 void BSP_InitLog()
 {
-	//static LogSink<MAX_LOG_SINKS> sink(&g_cliUART);
-	//g_logSink = &sink;
+	static LogSink<MAX_LOG_SINKS> sink(&g_cliUART);
+	g_logSink = &sink;
 
-	//g_log.Initialize(g_logSink, &g_logTimer);
-	g_log.Initialize(&g_cliUART, &g_logTimer);
+	g_log.Initialize(g_logSink, &g_logTimer);
 	g_log("DUMPTRUCK by Andrew D. Zonenberg\n");
 	g_log("Firmware compiled at %s on %s\n", __TIME__, __DATE__);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Higher level initialization we used for a lot of stuff
-/*
+
 void InitFMC()
 {
 	g_log("Initializing FMC...\n");
@@ -345,6 +343,12 @@ void InitFMC()
 	static GPIOPin fmc_a17(&GPIOD, 12, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
 	static GPIOPin fmc_a18(&GPIOD, 13, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
 
+	static GPIOPin fmc_a19(&GPIOE, 3, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
+	static GPIOPin fmc_a20(&GPIOE, 4, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
+	static GPIOPin fmc_a21(&GPIOE, 5, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
+	static GPIOPin fmc_a22(&GPIOE, 6, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
+	static GPIOPin fmc_a23(&GPIOE, 2, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
+
 	static GPIOPin fmc_nl_nadv(&GPIOB, 7, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 12);
 	static GPIOPin fmc_nwait(&GPIOC, 6, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 9);
 	static GPIOPin fmc_ne1(&GPIOC, 7, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_VERYFAST, 9);
@@ -358,28 +362,9 @@ void InitFMC()
 	//Add a pullup on NWAIT
 	fmc_nwait.SetPullMode(GPIOPin::PULL_UP);
 
-	//Enable the FMC and select PLL2 R as the clock source
-	RCCHelper::Enable(&_FMC);
-	RCCHelper::SetFMCKernelClock(RCCHelper::FMC_CLOCK_PLL2_R);
-
-	//Use free-running clock output (so FPGA can clock APB off it)
-	//Configured as 16-bit multiplexed synchronous PSRAM
-	static FMCBank fmc(&_FMC, 0);
-	fmc.EnableFreeRunningClock();
-	fmc.EnableWrites();
-	fmc.SetSynchronous();
-	fmc.SetBusWidth(FMC_BCR_WIDTH_16);
-	fmc.SetMemoryType(FMC_BCR_TYPE_PSRAM);
-	fmc.SetAddressDataMultiplex();
-
-	//Enable wait states wiath NWAIT active during the wait
-	fmc.EnableSynchronousWaitStates();
-	fmc.SetEarlyWaitState(false);
-
-	//Map the PSRAM bank in slot 1 (0xc0000000) as strongly ordered / device memory
-	fmc.SetPsramBankAs1();
+	InitFMCForFPGA();
 }
-*/
+
 void InitRTC()
 {
 	g_log("Initializing RTC...\n");
@@ -404,7 +389,7 @@ void DoInitKVS()
 	static STM32StorageBank right(reinterpret_cast<uint8_t*>(0x080e0000), 0x20000);
 	InitKVS(&left, &right, 1024);
 }
-/*
+
 void InitI2C()
 {
 	g_log("Initializing I2C interfaces\n");
@@ -444,115 +429,10 @@ void InitEEPROM()
 			serial[8], serial[9], serial[10], serial[11], serial[12], serial[13], serial[14], serial[15]);
 	}
 }
-*/
-
-/**
-	@brief Bring up the control interface to the FPGA
- */
-/*
-void InitFPGA()
-{
-	g_log("Initializing FPGA\n");
-	LogIndenter li(g_log);
-
-	//Wait for the DONE signal to go high
-	g_log("Waiting for FPGA boot\n");
-	static GPIOPin fpgaDone(&GPIOA, 0, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW);
-	while(!fpgaDone)
-	{}
-
-	//Verify reliable functionality by poking the scratchpad register (TODO: proper timing-control link training?)
-	g_log("FMC loopback test...\n");
-	{
-		LogIndenter li2(g_log);
-		uint32_t tmp = 0xbaadc0de;
-		uint32_t count = 100000;
-		uint32_t errs = 0;
-		for(uint32_t i=0; i<count; i++)
-		//for(uint32_t i=0; true; i++)
-		{
-			FDEVINFO.scratch = tmp;
-			uint32_t readback = FDEVINFO.scratch;
-			if(readback != tmp)
-			{
-				//if(errs == 0)
-					g_log(Logger::ERROR, "Iteration %u: wrote 0x%08x, read 0x%08x\n", i, tmp, readback);
-				errs ++;
-			}
-			tmp ++;
-		}
-		g_log("%u iterations complete, %u errors\n", count, errs);
-	}
-
-	//Read the FPGA IDCODE and serial number
-	while(FDEVINFO.status != 3)
-	{}
-
-	uint32_t idcode = FDEVINFO.idcode;
-	memcpy(g_fpgaSerial, (const void*)FDEVINFO.serial, 8);
-
-	//Print status
-	switch(idcode & 0x0fffffff)
-	{
-		case 0x3647093:
-			g_log("IDCODE: %08x (XC7K70T rev %d)\n", idcode, idcode >> 28);
-			break;
-
-		case 0x364c093:
-			g_log("IDCODE: %08x (XC7K160T rev %d)\n", idcode, idcode >> 28);
-			break;
-
-		case 0x37c4093:
-			g_log("IDCODE: %08x (XC7S25 rev %d)\n", idcode, idcode >> 28);
-			break;
-
-		case 0x4a63093:
-			g_log("IDCODE: %08x (XCKU3P rev %d)\n", idcode, idcode >> 28);
-			break;
-
-		default:
-			g_log("IDCODE: %08x (unknown device, rev %d)\n", idcode, idcode >> 28);
-			break;
-	}
-	g_log("Serial: %02x%02x%02x%02x%02x%02x%02x%02x\n",
-		g_fpgaSerial[7], g_fpgaSerial[6], g_fpgaSerial[5], g_fpgaSerial[4],
-		g_fpgaSerial[3], g_fpgaSerial[2], g_fpgaSerial[1], g_fpgaSerial[0]);
-
-	//Read USERCODE
-	g_usercode = FDEVINFO.usercode;
-	g_log("Usercode: %08x\n", g_usercode);
-	{
-		LogIndenter li2(g_log);
-
-		//Format per XAPP1232:
-		//31:27 day
-		//26:23 month
-		//22:17 year
-		//16:12 hr
-		//11:6 min
-		//5:0 sec
-		int day = g_usercode >> 27;
-		int mon = (g_usercode >> 23) & 0xf;
-		int yr = 2000 + ((g_usercode >> 17) & 0x3f);
-		int hr = (g_usercode >> 12) & 0x1f;
-		int min = (g_usercode >> 6) & 0x3f;
-		int sec = g_usercode & 0x3f;
-		g_log("Bitstream timestamp: %04d-%02d-%02d %02d:%02d:%02d\n",
-			yr, mon, day, hr, min, sec);
-	}
-
-	InitFPGAFlash();
-
-	//Set up FPGA LEDs
-	FPGA_GPIOA.tris = 0xfffffff0;
-	FPGA_GPIOA.out = 0x5;
-}
-*/
 
 /**
 	@brief Initializes the management PHY
  */
- /*
 void InitManagementPHY()
 {
 	g_log("Initializing management PHY\n");
@@ -582,6 +462,10 @@ void InitManagementPHY()
 	}
 	else
 		g_log("PHY ID   = %04x %04x (unknown)\n", phyid1, phyid2);
+
+	uint16_t bctl = g_phyMdio->ReadRegister(REG_BASIC_CONTROL);
+	uint16_t bstat = g_phyMdio->ReadRegister(REG_BASIC_STATUS);
+	g_log("bctl %04x bstat %04x\n", bctl, bstat);
 }
 
 void InitFPGAFlash()
@@ -589,10 +473,10 @@ void InitFPGAFlash()
 	g_log("Initializing FPGA flash\n");
 	LogIndenter li(g_log);
 
-	static APB_SpiFlashInterface flash(&FSPI1, 10);	//125 MHz PCLK = 12.5 MHz SCK
-	//g_fpgaFlash = &flash;
+	static APB_SpiFlashInterface flash(&FSPI1, 10);	//100 MHz PCLK = 10 MHz SCK
+	g_fpgaFlash = &flash;
 }
-*/
+
 /**
 	@brief Remove spaces from trailing edge of a string
  */
@@ -614,17 +498,12 @@ void TrimSpaces(char* str)
 /**
 	@brief Set our IP address and initialize the IP stack
  */
-/*
 void InitIP()
 {
 	g_log("Initializing management IPv4 interface\n");
 	LogIndenter li(g_log);
 
 	g_ethIface.Init();
-
-	static APB_GPIOPin irq(&FPGA_GPIOA, 6, APB_GPIOPin::MODE_INPUT);
-	g_ethIRQ = &irq;
-
 	ConfigureIP();
 
 	g_log("Our IP address is %d.%d.%d.%d\n",
@@ -644,14 +523,18 @@ void InitIP()
 	//Global protocol stacks
 	static IPv4Protocol ipv4(eth, g_ipConfig, cache);
 	static ICMPv4Protocol icmpv4(ipv4);
+	static IPv6Protocol ipv6(eth, g_ipv6Config);
+	static ICMPv6Protocol icmpv6(ipv6);
 
 	//Register protocol handlers with the lower layer
 	eth.UseARP(&arp);
 	eth.UseIPv4(&ipv4);
+	eth.UseIPv6(&ipv6);
 	ipv4.UseICMPv4(&icmpv4);
-	RegisterProtocolHandlers(ipv4);
+	//ipv6.UseICMPv6(&icmpv6);
+
+	//RegisterProtocolHandlers(ipv4);
 }
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SFR access
@@ -659,46 +542,16 @@ void InitIP()
 /**
 	@brief Load our IP configuration from the KVS
  */
- /*
 void ConfigureIP()
 {
 	g_ipConfig.m_address = g_kvs->ReadObject<IPv4Address>(g_defaultIP, "ip.address");
 	g_ipConfig.m_netmask = g_kvs->ReadObject<IPv4Address>(g_defaultNetmask, "ip.netmask");
 	g_ipConfig.m_broadcast = g_kvs->ReadObject<IPv4Address>(g_defaultBroadcast, "ip.broadcast");
 	g_ipConfig.m_gateway = g_kvs->ReadObject<IPv4Address>(g_defaultGateway, "ip.gateway");
-}*/
 
-/**
-	@brief Check PHYs for updates
- */
-/*
-void PollPHYs()
-{
-	//Get the baseT link state
-	uint16_t bctl = g_phyMdio->ReadRegister(REG_BASIC_CONTROL);
-	uint16_t bstat = g_phyMdio->ReadRegister(REG_BASIC_STATUS);
-	bool bup = (bstat & 4) == 4;
-	if(bup && !g_basetLinkUp)
-	{
-		g_basetLinkSpeed = 0;
-		if( (bctl & 0x40) == 0x40)
-			g_basetLinkSpeed |= 2;
-		if( (bctl & 0x2000) == 0x2000)
-			g_basetLinkSpeed |= 1;
-		g_log("Interface mgmt0: link is up at %s\n", g_linkSpeedNamesLong[g_basetLinkSpeed]);
-		//OnEthernetLinkStateChanged();
-		g_ethProtocol->OnLinkUp();
-	}
-	else if(!bup && g_basetLinkUp)
-	{
-		g_log("Interface mgmt0: link is down\n");
-		g_basetLinkSpeed = 0xff;
-		//OnEthernetLinkStateChanged();
-		g_ethProtocol->OnLinkDown();
-	}
-	g_basetLinkUp = bup;
+	//TODO
+	memset(&g_ipv6Config, 0, sizeof(g_ipv6Config));
 }
-*/
 
 /**
 	@brief Initialize the SPI bus to the supervisor

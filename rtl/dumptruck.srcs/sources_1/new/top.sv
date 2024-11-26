@@ -91,6 +91,10 @@ module top(
 	inout wire[49:0]	bank35_io_1v8,
 	inout wire[49:0]	bank34_io_1v2
 );
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Buffer and level shift LEDs
+
+	assign eth_led_out = ~eth_led_in;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Clock synthesis PLL for Ethernet stuff
@@ -163,8 +167,8 @@ module top(
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb();
 
 	FMC_APBBridge #(
-		.CLOCK_PERIOD(7.27),	//137.5 MHz
-		.VCO_MULT(8),			//1.1 GHz VCO
+		.CLOCK_PERIOD(10),	//100 MHz
+		.VCO_MULT(10),		//1 GHz VCO
 		.CAPTURE_CLOCK_PHASE(-30),
 		.LAUNCH_CLOCK_PHASE(-30)
 	) fmcbridge(
@@ -318,15 +322,6 @@ module top(
 	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// DEBUG BLINKY
-
-	logic[23:0] count = 0;
-	always_ff @(posedge clk_25mhz) begin
-		count	<= count + 1;
-	end
-	assign led = count[23:20];
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// GPIO core (c000_0000)
 
 	wire[31:0]	gpioa_out;
@@ -352,7 +347,7 @@ module top(
 	assign gpioa_in[23:7] = 0;
 
 	//LEDs
-	//assign led				= gpioa_out[3:0];
+	assign led				= gpioa_out[3:0];
 	assign gpioa_in[3:0]	= led;
 
 	//Ethernet

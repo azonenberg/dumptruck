@@ -52,15 +52,12 @@ void InitDTS();
 //void InitSupervisor();
 void InitSensors();
 /*
-uint16_t GetFanRPM(uint8_t channel);
-
 uint16_t SupervisorRegRead(uint8_t regid);
 
 extern SPI<64, 64> g_superSPI;
 extern GPIOPin* g_superSPICS;
 
 extern char g_superVersion[20];
-extern char g_ibcVersion[20];
 
 extern ManagementSSHTransportServer* g_sshd;
 */

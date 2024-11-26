@@ -7,6 +7,8 @@ add_library(bsp STATIC
 	#ManagementDHCPClient.cpp
 	#ManagementPubkeyAuthenticator.cpp
 
+	TwentyHzTimerTask.cpp
+
 	common-vectors.cpp
 	hwinit.cpp
 	)

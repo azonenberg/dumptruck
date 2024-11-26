@@ -19,6 +19,7 @@ include("${PROJECT_ROOT}/stm32-cpp/build/${TARGET_MCU}.cmake")
 
 set(BUILD_APB_LIBS 1)
 set(CEP_BUILD_SUPER 0)
+set(CEP_BUILD_FPGA 1)
 add_compile_definitions(MAX_TOKEN_LEN=96)
 add_compile_definitions(LOGGER_USE_RTC_TIMESTAMP)
 add_compile_definitions(NO_SOFTWARE_25519)

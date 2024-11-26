@@ -27,96 +27,28 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#include "dumptruck.h"
-#include <ctype.h>
-//#include "../super/superregs.h"
-#include "../bsp/FPGATask.h"
-#include "../bsp/TwentyHzTimerTask.h"
+#ifndef TwentyHzTimerTask_h
+#define TwentyHzTimerTask_h
 
-//#include "DemoCLISessionContext.h"
-#include <peripheral/ITMStream.h>
-//#include "../super/superregs.h"
+#include <core/TimerTask.h>
 
-///@brief Output stream for local serial console
-//UARTOutputStream g_localConsoleOutputStream;
-
-///@brief Context data structure for local serial console
-//DemoCLISessionContext g_localConsoleSessionContext;
-
-//extern Iperf3Server* g_iperfServer;
-
-///@brief ITM serial trace data stream
-ITMStream g_itmStream(4);
-
-/**
-	@brief Initialize global GPIO LEDs
- */
-void InitLEDs()
+class TwentyHzTimerTask : public TimerTask
 {
-	g_leds[0] = 1;
-	g_leds[1] = 1;
-	g_leds[2] = 1;
-	g_leds[3] = 1;
-}
+public:
+	TwentyHzTimerTask()
+		: TimerTask(0, 10 * 50)
+	{}
 
-/**
-	@brief Initialize sensors and log starting values for each
- */
-void InitSensors()
-{
-	g_log("Initializing sensors\n");
-	LogIndenter li(g_log);
+protected:
+	virtual void OnTimer() override
+	{
+		//Check if we had a PHY link state change at 20 Hz
+		//TODO: add irq bit for this so we don't have to poll nonstop
+		PollPHYs();
+	}
 
-	//No fans on this board
+	void PollPHYs();
+};
 
-	//Read FPGA temperature
-	auto temp = FXADC.die_temp;
-	g_log("FPGA die temperature:              %uhk C\n", temp);
+#endif
 
-	//Read FPGA voltage sensors
-	int volt = FXADC.volt_core;
-	g_log("FPGA VCCINT:                        %uhk V\n", volt);
-	volt = FXADC.volt_ram;
-	g_log("FPGA VCCBRAM:                       %uhk V\n", volt);
-	volt = FXADC.volt_aux;
-	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
-}
-
-/**
-	@brief Initialize the digital temperature sensor
- */
-void InitDTS()
-{
-	auto tempval = g_dts.GetTemperature();
-	g_log("MCU die temperature:                   %d.%02d C\n",
-		(tempval >> 8),
-		static_cast<int>(((tempval & 0xff) / 256.0) * 100));
-}
-/*
-void RegisterProtocolHandlers(IPv4Protocol& ipv4)
-{
-	__attribute__((section(".tcmbss"))) static DemoUDPProtocol udp(&ipv4);
-	__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
-	ipv4.UseUDP(&udp);
-	ipv4.UseTCP(&tcp);
-	//g_dhcpClient = &udp.GetDHCP();
-}
-*/
-
-void App_Init()
-{
-	//Enable interrupts early on since we use them for e.g. debug logging during boot
-	EnableInterrupts();
-
-	//Basic hardware setup
-	//InitLEDs();
-	InitDTS();
-	InitSensors();
-
-	static FPGATask fpgaTask;
-	g_tasks.push_back(&fpgaTask);
-
-	static TwentyHzTimerTask timerTask20;
-	g_tasks.push_back(&timerTask20);
-	g_timerTasks.push_back(&timerTask20);
-}

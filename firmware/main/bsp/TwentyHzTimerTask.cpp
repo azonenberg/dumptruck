@@ -27,96 +27,34 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#include "dumptruck.h"
-#include <ctype.h>
-//#include "../super/superregs.h"
-#include "../bsp/FPGATask.h"
-#include "../bsp/TwentyHzTimerTask.h"
+#include <core/platform.h>
+#include "hwinit.h"
+#include "TwentyHzTimerTask.h"
 
-//#include "DemoCLISessionContext.h"
-#include <peripheral/ITMStream.h>
-//#include "../super/superregs.h"
-
-///@brief Output stream for local serial console
-//UARTOutputStream g_localConsoleOutputStream;
-
-///@brief Context data structure for local serial console
-//DemoCLISessionContext g_localConsoleSessionContext;
-
-//extern Iperf3Server* g_iperfServer;
-
-///@brief ITM serial trace data stream
-ITMStream g_itmStream(4);
-
-/**
-	@brief Initialize global GPIO LEDs
- */
-void InitLEDs()
+void TwentyHzTimerTask::PollPHYs()
 {
-	g_leds[0] = 1;
-	g_leds[1] = 1;
-	g_leds[2] = 1;
-	g_leds[3] = 1;
-}
+	//Get the baseT link state
+	uint16_t bctl = g_phyMdio->ReadRegister(REG_BASIC_CONTROL);
+	uint16_t bstat = g_phyMdio->ReadRegister(REG_BASIC_STATUS);
 
-/**
-	@brief Initialize sensors and log starting values for each
- */
-void InitSensors()
-{
-	g_log("Initializing sensors\n");
-	LogIndenter li(g_log);
-
-	//No fans on this board
-
-	//Read FPGA temperature
-	auto temp = FXADC.die_temp;
-	g_log("FPGA die temperature:              %uhk C\n", temp);
-
-	//Read FPGA voltage sensors
-	int volt = FXADC.volt_core;
-	g_log("FPGA VCCINT:                        %uhk V\n", volt);
-	volt = FXADC.volt_ram;
-	g_log("FPGA VCCBRAM:                       %uhk V\n", volt);
-	volt = FXADC.volt_aux;
-	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
-}
-
-/**
-	@brief Initialize the digital temperature sensor
- */
-void InitDTS()
-{
-	auto tempval = g_dts.GetTemperature();
-	g_log("MCU die temperature:                   %d.%02d C\n",
-		(tempval >> 8),
-		static_cast<int>(((tempval & 0xff) / 256.0) * 100));
-}
-/*
-void RegisterProtocolHandlers(IPv4Protocol& ipv4)
-{
-	__attribute__((section(".tcmbss"))) static DemoUDPProtocol udp(&ipv4);
-	__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
-	ipv4.UseUDP(&udp);
-	ipv4.UseTCP(&tcp);
-	//g_dhcpClient = &udp.GetDHCP();
-}
-*/
-
-void App_Init()
-{
-	//Enable interrupts early on since we use them for e.g. debug logging during boot
-	EnableInterrupts();
-
-	//Basic hardware setup
-	//InitLEDs();
-	InitDTS();
-	InitSensors();
-
-	static FPGATask fpgaTask;
-	g_tasks.push_back(&fpgaTask);
-
-	static TwentyHzTimerTask timerTask20;
-	g_tasks.push_back(&timerTask20);
-	g_timerTasks.push_back(&timerTask20);
+	bool bup = (bstat & 4) == 4;
+	if(bup && !g_basetLinkUp)
+	{
+		g_basetLinkSpeed = 0;
+		if( (bctl & 0x40) == 0x40)
+			g_basetLinkSpeed |= 2;
+		if( (bctl & 0x2000) == 0x2000)
+			g_basetLinkSpeed |= 1;
+		g_log("Interface mgmt0: link is up at %s\n", g_linkSpeedNamesLong[g_basetLinkSpeed]);
+		//OnEthernetLinkStateChanged();
+		g_ethProtocol->OnLinkUp();
+	}
+	else if(!bup && g_basetLinkUp)
+	{
+		g_log("Interface mgmt0: link is down\n");
+		g_basetLinkSpeed = 0xff;
+		//OnEthernetLinkStateChanged();
+		g_ethProtocol->OnLinkDown();
+	}
+	g_basetLinkUp = bup;
 }

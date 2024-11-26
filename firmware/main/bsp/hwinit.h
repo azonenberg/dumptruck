@@ -68,7 +68,6 @@
 void App_Init();
 void InitFMC();
 void InitRTC();
-void InitFPGA();
 void InitFPGAFlash();
 void InitI2C();
 void InitEEPROM();
@@ -91,6 +90,9 @@ extern GPIOPin g_leds[4];
 extern APBEthernetInterface g_ethIface;
 extern MACAddress g_macAddress;
 extern IPv4Config g_ipConfig;
+extern IPv6Config g_ipv6Config;
+extern MDIODevice* g_phyMdio;
+extern const char* g_linkSpeedNamesLong[];
 /*
 extern bool g_usingDHCP;
 extern ManagementDHCPClient* g_dhcpClient;
@@ -100,9 +102,6 @@ extern bool g_basetLinkUp;
 extern uint8_t g_basetLinkSpeed;
 //extern CrossbarSSHKeyManager g_keyMgr;
 
-extern APB_GPIOPin* g_ethIRQ;
-extern uint8_t g_fpgaSerial[8];
-extern uint32_t g_usercode;
 /*
 extern const char* g_defaultSshUsername;
 extern const char* g_usernameObjectID;
@@ -128,5 +127,9 @@ extern APBSpiFlashInterface* g_fpgaFlash;
 */
 
 extern volatile APB_XADC FXADC;
+extern volatile APB_GPIO FPGA_GPIOA;
+
+#define MAX_LOG_SINKS 4
+extern LogSink<MAX_LOG_SINKS>* g_logSink;
 
 #endif
