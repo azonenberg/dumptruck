@@ -35,24 +35,19 @@
 #include <peripheral/CRC.h>
 #include <peripheral/Flash.h>
 #include <peripheral/GPIO.h>
-#include <peripheral/I2C.h>
 #include <peripheral/SPI.h>
-#include <peripheral/RTC.h>
 #include <peripheral/UART.h>
 
 #include <APB_DeviceInfo_7series.h>
 #include <APB_GPIO.h>
-#include <APB_MDIO.h>
 #include <APB_SPIHostInterface.h>
 #include <APB_XADC.h>
 #include <APB_EthernetRxBuffer.h>
 #include <APB_EthernetTxBuffer_10G.h>
 #include <embedded-utils/APB_SpiFlashInterface.h>
 
-#include <microkvs/driver/STM32StorageBank.h>
-#include <staticnet-config.h>
-
-#include <staticnet/stack/staticnet.h>
+#include <tcpip/CommonTCPIP.h>
+#include <fpga/Ethernet.h>
 #include <staticnet/drivers/apb/APBEthernetInterface.h>
 #include <staticnet/drivers/stm32/STM32CryptoEngine.h>
 //#include <staticnet/ssh/SSHTransportServer.h>
@@ -65,19 +60,15 @@
 
 #include <supervisor/SupervisorSPIRegisters.h>
 
+#include <boilerplate/h735/StandardBSP.h>
+
 void App_Init();
 void InitFMC();
-void InitRTC();
 void InitFPGAFlash();
 void InitI2C();
-void InitEEPROM();
 void InitSupervisor();
 void InitIP();
-void InitManagementPHY();
-void PollPHYs();
 void ConfigureIP();
-
-void DoInitKVS();
 
 //Interface to supervisor MCU
 extern SPI<64, 64> g_superSPI;
@@ -85,21 +76,12 @@ extern GPIOPin* g_superSPICS;
 uint16_t ReadSupervisorRegister(superregs_t regid);
 
 //Common hardware interface stuff (mostly Ethernet related)
-extern UART<32, 256> g_cliUART;
 extern GPIOPin g_leds[4];
 extern APBEthernetInterface g_ethIface;
-extern MACAddress g_macAddress;
-extern IPv4Config g_ipConfig;
-extern IPv6Config g_ipv6Config;
-extern MDIODevice* g_phyMdio;
-extern const char* g_linkSpeedNamesLong[];
 /*
 extern bool g_usingDHCP;
 extern ManagementDHCPClient* g_dhcpClient;
 */
-extern EthernetProtocol* g_ethProtocol;
-extern bool g_basetLinkUp;
-extern uint8_t g_basetLinkSpeed;
 //extern CrossbarSSHKeyManager g_keyMgr;
 
 /*
@@ -108,17 +90,10 @@ extern const char* g_usernameObjectID;
 extern char g_sshUsername[CLI_USERNAME_MAX];
 */
 
-//IP address configuration
-extern const IPv4Address g_defaultIP;
-extern const IPv4Address g_defaultNetmask;
-extern const IPv4Address g_defaultBroadcast;
-extern const IPv4Address g_defaultGateway;
-
 void UART4_Handler();
 /*
 void OnEthernetLinkStateChanged();
 bool CheckForFPGAEvents();
-void TrimSpaces(char* str);
 */
 void RegisterProtocolHandlers(IPv4Protocol& ipv4);
 /*
@@ -128,8 +103,5 @@ extern APBSpiFlashInterface* g_fpgaFlash;
 
 extern volatile APB_XADC FXADC;
 extern volatile APB_GPIO FPGA_GPIOA;
-
-#define MAX_LOG_SINKS 4
-extern LogSink<MAX_LOG_SINKS>* g_logSink;
 
 #endif

@@ -20,6 +20,9 @@ include("${PROJECT_ROOT}/stm32-cpp/build/${TARGET_MCU}.cmake")
 set(BUILD_APB_LIBS 1)
 set(CEP_BUILD_SUPER 0)
 set(CEP_BUILD_FPGA 1)
+set(CEP_BUILD_BOILERPLATE 1)
+set(CEP_BUILD_TCPIP 1)
+set(CEP_BOILERPLATE_TARGET H735)
 add_compile_definitions(MAX_TOKEN_LEN=96)
 add_compile_definitions(LOGGER_USE_RTC_TIMESTAMP)
 add_compile_definitions(NO_SOFTWARE_25519)
@@ -35,6 +38,7 @@ include_directories(
 # Number of tasks we support
 add_compile_definitions(MAX_TASKS=6)
 add_compile_definitions(MAX_TIMER_TASKS=4)
+add_compile_definitions(MAX_LOG_SINKS=4)
 
 ########################################################################################################################
 # Build all of our other dependencies

@@ -34,26 +34,11 @@
  */
 #include <core/platform.h>
 #include "hwinit.h"
-//#include "LogSink.h"
 #include <peripheral/FMC.h>
 #include <peripheral/DWT.h>
 #include <peripheral/ITM.h>
-#include <peripheral/Power.h>
 #include <ctype.h>
 #include <embedded-utils/CoreSightRom.h>
-
-void TrimSpaces(char* str);
-
-/**
-	@brief Mapping of link speed IDs to printable names
- */
-const char* g_linkSpeedNamesLong[] =
-{
-	"10 Mbps",
-	"100 Mbps",
-	"1000 Mbps",
-	"10 Gbps"
-};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Memory mapped SFRs on the FPGA
@@ -69,13 +54,6 @@ volatile APB_EthernetRxBuffer FETHRX __attribute__((section(".fethrx")));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Common peripherals used by application and bootloader
-
-//APB1 is 62.5 MHz but default is for timer clock to be 2x the bus clock (see table 53 of RM0468)
-//Divide down to get 10 kHz ticks
-Timer g_logTimer(&TIM2, Timer::FEATURE_GENERAL_PURPOSE, 12500);
-
-///@brief Character device for logging
-//LogSink<MAX_LOG_SINKS>* g_logSink = nullptr;
 
 /**
 	@brief UART console
@@ -103,18 +81,6 @@ GPIOPin g_leds[4] =
  */
 __attribute__((section(".tcmbss"))) APBEthernetInterface g_ethIface(&FETHRX, &FETHTX);
 
-///@brief Our MAC address
-MACAddress g_macAddress;
-
-///@brief Our IPv4 address
-IPv4Config g_ipConfig;
-
-///@brief Our IPv6 address
-IPv6Config g_ipv6Config;
-
-///@brief Ethernet protocol stack
-EthernetProtocol* g_ethProtocol = nullptr;
-
 /**
 	@brief MAC address I2C EEPROM
 	Default kernel clock for I2C2 is pclk2 (68.75 MHz for our current config)
@@ -122,12 +88,6 @@ EthernetProtocol* g_ethProtocol = nullptr;
 	Divide by 40 after that to get 107 kHz
 */
 I2C g_macI2C(&I2C2, 16, 40);
-
-///@brief BaseT link status
-bool g_basetLinkUp = false;
-
-//Ethernet link speed
-uint8_t g_basetLinkSpeed = 0;
 
 ///@brief Key manager
 //CrossbarSSHKeyManager g_keyMgr;
@@ -150,9 +110,6 @@ uint8_t g_basetLinkSpeed = 0;
 ///@brief IRQ line to the FPGA
 APB_GPIOPin* g_ethIRQ = nullptr;
 
-///@brief MDIO device for the PHY
-MDIODevice* g_phyMdio = nullptr;
-
 ///@brief The battery-backed RAM used to store state across power cycles
 volatile BootloaderBBRAM* g_bbram = reinterpret_cast<volatile BootloaderBBRAM*>(&_RTC.BKP[0]);
 
@@ -170,19 +127,8 @@ SPI<64, 64> g_superSPI(&SPI4, true, 64);
 ///@brief Version string for supervisor MCU
 char g_superVersion[20] = {0};
 
-///@brief Log destination
-LogSink<MAX_LOG_SINKS>* g_logSink;
-
 ///@brief SPI flash controller for FPGA
 APB_SpiFlashInterface* g_fpgaFlash;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Globals
-
-const IPv4Address g_defaultIP			= { .m_octets{ 10,   2,   6,  50} };
-const IPv4Address g_defaultNetmask		= { .m_octets{255, 255, 255,   0} };
-const IPv4Address g_defaultBroadcast	= { .m_octets{ 10,   2,   6, 255} };
-const IPv4Address g_defaultGateway		= { .m_octets{ 10,   2,   6, 252} };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Do other initialization
@@ -191,14 +137,14 @@ void InitITM();
 
 void BSP_Init()
 {
-	InitRTC();
+	InitRTCFromHSE();
 	//InitSupervisor();
 	InitFMC();
 	InitFPGA();
 	InitFPGAFlash();
 	DoInitKVS();
 	InitI2C();
-	InitEEPROM();
+	InitMacEEPROM();
 	InitManagementPHY();
 	InitIP();
 	InitITM();
@@ -228,69 +174,6 @@ void InitITM()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BSP overrides for low level init
 
-void BSP_InitPower()
-{
-	//Initialize power (must be the very first thing done after reset)
-	Power::ConfigureSMPSToLDOCascade(Power::VOLTAGE_1V8, RANGE_VOS0);
-}
-
-void BSP_InitClocks()
-{
-	//With CPU_FREQ_BOOST not set, max frequency is 520 MHz
-
-	//Configure the flash with wait states and prefetching before making any changes to the clock setup.
-	//A bit of extra latency is fine, the CPU being faster than flash is not.
-	Flash::SetConfiguration(513, RANGE_VOS0);
-
-	//By default out of reset, we're clocked by the HSI clock at 64 MHz
-	//Initialize the external clock source at 25 MHz
-	RCCHelper::EnableHighSpeedExternalClock();
-
-	//Set up PLL1 to run off the external oscillator
-	RCCHelper::InitializePLL(
-		1,		//PLL1
-		25,		//input is 25 MHz from the HSE
-		2,		//25/2 = 12.5 MHz at the PFD
-		40,		//12.5 * 40 = 500 MHz at the VCO
-		1,		//div P (primary output 500 MHz)
-		10,		//div Q (50 MHz kernel clock)
-		10,		//div R (50 MHz SWO Manchester bit clock, 25 Mbps data rate)
-		RCCHelper::CLOCK_SOURCE_HSE
-	);
-
-	//Set up PLL2 to run the external memory bus
-	//We have some freedom with how fast we clock this!
-	//Doesn't have to be a multiple of 500 since separate VCO from the main system
-	RCCHelper::InitializePLL(
-		2,		//PLL2
-		25,		//input is 25 MHz from the HSE
-		2,		//25/2 = 12.5 MHz at the PFD
-		16,		//12.5 * 16 = 200 MHz at the VCO
-		32,		//div P (not used for now)
-		32,		//div Q (not used for now)
-		1,		//div R (200 MHz FMC kernel clock = 100 MHz FMC clock)
-		RCCHelper::CLOCK_SOURCE_HSE
-	);
-
-	//Set up main system clock tree
-	RCCHelper::InitializeSystemClocks(
-		1,		//sysclk = 500 MHz
-		2,		//AHB = 250 MHz
-		4,		//APB1 = 62.5 MHz
-		4,		//APB2 = 62.5 MHz
-		4,		//APB3 = 62.5 MHz
-		4		//APB4 = 62.5 MHz
-	);
-
-	//RNG clock should be >= HCLK/32
-	//AHB2 HCLK is 250 MHz so min 7.8125 MHz
-	//Select PLL1 Q clock (50 MHz)
-	RCC.D2CCIP2R = (RCC.D2CCIP2R & ~0x300) | (0x100);
-
-	//Select PLL1 as system clock source
-	RCCHelper::SelectSystemClockFromPLL1();
-}
-
 void BSP_InitUART()
 {
 	//Initialize the UART for local console: 115.2 Kbps using PA12 for UART4 transmit and PA11 for UART4 receive
@@ -302,16 +185,6 @@ void BSP_InitUART()
 	NVIC_EnableIRQ(52);
 
 	g_logTimer.Sleep(10);	//wait for UART pins to be high long enough to remove any glitches during powerup
-}
-
-void BSP_InitLog()
-{
-	static LogSink<MAX_LOG_SINKS> sink(&g_cliUART);
-	g_logSink = &sink;
-
-	g_log.Initialize(g_logSink, &g_logTimer);
-	g_log("DUMPTRUCK by Andrew D. Zonenberg\n");
-	g_log("Firmware compiled at %s on %s\n", __TIME__, __DATE__);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -365,107 +238,11 @@ void InitFMC()
 	InitFMCForFPGA();
 }
 
-void InitRTC()
-{
-	g_log("Initializing RTC...\n");
-	LogIndenter li(g_log);
-	g_log("Using external clock divided by 50 (500 kHz)\n");
-
-	//Turn on the RTC APB clock so we can configure it, then set the clock source for it in the RCC
-	RCCHelper::Enable(&_RTC);
-	RTC::SetClockFromHSE(50);
-}
-
-void DoInitKVS()
-{
-	/*
-		Use sectors 6 and 7 of main flash (in single bank mode) for a 128 kB microkvs
-
-		Each log entry is 64 bytes, and we want to allocate ~50% of storage to the log since our objects are pretty
-		small (SSH keys, IP addresses, etc). A 1024-entry log is a nice round number, and comes out to 64 kB or 50%,
-		leaving the remaining 64 kB or 50% for data.
-	 */
-	static STM32StorageBank left(reinterpret_cast<uint8_t*>(0x080c0000), 0x20000);
-	static STM32StorageBank right(reinterpret_cast<uint8_t*>(0x080e0000), 0x20000);
-	InitKVS(&left, &right, 1024);
-}
-
 void InitI2C()
 {
 	g_log("Initializing I2C interfaces\n");
 	static GPIOPin mac_i2c_scl(&GPIOH, 4, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
 	static GPIOPin mac_i2c_sda(&GPIOH, 5, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
-}
-
-void InitEEPROM()
-{
-	g_log("Initializing MAC address EEPROM\n");
-
-	//Extended memory block for MAC address data isn't in the normal 0xa* memory address space
-	//uint8_t main_addr = 0xa0;
-	uint8_t ext_addr = 0xb0;
-
-	//Pointers within extended memory block
-	uint8_t serial_offset = 0x80;
-	uint8_t mac_offset = 0x9a;
-
-	//Read MAC address
-	g_macI2C.BlockingWrite8(ext_addr, mac_offset);
-	g_macI2C.BlockingRead(ext_addr, &g_macAddress[0], sizeof(g_macAddress));
-
-	//Read serial number
-	const int serial_len = 16;
-	uint8_t serial[serial_len] = {0};
-	g_macI2C.BlockingWrite8(ext_addr, serial_offset);
-	g_macI2C.BlockingRead(ext_addr, serial, serial_len);
-
-	{
-		LogIndenter li(g_log);
-		g_log("MAC address: %02x:%02x:%02x:%02x:%02x:%02x\n",
-			g_macAddress[0], g_macAddress[1], g_macAddress[2], g_macAddress[3], g_macAddress[4], g_macAddress[5]);
-
-		g_log("EEPROM serial number: %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x\n",
-			serial[0], serial[1], serial[2], serial[3], serial[4], serial[5], serial[6], serial[7],
-			serial[8], serial[9], serial[10], serial[11], serial[12], serial[13], serial[14], serial[15]);
-	}
-}
-
-/**
-	@brief Initializes the management PHY
- */
-void InitManagementPHY()
-{
-	g_log("Initializing management PHY\n");
-	LogIndenter li(g_log);
-
-	//Reset the PHY
-	static APB_GPIOPin phy_rst_n(&FPGA_GPIOA, 4, APB_GPIOPin::MODE_OUTPUT);
-	phy_rst_n = 0;
-	g_logTimer.Sleep(10);
-	phy_rst_n = 1;
-
-	//Wait 100us (datasheet page 62 note 2) before starting to program the PHY
-	g_logTimer.Sleep(10);
-
-	//Read the PHY ID
-	static MDIODevice phydev(&FMDIO, 0);
-	g_phyMdio = &phydev;
-	auto phyid1 = phydev.ReadRegister(REG_PHY_ID_1);
-	auto phyid2 = phydev.ReadRegister(REG_PHY_ID_2);
-
-	if( (phyid1 == 0x22) && ( (phyid2 >> 4) == 0x162))
-	{
-		g_log("PHY ID   = %04x %04x (KSZ9031RNX rev %d)\n", phyid1, phyid2, phyid2 & 0xf);
-
-		//Adjust pad skew for RX_CLK register to improve timing FPGA side
-		//ManagementPHYExtendedWrite(2, REG_KSZ9031_MMD2_CLKSKEW, 0x01ef);
-	}
-	else
-		g_log("PHY ID   = %04x %04x (unknown)\n", phyid1, phyid2);
-
-	uint16_t bctl = g_phyMdio->ReadRegister(REG_BASIC_CONTROL);
-	uint16_t bstat = g_phyMdio->ReadRegister(REG_BASIC_STATUS);
-	g_log("bctl %04x bstat %04x\n", bctl, bstat);
 }
 
 void InitFPGAFlash()
@@ -475,24 +252,6 @@ void InitFPGAFlash()
 
 	static APB_SpiFlashInterface flash(&FSPI1, 10);	//100 MHz PCLK = 10 MHz SCK
 	g_fpgaFlash = &flash;
-}
-
-/**
-	@brief Remove spaces from trailing edge of a string
- */
-void TrimSpaces(char* str)
-{
-	char* p = str + strlen(str) - 1;
-
-	while(p >= str)
-	{
-		if(isspace(*p))
-			*p = '\0';
-		else
-			break;
-
-		p --;
-	}
 }
 
 /**
