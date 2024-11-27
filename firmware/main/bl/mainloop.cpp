@@ -190,3 +190,8 @@ void __attribute__((noreturn)) Bootloader_FirmwareUpdateFlow()
 		*/
 	}
 }
+
+void RegisterProtocolHandlers(IPv4Protocol& ipv4)
+{
+	//TODO
+}

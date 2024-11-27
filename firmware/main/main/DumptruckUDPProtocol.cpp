@@ -28,90 +28,49 @@
 ***********************************************************************************************************************/
 
 #include "dumptruck.h"
-#include <ctype.h>
-//#include "../super/superregs.h"
-#include "../bsp/FPGATask.h"
-#include <tcpip/IPAgingTask.h>
-#include <tcpip/PhyPollTask.h>
+#include "DumptruckUDPProtocol.h"
 
-//#include "DemoCLISessionContext.h"
-#include <peripheral/ITMStream.h>
-//#include "../super/superregs.h"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Construction / destruction
 
-///@brief Output stream for local serial console
-//UARTOutputStream g_localConsoleOutputStream;
-
-///@brief Context data structure for local serial console
-//DemoCLISessionContext g_localConsoleSessionContext;
-
-//extern Iperf3Server* g_iperfServer;
-
-///@brief ITM serial trace data stream
-ITMStream g_itmStream(4);
-
-/**
-	@brief Initialize global GPIO LEDs
- */
-void InitLEDs()
+DumptruckUDPProtocol::DumptruckUDPProtocol(IPv4Protocol* ipv4)
+	: UDPProtocol(ipv4)
+	//, m_dhcp(this)
+	, m_ntp(this)
 {
-	g_leds[0] = 1;
-	g_leds[1] = 1;
-	g_leds[2] = 1;
-	g_leds[3] = 1;
 }
 
-/**
-	@brief Initialize sensors and log starting values for each
- */
-void InitSensors()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Timer handlers
+
+void DumptruckUDPProtocol::OnAgingTick()
 {
-	g_log("Initializing sensors\n");
-	LogIndenter li(g_log);
-
-	//No fans on this board
-
-	//Read FPGA temperature
-	auto temp = FXADC.die_temp;
-	g_log("FPGA die temperature:              %uhk C\n", temp);
-
-	//Read FPGA voltage sensors
-	int volt = FXADC.volt_core;
-	g_log("FPGA VCCINT:                        %uhk V\n", volt);
-	volt = FXADC.volt_ram;
-	g_log("FPGA VCCBRAM:                       %uhk V\n", volt);
-	volt = FXADC.volt_aux;
-	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
+	//m_dhcp.OnAgingTick();
+	m_ntp.OnAgingTick();
 }
 
-void App_Init()
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Message handlers
+
+void DumptruckUDPProtocol::OnRxData(
+	IPv4Address srcip,
+	uint16_t sport,
+	uint16_t dport,
+	uint8_t* payload,
+	uint16_t payloadLen)
 {
-	//Enable interrupts early on since we use them for e.g. debug logging during boot
-	EnableInterrupts();
+	switch(dport)
+	{
+		/*case DHCP_CLIENT_PORT:
+			m_dhcp.OnRxData(srcip, sport, dport, payload, payloadLen);
+			break;*/
 
-	//Basic hardware setup
-	//InitLEDs();
-	InitDTS();
-	InitSensors();
+		case NTP_PORT:
+			m_ntp.OnRxData(srcip, sport, dport, payload, payloadLen);
+			break;
 
-	static FPGATask fpgaTask;
-	g_tasks.push_back(&fpgaTask);
-
-	static PhyPollTask phyTask;
-	g_tasks.push_back(&phyTask);
-	g_timerTasks.push_back(&phyTask);
-
-	static IPAgingTask ipAgingTask;
-	g_tasks.push_back(&ipAgingTask);
-	g_timerTasks.push_back(&ipAgingTask);
-}
-
-void RegisterProtocolHandlers(IPv4Protocol& ipv4)
-{
-	/*
-	__attribute__((section(".tcmbss"))) static DemoUDPProtocol udp(&ipv4);
-	__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
-	ipv4.UseUDP(&udp);
-	ipv4.UseTCP(&tcp);
-	*/
-	//g_dhcpClient = &udp.GetDHCP();
+		//ignore it
+		default:
+			break;
+	}
 }

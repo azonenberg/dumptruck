@@ -1,7 +1,7 @@
 add_executable(main
 	#DemoCLISessionContext.cpp
 	#DemoTCPProtocol.cpp
-	#DemoUDPProtocol.cpp
+	DumptruckUDPProtocol.cpp
 	globals.cpp
 	Init.cpp
 	vectors.cpp)
