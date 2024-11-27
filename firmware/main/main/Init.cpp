@@ -31,7 +31,7 @@
 #include <ctype.h>
 //#include "../super/superregs.h"
 #include "../bsp/FPGATask.h"
-#include "../bsp/TwentyHzTimerTask.h"
+#include <tcpip/PhyPollTask.h>
 
 //#include "DemoCLISessionContext.h"
 #include <peripheral/ITMStream.h>
@@ -106,7 +106,7 @@ void App_Init()
 	static FPGATask fpgaTask;
 	g_tasks.push_back(&fpgaTask);
 
-	static TwentyHzTimerTask timerTask20;
-	g_tasks.push_back(&timerTask20);
-	g_timerTasks.push_back(&timerTask20);
+	static PhyPollTask phyTask;
+	g_tasks.push_back(&phyTask);
+	g_timerTasks.push_back(&phyTask);
 }
