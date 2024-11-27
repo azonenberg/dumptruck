@@ -82,16 +82,6 @@ void InitSensors()
 	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
 }
 
-/**
-	@brief Initialize the digital temperature sensor
- */
-void InitDTS()
-{
-	auto tempval = g_dts.GetTemperature();
-	g_log("MCU die temperature:                   %d.%02d C\n",
-		(tempval >> 8),
-		static_cast<int>(((tempval & 0xff) / 256.0) * 100));
-}
 /*
 void RegisterProtocolHandlers(IPv4Protocol& ipv4)
 {

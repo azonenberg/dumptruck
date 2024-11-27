@@ -48,7 +48,6 @@
 
 #include <tcpip/CommonTCPIP.h>
 #include <fpga/Ethernet.h>
-#include <staticnet/drivers/apb/APBEthernetInterface.h>
 #include <staticnet/drivers/stm32/STM32CryptoEngine.h>
 //#include <staticnet/ssh/SSHTransportServer.h>
 //#include "ManagementDHCPClient.h"
@@ -61,14 +60,13 @@
 #include <supervisor/SupervisorSPIRegisters.h>
 
 #include <boilerplate/h735/StandardBSP.h>
+#include <fpga/FMCUtils.h>
 
 void App_Init();
 void InitFMC();
 void InitFPGAFlash();
 void InitI2C();
 void InitSupervisor();
-void InitIP();
-void ConfigureIP();
 
 //Interface to supervisor MCU
 extern SPI<64, 64> g_superSPI;
@@ -77,7 +75,6 @@ uint16_t ReadSupervisorRegister(superregs_t regid);
 
 //Common hardware interface stuff (mostly Ethernet related)
 extern GPIOPin g_leds[4];
-extern APBEthernetInterface g_ethIface;
 /*
 extern bool g_usingDHCP;
 extern ManagementDHCPClient* g_dhcpClient;

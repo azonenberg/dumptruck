@@ -33,7 +33,6 @@
 #include <core/platform.h>
 #include <hwinit.h>
 
-#include <peripheral/DTS.h>
 //#include <peripheral/SPI.h>
 
 #include <common-embedded-platform/services/Iperf3Server.h>
@@ -44,11 +43,9 @@
 
 //extern ManagementNTPClient* g_ntpClient;
 
-extern DigitalTempSensor g_dts;
 extern Iperf3Server* g_iperfServer;
 
 void InitLEDs();
-void InitDTS();
 //void InitSupervisor();
 void InitSensors();
 /*

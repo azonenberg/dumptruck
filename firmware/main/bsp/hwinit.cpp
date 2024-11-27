@@ -75,13 +75,6 @@ GPIOPin g_leds[4] =
 };
 
 /**
-	@brief Global Ethernet interface
-
-	Place it in TCM since we're not currently using DMA and TCM is faster for software memory copies
- */
-__attribute__((section(".tcmbss"))) APBEthernetInterface g_ethIface(&FETHRX, &FETHTX);
-
-/**
 	@brief MAC address I2C EEPROM
 	Default kernel clock for I2C2 is pclk2 (68.75 MHz for our current config)
 	Prescale by 16 to get 4.29 MHz
@@ -254,63 +247,8 @@ void InitFPGAFlash()
 	g_fpgaFlash = &flash;
 }
 
-/**
-	@brief Set our IP address and initialize the IP stack
- */
-void InitIP()
-{
-	g_log("Initializing management IPv4 interface\n");
-	LogIndenter li(g_log);
-
-	g_ethIface.Init();
-	ConfigureIP();
-
-	g_log("Our IP address is %d.%d.%d.%d\n",
-		g_ipConfig.m_address.m_octets[0],
-		g_ipConfig.m_address.m_octets[1],
-		g_ipConfig.m_address.m_octets[2],
-		g_ipConfig.m_address.m_octets[3]);
-
-	//ARP cache (shared by all interfaces)
-	static ARPCache cache;
-
-	//Per-interface protocol stacks
-	static EthernetProtocol eth(g_ethIface, g_macAddress);
-	g_ethProtocol = &eth;
-	static ARPProtocol arp(eth, g_ipConfig.m_address, cache);
-
-	//Global protocol stacks
-	static IPv4Protocol ipv4(eth, g_ipConfig, cache);
-	static ICMPv4Protocol icmpv4(ipv4);
-	static IPv6Protocol ipv6(eth, g_ipv6Config);
-	static ICMPv6Protocol icmpv6(ipv6);
-
-	//Register protocol handlers with the lower layer
-	eth.UseARP(&arp);
-	eth.UseIPv4(&ipv4);
-	eth.UseIPv6(&ipv6);
-	ipv4.UseICMPv4(&icmpv4);
-	//ipv6.UseICMPv6(&icmpv6);
-
-	//RegisterProtocolHandlers(ipv4);
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // SFR access
-
-/**
-	@brief Load our IP configuration from the KVS
- */
-void ConfigureIP()
-{
-	g_ipConfig.m_address = g_kvs->ReadObject<IPv4Address>(g_defaultIP, "ip.address");
-	g_ipConfig.m_netmask = g_kvs->ReadObject<IPv4Address>(g_defaultNetmask, "ip.netmask");
-	g_ipConfig.m_broadcast = g_kvs->ReadObject<IPv4Address>(g_defaultBroadcast, "ip.broadcast");
-	g_ipConfig.m_gateway = g_kvs->ReadObject<IPv4Address>(g_defaultGateway, "ip.gateway");
-
-	//TODO
-	memset(&g_ipv6Config, 0, sizeof(g_ipv6Config));
-}
 
 /**
 	@brief Initialize the SPI bus to the supervisor
