@@ -38,6 +38,7 @@
 #include <peripheral/Power.h>
 
 void InitSPI();
+void InitRailSensors();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Common global hardware config used by both bootloader and application
@@ -80,6 +81,8 @@ void BSP_Init()
 	Super_Init();
 	InitSPI();
 
+	InitRailSensors();
+
 	App_Init();
 }
 
@@ -116,13 +119,7 @@ void InitSPI()
 void InitGPIOs()
 {
 	g_log("Initializing GPIOs\n");
-	/*
-	//Enable pullups on all PGOOD lines
-	g_1v0_pgood.SetPullMode(GPIOPin::PULL_UP);
-	g_1v2_pgood.SetPullMode(GPIOPin::PULL_UP);
-	g_1v8_pgood.SetPullMode(GPIOPin::PULL_UP);
-	g_3v3_pgood.SetPullMode(GPIOPin::PULL_UP);
-	*/
+
 	//turn off all LEDs
 	g_pgoodLED = 0;
 	g_faultLED = 0;
@@ -131,4 +128,117 @@ void InitGPIOs()
 	//Set up GPIOs for I2C bus
 	static GPIOPin i2c_scl(&GPIOB, 6, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
 	static GPIOPin i2c_sda(&GPIOB, 7, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
+}
+
+void InitRailSensors()
+{
+	g_log("Initializing rail sensors\n");
+	LogIndenter li(g_log);
+
+	float tltc = GetLTCTemp();
+	g_log("LTC3374A: %d.%02d C\n",
+		static_cast<int>(tltc),
+		static_cast<int>(tltc * 100) % 100);
+
+	int v_vbus = GetRailVoltageMillivolts(INA_VBUS);
+	g_log("VBUS:      %d.%03d V\n", v_vbus / 1000, v_vbus % 1000);
+
+	int v_3v3_sb = GetRailVoltageMillivolts(INA_3V3_SB);
+	g_log("3V3_SB:    %d.%03d V\n", v_3v3_sb / 1000, v_3v3_sb % 1000);
+}
+
+float GetLTCTemp()
+{
+	//220 mV at 25C plus 7 mV/c
+	float vtemp = g_adc->ReadChannelScaledAveraged(5, 16, 3.3);
+	return ((vtemp - 0.22) / 0.007) + 25;
+}
+
+int GetRailVoltageMillivolts(uint8_t i2cAddr)
+{
+	g_i2c.NonblockingStart(1, i2cAddr, false);
+	while(!g_i2c.IsStartDone())
+	{}
+
+	g_i2c.NonblockingWrite(0x02);	//bus voltage
+	while(!g_i2c.IsWriteDone())
+	{}
+
+	g_i2c.NonblockingStart(2, i2cAddr, true);
+	while(!g_i2c.IsStartDone())
+	{}
+
+	while(!g_i2c.IsReadReady())
+	{}
+	int code = (g_i2c.GetReadData()) << 8;
+
+	while(!g_i2c.IsReadReady())
+	{}
+	code |= g_i2c.GetReadData();
+
+	//1.25 mV / LSB
+	return static_cast<int>(1.25 * code);
+}
+
+int GetRailCurrentMilliamps(uint8_t i2cAddr)
+{
+	g_i2c.NonblockingStart(1, i2cAddr, false);
+	while(!g_i2c.IsStartDone())
+	{}
+
+	g_i2c.NonblockingWrite(0x01);	//shunt voltage
+	while(!g_i2c.IsWriteDone())
+	{}
+
+	g_i2c.NonblockingStart(2, i2cAddr, true);
+	while(!g_i2c.IsStartDone())
+	{}
+
+	while(!g_i2c.IsReadReady())
+	{}
+	int code = (g_i2c.GetReadData()) << 8;
+
+	while(!g_i2c.IsReadReady())
+	{}
+	code |= g_i2c.GetReadData();
+
+	//2.5 uV/LSB, 25 milliohm shunt
+	float vshunt = code * 0.0000025;
+	float ishunt = vshunt / 0.025;
+	return static_cast<int>(ishunt * 1000);
+}
+
+void PrintRail(const char* name, uint8_t i2cAddr)
+{
+	int v = GetRailVoltageMillivolts(i2cAddr);
+	int i = GetRailCurrentMilliamps(i2cAddr);
+	int p = (v * i) / 1000;
+
+	//Sanity check: if voltage is nonsense, ignore current
+	if(v < 100)
+	{
+		i = 0;
+		p = 0;
+	}
+
+	g_log("%7s:   %d.%03d V, %4d mA, %4d mW\n",
+		name,
+		v / 1000, v % 1000,
+		i,
+		p);
+}
+
+void PrintAllRails()
+{
+	g_log("Rail status:\n");
+	LogIndenter li(g_log);
+
+	PrintRail("VBUS", INA_VBUS);
+	PrintRail("3V3_SB", INA_3V3_SB);
+	PrintRail("3V3", INA_3V3);
+	PrintRail("2V5", INA_2V5);
+	PrintRail("1V8", INA_1V8);
+	PrintRail("1V2", INA_1V2);
+	PrintRail("1V0", INA_1V0);
+	PrintRail("DUT_VDD", INA_DUT_VDD);
 }

@@ -44,6 +44,9 @@ public:
 	//DumptruckDHCPClient& GetDHCP()
 	//{ return m_dhcp; }
 
+	STM32NTPClient& GetNTP()
+	{ return m_ntp; }
+
 	virtual void OnAgingTick();
 
 protected:

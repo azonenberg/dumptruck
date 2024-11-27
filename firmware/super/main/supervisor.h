@@ -45,6 +45,13 @@ public:
 	{}
 
 protected:
+
+	virtual void OnPowerOn() override
+	{ PrintAllRails(); }
+
+	virtual void OnResetDone() override
+	{ PrintAllRails(); }
+
 	virtual void OnFault() override
 	{
 		//Set LEDs to fault state

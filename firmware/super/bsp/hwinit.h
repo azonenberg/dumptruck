@@ -55,12 +55,24 @@ extern GPIOPin g_pgoodLED;
 extern GPIOPin g_faultLED;
 extern GPIOPin g_sysokLED;
 
-/*
-extern GPIOPin g_1v0_pgood;
-extern GPIOPin g_1v2_pgood;
-extern GPIOPin g_1v8_pgood;
-extern GPIOPin g_3v3_pgood;
-*/
 void InitGPIOs();
+
+enum Ina230I2CAddress
+{
+	INA_VBUS	= 0x80,
+	INA_3V3_SB	= 0x82,
+	INA_3V3		= 0x84,
+	INA_2V5		= 0x86,
+	INA_1V8		= 0x88,
+	INA_1V2		= 0x8a,
+	INA_1V0		= 0x8c,
+	INA_DUT_VDD = 0x8e
+};
+
+float GetLTCTemp();
+int GetRailVoltageMillivolts(uint8_t i2cAddr);
+int GetRailCurrentMilliamps(uint8_t i2cAddr);
+void PrintAllRails();
+void PrintRail(const char* name, uint8_t i2cAddr);
 
 #endif

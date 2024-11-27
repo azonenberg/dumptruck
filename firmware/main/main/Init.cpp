@@ -49,6 +49,9 @@
 ///@brief ITM serial trace data stream
 ITMStream g_itmStream(4);
 
+///@brief UPD stack
+DumptruckUDPProtocol* g_udp = nullptr;
+
 /**
 	@brief Initialize global GPIO LEDs
  */
@@ -107,11 +110,11 @@ void App_Init()
 
 void RegisterProtocolHandlers(IPv4Protocol& ipv4)
 {
-	/*
-	__attribute__((section(".tcmbss"))) static DemoUDPProtocol udp(&ipv4);
-	__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
+	__attribute__((section(".tcmbss"))) static DumptruckUDPProtocol udp(&ipv4);
+	//__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
 	ipv4.UseUDP(&udp);
-	ipv4.UseTCP(&tcp);
-	*/
+	//ipv4.UseTCP(&tcp);
+
+	g_udp = &udp;
 	//g_dhcpClient = &udp.GetDHCP();
 }

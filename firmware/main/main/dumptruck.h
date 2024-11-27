@@ -33,17 +33,16 @@
 #include <core/platform.h>
 #include <hwinit.h>
 
-//#include <peripheral/SPI.h>
+#include <peripheral/SPI.h>
 
 #include <common-embedded-platform/services/Iperf3Server.h>
 
 #include <embedded-utils/StringBuffer.h>
-//#include "DemoUDPProtocol.h"
+#include "DumptruckUDPProtocol.h"
 //#include "DemoTCPProtocol.h"
 
-//extern ManagementNTPClient* g_ntpClient;
-
 extern Iperf3Server* g_iperfServer;
+extern DumptruckUDPProtocol* g_udp;
 
 void InitLEDs();
 //void InitSupervisor();

@@ -140,8 +140,10 @@ void App_Init()
 	//g_tasks.push_back(&spiserver);
 	g_timerTasks.push_back(&ledTask);
 
-	//Add external pull due to reworked level shifter
+	//Add external pull to 3V3_SB due to reworked level shifter
 	g_fpgaDone.SetPullMode(GPIOPin::PULL_UP);
+
+	//Set
 
 	g_super.PowerOn();
 }
