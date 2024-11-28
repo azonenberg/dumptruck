@@ -27,20 +27,21 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef SupervisorSPIServer_h
-#define SupervisorSPIServer_h
+#ifndef DumptruckSuperSPIServer_h
+#define DumptruckSuperSPIServer_h
 
-#include <supervisor/SupervisorSPIRegisters.h>
-#include <helpers/SPIServer.h>
+#include <supervisor/SupervisorSPIServer.h>
 
-class SupervisorSPIServer : public SPIServer
+//TODO: allocate commands starting at 0x80
+
+class DumptruckSuperSPIServer : public SupervisorSPIServer
 {
 public:
-	SupervisorSPIServer(SPI<64, 64>& spi);
+	DumptruckSuperSPIServer(SPI<64, 64>& spi)
+	: SupervisorSPIServer(spi)
+	{}
 
-protected:
-	virtual void OnCommand(uint8_t b) override;
-
+	virtual void OnApplicationCommand(uint8_t b);
 };
 
 #endif

@@ -25,7 +25,7 @@ include_directories(
 	)
 
 # Number of tasks we support
-add_compile_definitions(MAX_TASKS=5)
+add_compile_definitions(MAX_TASKS=6)
 add_compile_definitions(MAX_TIMER_TASKS=1)
 
 ########################################################################################################################

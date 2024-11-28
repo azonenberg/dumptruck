@@ -88,7 +88,6 @@ void BSP_Init()
 
 void InitSPI()
 {
-	/*
 	g_log("Initializing management SPI bus\n");
 
 	//Set up GPIOs for management bus
@@ -110,7 +109,6 @@ void InitSPI()
 	//Set up IRQ35 as SPI1 interrupt
 	NVIC_EnableIRQ(35);
 	g_spi.EnableRxInterrupt();
-	*/
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

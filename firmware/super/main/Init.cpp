@@ -28,10 +28,13 @@
 ***********************************************************************************************************************/
 
 #include "supervisor.h"
-#include "SupervisorSPIServer.h"
+#include "DumptruckSuperSPIServer.h"
 #include "LEDTask.h"
 #include "ButtonTask.h"
+#include "SensorTask.h"
 #include <math.h>
+#include <peripheral/DWT.h>
+#include <peripheral/ITM.h>
 
 //TODO: fix this path somehow?
 #include "../../../../common-ibc/firmware/main/regids.h"
@@ -130,21 +133,30 @@ void App_Init()
 		__DATE__, buildtime[0], buildtime[1], buildtime[3], buildtime[4], buildtime[6], buildtime[7]);
 	g_log("Firmware version %s\n", g_version);
 
+	//Start tracing
+	#ifdef _DEBUG
+		ITM::Enable();
+		DWT::EnablePCSampling(DWT::PC_SAMPLE_SLOW);
+		ITM::EnableDwtForwarding();
+	#endif
+
 	static LEDTask ledTask;
 	static ButtonTask buttonTask;
-	//static SupervisorSPIServer spiserver(g_spi);
+	static DumptruckSuperSPIServer spiserver(g_spi);
+	static SensorTask sensorTask;
 
 	g_tasks.push_back(&ledTask);
 	g_tasks.push_back(&buttonTask);
 	g_tasks.push_back(&g_super);
-	//g_tasks.push_back(&spiserver);
+	g_tasks.push_back(&spiserver);
+	g_tasks.push_back(&sensorTask);
+
 	g_timerTasks.push_back(&ledTask);
 
 	//Add external pull to 3V3_SB due to reworked level shifter
 	g_fpgaDone.SetPullMode(GPIOPin::PULL_UP);
 
-	//Set
-
+	//Turn on immediately, don't wait for a button press
 	g_super.PowerOn();
 }
 

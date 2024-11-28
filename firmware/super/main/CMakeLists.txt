@@ -1,6 +1,8 @@
 add_executable(main
-	SupervisorSPIServer.cpp
+	DumptruckSuperSPIServer.cpp
 	Init.cpp
+	SensorTask.cpp
+
 	vectors.cpp)
 
 target_link_options(main
