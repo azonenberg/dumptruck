@@ -49,7 +49,7 @@
 #include <tcpip/CommonTCPIP.h>
 #include <fpga/Ethernet.h>
 #include <staticnet/drivers/stm32/STM32CryptoEngine.h>
-//#include <staticnet/ssh/SSHTransportServer.h>
+#include <staticnet/ssh/SSHTransportServer.h>
 //#include "ManagementDHCPClient.h"
 //#include "CrossbarSSHKeyManager.h"
 

@@ -1,5 +1,5 @@
 add_executable(main
-	#DemoCLISessionContext.cpp
+	DumptruckCLISessionContext.cpp
 	#DemoTCPProtocol.cpp
 	DumptruckUDPProtocol.cpp
 	globals.cpp

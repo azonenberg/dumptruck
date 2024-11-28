@@ -33,21 +33,15 @@
 #include "../bsp/FPGATask.h"
 #include <tcpip/IPAgingTask.h>
 #include <tcpip/PhyPollTask.h>
+#include "LocalConsoleTask.h"
 
-//#include "DemoCLISessionContext.h"
 #include <peripheral/ITMStream.h>
 //#include "../super/superregs.h"
-
-///@brief Output stream for local serial console
-//UARTOutputStream g_localConsoleOutputStream;
-
-///@brief Context data structure for local serial console
-//DemoCLISessionContext g_localConsoleSessionContext;
 
 //extern Iperf3Server* g_iperfServer;
 
 ///@brief ITM serial trace data stream
-ITMStream g_itmStream(4);
+ITMStream g_itmStream(0);
 
 ///@brief UPD stack
 DumptruckUDPProtocol* g_udp = nullptr;
@@ -97,14 +91,16 @@ void App_Init()
 	InitSensors();
 
 	static FPGATask fpgaTask;
-	g_tasks.push_back(&fpgaTask);
-
 	static PhyPollTask phyTask;
-	g_tasks.push_back(&phyTask);
-	g_timerTasks.push_back(&phyTask);
-
 	static IPAgingTask ipAgingTask;
+	static LocalConsoleTask localConsoleTask;
+
+	g_tasks.push_back(&fpgaTask);
+	g_tasks.push_back(&phyTask);
 	g_tasks.push_back(&ipAgingTask);
+	g_tasks.push_back(&localConsoleTask);
+
+	g_timerTasks.push_back(&phyTask);
 	g_timerTasks.push_back(&ipAgingTask);
 }
 

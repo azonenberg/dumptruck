@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 *                                                                                                                      *
-* DUMPTRUCK                                                                                                       *
+* DUMPTRUCK                                                                                                            *
 *                                                                                                                      *
 * Copyright (c) 2023-2024 Andrew D. Zonenberg and contributors                                                         *
 * All rights reserved.                                                                                                 *
@@ -27,53 +27,99 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef supervisor_h
-#define supervisor_h
+/**
+	@file
+	@brief Declaration of DumptruckCLISessionContext
+ */
+#ifndef DumptruckCLISessionContext_h
+#define DumptruckCLISessionContext_h
 
-#include <supervisor/supervisor-common.h>
-#include <supervisor/PowerResetSupervisor.h>
+#include <embedded-cli/CLIOutputStream.h>
+#include <embedded-cli/CLISessionContext.h>
+#include <staticnet/cli/SSHOutputStream.h>
 
-//#include <bootloader/BootloaderAPI.h>
-#include "../bsp/hwinit.h"
-
-///@brief Project-specific supervisor class with hooks for controlling LEDs on panic
-class DumptruckPowerResetSupervisor : public PowerResetSupervisor
+class DumptruckCLISessionContext : public CLISessionContext
 {
 public:
-	DumptruckPowerResetSupervisor(etl::ivector<RailDescriptor*>& rails, etl::ivector<ResetDescriptor*>& resets)
-	: PowerResetSupervisor(rails, resets)
-	{}
+	DumptruckCLISessionContext();
+
+	void Initialize(int sessid, TCPTableEntry* socket, SSHTransportServer* server, const char* username)
+	{
+		m_sshstream.Initialize(sessid, socket, server);
+		Initialize(&m_sshstream, username);
+	}
+
+	//Generic init for non-SSH streams
+	void Initialize(CLIOutputStream* stream, const char* username)
+	{
+		m_stream = stream;
+		LoadHostname();
+		CLISessionContext::Initialize(m_stream, username);
+	}
+
+	SSHOutputStream* GetSSHStream()
+	{ return &m_sshstream; }
+
+	virtual void PrintPrompt();
 
 protected:
+	/*
+	bool ParseIPAddress(const char* addr, IPv4Address& ip);
+	bool ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask);
+	*/
+	void LoadHostname();
 
-	virtual void OnPowerOn() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 1;
-	}
+	virtual void OnExecute();
+	/*
+	void OnExecuteRoot();
 
-	virtual void OnPowerOff() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 0;
-	}
+	void OnCommit();
 
-	virtual void OnResetDone() override
-	{ PrintAllRails(); }
+	void OnDFU();
+	void OnIPCommand();
+	void OnIPAddress(const char* addr);
+	void OnIPGateway(const char* gw);
 
-	virtual void OnFault() override
-	{
-		//Set LEDs to fault state
-		g_faultLED = 1;
-		g_sysokLED = 0;
-		g_pgoodLED = 0;
+	void OnNoCommand();
+	void OnNoFlashCommand();
+	void OnNoSSHCommand();
+	void OnNoSSHKeyCommand();
 
-		//Hang until reset, don't attempt to auto restart
-		while(1)
-		{}
-	}
+	void OnNtpServer(const char* addr);
+	*/
+	void OnReload();
+	/*
+	void OnRollback();
+
+	void OnSetCommand();
+	void OnSetRegister();
+	void OnSetMmdRegister();
+	//void OnSpeed();
+
+	void OnShowARPCache();
+	void OnShowCommand();
+	void OnShowFlash();
+	void OnShowFlashDetail();
+	void OnShowHardware();
+	void OnShowIPAddress();
+	void OnShowIPRoute();
+	void OnShowMMDRegister();
+	void OnShowNtp();
+	void OnShowRegister();
+	void OnShowSSHFingerprint();
+	void OnShowSSHKeys();
+	//void OnShowTemperature();
+	void OnShowVersion();
+	void OnSSHCommand();
+	void OnSSHKey();
+	//void OnTest();
+	void OnZeroize();
+	*/
+	SSHOutputStream m_sshstream;
+	CLIOutputStream* m_stream;
+
+	///@brief Hostname (only used for display)
+	char m_hostname[33];
 };
-
-extern DumptruckPowerResetSupervisor g_super;
 
 #endif

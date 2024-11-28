@@ -159,9 +159,6 @@ void InitITM()
 	ITM::Enable();
 	DWT::EnablePCSampling(DWT::PC_SAMPLE_FAST);
 	ITM::EnableDwtForwarding();
-
-	//Turn on ITM stimulus channel 4 for serial logging
-	ITM::EnableChannel(4);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

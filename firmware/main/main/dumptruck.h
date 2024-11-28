@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 *                                                                                                                      *
-* fpga-stm32-iface                                                                                                     *
+* DUMPTRUCK                                                                                                            *
 *                                                                                                                      *
 * Copyright (c) 2023-2024 Andrew D. Zonenberg and contributors                                                         *
 * All rights reserved.                                                                                                 *

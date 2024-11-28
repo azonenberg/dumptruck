@@ -1,6 +1,6 @@
 /***********************************************************************************************************************
 *                                                                                                                      *
-* DUMPTRUCK                                                                                                       *
+* DUMPTRUCK                                                                                                            *
 *                                                                                                                      *
 * Copyright (c) 2023-2024 Andrew D. Zonenberg and contributors                                                         *
 * All rights reserved.                                                                                                 *
@@ -27,53 +27,36 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef supervisor_h
-#define supervisor_h
+#ifndef LocalConsoleTask_h
+#define LocalConsoleTask_h
 
-#include <supervisor/supervisor-common.h>
-#include <supervisor/PowerResetSupervisor.h>
+#include <core/Task.h>
+#include "DumptruckCLISessionContext.h"
 
-//#include <bootloader/BootloaderAPI.h>
-#include "../bsp/hwinit.h"
-
-///@brief Project-specific supervisor class with hooks for controlling LEDs on panic
-class DumptruckPowerResetSupervisor : public PowerResetSupervisor
+class LocalConsoleTask : public Task
 {
 public:
-	DumptruckPowerResetSupervisor(etl::ivector<RailDescriptor*>& rails, etl::ivector<ResetDescriptor*>& resets)
-	: PowerResetSupervisor(rails, resets)
-	{}
+	LocalConsoleTask()
+	{
+		m_outputStream.Initialize(&g_cliUART);
+		m_context.Initialize(&m_outputStream, "localadmin");
+		m_context.PrintPrompt();
+	}
+
+	virtual void Iteration()
+	{
+		if(g_cliUART.HasInput())
+			m_context.OnKeystroke(g_cliUART.BlockingRead());
+	}
 
 protected:
 
-	virtual void OnPowerOn() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 1;
-	}
+	///@brief Output stream for local serial console
+	UARTOutputStream m_outputStream;
 
-	virtual void OnPowerOff() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 0;
-	}
-
-	virtual void OnResetDone() override
-	{ PrintAllRails(); }
-
-	virtual void OnFault() override
-	{
-		//Set LEDs to fault state
-		g_faultLED = 1;
-		g_sysokLED = 0;
-		g_pgoodLED = 0;
-
-		//Hang until reset, don't attempt to auto restart
-		while(1)
-		{}
-	}
+	///@brief Session context for local serial console
+	DumptruckCLISessionContext m_context;
 };
 
-extern DumptruckPowerResetSupervisor g_super;
-
 #endif
+
