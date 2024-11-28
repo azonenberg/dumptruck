@@ -48,6 +48,8 @@ volatile APB_DeviceInfo_7series FDEVINFO __attribute__((section(".fdevinfo")));
 volatile APB_MDIO FMDIO __attribute__((section(".fmdio")));
 volatile APB_SPIHostInterface FSPI1 __attribute__((section(".fspi1")));
 volatile APB_XADC FXADC __attribute__((section(".fxadc")));
+volatile APB_Curve25519 FCURVE25519 __attribute__((section(".fcurve25519")));
+volatile APB_SerialLED FRGBLED __attribute__((section(".frgbled")));
 
 volatile APB_EthernetTxBuffer_10G FETHTX __attribute__((section(".fethtx")));
 volatile APB_EthernetRxBuffer FETHRX __attribute__((section(".fethrx")));
@@ -64,14 +66,25 @@ volatile APB_EthernetRxBuffer FETHRX __attribute__((section(".fethrx")));
 UART<32, 256> g_cliUART(&UART4, 543);
 
 /**
-	@brief GPIO LEDs
+	@brief MCU GPIO LEDs
  */
 GPIOPin g_leds[4] =
 {
-	GPIOPin(&GPIOC, 2, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
-	GPIOPin(&GPIOF, 9, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
-	GPIOPin(&GPIOH, 12, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
-	GPIOPin(&GPIOH, 6, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW)
+	GPIOPin(&GPIOH, 8, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
+	GPIOPin(&GPIOF, 13, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
+	GPIOPin(&GPIOF, 15, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW),
+	GPIOPin(&GPIOF, 14, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW)
+};
+
+/**
+	@brief FPGA GPIO LEDs
+ */
+APB_GPIOPin g_fpgaLEDs[4] =
+{
+	APB_GPIOPin(&FPGA_GPIOA, 0, APB_GPIOPin::MODE_OUTPUT),
+	APB_GPIOPin(&FPGA_GPIOA, 1, APB_GPIOPin::MODE_OUTPUT),
+	APB_GPIOPin(&FPGA_GPIOA, 2, APB_GPIOPin::MODE_OUTPUT),
+	APB_GPIOPin(&FPGA_GPIOA, 3, APB_GPIOPin::MODE_OUTPUT)
 };
 
 /**

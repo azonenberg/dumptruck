@@ -19,7 +19,38 @@ SECTIONS
 		. = ALIGN(1024);
 		KEEP (*(.fxadc))
 
-		/*TODO after here*/
+		/* Dummy GPIO (x2) for 3.3V bank */
+		. = ALIGN(1024);
+		. += 1024;
+		. = ALIGN(1024);
+		. += 1024;
+
+		/* Dummy GPIO (x2) for 2.5V bank */
+		. = ALIGN(1024);
+		. += 1024;
+		. = ALIGN(1024);
+		. += 1024;
+
+		/* Dummy GPIO (x2) for 1.8V bank */
+		. = ALIGN(1024);
+		. += 1024;
+		. = ALIGN(1024);
+		. += 1024;
+
+		/* Dummy GPIO (x2) for 1.2V bank */
+		. = ALIGN(1024);
+		. += 1024;
+		. = ALIGN(1024);
+		. += 1024;
+
+		/* Crypto accelerator */
+		. = ALIGN(1024);
+		KEEP (*(.fcurve25519))
+
+		/* RGB LEDs */
+		. = ALIGN(1024);
+		KEEP (*(.frgbled))
+
 	} > FMC_APB1
 
 	.sfr_fpga_apb2  (NOLOAD):

@@ -38,8 +38,10 @@
 #include <peripheral/SPI.h>
 #include <peripheral/UART.h>
 
+#include <APB_Curve25519.h>
 #include <APB_DeviceInfo_7series.h>
 #include <APB_GPIO.h>
+#include <APB_SerialLED.h>
 #include <APB_SPIHostInterface.h>
 #include <APB_XADC.h>
 #include <APB_EthernetRxBuffer.h>
@@ -75,6 +77,7 @@ uint16_t ReadSupervisorRegister(superregs_t regid);
 
 //Common hardware interface stuff (mostly Ethernet related)
 extern GPIOPin g_leds[4];
+extern APB_GPIOPin g_fpgaLEDs[4];
 /*
 extern bool g_usingDHCP;
 extern ManagementDHCPClient* g_dhcpClient;
@@ -100,5 +103,7 @@ extern APBSpiFlashInterface* g_fpgaFlash;
 
 extern volatile APB_XADC FXADC;
 extern volatile APB_GPIO FPGA_GPIOA;
+extern volatile APB_Curve25519 FCURVE25519;
+extern volatile APB_SerialLED FRGBLED;
 
 #endif

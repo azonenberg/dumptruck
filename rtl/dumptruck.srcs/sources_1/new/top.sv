@@ -293,7 +293,7 @@ module top(
 	// APB bridge for small peripherals
 
 	//APB1
-	localparam NUM_APB1_PERIPHERALS = 14;
+	localparam NUM_APB1_PERIPHERALS = 15;
 	localparam APB1_ADDR_WIDTH		= 10;
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) apb1[NUM_APB1_PERIPHERALS-1:0]();
 	APBBridge #(
@@ -711,7 +711,6 @@ module top(
 
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) cryptBus();
 
-	//Curve25519 accelerator (0x00_1c00)
 	APBRegisterSlice #(.UP_REG(1), .DOWN_REG(0))
 		apb_regslice_crypt( .upstream(apb1[13]), .downstream(cryptBus) );
 
@@ -719,6 +718,25 @@ module top(
 		.apb(cryptBus)
 	);
 
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// RGB LED controller (c000_3800)
+
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(APB1_ADDR_WIDTH), .USER_WIDTH(0)) ledBus();
+
+	APBRegisterSlice #(.UP_REG(1), .DOWN_REG(0))
+		apb_regslice_led( .upstream(apb1[14]), .downstream(ledBus) );
+
+	APB_SerialLED #(
+		.NUM_LEDS(6),
+		.SHORT_TIME(30),	//Number of PCLK cycles in a "short" pulse (300 ns)
+		.LONG_TIME(90),		//Number of PCLK cycles in a "long" pulse (900 ns)
+		.IFG_TIME(200),		//Number of PCLK cycles between data words
+		.RESET_TIME(750)	//Number of PCLK cycles in a reset pulse (>50us, do 75 to be safe)
+	)  led (
+		.apb(ledBus),
+
+		.led_ctrl(led_ctrl)
+	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Ethernet RX FIFO (c001_0000)

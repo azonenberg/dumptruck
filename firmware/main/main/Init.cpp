@@ -51,10 +51,26 @@ DumptruckUDPProtocol* g_udp = nullptr;
  */
 void InitLEDs()
 {
+	//Turn on the MCU GPIO LEDs
 	g_leds[0] = 1;
 	g_leds[1] = 1;
 	g_leds[2] = 1;
 	g_leds[3] = 1;
+
+	//Turn on the FPGA GPIO LEDs
+	g_fpgaLEDs[0] = 1;
+	g_fpgaLEDs[1] = 1;
+	g_fpgaLEDs[2] = 1;
+	g_fpgaLEDs[3] = 1;
+
+	//Set up the FPGA RGB LEDs
+	FRGBLED.framebuffer[0] = 0x200000;
+	FRGBLED.framebuffer[1] = 0x200000;
+
+	FRGBLED.framebuffer[2] = 0x000020;
+	FRGBLED.framebuffer[3] = 0x000020;
+	FRGBLED.framebuffer[4] = 0x000020;
+	FRGBLED.framebuffer[5] = 0x000020;
 }
 
 /**
@@ -86,7 +102,7 @@ void App_Init()
 	EnableInterrupts();
 
 	//Basic hardware setup
-	//InitLEDs();
+	InitLEDs();
 	InitDTS();
 	InitSensors();
 
