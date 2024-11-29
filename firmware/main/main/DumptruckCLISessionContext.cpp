@@ -1010,7 +1010,7 @@ void DumptruckCLISessionContext::OnShowHardware()
 	PrintPowerRail("1V8", SUPER_REG_V1V8, SUPER_REG_I1V8);
 	m_stream->Printf("    |     VCCAUX |   %uhk |         |        |\n", FXADC.volt_aux);
 	PrintPowerRail("1V2", SUPER_REG_V1V2, SUPER_REG_I1V2);
-	PrintPowerRail("1V0", SUPER_REG_V1V2, SUPER_REG_I1V0);
+	PrintPowerRail("1V0", SUPER_REG_V1V0, SUPER_REG_I1V0);
 	m_stream->Printf("    |     VCCINT |   %uhk |         |        |\n", FXADC.volt_core);
 	m_stream->Printf("    |    VCCBRAM |   %uhk |         |        |\n", FXADC.volt_ram);
 	PrintPowerRail("DUT_VDD", SUPER_REG_VDUTVDD, SUPER_REG_IDUTVDD);
