@@ -38,62 +38,134 @@ uint16_t g_v1v2 = 0;
 uint16_t g_v1v0 = 0;
 uint16_t g_vdutvdd = 0;
 
+uint16_t g_i3v3_sb = 0;
+uint16_t g_ivbus = 0;
+uint16_t g_i3v3 = 0;
+uint16_t g_i2v5 = 0;
+uint16_t g_i1v8 = 0;
+uint16_t g_i1v2 = 0;
+uint16_t g_i1v0 = 0;
+uint16_t g_idutvdd = 0;
+
+uint16_t g_ltcTemp = 0;
+
 void SensorTask::Iteration()
 {
 	switch(m_index)
 	{
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Temperatures
+
 		//Update MCU temperature
 		case 0:
 			if(g_adc->GetTemperatureNonblocking(g_mcutemp))
 				NextStep();
 			break;
 
+		case 1:
+			g_ltcTemp = GetLTCTemp() * 256;
+			NextStep();
+			break;
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Voltages
+
 		//Read MCU 3.3V rail
 		//Don't use the internal ADC, use the INA230 since it's way more accurate
-		case 1:
+		case 2:
 			if(ReadVoltageIteration(INA_3V3_SB, g_3v3Voltage))
 				NextStep();
 			break;
 
 		//Read VBUS
-		case 2:
+		case 3:
 			if(ReadVoltageIteration(INA_VBUS, g_vvbus))
 				NextStep();
 			break;
 
 		//Read 3V3
-		case 3:
+		case 4:
 			if(ReadVoltageIteration(INA_3V3, g_v3v3))
 				NextStep();
 			break;
 
 		//Read 2V5
-		case 4:
+		case 5:
 			if(ReadVoltageIteration(INA_2V5, g_v2v5))
 				NextStep();
 			break;
 
 		//Read 1V8
-		case 5:
+		case 6:
 			if(ReadVoltageIteration(INA_1V8, g_v1v8))
 				NextStep();
 			break;
 
 		//Read 1V2
-		case 6:
+		case 7:
 			if(ReadVoltageIteration(INA_1V2, g_v1v2))
 				NextStep();
 			break;
 
 		//Read 1V0
-		case 7:
+		case 8:
 			if(ReadVoltageIteration(INA_1V0, g_v1v0))
 				NextStep();
 			break;
 
-		//Rad DUT_VDD
-		case 8:
+		//Read DUT_VDD
+		case 9:
 			if(ReadVoltageIteration(INA_DUT_VDD, g_vdutvdd))
+				NextStep();
+			break;
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Currents
+
+		case 10:
+			if(ReadCurrentIteration(INA_3V3_SB, g_i3v3_sb))
+				NextStep();
+			break;
+
+		//Read VBUS
+		case 11:
+			if(ReadCurrentIteration(INA_VBUS, g_ivbus))
+				NextStep();
+			break;
+
+		//Read 3V3
+		case 12:
+			if(ReadCurrentIteration(INA_3V3, g_i3v3))
+				NextStep();
+			break;
+
+		//Read 2V5
+		case 13:
+			if(ReadCurrentIteration(INA_2V5, g_i2v5))
+				NextStep();
+			break;
+
+		//Read 1V8
+		case 14:
+			if(ReadCurrentIteration(INA_1V8, g_i1v8))
+				NextStep();
+			break;
+
+		//Read 1V2
+		case 15:
+			if(ReadCurrentIteration(INA_1V2, g_i1v2))
+				NextStep();
+			break;
+
+		//Read 1V0
+		case 16:
+			if(ReadCurrentIteration(INA_1V0, g_i1v0))
+				NextStep();
+			break;
+
+		//Read DUT_VDD
+		case 17:
+			if(ReadCurrentIteration(INA_DUT_VDD, g_idutvdd))
 				NextStep();
 			break;
 
@@ -104,6 +176,9 @@ void SensorTask::Iteration()
 	}
 };
 
+/**
+	@brief Single step of reading a voltage from an INA230
+ */
 bool SensorTask::ReadVoltageIteration(uint8_t i2cAddr, uint16_t& mv)
 {
 	switch(m_step)
@@ -152,6 +227,67 @@ bool SensorTask::ReadVoltageIteration(uint8_t i2cAddr, uint16_t& mv)
 		case 8:
 			m_codeInProgress |= g_i2c.GetReadData();
 			mv = static_cast<int>(1.25 * m_codeInProgress);
+			return true;
+	}
+
+	return false;
+}
+
+/**
+	@brief Single step of reading a current from an INA230
+ */
+bool SensorTask::ReadCurrentIteration(uint8_t i2cAddr, uint16_t& ma)
+{
+	switch(m_step)
+	{
+		case 0:
+			g_i2c.NonblockingStart(1, i2cAddr, false);
+			m_step ++;
+			break;
+
+		case 1:
+			if(g_i2c.IsStartDone())
+				m_step ++;
+			break;
+
+		case 2:
+			g_i2c.NonblockingWrite(0x01);	//shunt voltage
+			m_step ++;
+			break;
+
+		case 3:
+			if(g_i2c.IsWriteDone())
+				m_step ++;
+			break;
+
+		case 4:
+			g_i2c.NonblockingStart(2, i2cAddr, true);
+			m_step ++;
+			break;
+
+		case 5:
+			if(g_i2c.IsReadReady())
+				m_step ++;
+			break;
+
+		case 6:
+			m_codeInProgress = (g_i2c.GetReadData()) << 8;
+			m_step ++;
+			break;
+
+		case 7:
+			if(g_i2c.IsReadReady())
+				m_step ++;
+			break;
+
+		//2.5 uV/LSB, 25 milliohm shunt
+		case 8:
+			{
+				m_codeInProgress |= g_i2c.GetReadData();
+				float vshunt = m_codeInProgress * 0.0000025;
+				float ishunt = vshunt / 0.025;
+				ma = ishunt * 1000;
+			}
 			return true;
 	}
 

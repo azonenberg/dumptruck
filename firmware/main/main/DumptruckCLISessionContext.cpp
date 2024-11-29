@@ -985,7 +985,8 @@ void DumptruckCLISessionContext::OnShowHardware()
 	PrintProcessorInfo(m_stream);
 
 	m_stream->Printf("\n");
-	m_stream->Printf("Ethernet MAC address is %02x:%02x:%02x:%02x:%02x:%02x\n",
+	m_stream->Printf("Ethernet interface mgmt0:\n");
+	m_stream->Printf("    MAC address: %02x:%02x:%02x:%02x:%02x:%02x\n",
 		g_macAddress[0], g_macAddress[1], g_macAddress[2], g_macAddress[3], g_macAddress[4], g_macAddress[5]);
 
 	m_stream->Printf("\n");
@@ -993,122 +994,44 @@ void DumptruckCLISessionContext::OnShowHardware()
 	m_stream->Printf("    Supervisor: %uhk C\n", ReadSupervisorRegister(SUPER_REG_MCUTEMP));
 	m_stream->Printf("    MCU:        %uhk C\n",  g_dts.GetTemperature());
 	m_stream->Printf("    FPGA:       %uhk C\n",  FXADC.die_temp);
+	m_stream->Printf("    LTC3374A:   %uhk C\n", ReadSupervisorRegister(SUPER_REG_LTC_TEMP));
 
 	//Print sensor values
 	m_stream->Printf("\n");
-	m_stream->Printf("+------------+---------+---------+-------+\n");
-	m_stream->Printf("| Rail       | Voltage | Current | Power |\n");
-	m_stream->Printf("+------------+---------+---------+-------+\n");
+	m_stream->Printf("Power rails:\n");
+	m_stream->Printf("    +------------+---------+---------+--------+\n");
+	m_stream->Printf("    | Rail       | Voltage | Current |  Power |\n");
+	m_stream->Printf("    +------------+---------+---------+--------+\n");
 
-	/*
-	//Read FPGA voltage sensors
-	int volt = FXADC.volt_core;
-	g_log("FPGA VCCINT:                        %uhk V\n", volt);
-	volt = FXADC.volt_ram;
-	g_log("FPGA VCCBRAM:                       %uhk V\n", volt);
-	volt = FXADC.volt_aux;
-	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
-	*/
+	PrintPowerRail("VBUS", SUPER_REG_VVBUS, SUPER_REG_IVBUS);
+	PrintPowerRail("3V3_SB", SUPER_REG_3V3, SUPER_REG_I3V3_SB);
+	PrintPowerRail("3V3", SUPER_REG_V3V3, SUPER_REG_I3V3);
+	PrintPowerRail("2V5", SUPER_REG_V2V5, SUPER_REG_I2V5);
+	PrintPowerRail("1V8", SUPER_REG_V1V8, SUPER_REG_I1V8);
+	m_stream->Printf("    |     VCCAUX |   %uhk |         |        |\n", FXADC.volt_aux);
+	PrintPowerRail("1V2", SUPER_REG_V1V2, SUPER_REG_I1V2);
+	PrintPowerRail("1V0", SUPER_REG_V1V2, SUPER_REG_I1V0);
+	m_stream->Printf("    |     VCCINT |   %uhk |         |        |\n", FXADC.volt_core);
+	m_stream->Printf("    |    VCCBRAM |   %uhk |         |        |\n", FXADC.volt_ram);
+	PrintPowerRail("DUT_VDD", SUPER_REG_VDUTVDD, SUPER_REG_IDUTVDD);
 
-/*
-	auto vvbus = ReadSupervisorRegister(SUPER_REG_VVBUS);
-	g_log("    VBUS:   %2d.%03d V\n", vvbus / 1000, vvbus % 1000);
-
-	auto v3v3_sb = ReadSupervisorRegister(SUPER_REG_3V3);
-	g_log("    3V3_SB: %2d.%03d V\n", v3v3_sb / 1000, v3v3_sb % 1000);
-
-	auto v3v3 = ReadSupervisorRegister(SUPER_REG_V3V3);
-	g_log("    3V3:    %2d.%03d V\n", v3v3 / 1000, v3v3 % 1000);
-
-	auto v2v5 = ReadSupervisorRegister(SUPER_REG_V2V5);
-	g_log("    2V5:    %2d.%03d V\n", v2v5 / 1000, v2v5 % 1000);
-
-	auto v1v8 = ReadSupervisorRegister(SUPER_REG_V1V8);
-	g_log("    1V8:    %2d.%03d V\n", v1v8 / 1000, v1v8 % 1000);
-
-	auto v1v2 = ReadSupervisorRegister(SUPER_REG_V1V2);
-	g_log("    1V2:    %2d.%03d V\n", v1v2 / 1000, v1v2 % 1000);
-
-	auto v1v0 = ReadSupervisorRegister(SUPER_REG_V1V0);
-	g_log("    1V0:    %2d.%03d V\n", v1v0 / 1000, v1v0 % 1000);
-
-	auto vdutvdd = ReadSupervisorRegister(SUPER_REG_VDUTVDD);
-	g_log("DUT_VDD:    %2d.%03d V\n", vdutvdd / 1000, vdutvdd % 1000);*/
+	m_stream->Printf("    +------------+---------+---------+-------+\n");
 }
 
-/*
-void DumptruckCLISessionContext::OnShowInterfaceCommand()
+void DumptruckCLISessionContext::PrintPowerRail(const char* name, dsuperregs_t vreg, dsuperregs_t ireg)
 {
-	//Interface number?
-	if(m_command[2].m_commandID >= CMD_G0)
-	{
-		//Look at the next argument
-		//Generally something like "show int g3 count"
-		switch(m_command[3].m_commandID)
-		{
-			case CMD_COUNTERS:
-				OnShowInterfaceCounters(m_command[2].m_commandID - CMD_G0);
-				break;
+	auto v = ReadSupervisorRegister(vreg);
+	auto i = ReadSupervisorRegister(ireg);
 
-			default:
-				m_stream->Printf("Unrecognized command\n");
-				break;
-		}
+	//TODO: investigate why we get bogus current readings with shutdown rails
+	if(v < 0.05)
+		i = 0;
 
-		return;
-	}
-
-	switch(m_command[2].m_commandID)
-	{
-		case CMD_STATUS:
-			OnShowInterfaceStatus();
-			break;
-
-		default:
-			m_stream->Printf("Unrecognized command\n");
-			break;
-	}
+	auto p = i * v / 1000;
+	m_stream->Printf("    | %10s |   %d.%03d |   %d.%03d |  %d.%03d |\n",
+		name, v / 1000, v % 1000, i / 1000, i % 1000, p / 1000, p % 1000);
 }
 
-
-void DumptruckCLISessionContext::OnShowInterfaceStatus()
-{
-	m_stream->Printf("---------------------------------------------------------------------------------------------------------\n");
-	m_stream->Printf("Port     Name                             Status            Vlan     Duplex    Speed                 Type\n");
-	m_stream->Printf("---------------------------------------------------------------------------------------------------------\n");
-
-	//TODO: refresh interface status from hardware or something
-	for(int i=0; i<NUM_PORTS; i++)
-	{
-		const char* portType = "10/100/1000baseT";
-		if(i == UPLINK_PORT)
-			portType = "10Gbase-SR";
-
-		if(i == MGMT_PORT)
-		{
-			m_stream->Printf("%-5s    %-32s %-15s %6s %10s  %7s %20s\n",
-				g_interfaceNames[i],
-				g_interfaceDescriptions[i],
-				g_linkStateNames[g_linkState[i]],
-				"(none)",
-				"full",
-				g_linkSpeedNames[g_linkSpeed[i]],
-				portType);
-		}
-		else
-		{
-			m_stream->Printf("%-5s    %-32s %-15s %6d %10s  %7s %20s\n",
-				g_interfaceNames[i],
-				g_interfaceDescriptions[i],
-				g_linkStateNames[g_linkState[i]],
-				g_portVlans[i],
-				"full",
-				g_linkSpeedNames[g_linkSpeed[i]],
-				portType);
-		}
-	}
-}
-*/
 /*
 void DumptruckCLISessionContext::OnShowIPAddress()
 {

@@ -47,19 +47,10 @@ public:
 protected:
 
 	virtual void OnPowerOn() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 1;
-	}
+	{ g_pgoodLED = 1; }
 
 	virtual void OnPowerOff() override
-	{
-		PrintAllRails();
-		g_pgoodLED = 0;
-	}
-
-	virtual void OnResetDone() override
-	{ PrintAllRails(); }
+	{ g_pgoodLED = 0; }
 
 	virtual void OnFault() override
 	{

@@ -148,7 +148,7 @@ void InitRailSensors()
 float GetLTCTemp()
 {
 	//220 mV at 25C plus 7 mV/c
-	float vtemp = g_adc->ReadChannelScaledAveraged(5, 16, 3.3);
+	float vtemp = g_adc->ReadChannelScaledAveraged(5, 4, 3.3);
 	return ((vtemp - 0.22) / 0.007) + 25;
 }
 

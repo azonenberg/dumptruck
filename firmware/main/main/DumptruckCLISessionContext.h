@@ -120,6 +120,11 @@ protected:
 
 	///@brief Hostname (only used for display)
 	char m_hostname[33];
+
+	void PrintPowerRail(const char* name, dsuperregs_t vreg, dsuperregs_t ireg);
+
+	void PrintPowerRail(const char* name, superregs_t vreg, dsuperregs_t ireg)
+	{ PrintPowerRail(name, static_cast<dsuperregs_t>(vreg), ireg); }
 };
 
 #endif

@@ -30,6 +30,9 @@
 #ifndef SensorTask_h
 #define SensorTask_h
 
+/**
+	@brief Task for polling external sensors
+ */
 class SensorTask : public Task
 {
 public:
@@ -45,6 +48,7 @@ protected:
 	int m_step;
 
 	bool ReadVoltageIteration(uint8_t i2cAddr, uint16_t& mv);
+	bool ReadCurrentIteration(uint8_t i2cAddr, uint16_t& ma);
 
 	void NextStep()
 	{
@@ -62,5 +66,16 @@ extern uint16_t g_v1v8;
 extern uint16_t g_v1v2;
 extern uint16_t g_v1v0;
 extern uint16_t g_vdutvdd;
+
+extern uint16_t g_i3v3_sb;
+extern uint16_t g_ivbus;
+extern uint16_t g_i3v3;
+extern uint16_t g_i2v5;
+extern uint16_t g_i1v8;
+extern uint16_t g_i1v2;
+extern uint16_t g_i1v0;
+extern uint16_t g_idutvdd;
+
+extern uint16_t g_ltcTemp;
 
 #endif

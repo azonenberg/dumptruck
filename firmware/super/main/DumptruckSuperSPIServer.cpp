@@ -35,6 +35,9 @@ void DumptruckSuperSPIServer::OnApplicationCommand(uint8_t b)
 {
 	switch(b)
 	{
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Voltages
+
 		case SUPER_REG_VVBUS:
 			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vvbus, sizeof(g_vvbus));
 			break;
@@ -61,6 +64,48 @@ void DumptruckSuperSPIServer::OnApplicationCommand(uint8_t b)
 
 		case SUPER_REG_VDUTVDD:
 			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vdutvdd, sizeof(g_vdutvdd));
+			break;
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Currents
+
+		case SUPER_REG_IVBUS:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_ivbus, sizeof(g_ivbus));
+			break;
+
+		case SUPER_REG_I3V3:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i3v3, sizeof(g_i3v3));
+			break;
+
+		case SUPER_REG_I2V5:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i2v5, sizeof(g_i2v5));
+			break;
+
+		case SUPER_REG_I1V8:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i1v8, sizeof(g_i1v8));
+			break;
+
+		case SUPER_REG_I1V2:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i1v2, sizeof(g_i1v2));
+			break;
+
+		case SUPER_REG_I1V0:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i1v0, sizeof(g_i1v0));
+			break;
+
+		case SUPER_REG_IDUTVDD:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_idutvdd, sizeof(g_idutvdd));
+			break;
+
+		case SUPER_REG_I3V3_SB:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i3v3_sb, sizeof(g_i3v3_sb));
+			break;
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Temperatures
+
+		case SUPER_REG_LTC_TEMP:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_ltcTemp, sizeof(g_ltcTemp));
 			break;
 
 		default:

@@ -39,9 +39,20 @@ enum dsuperregs_t
 	SUPER_REG_V1V8		= 0x83,
 	SUPER_REG_V1V2		= 0x84,
 	SUPER_REG_V1V0		= 0x85,
-	SUPER_REG_VDUTVDD	= 0x86
+	SUPER_REG_VDUTVDD	= 0x86,
 
 	//Rail currents starting 0x90 (in mA)
+	SUPER_REG_IVBUS		= 0x90,
+	SUPER_REG_I3V3		= 0x91,
+	SUPER_REG_I2V5		= 0x92,
+	SUPER_REG_I1V8		= 0x93,
+	SUPER_REG_I1V2		= 0x94,
+	SUPER_REG_I1V0		= 0x95,
+	SUPER_REG_IDUTVDD	= 0x96,
+	SUPER_REG_I3V3_SB	= 0x97,
+
+	//Temperatures starting 0xa0 (in 8.8 degC
+	SUPER_REG_LTC_TEMP	= 0xa0
 };
 
 #endif
