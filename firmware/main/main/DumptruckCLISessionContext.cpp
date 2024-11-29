@@ -32,6 +32,7 @@
 #include "DumptruckCLISessionContext.h"
 #include <ctype.h>
 #include <bootloader/BootloaderAPI.h>
+#include <cli/CommonCommands.h>
 
 static const char* hostname_objid = "hostname";
 
@@ -49,35 +50,29 @@ enum cmdid_t
 	//CMD_COUNTERS,
 	//CMD_DESCRIPTION,
 	CMD_DETAIL,
-	//CMD_DEBUG,
 	CMD_DFU,
 	CMD_DHCP,
 	CMD_EXIT,
 	CMD_FINGERPRINT,
-	CMD_FULL,
 	CMD_FLASH,
-	CMD_GATEWAY,
+	CMD_GATEWAY,*/
 	CMD_HARDWARE,
-	CMD_HOSTNAME,
+	/*CMD_HOSTNAME,
 	CMD_IP,
 	CMD_KEY,
 	CMD_KEYS,
 	CMD_MMD,*/
 	CMD_NO,
-	CMD_NTP,/*
-	CMD_REFRESH,*/
+	CMD_NTP,
 	CMD_RELOAD,
 	//CMD_REGISTER,
 	//CMD_ROLLBACK,
 	//CMD_ROUTE,
-	CMD_SERVER/*,
-	CMD_SET,
-	CMD_SHOW,
+	CMD_SERVER,
+	CMD_SHOW/*,
 	CMD_SSH,
 	CMD_SSH_ED25519,
 	//CMD_STATUS,
-	//CMD_TEMPERATURE,
-	//CMD_TEST,
 	CMD_USERNAME,
 	CMD_VERSION,
 	CMD_ZEROIZE*/
@@ -156,15 +151,6 @@ static const clikeyword_t g_noCommands[] =
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
 /*
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// "refresh"
-
-static const clikeyword_t g_refreshCommands[] =
-{
-	{"<cr>",			OPTIONAL_TOKEN,		nullptr,						"With no arguments, perform a fast refresh"},
-	{"full",			CMD_FULL,			nullptr,						"Perform a full refresh"},
-	{nullptr,			INVALID_COMMAND,	nullptr,						nullptr}
-};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "show"
@@ -207,23 +193,20 @@ static const clikeyword_t g_showFlashCommands[] =
 	{"detail",			CMD_DETAIL,			g_showFlashDetailCommands,	"Show detailed flash object contents"},
 	{nullptr,			INVALID_COMMAND,	nullptr,					nullptr}
 };
-
+*/
 static const clikeyword_t g_showCommands[] =
 {
-	{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
-	{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
+	//{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
+	//{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
 	{"hardware",		CMD_HARDWARE,		nullptr,					"Print hardware information"},
-	//{"interface",		CMD_INTERFACE,		g_showInterfaceCommands,	"Display interface properties and stats"},
-	{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
-	{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
-	{"ssh",				CMD_SSH,			g_showSshCommands,			"Print SSH information"},
-	//{"temperature",		CMD_TEMPERATURE,	nullptr,					"Display temperature sensor values"},
-	{"version",			CMD_VERSION,		nullptr,					"Show firmware / FPGA version"},
-	{"mmd",				CMD_MMD,			g_showMmdCommands,			"Read MMD registers"},
-	{"register",		CMD_REGISTER,		g_showRegisterCommands,		"Read PHY registers"},
+	//{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
+	//{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
+	//{"ssh",				CMD_SSH,			g_showSshCommands,			"Print SSH information"},
+	//{"version",			CMD_VERSION,		nullptr,					"Show firmware / FPGA version"},
 	{nullptr,			INVALID_COMMAND,	nullptr,					nullptr}
 };
 
+/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ssh"
 
@@ -291,7 +274,6 @@ static const clikeyword_t g_rootCommands[] =
 	/*
 	//{"clear",		CMD_CLEAR,			g_clearCommands,		"Clear performance counters and other debugging state"},
 	{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
-	//{"debug",		CMD_DEBUG,			g_debugCommands,		"Enable debug output"},
 	{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
 	{"exit",		CMD_EXIT,			nullptr,				"Log out"},
 	{"flash",		CMD_FLASH,			g_flashCommands,		"Maintenance operations on flash"},
@@ -299,15 +281,12 @@ static const clikeyword_t g_rootCommands[] =
 	{"ip",			CMD_IP,				g_ipCommands,			"Configure IP addresses"},
 	{"no",			CMD_NO,				g_noCommands,			"Remove or disable features"},
 	{"ntp",			CMD_NTP,			g_ntpCommands,			"Configure NTP client"},
-	{"refresh",		CMD_REFRESH,		g_refreshCommands,		"Refresh front panel display"},
+	*/
 	{"reload",		CMD_RELOAD,			nullptr,				"Restart the system"},
-	{"rollback",	CMD_ROLLBACK,		nullptr,				"Revert changes made since last commit"},
-	{"set",			CMD_SET,			g_setCommands,			"Set raw hardware registers"},
+	//{"rollback",	CMD_ROLLBACK,		nullptr,				"Revert changes made since last commit"},
 	{"show",		CMD_SHOW,			g_showCommands,			"Print information"},
-	{"ssh",			CMD_SSH,			g_sshCommands,			"Configure SSH protocol"},
-	//{"test",		CMD_TEST,			g_interfaceCommands,	"Run a cable test"},
-	{"zeroize",		CMD_ZEROIZE,		g_zeroizeCommands,		"Erase all configuration data and reload"},
-*/
+	//{"ssh",			CMD_SSH,			g_sshCommands,			"Configure SSH protocol"},
+	//{"zeroize",		CMD_ZEROIZE,		g_zeroizeCommands,		"Erase all configuration data and reload"},
 	{nullptr,		INVALID_COMMAND,	nullptr,				nullptr}
 };
 
@@ -345,8 +324,8 @@ void DumptruckCLISessionContext::LoadHostname()
 
 void DumptruckCLISessionContext::OnExecute()
 {
-	/*if(m_rootCommands == g_rootCommands)
-		OnExecuteRoot();*/
+	if(m_rootCommands == g_rootCommands)
+		OnExecuteRoot();
 
 	//TODO other modes
 
@@ -356,11 +335,11 @@ void DumptruckCLISessionContext::OnExecute()
 /**
 	@brief Execute a command in config mode
  */
-/*
 void DumptruckCLISessionContext::OnExecuteRoot()
 {
 	switch(m_command[0].m_commandID)
 	{
+		/*
 		case CMD_COMMIT:
 			OnCommit();
 			break;
@@ -414,33 +393,21 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			if(m_command[1].m_commandID == CMD_SERVER)
 				OnNtpServer(m_command[2].m_text);
 			break;
-
+		*/
 		case CMD_RELOAD:
 			OnReload();
 			break;
-
-		case CMD_REFRESH:
-			g_frontSPI->SetCS(0);
-			if(m_command[1].m_commandID == CMD_FULL)
-				SendFrontPanelByte(FRONT_REFRESH_FULL);
-			else
-				SendFrontPanelByte(FRONT_REFRESH_FAST);
-			SendFrontPanelByte(0x00);	//dummy byte
-			g_frontSPI->SetCS(1);
-			break;
+		/*
 
 		case CMD_ROLLBACK:
 			OnRollback();
 			break;
-
-		case CMD_SET:
-			OnSetCommand();
-			break;
-
+		*/
 		case CMD_SHOW:
 			OnShowCommand();
 			break;
 
+		/*
 		case CMD_SSH:
 			OnSSHCommand();
 			break;
@@ -449,13 +416,13 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			if(!strcmp(m_command[1].m_text, "all"))
 				OnZeroize();
 			break;
+		*/
 
 		default:
 			m_stream->Printf("Unrecognized command\n");
 			break;
 	}
 }
-*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "commit"
 
@@ -505,24 +472,6 @@ void DumptruckCLISessionContext::OnCommit()
 }
 */
 
-/*
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// "debug"
-
-void DumptruckCLISessionContext::OnDebug()
-{
-	switch(m_command[1].m_commandID)
-	{
-		case CMD_TEMPERATURE:
-			g_debugEnv = true;
-			break;
-
-		default:
-			m_stream->Printf("Unrecognized command\n");
-			break;
-	}
-}
-*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ip"
 /*
@@ -776,12 +725,12 @@ void DumptruckCLISessionContext::OnRollback()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "show"
-/*
+
 void DumptruckCLISessionContext::OnShowCommand()
 {
 	switch(m_command[1].m_commandID)
 	{
-
+		/*
 		case CMD_ARP:
 			switch(m_command[2].m_commandID)
 			{
@@ -797,7 +746,13 @@ void DumptruckCLISessionContext::OnShowCommand()
 		case CMD_FLASH:
 			OnShowFlash();
 			break;
+		*/
 
+		case CMD_HARDWARE:
+			OnShowHardware();
+			break;
+
+		/*
 		case CMD_IP:
 			switch(m_command[2].m_commandID)
 			{
@@ -812,14 +767,6 @@ void DumptruckCLISessionContext::OnShowCommand()
 				default:
 					break;
 			}
-			break;
-
-		case CMD_MMD:
-			OnShowMMDRegister();
-			break;
-
-		case CMD_REGISTER:
-			OnShowRegister();
 			break;
 
 		case CMD_NTP:
@@ -842,20 +789,16 @@ void DumptruckCLISessionContext::OnShowCommand()
 			}
 			break;
 
-		case CMD_TEMPERATURE:
-			OnShowTemperature();
-			break;
-
 		case CMD_VERSION:
 			OnShowVersion();
 			break;
-
+		*/
 		default:
 			m_stream->Printf("Unrecognized command\n");
 			break;
 	}
 }
-*/
+
 /*
 void DumptruckCLISessionContext::OnShowARPCache()
 {
@@ -1036,140 +979,63 @@ void DumptruckCLISessionContext::OnShowFlash()
 		}
 	}
 }
-
+*/
 void DumptruckCLISessionContext::OnShowHardware()
 {
-	uint16_t rev = DBGMCU.IDCODE >> 16;
-	uint16_t device = DBGMCU.IDCODE & 0xfff;
+	PrintProcessorInfo(m_stream);
 
-	if(device == 0x483)
-	{
-		//Look up the stepping number
-		const char* srev = nullptr;
-		switch(rev)
-		{
-			case 0x1000:
-				srev = "A";
-				break;
-
-			case 0x1001:
-				srev = "Z";
-				break;
-
-			default:
-				srev = "(unknown)";
-		}
-
-		uint8_t pkg = SYSCFG.PKGR;
-		const char* package = "";
-		switch(pkg)
-		{
-			case 0:
-				package = "VQFPN68 (industrial)";
-				break;
-			case 1:
-				package = "LQFP100/TFBGA100 (legacy)";
-				break;
-			case 2:
-				package = "LQFP100 (industrial)";
-				break;
-			case 3:
-				package = "TFBGA100 (industrial)";
-				break;
-			case 4:
-				package = "WLCSP115 (industrial)";
-				break;
-			case 5:
-				package = "LQFP144 (legacy)";
-				break;
-			case 6:
-				package = "UFBGA144 (legacy)";
-				break;
-			case 7:
-				package = "LQFP144 (industrial)";
-				break;
-			case 8:
-				package = "UFBGA169 (industrial)";
-				break;
-			case 9:
-				package = "UFBGA176+25 (industrial)";
-				break;
-			case 10:
-				package = "LQFP176 (industrial)";
-				break;
-			default:
-				package = "unknown package";
-				break;
-		}
-
-		m_stream->Printf("STM32%c%c%c%c stepping %s, %s\n",
-			(L_ID >> 24) & 0xff,
-			(L_ID >> 16) & 0xff,
-			(L_ID >> 8) & 0xff,
-			(L_ID >> 0) & 0xff,
-			srev,
-			package
-			);
-		m_stream->Printf("564 kB total SRAM, 128 kB DTCM, up to 256 kB ITCM, 4 kB backup SRAM\n");
-		m_stream->Printf("%d kB Flash\n", F_ID);
-
-		//U_ID fields documented in 45.1 of STM32 programming manual
-		uint16_t waferX = U_ID[0] >> 16;
-		uint16_t waferY = U_ID[0] & 0xffff;
-		uint8_t waferNum = U_ID[1] & 0xff;
-		char waferLot[8] =
-		{
-			static_cast<char>((U_ID[1] >> 24) & 0xff),
-			static_cast<char>((U_ID[1] >> 16) & 0xff),
-			static_cast<char>((U_ID[1] >> 8) & 0xff),
-			static_cast<char>((U_ID[2] >> 24) & 0xff),
-			static_cast<char>((U_ID[2] >> 16) & 0xff),
-			static_cast<char>((U_ID[2] >> 8) & 0xff),
-			static_cast<char>((U_ID[2] >> 0) & 0xff),
-			'\0'
-		};
-		m_stream->Printf("Lot %s, wafer %d, die (%d, %d)\n", waferLot, waferNum, waferX, waferY);
-	}
-	else
-		m_stream->Printf("Unknown device (0x%06x)\n", device);
-
-	//Print CPU info
-	if( (SCB.CPUID & 0xff00fff0) == 0x4100c270 )
-	{
-		m_stream->Printf("ARM Cortex-M7 r%dp%d\n", (SCB.CPUID >> 20) & 0xf, (SCB.CPUID & 0xf));
-		if(CPUID.CLIDR & 2)
-		{
-			m_stream->Printf("    L1 data cache present\n");
-			CPUID.CCSELR = 0;
-
-			int sets = ((CPUID.CCSIDR >> 13) & 0x7fff) + 1;
-			int ways = ((CPUID.CCSIDR >> 3) & 0x3ff) + 1;
-			int words = 1 << ((CPUID.CCSIDR & 3) + 2);
-			int total = (sets * ways * words * 4) / 1024;
-			m_stream->Printf("        %d sets, %d ways, %d words per line, %d kB total\n",
-				sets, ways, words, total);
-		}
-		if(CPUID.CLIDR & 1)
-		{
-			m_stream->Printf("    L1 instruction cache present\n");
-			CPUID.CCSELR = 1;
-
-			int sets = ((CPUID.CCSIDR >> 13) & 0x7fff) + 1;
-			int ways = ((CPUID.CCSIDR >> 3) & 0x3ff) + 1;
-			int words = 1 << ((CPUID.CCSIDR & 3) + 2);
-			int total = (sets * ways * words * 4) / 1024;
-			m_stream->Printf("        %d sets, %d ways, %d words per line, %d kB total\n",
-				sets, ways, words, total);
-		}
-	}
-	else
-		m_stream->Printf("Unknown CPU (0x%08x)\n", SCB.CPUID);
-
+	m_stream->Printf("\n");
 	m_stream->Printf("Ethernet MAC address is %02x:%02x:%02x:%02x:%02x:%02x\n",
 		g_macAddress[0], g_macAddress[1], g_macAddress[2], g_macAddress[3], g_macAddress[4], g_macAddress[5]);
 
+	m_stream->Printf("\n");
+	m_stream->Printf("Temperatures:\n");
+	m_stream->Printf("    Supervisor: %uhk C\n", ReadSupervisorRegister(SUPER_REG_MCUTEMP));
+	m_stream->Printf("    MCU:        %uhk C\n",  g_dts.GetTemperature());
+	m_stream->Printf("    FPGA:       %uhk C\n",  FXADC.die_temp);
+
+	//Print sensor values
+	m_stream->Printf("\n");
+	m_stream->Printf("+------------+---------+---------+-------+\n");
+	m_stream->Printf("| Rail       | Voltage | Current | Power |\n");
+	m_stream->Printf("+------------+---------+---------+-------+\n");
+
+	/*
+	//Read FPGA voltage sensors
+	int volt = FXADC.volt_core;
+	g_log("FPGA VCCINT:                        %uhk V\n", volt);
+	volt = FXADC.volt_ram;
+	g_log("FPGA VCCBRAM:                       %uhk V\n", volt);
+	volt = FXADC.volt_aux;
+	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
+	*/
+
+/*
+	auto vvbus = ReadSupervisorRegister(SUPER_REG_VVBUS);
+	g_log("    VBUS:   %2d.%03d V\n", vvbus / 1000, vvbus % 1000);
+
+	auto v3v3_sb = ReadSupervisorRegister(SUPER_REG_3V3);
+	g_log("    3V3_SB: %2d.%03d V\n", v3v3_sb / 1000, v3v3_sb % 1000);
+
+	auto v3v3 = ReadSupervisorRegister(SUPER_REG_V3V3);
+	g_log("    3V3:    %2d.%03d V\n", v3v3 / 1000, v3v3 % 1000);
+
+	auto v2v5 = ReadSupervisorRegister(SUPER_REG_V2V5);
+	g_log("    2V5:    %2d.%03d V\n", v2v5 / 1000, v2v5 % 1000);
+
+	auto v1v8 = ReadSupervisorRegister(SUPER_REG_V1V8);
+	g_log("    1V8:    %2d.%03d V\n", v1v8 / 1000, v1v8 % 1000);
+
+	auto v1v2 = ReadSupervisorRegister(SUPER_REG_V1V2);
+	g_log("    1V2:    %2d.%03d V\n", v1v2 / 1000, v1v2 % 1000);
+
+	auto v1v0 = ReadSupervisorRegister(SUPER_REG_V1V0);
+	g_log("    1V0:    %2d.%03d V\n", v1v0 / 1000, v1v0 % 1000);
+
+	auto vdutvdd = ReadSupervisorRegister(SUPER_REG_VDUTVDD);
+	g_log("DUT_VDD:    %2d.%03d V\n", vdutvdd / 1000, vdutvdd % 1000);*/
 }
-*/
+
 /*
 void DumptruckCLISessionContext::OnShowInterfaceCommand()
 {

@@ -31,6 +31,12 @@
 #include "SensorTask.h"
 
 uint16_t g_vvbus = 0;
+uint16_t g_v3v3 = 0;
+uint16_t g_v2v5 = 0;
+uint16_t g_v1v8 = 0;
+uint16_t g_v1v2 = 0;
+uint16_t g_v1v0 = 0;
+uint16_t g_vdutvdd = 0;
 
 void SensorTask::Iteration()
 {
@@ -43,10 +49,10 @@ void SensorTask::Iteration()
 			break;
 
 		//Read MCU 3.3V rail
+		//Don't use the internal ADC, use the INA230 since it's way more accurate
 		case 1:
-			g_3v3Voltage = g_adc->GetSupplyVoltage();
-
-			NextStep();
+			if(ReadVoltageIteration(INA_3V3_SB, g_3v3Voltage))
+				NextStep();
 			break;
 
 		//Read VBUS
@@ -55,7 +61,41 @@ void SensorTask::Iteration()
 				NextStep();
 			break;
 
-		//g_log("VBUS = %d.%03d\n", g_vvbus / 1000, g_vvbus % 1000);
+		//Read 3V3
+		case 3:
+			if(ReadVoltageIteration(INA_3V3, g_v3v3))
+				NextStep();
+			break;
+
+		//Read 2V5
+		case 4:
+			if(ReadVoltageIteration(INA_2V5, g_v2v5))
+				NextStep();
+			break;
+
+		//Read 1V8
+		case 5:
+			if(ReadVoltageIteration(INA_1V8, g_v1v8))
+				NextStep();
+			break;
+
+		//Read 1V2
+		case 6:
+			if(ReadVoltageIteration(INA_1V2, g_v1v2))
+				NextStep();
+			break;
+
+		//Read 1V0
+		case 7:
+			if(ReadVoltageIteration(INA_1V0, g_v1v0))
+				NextStep();
+			break;
+
+		//Rad DUT_VDD
+		case 8:
+			if(ReadVoltageIteration(INA_DUT_VDD, g_vdutvdd))
+				NextStep();
+			break;
 
 		//return to start once we roll off the end
 		default:

@@ -29,11 +29,40 @@
 
 #include "supervisor.h"
 #include "DumptruckSuperSPIServer.h"
+#include "SensorTask.h"
 
 void DumptruckSuperSPIServer::OnApplicationCommand(uint8_t b)
 {
 	switch(b)
 	{
+		case SUPER_REG_VVBUS:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vvbus, sizeof(g_vvbus));
+			break;
+
+		case SUPER_REG_V3V3:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_v3v3, sizeof(g_v3v3));
+			break;
+
+		case SUPER_REG_V2V5:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_v2v5, sizeof(g_v2v5));
+			break;
+
+		case SUPER_REG_V1V8:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_v1v8, sizeof(g_v1v8));
+			break;
+
+		case SUPER_REG_V1V2:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_v1v2, sizeof(g_v1v2));
+			break;
+
+		case SUPER_REG_V1V0:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_v1v0, sizeof(g_v1v0));
+			break;
+
+		case SUPER_REG_VDUTVDD:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vdutvdd, sizeof(g_vdutvdd));
+			break;
+
 		default:
 			break;
 	}

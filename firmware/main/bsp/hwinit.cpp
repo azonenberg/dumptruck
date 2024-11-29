@@ -298,8 +298,34 @@ void InitSupervisor()
 	auto mcutemp = ReadSupervisorRegister(SUPER_REG_MCUTEMP);
 	g_log("    Super:  %uhk C\n", mcutemp);
 
-	auto super3v3 = ReadSupervisorRegister(SUPER_REG_3V3);
-	g_log("            %2d.%03d V\n", super3v3 / 1000, super3v3 % 1000);
+	auto vvbus = ReadSupervisorRegister(SUPER_REG_VVBUS);
+	g_log("    VBUS:   %2d.%03d V\n", vvbus / 1000, vvbus % 1000);
+
+	auto v3v3_sb = ReadSupervisorRegister(SUPER_REG_3V3);
+	g_log("    3V3_SB: %2d.%03d V\n", v3v3_sb / 1000, v3v3_sb % 1000);
+
+	auto v3v3 = ReadSupervisorRegister(SUPER_REG_V3V3);
+	g_log("    3V3:    %2d.%03d V\n", v3v3 / 1000, v3v3 % 1000);
+
+	auto v2v5 = ReadSupervisorRegister(SUPER_REG_V2V5);
+	g_log("    2V5:    %2d.%03d V\n", v2v5 / 1000, v2v5 % 1000);
+
+	auto v1v8 = ReadSupervisorRegister(SUPER_REG_V1V8);
+	g_log("    1V8:    %2d.%03d V\n", v1v8 / 1000, v1v8 % 1000);
+
+	auto v1v2 = ReadSupervisorRegister(SUPER_REG_V1V2);
+	g_log("    1V2:    %2d.%03d V\n", v1v2 / 1000, v1v2 % 1000);
+
+	auto v1v0 = ReadSupervisorRegister(SUPER_REG_V1V0);
+	g_log("    1V0:    %2d.%03d V\n", v1v0 / 1000, v1v0 % 1000);
+
+	auto vdutvdd = ReadSupervisorRegister(SUPER_REG_VDUTVDD);
+	g_log("DUT_VDD:    %2d.%03d V\n", vdutvdd / 1000, vdutvdd % 1000);
+}
+
+uint16_t ReadSupervisorRegister(dsuperregs_t regid)
+{
+	return ReadSupervisorRegister(static_cast<superregs_t>(regid));
 }
 
 uint16_t ReadSupervisorRegister(superregs_t regid)

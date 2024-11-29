@@ -31,8 +31,7 @@
 #define DumptruckSuperSPIServer_h
 
 #include <supervisor/SupervisorSPIServer.h>
-
-//TODO: allocate commands starting at 0x80
+#include "DumptruckSuperSPIRegisters.h"
 
 class DumptruckSuperSPIServer : public SupervisorSPIServer
 {

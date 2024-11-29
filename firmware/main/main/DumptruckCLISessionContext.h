@@ -70,9 +70,8 @@ protected:
 	void LoadHostname();
 
 	virtual void OnExecute();
-	/*
 	void OnExecuteRoot();
-
+	/*
 	void OnCommit();
 
 	void OnDFU();
@@ -95,12 +94,13 @@ protected:
 	void OnSetRegister();
 	void OnSetMmdRegister();
 	//void OnSpeed();
-
-	void OnShowARPCache();
+	*/
 	void OnShowCommand();
-	void OnShowFlash();
-	void OnShowFlashDetail();
+	//void OnShowARPCache();
+	//void OnShowFlash();
+	//void OnShowFlashDetail();
 	void OnShowHardware();
+	/*
 	void OnShowIPAddress();
 	void OnShowIPRoute();
 	void OnShowMMDRegister();

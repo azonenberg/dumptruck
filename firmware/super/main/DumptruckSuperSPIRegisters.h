@@ -27,40 +27,21 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef SensorTask_h
-#define SensorTask_h
+#ifndef DumptruckSuperSPIRegisters_h
+#define DumptruckSuperSPIRegisters_h
 
-class SensorTask : public Task
+enum dsuperregs_t
 {
-public:
-	SensorTask()
-	: m_index(0)
-	, m_step(0)
-	{}
+	//Rail voltages starting 0x80 (in mV)
+	SUPER_REG_VVBUS		= 0x80,
+	SUPER_REG_V3V3		= 0x81,
+	SUPER_REG_V2V5		= 0x82,
+	SUPER_REG_V1V8		= 0x83,
+	SUPER_REG_V1V2		= 0x84,
+	SUPER_REG_V1V0		= 0x85,
+	SUPER_REG_VDUTVDD	= 0x86
 
-	virtual void Iteration();
-
-protected:
-	int m_index;
-	int m_step;
-
-	bool ReadVoltageIteration(uint8_t i2cAddr, uint16_t& mv);
-
-	void NextStep()
-	{
-		m_index ++;
-		m_step = 0;
-	}
-
-	int m_codeInProgress;
+	//Rail currents starting 0x90 (in mA)
 };
-
-extern uint16_t g_vvbus;
-extern uint16_t g_v3v3;
-extern uint16_t g_v2v5;
-extern uint16_t g_v1v8;
-extern uint16_t g_v1v2;
-extern uint16_t g_v1v0;
-extern uint16_t g_vdutvdd;
 
 #endif

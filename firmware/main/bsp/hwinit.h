@@ -60,6 +60,7 @@
 #include <bootloader/BootloaderAPI.h>
 
 #include <supervisor/SupervisorSPIRegisters.h>
+#include "../../super/main/DumptruckSuperSPIRegisters.h"
 
 #include <boilerplate/h735/StandardBSP.h>
 #include <fpga/FMCUtils.h>
@@ -74,6 +75,7 @@ void InitSupervisor();
 extern SPI<64, 64> g_superSPI;
 extern GPIOPin* g_superSPICS;
 uint16_t ReadSupervisorRegister(superregs_t regid);
+uint16_t ReadSupervisorRegister(dsuperregs_t regid);
 
 //Common hardware interface stuff (mostly Ethernet related)
 extern GPIOPin g_leds[4];
