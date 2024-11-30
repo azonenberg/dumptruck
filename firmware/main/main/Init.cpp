@@ -115,10 +115,10 @@ void App_Init()
 void RegisterProtocolHandlers(IPv4Protocol& ipv4)
 {
 	__attribute__((section(".tcmbss"))) static DumptruckUDPProtocol udp(&ipv4);
-	//__attribute__((section(".tcmbss"))) static DemoTCPProtocol tcp(&ipv4, udp);
+	__attribute__((section(".tcmbss"))) static DumptruckTCPProtocol tcp(&ipv4);
 	ipv4.UseUDP(&udp);
-	//ipv4.UseTCP(&tcp);
+	ipv4.UseTCP(&tcp);
 
 	g_udp = &udp;
-	//g_dhcpClient = &udp.GetDHCP();
+	g_tcp = &tcp;
 }

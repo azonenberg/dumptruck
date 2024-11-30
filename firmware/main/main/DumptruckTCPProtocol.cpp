@@ -27,49 +27,74 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef dumptruck_h
-#define dumptruck_h
-
-#include <core/platform.h>
-#include <hwinit.h>
-
-#include <peripheral/SPI.h>
-
-#include <common-embedded-platform/services/Iperf3Server.h>
-
-#include <embedded-utils/StringBuffer.h>
-#include "DumptruckUDPProtocol.h"
+#include "dumptruck.h"
 #include "DumptruckTCPProtocol.h"
-#include <tcpip/SSHKeyManager.h>
 
-extern Iperf3Server* g_iperfServer;
-extern DumptruckUDPProtocol* g_udp;
-extern DumptruckTCPProtocol* g_tcp;
+#define SSH_PORT	22
 
-void InitLEDs();
-void InitSensors();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Construction / destruction
 
-//extern ManagementSSHTransportServer* g_sshd;
-
-enum channelid_t
+DumptruckTCPProtocol::DumptruckTCPProtocol(IPv4Protocol* ipv4)
+	: TCPProtocol(ipv4)
+	//, m_ssh(*this)
 {
-	CHANNEL_1V2,
-	CHANNEL_1V8,
-	CHANNEL_2V5,
-	CHANNEL_3V3,
-	CHANNEL_NONE
-};
+}
 
-//RGB LED color constants
-#define RGB_OFF		0x000000
-#define RGB_RED		0x200000
-#define RGB_YELLOW	0x202000
-#define RGB_GREEN	0x002000
-#define RGB_BLUE	0x000020
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Message handlers
 
-class SocketDetectionTask;
-extern SocketDetectionTask* g_detectionTask;
+bool DumptruckTCPProtocol::IsPortOpen(uint16_t port)
+{
+	return (port == SSH_PORT);
+}
 
-extern SSHKeyManager g_keyMgr;
+void DumptruckTCPProtocol::OnConnectionAccepted(TCPTableEntry* state)
+{
+	switch(state->m_localPort)
+	{
+		case SSH_PORT:
+			//m_ssh.OnConnectionAccepted(state);
+			break;
 
-#endif
+		default:
+			break;
+	}
+}
+
+void DumptruckTCPProtocol::OnConnectionClosed(TCPTableEntry* state)
+{
+	//Call base class to free memory
+	TCPProtocol::OnConnectionClosed(state);
+
+	switch(state->m_localPort)
+	{
+		case SSH_PORT:
+			//m_ssh.OnConnectionClosed(state);
+			break;
+
+		default:
+			break;
+	}
+}
+
+void DumptruckTCPProtocol::OnRxData(TCPTableEntry* state, uint8_t* payload, uint16_t payloadLen)
+{
+	switch(state->m_localPort)
+	{
+		case SSH_PORT:
+			//m_ssh.OnRxData(state, payload, payloadLen);
+			break;
+
+		//ignore it
+		default:
+			break;
+	}
+}
+
+uint32_t DumptruckTCPProtocol::GenerateInitialSequenceNumber()
+{
+	uint32_t ret;
+	m_crypt.GenerateRandom(reinterpret_cast<uint8_t*>(&ret), sizeof(ret));
+	return ret;
+}

@@ -41,8 +41,14 @@ ITMStream g_itmStream(0);
 ///@brief UDP stack
 DumptruckUDPProtocol* g_udp = nullptr;
 
+///@brief TCP stack
+DumptruckTCPProtocol* g_tcp = nullptr;
+
 ///@brief Task to detect which socket is installed
 SocketDetectionTask* g_detectionTask = nullptr;
+
+///@brief Database of authorized SSH keys
+SSHKeyManager g_keyMgr;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Task tables

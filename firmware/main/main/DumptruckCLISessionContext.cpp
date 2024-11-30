@@ -40,48 +40,43 @@ static const char* hostname_objid = "hostname";
 //List of all valid commands
 enum cmdid_t
 {
-	/*CMD_ADDRESS,
-	CMD_ALL,
-	CMD_ARP,
+	//CMD_ADDRESS,
+	//CMD_ALL,
+	//CMD_ARP,
 	CMD_AUTHORIZED,
-	CMD_CACHE,
+	//CMD_CACHE,
 	//CMD_CLEAR,
 	CMD_COMMIT,
 	CMD_COMPACT,
-	//CMD_COUNTERS,
-	//CMD_DESCRIPTION,
-	CMD_DETAIL,
-	CMD_DFU,
-	CMD_DHCP,
-	*/
+	//CMD_DETAIL,
+	//CMD_DFU,
+	//CMD_DHCP,
 	CMD_DIP8_QSPI,
 	CMD_EEPROM,
-	//CMD_EXIT,
+	CMD_EXIT,
 	//CMD_FINGERPRINT,
-	//CMD_FLASH,
+	CMD_FLASH,
 	//CMD_GATEWAY,
 	CMD_HARDWARE,
-	/*CMD_HOSTNAME,
-	CMD_IP,
+	CMD_HOSTNAME,
+	//CMD_IP,
 	CMD_KEY,
 	CMD_KEYS,
-	CMD_MMD,*/
 	CMD_NO,
 	CMD_NTP,
 	CMD_PROGRAM,
 	CMD_RESCAN,
 	CMD_RELOAD,
-	//CMD_REGISTER,
-	//CMD_ROLLBACK,
+	CMD_ROLLBACK,
 	//CMD_ROUTE,
 	CMD_SERVER,
-	CMD_SHOW/*,
+	CMD_SHOW,
 	CMD_SSH,
 	CMD_SSH_ED25519,
 	//CMD_STATUS,
-	CMD_USERNAME,
-	CMD_VERSION,
-	CMD_ZEROIZE*/
+	//CMD_USERNAME,
+	//CMD_VERSION,
+	CMD_ZEROIZE
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +96,6 @@ static const clikeyword_t g_eepromCommands[] =
 	{nullptr,		INVALID_COMMAND,	nullptr,					nullptr}
 };
 
-/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "flash"
 
@@ -119,7 +113,7 @@ static const clikeyword_t g_hostnameCommands[] =
 	{"<string>",	FREEFORM_TOKEN,		nullptr,	"New host name"},
 	{nullptr,		INVALID_COMMAND,	nullptr,	nullptr}
 };
-
+/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ip"
 
@@ -143,7 +137,7 @@ static const clikeyword_t g_ipCommands[] =
 
 	{nullptr,		INVALID_COMMAND,	nullptr,				nullptr}
 };
-
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "no"
 
@@ -159,7 +153,7 @@ static const clikeyword_t g_noSshCommands[] =
 
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-
+/*
 static const clikeyword_t g_noFlashCommands[] =
 {
 	{"<key>",			FREEFORM_TOKEN,			nullptr,					"Key of the flash object to delete"},
@@ -170,15 +164,14 @@ static const clikeyword_t g_noCommands[] =
 {
 	//{"flash",			CMD_FLASH,				g_noFlashCommands,			"Deletes objects from flash"},
 	{"ntp",				CMD_NTP,				nullptr,					"Disables the NTP client"},
-	//{"ssh",				CMD_SSH,				g_noSshCommands,			"Remove authorized SSH keys"},
+	{"ssh",				CMD_SSH,				g_noSshCommands,			"Remove authorized SSH keys"},
 
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-/*
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "show"
-
+/*
 static const clikeyword_t g_showArpCommands[] =
 {
 	{"cache",			CMD_CACHE,				nullptr,				"Show contents of the ARP cache"},
@@ -191,7 +184,7 @@ static const clikeyword_t g_showIpCommands[] =
 	{"route",			CMD_ROUTE,				nullptr,				"Show the IPv4 routing table"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-
+*/
 static const clikeyword_t g_showSshAuthorized[] =
 {
 	{"keys",			CMD_KEYS,				nullptr,				"Show authorized keys"},
@@ -201,10 +194,10 @@ static const clikeyword_t g_showSshAuthorized[] =
 static const clikeyword_t g_showSshCommands[] =
 {
 	{"authorized",		CMD_AUTHORIZED,			g_showSshAuthorized,	"Show authorized keys"},
-	{"fingerprint",		CMD_FINGERPRINT,		nullptr,				"Show the SSH host key fingerprint (in OpenSSH base64 SHA256 format)"},
+	//{"fingerprint",		CMD_FINGERPRINT,		nullptr,				"Show the SSH host key fingerprint (in OpenSSH base64 SHA256 format)"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-
+/*
 static const clikeyword_t g_showFlashDetailCommands[] =
 {
 	{"<objname>",		FREEFORM_TOKEN,		nullptr,					"Name of the flash object to display"},
@@ -225,12 +218,11 @@ static const clikeyword_t g_showCommands[] =
 	{"hardware",		CMD_HARDWARE,		nullptr,					"Print hardware information"},
 	//{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
 	//{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
-	//{"ssh",				CMD_SSH,			g_showSshCommands,			"Print SSH information"},
+	{"ssh",				CMD_SSH,			g_showSshCommands,			"Print SSH information"},
 	//{"version",			CMD_VERSION,		nullptr,					"Show firmware / FPGA version"},
 	{nullptr,			INVALID_COMMAND,	nullptr,					nullptr}
 };
 
-/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ssh"
 
@@ -261,10 +253,10 @@ static const clikeyword_t g_sshCommandsUsername[] =
 static const clikeyword_t g_sshCommands[] =
 {
 	{"key",				CMD_KEY,				g_sshCommandsType,			"Authorize a new SSH public key"},
-	{"username",		CMD_USERNAME,			g_sshCommandsUsername,		"Sets the SSH username"},
+	//{"username",		CMD_USERNAME,			g_sshCommandsUsername,		"Sets the SSH username"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-
+/*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ntp"
 
@@ -279,6 +271,7 @@ static const clikeyword_t g_ntpCommands[] =
 	{"server",			CMD_SERVER,				g_ntpServerCommands,		"Sets the NTP server to use"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // zeroize
@@ -287,7 +280,7 @@ static const clikeyword_t g_zeroizeCommands[] =
 {
 	{"all",				FREEFORM_TOKEN,			nullptr,				"Confirm erasing all flash data and return to default state"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
-};*/
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Top level command lists
@@ -296,22 +289,20 @@ static const clikeyword_t g_zeroizeCommands[] =
 static const clikeyword_t g_rootCommands[] =
 {
 	//{"clear",		CMD_CLEAR,			g_clearCommands,		"Clear performance counters and other debugging state"},
-	//{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
+	{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
 	//{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
 	{"eeprom",		CMD_EEPROM,			g_eepromCommands,		"Program or dump socket EEPROM"},
-	/*
 	{"exit",		CMD_EXIT,			nullptr,				"Log out"},
 	{"flash",		CMD_FLASH,			g_flashCommands,		"Maintenance operations on flash"},
 	{"hostname",	CMD_HOSTNAME,		g_hostnameCommands,		"Change the host name"},
-	{"ip",			CMD_IP,				g_ipCommands,			"Configure IP addresses"},
+	//{"ip",			CMD_IP,				g_ipCommands,			"Configure IP addresses"},
 	{"no",			CMD_NO,				g_noCommands,			"Remove or disable features"},
-	{"ntp",			CMD_NTP,			g_ntpCommands,			"Configure NTP client"},
-	*/
+	//{"ntp",			CMD_NTP,			g_ntpCommands,			"Configure NTP client"},
 	{"reload",		CMD_RELOAD,			nullptr,				"Restart the system"},
-	//{"rollback",	CMD_ROLLBACK,		nullptr,				"Revert changes made since last commit"},
+	{"rollback",	CMD_ROLLBACK,		nullptr,				"Revert changes made since last commit"},
 	{"show",		CMD_SHOW,			g_showCommands,			"Print information"},
-	//{"ssh",			CMD_SSH,			g_sshCommands,			"Configure SSH protocol"},
-	//{"zeroize",		CMD_ZEROIZE,		g_zeroizeCommands,		"Erase all configuration data and reload"},
+	{"ssh",			CMD_SSH,			g_sshCommands,			"Configure SSH protocol"},
+	{"zeroize",		CMD_ZEROIZE,		g_zeroizeCommands,		"Erase all configuration data and reload"},
 	{nullptr,		INVALID_COMMAND,	nullptr,				nullptr}
 };
 
@@ -364,11 +355,10 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 {
 	switch(m_command[0].m_commandID)
 	{
-		/*
 		case CMD_COMMIT:
 			OnCommit();
 			break;
-
+		/*
 		case CMD_DFU:
 			{
 				//TODO: require confirmation or something
@@ -385,7 +375,6 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			OnEepromCommand();
 			break;
 
-		/*
 		case CMD_EXIT:
 			m_stream->Flush();
 
@@ -408,18 +397,18 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			break;
 
 		case CMD_HOSTNAME:
-			memcpy(m_hostname, m_command[1].m_text, sizeof(m_hostname)-1);
-			m_hostname[sizeof(m_hostname)-1] = '\0';
+			memset(m_hostname, 0, sizeof(m_hostname));
+			strncpy(m_hostname, m_command[1].m_text, sizeof(m_hostname)-1);
 			break;
-
+		/*
 		case CMD_IP:
 			OnIPCommand();
 			break;
-
+		*/
 		case CMD_NO:
 			OnNoCommand();
 			break;
-
+		/*
 		case CMD_NTP:
 			if(m_command[1].m_commandID == CMD_SERVER)
 				OnNtpServer(m_command[2].m_text);
@@ -429,7 +418,6 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			OnReload();
 			break;
 		/*
-
 		case CMD_ROLLBACK:
 			OnRollback();
 			break;
@@ -438,16 +426,17 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			OnShowCommand();
 			break;
 
-		/*
 		case CMD_SSH:
 			OnSSHCommand();
 			break;
 
 		case CMD_ZEROIZE:
 			if(!strcmp(m_command[1].m_text, "all"))
-				OnZeroize();
+			{
+				g_kvs->WipeAll();
+				OnReload();
+			}
 			break;
-		*/
 
 		default:
 			m_stream->Printf("Unrecognized command\n");
@@ -457,37 +446,19 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "commit"
 
-/*
 void DumptruckCLISessionContext::OnCommit()
 {
 	//Save hostname and SSH username
-	if(!g_kvs->StoreStringObjectIfNecessary(hostname_objid, m_hostname, "crossbar"))
-		m_stream->Printf("KVS write error\n");
-	if(!g_kvs->StoreStringObjectIfNecessary(g_usernameObjectID, g_sshUsername, g_defaultSshUsername))
+	if(!g_kvs->StoreStringObjectIfNecessary(hostname_objid, m_hostname, "dumptruck"))
 		m_stream->Printf("KVS write error\n");
 
-	//Check if we already have the same hostname stored
-	auto hlog = g_kvs->FindObject(hostname_objid);
-	bool needToStoreHostname = true;
-	if(hlog)
-	{
-		auto oldhost = (const char*)g_kvs->MapObject(hlog);
-		if( (strlen(m_hostname) == hlog->m_len) && (!strncmp(m_hostname, oldhost, hlog->m_len)) )
-			needToStoreHostname = false;
-
-	}
-
-	//if not found, store it
-	if(needToStoreHostname)
-	{
-		if(!g_kvs->StoreObject(hostname_objid, (uint8_t*)m_hostname, strlen(m_hostname)))
-			m_stream->Printf("KVS write error\n");
-	}
+	//if(!g_kvs->StoreStringObjectIfNecessary(g_usernameObjectID, g_sshUsername, g_defaultSshUsername))
+	//	m_stream->Printf("KVS write error\n");
 
 	//Save SSH authorized key list
 	g_keyMgr.CommitToKVS();
-
-	//Save DHCP configuration
+	/*
+	//Save service configuration
 	g_dhcpClient->SaveConfigToKVS();
 	g_ntpClient->SaveConfigToKVS();
 
@@ -500,8 +471,8 @@ void DumptruckCLISessionContext::OnCommit()
 		m_stream->Printf("KVS write error\n");
 	if(!g_kvs->StoreObjectIfNecessary<IPv4Address>(g_ipConfig.m_gateway, g_defaultGateway, "ip.gateway"))
 		m_stream->Printf("KVS write error\n");
+	*/
 }
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "eeprom"
@@ -722,25 +693,19 @@ void DumptruckCLISessionContext::OnNtpServer(const char* addr)
 */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "no"
-/*
-void DumptruckCLISessionContext::OnNoSSHKeyCommand()
-{
-	g_keyMgr.RemovePublicKey(atoi(m_command[3].m_text));
-}
 
 void DumptruckCLISessionContext::OnNoSSHCommand()
 {
 	switch(m_command[2].m_commandID)
 	{
 		case CMD_KEY:
-			OnNoSSHKeyCommand();
+			g_keyMgr.RemovePublicKey(atoi(m_command[3].m_text));
 			break;
 
 		default:
 			break;
 	}
 }
-*/
 
 /**
 	@brief "no flash key" - deletes a key from flash
@@ -761,11 +726,12 @@ void DumptruckCLISessionContext::OnNoFlashCommand()
 	else
 		m_stream->Printf("Object \"%s\" not found, could not delete\n", key);
 }
-
+*/
 void DumptruckCLISessionContext::OnNoCommand()
 {
 	switch(m_command[1].m_commandID)
 	{
+		/*
 		case CMD_FLASH:
 			OnNoFlashCommand();
 			break;
@@ -773,6 +739,7 @@ void DumptruckCLISessionContext::OnNoCommand()
 		case CMD_NTP:
 			g_ntpClient->Disable();
 			break;
+			*/
 
 		case CMD_SSH:
 			OnNoSSHCommand();
@@ -782,7 +749,6 @@ void DumptruckCLISessionContext::OnNoCommand()
 			break;
 	}
 }
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "reload"
@@ -801,18 +767,16 @@ void DumptruckCLISessionContext::OnReload()
 /**
 	@brief Load all of our configuration from the KVS, discarding any recent changes made in the CLI
  */
-/*
 void DumptruckCLISessionContext::OnRollback()
 {
 	g_keyMgr.LoadFromKVS(false);
 
-	g_dhcpClient->LoadConfigFromKVS();
-	g_ntpClient->LoadConfigFromKVS();
+	//g_dhcpClient->LoadConfigFromKVS();
+	//g_ntpClient->LoadConfigFromKVS();
 	ConfigureIP();
 	LoadHostname();
-	g_sshd->LoadUsername();
+	//g_sshd->LoadUsername();
 }
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "show"
@@ -863,23 +827,23 @@ void DumptruckCLISessionContext::OnShowCommand()
 		case CMD_NTP:
 			OnShowNtp();
 			break;
-
+		*/
 		case CMD_SSH:
 			switch(m_command[2].m_commandID)
 			{
 				case CMD_AUTHORIZED:
 					OnShowSSHKeys();
 					break;
-
+				/*
 				case CMD_FINGERPRINT:
 					OnShowSSHFingerprint();
 					break;
-
+				*/
 				default:
 					break;
 			}
 			break;
-
+		/*
 		case CMD_VERSION:
 			OnShowVersion();
 			break;
@@ -1199,15 +1163,6 @@ void DumptruckCLISessionContext::OnShowIPRoute()
 		g_ipConfig.m_gateway.m_octets[3]);
 }
 
-void DumptruckCLISessionContext::OnShowMMDRegister()
-{
-	int mmd = strtol(m_command[2].m_text, nullptr, 16);
-	int regid = strtol(m_command[4].m_text, nullptr, 16);
-	auto value = g_mgmtPhy.ReadExtendedRegister(mmd, regid);
-
-	m_stream->Printf("MMD %02x register 0x%04x = 0x%04x\n", mmd, regid, value);
-}
-
 void DumptruckCLISessionContext::OnShowNtp()
 {
 	if(g_ntpClient->IsEnabled())
@@ -1241,21 +1196,13 @@ void DumptruckCLISessionContext::OnShowNtp()
 	else
 		m_stream->Printf("NTP client disabled\n");
 }
-
-void DumptruckCLISessionContext::OnShowRegister()
-{
-	int regid = strtol(m_command[2].m_text, nullptr, 16);
-	auto value = g_mgmtPhy.ReadRegister(regid);
-
-	m_stream->Printf("Register 0x%02x = 0x%04x\n", regid, value);
-}
-
+*/
 void DumptruckCLISessionContext::OnShowSSHKeys()
 {
 	m_stream->Printf("Authorized keys:\n");
 	m_stream->Printf("Slot  Nickname                        Fingerprint\n");
 
-	DeviceCryptoEngine tmp;
+	AcceleratedCryptoEngine tmp;
 	char fingerprint[64];
 
 	for(int i=0; i<MAX_SSH_KEYS; i++)
@@ -1270,7 +1217,7 @@ void DumptruckCLISessionContext::OnShowSSHKeys()
 		}
 	}
 }
-
+/*
 void DumptruckCLISessionContext::OnShowSSHFingerprint()
 {
 	char buf[64] = {0};
@@ -1279,51 +1226,6 @@ void DumptruckCLISessionContext::OnShowSSHFingerprint()
 	m_stream->Printf("ED25519 key fingerprint is SHA256:%s.\n", buf);
 }
 */
-/*
-void DumptruckCLISessionContext::OnShowTemperature()
-{
-	//Read fans
-	for(uint8_t i=0; i<2; i++)
-	{
-		auto rpm = GetFanRPM(i);
-		if(rpm == 0)
-			m_stream->Printf("Fan %d:                                 STOPPED\n", i, rpm);
-		else
-			m_stream->Printf("Fan %d:                                 %d RPM\n", i, rpm);
-	}
-
-	//Read I2C temp sensors
-	for(uint8_t i=0; i<4; i++)
-	{
-		auto addr = g_tempSensorAddrs[i];
-		auto temp = ReadThermalSensor(addr);
-		m_stream->Printf("Temp 0x%02x (%25s): %d.%02d C\n",
-			addr,
-			g_tempSensorNames[i],
-			(temp >> 8),
-			static_cast<int>(((temp & 0xff) / 256.0) * 100));
-	}
-
-	//Read SFP+ temp sensor (TODO: only if optic is inserted)
-	auto temp = GetSFPTemperature();
-	m_stream->Printf("SFP+ optic:                            %2d.%02d C\n",
-		(temp >> 8), static_cast<int>(((temp & 0xff) / 256.0) * 100));
-
-	//Read VSC8512 PHY temperature
-	temp = GetVSC8512Temperature();
-	m_stream->Printf("VSC8512:                               %2d.%02d C\n",
-		(temp >> 8), static_cast<int>(((temp & 0xff) / 256.0) * 100));
-
-	//Read FPGA XADC temperature
-	temp = GetFPGATemperature();
-	m_stream->Printf("FPGA:                                  %2d.%02d C\n",
-		(temp >> 8), static_cast<int>(((temp & 0xff) / 256.0) * 100));
-
-	//Read MCU DTS temperature
-	temp = g_dts->GetTemperature();
-	m_stream->Printf("MCU:                                   %2d.%02d C\n",
-		(temp >> 8), static_cast<int>(((temp & 0xff) / 256.0) * 100));
-}*/
 /*
 void DumptruckCLISessionContext::OnShowVersion()
 {
@@ -1339,7 +1241,7 @@ void DumptruckCLISessionContext::OnShowVersion()
 	m_stream->Printf("CLI source code last modified: %s\n", __TIMESTAMP__);
 	#endif
 }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ssh"
 
@@ -1348,9 +1250,9 @@ void DumptruckCLISessionContext::OnSSHCommand()
 	switch(m_command[1].m_commandID)
 	{
 		case CMD_KEY:
-			OnSSHKey();
+			g_keyMgr.AddPublicKey(m_command[2].m_text, m_command[3].m_text, m_command[4].m_text);
 			break;
-
+		/*
 		case CMD_USERNAME:
 			//yes this can truncate, we accept that
 			#pragma GCC diagnostic push
@@ -1358,24 +1260,9 @@ void DumptruckCLISessionContext::OnSSHCommand()
 			strncpy(g_sshUsername, m_command[2].m_text, sizeof(g_sshUsername)-1);
 			#pragma GCC diagnostic pop
 			break;
-
+		*/
 		default:
 			m_stream->Printf("Unrecognized command\n");
 			break;
 	}
 }
-
-void DumptruckCLISessionContext::OnSSHKey()
-{
-	g_keyMgr.AddPublicKey(m_command[2].m_text, m_command[3].m_text, m_command[4].m_text);
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// "zeroize"
-
-void DumptruckCLISessionContext::OnZeroize()
-{
-	g_kvs->WipeAll();
-	OnReload();
-}
-*/

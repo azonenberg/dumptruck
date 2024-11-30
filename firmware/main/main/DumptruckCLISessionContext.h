@@ -65,36 +65,32 @@ public:
 	virtual void PrintPrompt();
 
 protected:
-	/*
-	bool ParseIPAddress(const char* addr, IPv4Address& ip);
-	bool ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask);
-	*/
+
+	//bool ParseIPAddress(const char* addr, IPv4Address& ip);
+	//bool ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask);
+
 	void LoadHostname();
 
 	virtual void OnExecute();
 	void OnExecuteRoot();
 
-	//void OnCommit();
+	void OnCommit();
 	//void OnDFU();
 	void OnEepromCommand();
 	void OnEepromProgram(DutSocketType stype);
 
-	/*
-	void OnIPCommand();
-	void OnIPAddress(const char* addr);
-	void OnIPGateway(const char* gw);
+	//void OnIPCommand();
+	//void OnIPAddress(const char* addr);
+	//void OnIPGateway(const char* gw);
 
 	void OnNoCommand();
-	void OnNoFlashCommand();
+	//void OnNoFlashCommand();
 	void OnNoSSHCommand();
-	void OnNoSSHKeyCommand();
 
-	void OnNtpServer(const char* addr);
-	*/
+	//void OnNtpServer(const char* addr);
+
 	void OnReload();
-	/*
 	void OnRollback();
-	*/
 	void OnShowCommand();
 	//void OnShowARPCache();
 	//void OnShowFlash();
@@ -103,17 +99,13 @@ protected:
 	/*
 	void OnShowIPAddress();
 	void OnShowIPRoute();
-	void OnShowMMDRegister();
 	void OnShowNtp();
-	void OnShowRegister();
 	void OnShowSSHFingerprint();
-	void OnShowSSHKeys();
-	//void OnShowTemperature();
-	void OnShowVersion();
-	void OnSSHCommand();
-	void OnSSHKey();
-	void OnZeroize();
 	*/
+	void OnShowSSHKeys();
+	//void OnShowVersion();
+	void OnSSHCommand();
+
 	SSHOutputStream m_sshstream;
 	CLIOutputStream* m_stream;
 

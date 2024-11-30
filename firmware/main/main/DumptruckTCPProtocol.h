@@ -27,49 +27,27 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef dumptruck_h
-#define dumptruck_h
+#ifndef DumptruckTCPProtocol_h
+#define DumptruckTCPProtocol_h
 
-#include <core/platform.h>
-#include <hwinit.h>
+#include <fpga/AcceleratedCryptoEngine.h>
+//#include "DumptruckSSHTransportServer.h"
 
-#include <peripheral/SPI.h>
-
-#include <common-embedded-platform/services/Iperf3Server.h>
-
-#include <embedded-utils/StringBuffer.h>
-#include "DumptruckUDPProtocol.h"
-#include "DumptruckTCPProtocol.h"
-#include <tcpip/SSHKeyManager.h>
-
-extern Iperf3Server* g_iperfServer;
-extern DumptruckUDPProtocol* g_udp;
-extern DumptruckTCPProtocol* g_tcp;
-
-void InitLEDs();
-void InitSensors();
-
-//extern ManagementSSHTransportServer* g_sshd;
-
-enum channelid_t
+class DumptruckTCPProtocol : public TCPProtocol
 {
-	CHANNEL_1V2,
-	CHANNEL_1V8,
-	CHANNEL_2V5,
-	CHANNEL_3V3,
-	CHANNEL_NONE
+public:
+	DumptruckTCPProtocol(IPv4Protocol* ipv4);
+
+protected:
+	virtual bool IsPortOpen(uint16_t port) override;
+	virtual void OnConnectionAccepted(TCPTableEntry* state) override;
+	virtual void OnConnectionClosed(TCPTableEntry* state) override;
+	virtual void OnRxData(TCPTableEntry* state, uint8_t* payload, uint16_t payloadLen) override;
+
+	virtual uint32_t GenerateInitialSequenceNumber() override;
+
+	//DumptruckSSHTransportServer m_ssh;
+	AcceleratedCryptoEngine m_crypt;
 };
-
-//RGB LED color constants
-#define RGB_OFF		0x000000
-#define RGB_RED		0x200000
-#define RGB_YELLOW	0x202000
-#define RGB_GREEN	0x002000
-#define RGB_BLUE	0x000020
-
-class SocketDetectionTask;
-extern SocketDetectionTask* g_detectionTask;
-
-extern SSHKeyManager g_keyMgr;
 
 #endif
