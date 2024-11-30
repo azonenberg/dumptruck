@@ -45,6 +45,8 @@ SocketDetectionTask::SocketDetectionTask()
 	m_2v5Present.SetPullMode(GPIOPin::PULL_DOWN);
 	m_1v8Present.SetPullMode(GPIOPin::PULL_DOWN);
 	m_1v2Present.SetPullMode(GPIOPin::PULL_DOWN);
+
+	memset(&m_descriptor, 0xff, sizeof(m_descriptor));
 }
 
 /**
@@ -192,32 +194,45 @@ void SocketDetectionTask::OnTimer()
  */
 bool SocketDetectionTask::ReadEEPROM()
 {
-	//24C02 is 2 kB = 256 bytes, single byte address. Read the first 128 bytes
-	uint8_t eepromData[128];
+	//24C02 is 2 kB = 256 bytes, single byte address. Read the descriptor from it
 	g_macI2C.BlockingWrite8(g_socketIdEepromAddr, 0x00);
-	if(!g_macI2C.BlockingRead(g_socketIdEepromAddr, &eepromData[0], sizeof(eepromData)))
+	if(!g_macI2C.BlockingRead(g_socketIdEepromAddr, (uint8_t*)&m_descriptor, sizeof(m_descriptor)))
 	{
 		g_log(Logger::ERROR, "Failed to read ID EEPROM (damaged or improperly mated socket adapter?)\n");
 		return false;
 	}
 
 	//If the descriptor major version is 0xFF, eeprom is blank
-	if(eepromData[0] == 0xff)
+	if(m_descriptor.fmtMajor == 0xff)
 	{
 		g_log(Logger::WARNING, "ID EEPROM is blank or corrupted, cannot detect socket. Use console to reprogram it.\n");
 		return false;
 	}
 
-	//Read successful. Print it out
-	for(int i=0; i<128; i += 16)
+	//Validate version info
+	if(m_descriptor.fmtMajor != 1)
 	{
-		g_log("%02x: %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x %02x\n",
-			i,
-			eepromData[i + 0], eepromData[i + 1], eepromData[i + 2], eepromData[i + 3],
-			eepromData[i + 4], eepromData[i + 5], eepromData[i + 6], eepromData[i + 7],
-			eepromData[i + 8], eepromData[i + 9], eepromData[i + 10], eepromData[i + 11],
-			eepromData[i + 12], eepromData[i + 13], eepromData[i + 14], eepromData[i + 15]);
+		g_log(Logger::WARNING, "ID EEPROM has header version %d, expected 1\n", m_descriptor.fmtMajor);
+		return false;
 	}
 
-	return false;
+	//If we get here it's valid
+	g_log("EEPROM version %d.%d, s/n %02x%02x%02x%02x%02x%02x%02x%02x, type %s\n",
+		m_descriptor.fmtMajor, m_descriptor.fmtMinor,
+		m_descriptor.serial[0], m_descriptor.serial[1], m_descriptor.serial[2], m_descriptor.serial[3],
+		m_descriptor.serial[4], m_descriptor.serial[5], m_descriptor.serial[6], m_descriptor.serial[7],
+		GetNameOfType(m_descriptor.socketType));
+	return true;
+}
+
+const char* SocketDetectionTask::GetNameOfType(DutSocketType type)
+{
+	switch(type)
+	{
+		case DutSocketType::Dip8Qspi:			return "QSPI NOR flash, DIP-8 or DIP-8 DFN socket";
+		case DutSocketType::ParallelNorCSP56:	return "Async NOR flash, CSPBGA-56";
+
+		default:
+			return "unknown or unprogrammed";
+	}
 }

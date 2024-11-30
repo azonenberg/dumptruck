@@ -554,11 +554,10 @@ void DumptruckCLISessionContext::OnEepromProgram(DutSocketType stype)
 
 	//Ping until the write completes
 	auto now = g_logTimer.GetCount();
-	int niter = 0;
 	while(g_macI2C.BlockingPing(g_socketIdEepromAddr) == 0)
-		niter ++;
+	{}
 	auto dt = g_logTimer.GetCount() - now;
-	g_log("Write complete (%d iterations in %d.%d ms)\n", niter, dt/10, dt % 10);
+	g_log("Write complete (took %d.%d ms)\n", dt/10, dt % 10);
 
 	//Re-scan so we know what's mated
 	g_detectionTask->Redetect();

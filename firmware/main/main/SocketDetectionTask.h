@@ -88,6 +88,7 @@ public:
 	SocketDetectionTask();
 
 	static const char* GetNameOfChannel(channelid_t chan);
+	static const char* GetNameOfType(DutSocketType type);
 
 	void Redetect()
 	{ OnRemove(); }
@@ -110,6 +111,8 @@ protected:
 	bool m_detectPending;
 
 	bool ReadEEPROM();
+
+	DutSocketDescriptor m_descriptor;
 };
 
 #endif
