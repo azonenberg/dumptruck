@@ -34,17 +34,9 @@
 #include <tcpip/IPAgingTask.h>
 #include <tcpip/PhyPollTask.h>
 #include "LocalConsoleTask.h"
+#include "SocketDetectionTask.h"
 
-#include <peripheral/ITMStream.h>
 //#include "../super/superregs.h"
-
-//extern Iperf3Server* g_iperfServer;
-
-///@brief ITM serial trace data stream
-ITMStream g_itmStream(0);
-
-///@brief UPD stack
-DumptruckUDPProtocol* g_udp = nullptr;
 
 /**
 	@brief Initialize global GPIO LEDs
@@ -63,14 +55,9 @@ void InitLEDs()
 	g_fpgaLEDs[2] = 1;
 	g_fpgaLEDs[3] = 1;
 
-	//Set up the FPGA RGB LEDs
-	FRGBLED.framebuffer[0] = 0x200000;
-	FRGBLED.framebuffer[1] = 0x200000;
-
-	FRGBLED.framebuffer[2] = 0x000020;
-	FRGBLED.framebuffer[3] = 0x000020;
-	FRGBLED.framebuffer[4] = 0x000020;
-	FRGBLED.framebuffer[5] = 0x000020;
+	//Turn off all of the RGB LEDs
+	for(int i=0; i<6; i++)
+		FRGBLED.framebuffer[i] = 0x000000;
 }
 
 /**
@@ -110,14 +97,19 @@ void App_Init()
 	static PhyPollTask phyTask;
 	static IPAgingTask ipAgingTask;
 	static LocalConsoleTask localConsoleTask;
+	static SocketDetectionTask socketDetectionTask;
 
 	g_tasks.push_back(&fpgaTask);
 	g_tasks.push_back(&phyTask);
 	g_tasks.push_back(&ipAgingTask);
 	g_tasks.push_back(&localConsoleTask);
+	g_tasks.push_back(&socketDetectionTask);
 
 	g_timerTasks.push_back(&phyTask);
 	g_timerTasks.push_back(&ipAgingTask);
+	g_timerTasks.push_back(&socketDetectionTask);
+
+	g_detectionTask = &socketDetectionTask;
 }
 
 void RegisterProtocolHandlers(IPv4Protocol& ipv4)

@@ -45,17 +45,27 @@ extern Iperf3Server* g_iperfServer;
 extern DumptruckUDPProtocol* g_udp;
 
 void InitLEDs();
-//void InitSupervisor();
 void InitSensors();
-/*
-uint16_t SupervisorRegRead(uint8_t regid);
 
-extern SPI<64, 64> g_superSPI;
-extern GPIOPin* g_superSPICS;
+//extern ManagementSSHTransportServer* g_sshd;
 
-extern char g_superVersion[20];
+enum channelid_t
+{
+	CHANNEL_1V2,
+	CHANNEL_1V8,
+	CHANNEL_2V5,
+	CHANNEL_3V3,
+	CHANNEL_NONE
+};
 
-extern ManagementSSHTransportServer* g_sshd;
-*/
+//RGB LED color constants
+#define RGB_OFF		0x000000
+#define RGB_RED		0x200000
+#define RGB_YELLOW	0x202000
+#define RGB_GREEN	0x002000
+#define RGB_BLUE	0x000020
+
+class SocketDetectionTask;
+extern SocketDetectionTask* g_detectionTask;
 
 #endif

@@ -144,7 +144,7 @@ void InitITM();
 void BSP_Init()
 {
 	InitRTCFromHSE();
-	//InitSupervisor();
+	InitSupervisor();
 	InitFMC();
 	InitFPGA();
 	InitFPGAFlash();
@@ -154,9 +154,6 @@ void BSP_Init()
 	InitManagementPHY();
 	InitIP();
 	InitITM();
-
-	//do this late so we can see the logs
-	InitSupervisor();
 
 	App_Init();
 }

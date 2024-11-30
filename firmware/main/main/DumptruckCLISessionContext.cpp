@@ -33,6 +33,7 @@
 #include <ctype.h>
 #include <bootloader/BootloaderAPI.h>
 #include <cli/CommonCommands.h>
+#include <fpga/AcceleratedCryptoEngine.h>
 
 static const char* hostname_objid = "hostname";
 
@@ -52,10 +53,13 @@ enum cmdid_t
 	CMD_DETAIL,
 	CMD_DFU,
 	CMD_DHCP,
-	CMD_EXIT,
-	CMD_FINGERPRINT,
-	CMD_FLASH,
-	CMD_GATEWAY,*/
+	*/
+	CMD_DIP8_QSPI,
+	CMD_EEPROM,
+	//CMD_EXIT,
+	//CMD_FINGERPRINT,
+	//CMD_FLASH,
+	//CMD_GATEWAY,
 	CMD_HARDWARE,
 	/*CMD_HOSTNAME,
 	CMD_IP,
@@ -64,6 +68,8 @@ enum cmdid_t
 	CMD_MMD,*/
 	CMD_NO,
 	CMD_NTP,
+	CMD_PROGRAM,
+	CMD_RESCAN,
 	CMD_RELOAD,
 	//CMD_REGISTER,
 	//CMD_ROLLBACK,
@@ -77,6 +83,24 @@ enum cmdid_t
 	CMD_VERSION,
 	CMD_ZEROIZE*/
 };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// "eeprom"
+
+static const clikeyword_t g_eepromProgramCommands[] =
+{
+	{"dip8qspi",	CMD_DIP8_QSPI,		nullptr,		"Socket is a dip8-qspi adapter"},
+	{nullptr,		INVALID_COMMAND,	nullptr,		nullptr}
+};
+
+
+static const clikeyword_t g_eepromCommands[] =
+{
+	{"rescan",		CMD_RESCAN,			nullptr,					"Force re-read of EEPROM"},
+	{"program",		CMD_PROGRAM,		g_eepromProgramCommands,	"Program socket EEPROM"},
+	{nullptr,		INVALID_COMMAND,	nullptr,					nullptr}
+};
+
 /*
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "flash"
@@ -271,10 +295,11 @@ static const clikeyword_t g_zeroizeCommands[] =
 //Top level commands in root mode
 static const clikeyword_t g_rootCommands[] =
 {
-	/*
 	//{"clear",		CMD_CLEAR,			g_clearCommands,		"Clear performance counters and other debugging state"},
-	{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
-	{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
+	//{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
+	//{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
+	{"eeprom",		CMD_EEPROM,			g_eepromCommands,		"Program or dump socket EEPROM"},
+	/*
 	{"exit",		CMD_EXIT,			nullptr,				"Log out"},
 	{"flash",		CMD_FLASH,			g_flashCommands,		"Maintenance operations on flash"},
 	{"hostname",	CMD_HOSTNAME,		g_hostnameCommands,		"Change the host name"},
@@ -354,7 +379,13 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 				Reset();
 			}
 			break;
+		*/
 
+		case CMD_EEPROM:
+			OnEepromCommand();
+			break;
+
+		/*
 		case CMD_EXIT:
 			m_stream->Flush();
 
@@ -471,6 +502,67 @@ void DumptruckCLISessionContext::OnCommit()
 		m_stream->Printf("KVS write error\n");
 }
 */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// "eeprom"
+
+void DumptruckCLISessionContext::OnEepromCommand()
+{
+	switch(m_command[1].m_commandID)
+	{
+		//Program the EEPROM
+		case CMD_PROGRAM:
+			switch(m_command[2].m_commandID)
+			{
+				case CMD_DIP8_QSPI:
+					OnEepromProgram(DutSocketType::Dip8Qspi);
+					break;
+
+				default:
+					break;
+			}
+			break;
+
+		//Re-read the EEPROM
+		case CMD_RESCAN:
+			g_detectionTask->Redetect();
+			break;
+
+		default:
+			break;
+	}
+}
+
+void DumptruckCLISessionContext::OnEepromProgram(DutSocketType stype)
+{
+	//Fill out the descriptor
+	DutSocketDescriptor desc;
+	desc.fmtMajor = 1;
+	desc.fmtMinor = 0;
+	desc.socketType = stype;
+
+	//Generate a serial number
+	AcceleratedCryptoEngine engine;
+	engine.GenerateRandom(desc.serial, sizeof(desc.serial));
+
+	//Write it to the EEPROM
+	//For now, write in a single block (up to 16 bytes can be done per block)
+	uint8_t writeData[sizeof(desc) + 1];
+	writeData[0] = 0x00;	//address
+	memcpy(&writeData[1], &desc, sizeof(desc));
+	g_macI2C.BlockingWrite(g_socketIdEepromAddr, writeData, sizeof(writeData));
+
+	//Ping until the write completes
+	auto now = g_logTimer.GetCount();
+	int niter = 0;
+	while(g_macI2C.BlockingPing(g_socketIdEepromAddr) == 0)
+		niter ++;
+	auto dt = g_logTimer.GetCount() - now;
+	g_log("Write complete (%d iterations in %d.%d ms)\n", niter, dt/10, dt % 10);
+
+	//Re-scan so we know what's mated
+	g_detectionTask->Redetect();
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ip"
@@ -984,10 +1076,50 @@ void DumptruckCLISessionContext::OnShowHardware()
 {
 	PrintProcessorInfo(m_stream);
 
+	//m_stream->Printf("\n");
+	//m_stream->Printf("Supervisor:");
+	//m_stream->Printf("    %s\n", g_superVersion);
+
 	m_stream->Printf("\n");
 	m_stream->Printf("Ethernet interface mgmt0:\n");
 	m_stream->Printf("    MAC address: %02x:%02x:%02x:%02x:%02x:%02x\n",
 		g_macAddress[0], g_macAddress[1], g_macAddress[2], g_macAddress[3], g_macAddress[4], g_macAddress[5]);
+
+	//TODO: refactor into common
+	m_stream->Printf("\n");
+	m_stream->Printf("FPGA:\n");
+
+	uint32_t idcode = FDEVINFO.idcode;
+	memcpy(g_fpgaSerial, (const void*)FDEVINFO.serial, 8);
+
+	//Print status
+	m_stream->Printf("    IDCODE:   %08x (%s rev %d)\n", idcode, GetNameOfFPGA(idcode), idcode >> 28);
+	m_stream->Printf("    Serial:   %02x%02x%02x%02x%02x%02x%02x%02x\n",
+		g_fpgaSerial[7], g_fpgaSerial[6], g_fpgaSerial[5], g_fpgaSerial[4],
+		g_fpgaSerial[3], g_fpgaSerial[2], g_fpgaSerial[1], g_fpgaSerial[0]);
+
+	//Read USERCODE
+	g_usercode = FDEVINFO.usercode;
+	m_stream->Printf("    Usercode: %08x\n", g_usercode);
+	{
+		LogIndenter li2(g_log);
+
+		//Format per XAPP1232:
+		//31:27 day
+		//26:23 month
+		//22:17 year
+		//16:12 hr
+		//11:6 min
+		//5:0 sec
+		int day = g_usercode >> 27;
+		int mon = (g_usercode >> 23) & 0xf;
+		int yr = 2000 + ((g_usercode >> 17) & 0x3f);
+		int hr = (g_usercode >> 12) & 0x1f;
+		int min = (g_usercode >> 6) & 0x3f;
+		int sec = g_usercode & 0x3f;
+		m_stream->Printf("    Version:  %04d-%02d-%02d %02d:%02d:%02d\n",
+			yr, mon, day, hr, min, sec);
+	}
 
 	m_stream->Printf("\n");
 	m_stream->Printf("Temperatures:\n");

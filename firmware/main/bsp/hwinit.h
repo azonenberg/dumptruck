@@ -107,5 +107,6 @@ extern volatile APB_XADC FXADC;
 extern volatile APB_GPIO FPGA_GPIOA;
 extern volatile APB_Curve25519 FCURVE25519;
 extern volatile APB_SerialLED FRGBLED;
+extern volatile APB_DeviceInfo_7series FDEVINFO;
 
 #endif

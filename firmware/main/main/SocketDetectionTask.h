@@ -27,25 +27,89 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#include "dumptruck.h"
-#include <peripheral/ITMStream.h>
+#ifndef SocketDetectionTask_h
+#define SocketDetectionTask_h
 
-///@brief The SSH server
-//ManagementSSHTransportServer* g_sshd = nullptr;
+#include <core/TimerTask.h>
 
-//extern Iperf3Server* g_iperfServer;
+extern const uint8_t g_socketIdEepromAddr;
 
-///@brief ITM serial trace data stream
-ITMStream g_itmStream(0);
+enum class DutSocketType : uint16_t
+{
+	/**
+		@brief DIP8 breakout using standard QSPI flash pinout
 
-///@brief UDP stack
-DumptruckUDPProtocol* g_udp = nullptr;
+		https://github.com/azonenberg/dumptruck/tree/main/dut-breakouts/dip8-qspi
+	 */
+	Dip8Qspi			= 0x0000,
 
-///@brief Task to detect which socket is installed
-SocketDetectionTask* g_detectionTask = nullptr;
+	/**
+		@brief CSP-56 parallel NOR flash
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Task tables
+		https://github.com/azonenberg/dumptruck/tree/main/dut-breakouts/parallel-nor-csp56
+	 */
+	ParallelNorCSP56	= 0x1000,
 
-etl::vector<Task*, MAX_TASKS>  g_tasks;
-etl::vector<TimerTask*, MAX_TIMER_TASKS>  g_timerTasks;
+	///@brief Blank EEPROM
+	Unprogrammed		= 0xffff
+};
+
+/**
+	@brief Identifying information for the type of socket
+ */
+struct __attribute__((packed)) DutSocketDescriptor
+{
+	///@brief Descriptor format version, always 1
+	uint8_t			fmtMajor;
+
+	///@brief Descriptor format version, always 0
+	uint8_t			fmtMinor;
+
+	///@brief Socket type (so we know which types of memories are compatible)
+	DutSocketType	socketType;
+
+	/**
+		@brief Serial number (eight random bytes)
+
+		This gives 2^32 probability of birthday collision which is plenty given how many we intend to actually build
+		(a few dozen max)
+	 */
+	uint8_t			serial[8];
+
+	//TODO: checksum?
+};
+
+/**
+	@brief Task for detecting which socket is installed
+ */
+class SocketDetectionTask : public TimerTask
+{
+public:
+	SocketDetectionTask();
+
+	static const char* GetNameOfChannel(channelid_t chan);
+
+	void Redetect()
+	{ OnRemove(); }
+
+protected:
+	virtual void OnTimer() override;
+	virtual void Iteration() override;
+
+	void OnInsert(channelid_t chan);
+	void OnConflict(channelid_t chan1, channelid_t chan2);
+	void OnRemove();
+
+	channelid_t	m_activeChannel;
+
+	GPIOPin m_3v3Present;
+	GPIOPin m_2v5Present;
+	GPIOPin m_1v8Present;
+	GPIOPin m_1v2Present;
+
+	bool m_detectPending;
+
+	bool ReadEEPROM();
+};
+
+#endif

@@ -22,8 +22,8 @@ target_link_libraries(bootloader
 	common-embedded-platform-bootloader
 	common-embedded-platform-core
 	common-embedded-platform-fpga
-	common-embedded-platform-services
 	common-embedded-platform-tcpip
+	common-embedded-platform-services
 	embedded-cli
 	embedded-utils
 	microkvs

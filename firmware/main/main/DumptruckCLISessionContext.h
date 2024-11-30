@@ -38,6 +38,8 @@
 #include <embedded-cli/CLISessionContext.h>
 #include <staticnet/cli/SSHOutputStream.h>
 
+#include "SocketDetectionTask.h"
+
 class DumptruckCLISessionContext : public CLISessionContext
 {
 public:
@@ -71,10 +73,13 @@ protected:
 
 	virtual void OnExecute();
 	void OnExecuteRoot();
-	/*
-	void OnCommit();
 
-	void OnDFU();
+	//void OnCommit();
+	//void OnDFU();
+	void OnEepromCommand();
+	void OnEepromProgram(DutSocketType stype);
+
+	/*
 	void OnIPCommand();
 	void OnIPAddress(const char* addr);
 	void OnIPGateway(const char* gw);
@@ -89,11 +94,6 @@ protected:
 	void OnReload();
 	/*
 	void OnRollback();
-
-	void OnSetCommand();
-	void OnSetRegister();
-	void OnSetMmdRegister();
-	//void OnSpeed();
 	*/
 	void OnShowCommand();
 	//void OnShowARPCache();
@@ -112,7 +112,6 @@ protected:
 	void OnShowVersion();
 	void OnSSHCommand();
 	void OnSSHKey();
-	//void OnTest();
 	void OnZeroize();
 	*/
 	SSHOutputStream m_sshstream;

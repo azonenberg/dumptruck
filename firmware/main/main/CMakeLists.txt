@@ -2,6 +2,8 @@ add_executable(main
 	DumptruckCLISessionContext.cpp
 	#DemoTCPProtocol.cpp
 	DumptruckUDPProtocol.cpp
+	SocketDetectionTask.cpp
+
 	globals.cpp
 	Init.cpp
 	vectors.cpp)
@@ -19,8 +21,8 @@ target_link_libraries(main
 	common-embedded-platform-cli
 	common-embedded-platform-core
 	common-embedded-platform-fpga
-	common-embedded-platform-services
 	common-embedded-platform-tcpip
+	common-embedded-platform-services
 	embedded-cli
 	embedded-utils
 	microkvs
