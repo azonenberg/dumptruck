@@ -40,7 +40,6 @@
 #include <embedded-utils/StringBuffer.h>
 #include "DumptruckUDPProtocol.h"
 #include "DumptruckTCPProtocol.h"
-#include <tcpip/SSHKeyManager.h>
 
 extern Iperf3Server* g_iperfServer;
 extern DumptruckUDPProtocol* g_udp;
@@ -69,7 +68,5 @@ enum channelid_t
 
 class SocketDetectionTask;
 extern SocketDetectionTask* g_detectionTask;
-
-extern SSHKeyManager g_keyMgr;
 
 #endif

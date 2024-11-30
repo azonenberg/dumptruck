@@ -48,7 +48,7 @@ enum cmdid_t
 	//CMD_CLEAR,
 	CMD_COMMIT,
 	CMD_COMPACT,
-	//CMD_DETAIL,
+	CMD_DETAIL,
 	//CMD_DFU,
 	//CMD_DHCP,
 	CMD_DIP8_QSPI,
@@ -74,7 +74,7 @@ enum cmdid_t
 	CMD_SSH,
 	CMD_SSH_ED25519,
 	//CMD_STATUS,
-	//CMD_USERNAME,
+	CMD_USERNAME,
 	//CMD_VERSION,
 	CMD_ZEROIZE
 };
@@ -197,7 +197,7 @@ static const clikeyword_t g_showSshCommands[] =
 	//{"fingerprint",		CMD_FINGERPRINT,		nullptr,				"Show the SSH host key fingerprint (in OpenSSH base64 SHA256 format)"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-/*
+
 static const clikeyword_t g_showFlashDetailCommands[] =
 {
 	{"<objname>",		FREEFORM_TOKEN,		nullptr,					"Name of the flash object to display"},
@@ -210,11 +210,11 @@ static const clikeyword_t g_showFlashCommands[] =
 	{"detail",			CMD_DETAIL,			g_showFlashDetailCommands,	"Show detailed flash object contents"},
 	{nullptr,			INVALID_COMMAND,	nullptr,					nullptr}
 };
-*/
+
 static const clikeyword_t g_showCommands[] =
 {
 	//{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
-	//{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
+	{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
 	{"hardware",		CMD_HARDWARE,		nullptr,					"Print hardware information"},
 	//{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
 	//{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
@@ -253,7 +253,7 @@ static const clikeyword_t g_sshCommandsUsername[] =
 static const clikeyword_t g_sshCommands[] =
 {
 	{"key",				CMD_KEY,				g_sshCommandsType,			"Authorize a new SSH public key"},
-	//{"username",		CMD_USERNAME,			g_sshCommandsUsername,		"Sets the SSH username"},
+	{"username",		CMD_USERNAME,			g_sshCommandsUsername,		"Sets the SSH username"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
 /*
@@ -452,15 +452,15 @@ void DumptruckCLISessionContext::OnCommit()
 	if(!g_kvs->StoreStringObjectIfNecessary(hostname_objid, m_hostname, "dumptruck"))
 		m_stream->Printf("KVS write error\n");
 
-	//if(!g_kvs->StoreStringObjectIfNecessary(g_usernameObjectID, g_sshUsername, g_defaultSshUsername))
-	//	m_stream->Printf("KVS write error\n");
+	if(!g_kvs->StoreStringObjectIfNecessary(g_usernameObjectID, g_sshUsername, g_defaultSshUsername))
+		m_stream->Printf("KVS write error\n");
 
 	//Save SSH authorized key list
 	g_keyMgr.CommitToKVS();
-	/*
+
 	//Save service configuration
-	g_dhcpClient->SaveConfigToKVS();
-	g_ntpClient->SaveConfigToKVS();
+	//g_dhcpClient->SaveConfigToKVS();
+	//g_ntpClient->SaveConfigToKVS();
 
 	//Save IP configuration
 	if(!g_kvs->StoreObjectIfNecessary<IPv4Address>(g_ipConfig.m_address, g_defaultIP, "ip.address"))
@@ -471,7 +471,6 @@ void DumptruckCLISessionContext::OnCommit()
 		m_stream->Printf("KVS write error\n");
 	if(!g_kvs->StoreObjectIfNecessary<IPv4Address>(g_ipConfig.m_gateway, g_defaultGateway, "ip.gateway"))
 		m_stream->Printf("KVS write error\n");
-	*/
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -797,11 +796,10 @@ void DumptruckCLISessionContext::OnShowCommand()
 					break;
 			}
 			break;
-
+		*/
 		case CMD_FLASH:
 			OnShowFlash();
 			break;
-		*/
 
 		case CMD_HARDWARE:
 			OnShowHardware();
@@ -882,159 +880,18 @@ void DumptruckCLISessionContext::OnShowARPCache()
 		}
 	}
 }
-
+*/
 void DumptruckCLISessionContext::OnShowFlash()
 {
 	//No details requested? Show root dir listing
 	if(m_command[2].m_commandID == OPTIONAL_TOKEN)
-	{
-		//Print info about the flash memory in general
-		m_stream->Printf("Flash configuration storage is 2 banks of %d kB\n", g_kvs->GetBlockSize() / 1024);
-		if(g_kvs->IsLeftBankActive())
-			m_stream->Printf("    Active bank: Left\n");
-		else
-			m_stream->Printf("    Active bank: Right\n");
-		m_stream->Printf("    Header version: %d\n", g_kvs->GetBankHeaderVersion());
-		m_stream->Printf("    Log area:    %6d / %6d entries free (%d %%)\n",
-			g_kvs->GetFreeLogEntries(),
-			g_kvs->GetLogCapacity(),
-			g_kvs->GetFreeLogEntries()*100 / g_kvs->GetLogCapacity());
-		m_stream->Printf("    Data area:   %6d / %6d kB free      (%d %%)\n",
-			g_kvs->GetFreeDataSpace() / 1024,
-			g_kvs->GetDataCapacity() / 1024,
-			g_kvs->GetFreeDataSpace() * 100 / g_kvs->GetDataCapacity());
-
-		//Dump directory listing
-		const uint32_t nmax = 256;
-		KVSListEntry list[nmax];
-		uint32_t nfound = g_kvs->EnumObjects(list, nmax);
-		m_stream->Printf("    Objects:\n");
-		m_stream->Printf("        Key                               Size  Revisions\n");
-		int size = 0;
-		for(uint32_t i=0; i<nfound; i++)
-		{
-			//If the object has no content, don't show it (it's been deleted)
-			if(list[i].size == 0)
-				continue;
-
-			//Is this a group?
-			auto dotpos = strchr(list[i].key, '.');
-			if(dotpos != nullptr)
-			{
-				//Get the name of the group
-				char groupname[KVS_NAMELEN+1] = {0};
-				auto grouplen = dotpos + 1 - list[i].key;
-				memcpy(groupname, list[i].key, grouplen);
-
-				//If we have a previous key with the same group, we're not the first
-				bool first = true;
-				if(i > 0)
-				{
-					if(memcmp(list[i-1].key, groupname, grouplen) == 0)
-						first = false;
-				}
-
-				//Do we have a subsequent key with the same group?
-				bool next = true;
-				if(i+1 < nfound)
-				{
-					if(memcmp(list[i+1].key, groupname, grouplen) != 0)
-						next = false;
-				}
-				else
-					next = false;
-
-				//Trim off the leading dot in the group
-				groupname[grouplen-1] = '\0';
-
-				//Beginning of a group (with more than one key)? Add the heading
-				if(first && next)
-					m_stream->Printf("        %-32s\n", groupname);
-
-				//If in a group with >1 item, print the actual entry
-				if(next || !first)
-				{
-					//Print the tree node
-					if(next)
-						m_stream->Printf("        ├── %-28s %5d  %d\n", list[i].key + grouplen, list[i].size, list[i].revs);
-					else
-						m_stream->Printf("        └── %-28s %5d  %d\n", list[i].key + grouplen, list[i].size, list[i].revs);
-				}
-
-				//Single entry group, normal print
-				else
-					m_stream->Printf("        %-32s %5d  %d\n", list[i].key, list[i].size, list[i].revs);
-			}
-
-			//No, not in a group
-			else
-				m_stream->Printf("        %-32s %5d  %d\n", list[i].key, list[i].size, list[i].revs);
-
-			//Record total data size
-			size += list[i].size;
-		}
-		m_stream->Printf("    %d objects total (%d.%02d kB)\n",
-			nfound,
-			size/1024, (size % 1024) * 100 / 1024);
-	}
+		PrintFlashSummary(m_stream);
 
 	//Showing details of a single object
 	else
-	{
-		auto hlog = g_kvs->FindObject(m_command[3].m_text);
-		if(!hlog)
-		{
-			m_stream->Printf("Object not found\n");
-			return;
-		}
-
-		//TODO: show previous versions too?
-		m_stream->Printf("Object \"%s\":\n", m_command[3].m_text);
-		{
-			m_stream->Printf("    Start:  0x%08x\n", hlog->m_start);
-			m_stream->Printf("    Length: 0x%08x\n", hlog->m_len);
-			m_stream->Printf("    CRC32:  0x%08x\n", hlog->m_crc);
-		}
-
-		auto pdata = g_kvs->MapObject(hlog);
-
-		//TODO: make this a dedicated hexdump routine
-		const uint32_t linelen = 16;
-		for(uint32_t i=0; i<hlog->m_len; i += linelen)
-		{
-			m_stream->Printf("%04x   ", i);
-
-			//Print hex
-			for(uint32_t j=0; j<linelen; j++)
-			{
-				//Pad with spaces so we get good alignment on the end of the block
-				if(i+j >= hlog->m_len)
-					m_stream->Printf("   ");
-
-				else
-					m_stream->Printf("%02x ", pdata[i+j]);
-			}
-
-			m_stream->Printf("  ");
-
-			//Print ASCII
-			for(uint32_t j=0; j<linelen; j++)
-			{
-				//No padding needed here
-				if(i+j >= hlog->m_len)
-					break;
-
-				else if(isprint(pdata[i+j]))
-					m_stream->Printf("%c", pdata[i+j]);
-				else
-					m_stream->Printf(".");
-			}
-
-			m_stream->Printf("\n");
-		}
-	}
+		PrintFlashDetails(m_stream, m_command[3].m_text);
 }
-*/
+
 void DumptruckCLISessionContext::OnShowHardware()
 {
 	PrintProcessorInfo(m_stream);
@@ -1252,7 +1109,7 @@ void DumptruckCLISessionContext::OnSSHCommand()
 		case CMD_KEY:
 			g_keyMgr.AddPublicKey(m_command[2].m_text, m_command[3].m_text, m_command[4].m_text);
 			break;
-		/*
+
 		case CMD_USERNAME:
 			//yes this can truncate, we accept that
 			#pragma GCC diagnostic push
@@ -1260,7 +1117,7 @@ void DumptruckCLISessionContext::OnSSHCommand()
 			strncpy(g_sshUsername, m_command[2].m_text, sizeof(g_sshUsername)-1);
 			#pragma GCC diagnostic pop
 			break;
-		*/
+
 		default:
 			m_stream->Printf("Unrecognized command\n");
 			break;

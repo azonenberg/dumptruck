@@ -95,17 +95,14 @@ APB_GPIOPin g_fpgaLEDs[4] =
 */
 I2C g_macI2C(&I2C2, 16, 40);
 
-///@brief Key manager
-//CrossbarSSHKeyManager g_keyMgr;
-
 ///@brief The single supported SSH username
-//char g_sshUsername[CLI_USERNAME_MAX] = "";
+char g_sshUsername[CLI_USERNAME_MAX] = "";
 
 ///@brief KVS key for the SSH username
-//const char* g_usernameObjectID = "ssh.username";
+const char* g_usernameObjectID = "ssh.username";
 
 ///@brief Default SSH username if not configured
-//const char* g_defaultSshUsername = "admin";
+const char* g_defaultSshUsername = "admin";
 
 ///@brief Selects whether the DHCP client is active or not
 //bool g_usingDHCP = false;
@@ -135,6 +132,9 @@ char g_superVersion[20] = {0};
 
 ///@brief SPI flash controller for FPGA
 APB_SpiFlashInterface* g_fpgaFlash;
+
+///@brief Database of authorized SSH keys
+SSHKeyManager g_keyMgr;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Do other initialization

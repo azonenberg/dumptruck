@@ -53,7 +53,7 @@
 #include <staticnet/drivers/stm32/STM32CryptoEngine.h>
 #include <staticnet/ssh/SSHTransportServer.h>
 //#include "ManagementDHCPClient.h"
-//#include "CrossbarSSHKeyManager.h"
+#include <tcpip/SSHKeyManager.h>
 
 #include <embedded-utils/LogSink.h>
 
@@ -84,13 +84,12 @@ extern APB_GPIOPin g_fpgaLEDs[4];
 extern bool g_usingDHCP;
 extern ManagementDHCPClient* g_dhcpClient;
 */
-//extern CrossbarSSHKeyManager g_keyMgr;
 
-/*
+extern SSHKeyManager g_keyMgr;
+
 extern const char* g_defaultSshUsername;
 extern const char* g_usernameObjectID;
 extern char g_sshUsername[CLI_USERNAME_MAX];
-*/
 
 void UART4_Handler();
 /*

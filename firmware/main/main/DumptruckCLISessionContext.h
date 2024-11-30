@@ -93,8 +93,8 @@ protected:
 	void OnRollback();
 	void OnShowCommand();
 	//void OnShowARPCache();
-	//void OnShowFlash();
-	//void OnShowFlashDetail();
+	void OnShowFlash();
+	void OnShowFlashDetail();
 	void OnShowHardware();
 	/*
 	void OnShowIPAddress();
