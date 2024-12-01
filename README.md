@@ -1,7 +1,7 @@
 # dumptruck
 FPGA based dumper for flashes and more
 
-## ERRATA
+## Main PCB errata
 
 Bugs in the v0.1 PCB
 
@@ -10,3 +10,7 @@ Bugs in the v0.1 PCB
 * INIT_B and PROG_B on FPGA are 1.8V signals but we try to drive with 3.3 from supervisor! Rework: add pull to 1.8V on board, open drain in super firmware
 * JTAG connector VCC is connected to 3.3V. We need to supply 1.8 here. Temporary workaround: six pin extension cable, pass through JTAG + GND and supply 1.8V to dongle externally. Long term fix: interposer board
 * DONE on FPGA is 1.8V signal driving 3.3V input on supervisor, too low for Vih. Rework: add 1.8V gate drive NMOS to pull low when done, invert logic in firmware
+
+## Breakout board errata
+
+* v0.1 of parallel-nor-csp56 and dip8-qspi had EEPROM at 0xa0 which conflicted with MAC address EEPROM. Future breakouts use 0xa2 to avoid conflict
