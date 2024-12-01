@@ -41,10 +41,9 @@ static const char* hostname_objid = "hostname";
 enum cmdid_t
 {
 	//CMD_ADDRESS,
-	//CMD_ALL,
-	//CMD_ARP,
+	CMD_ARP,
 	CMD_AUTHORIZED,
-	//CMD_CACHE,
+	CMD_CACHE,
 	//CMD_CLEAR,
 	CMD_COMMIT,
 	CMD_COMPACT,
@@ -54,7 +53,7 @@ enum cmdid_t
 	CMD_DIP8_QSPI,
 	CMD_EEPROM,
 	CMD_EXIT,
-	//CMD_FINGERPRINT,
+	CMD_FINGERPRINT,
 	CMD_FLASH,
 	//CMD_GATEWAY,
 	CMD_HARDWARE,
@@ -153,16 +152,16 @@ static const clikeyword_t g_noSshCommands[] =
 
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-/*
+
 static const clikeyword_t g_noFlashCommands[] =
 {
 	{"<key>",			FREEFORM_TOKEN,			nullptr,					"Key of the flash object to delete"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-*/
+
 static const clikeyword_t g_noCommands[] =
 {
-	//{"flash",			CMD_FLASH,				g_noFlashCommands,			"Deletes objects from flash"},
+	{"flash",			CMD_FLASH,				g_noFlashCommands,			"Deletes objects from flash"},
 	{"ntp",				CMD_NTP,				nullptr,					"Disables the NTP client"},
 	{"ssh",				CMD_SSH,				g_noSshCommands,			"Remove authorized SSH keys"},
 
@@ -171,13 +170,13 @@ static const clikeyword_t g_noCommands[] =
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "show"
-/*
+
 static const clikeyword_t g_showArpCommands[] =
 {
 	{"cache",			CMD_CACHE,				nullptr,				"Show contents of the ARP cache"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-
+/*
 static const clikeyword_t g_showIpCommands[] =
 {
 	{"address",			CMD_ADDRESS,			nullptr,				"Show the IPv4 address and subnet mask"},
@@ -194,7 +193,7 @@ static const clikeyword_t g_showSshAuthorized[] =
 static const clikeyword_t g_showSshCommands[] =
 {
 	{"authorized",		CMD_AUTHORIZED,			g_showSshAuthorized,	"Show authorized keys"},
-	//{"fingerprint",		CMD_FINGERPRINT,		nullptr,				"Show the SSH host key fingerprint (in OpenSSH base64 SHA256 format)"},
+	{"fingerprint",		CMD_FINGERPRINT,		nullptr,				"Show the SSH host key fingerprint (in OpenSSH base64 SHA256 format)"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
 
@@ -213,7 +212,7 @@ static const clikeyword_t g_showFlashCommands[] =
 
 static const clikeyword_t g_showCommands[] =
 {
-	//{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
+	{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
 	{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
 	{"hardware",		CMD_HARDWARE,		nullptr,					"Print hardware information"},
 	//{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
@@ -706,39 +705,17 @@ void DumptruckCLISessionContext::OnNoSSHCommand()
 	}
 }
 
-/**
-	@brief "no flash key" - deletes a key from flash
- */
- /*
-void DumptruckCLISessionContext::OnNoFlashCommand()
-{
-	const char* key = m_command[2].m_text;
-
-	auto hlog = g_kvs->FindObject(key);
-	if(hlog)
-	{
-		if(!g_kvs->StoreObject(key, nullptr, 0))
-			m_stream->Printf("KVS write error\n");
-		else
-			m_stream->Printf("Object \"%s\" deleted\n", key);
-	}
-	else
-		m_stream->Printf("Object \"%s\" not found, could not delete\n", key);
-}
-*/
 void DumptruckCLISessionContext::OnNoCommand()
 {
 	switch(m_command[1].m_commandID)
 	{
-		/*
 		case CMD_FLASH:
-			OnNoFlashCommand();
+			RemoveFlashKey(m_stream, m_command[2].m_text);
 			break;
 
-		case CMD_NTP:
-			g_ntpClient->Disable();
-			break;
-			*/
+		//case CMD_NTP:
+		//	g_ntpClient->Disable();
+		//	break;
 
 		case CMD_SSH:
 			OnNoSSHCommand();
@@ -784,19 +761,18 @@ void DumptruckCLISessionContext::OnShowCommand()
 {
 	switch(m_command[1].m_commandID)
 	{
-		/*
 		case CMD_ARP:
 			switch(m_command[2].m_commandID)
 			{
 				case CMD_CACHE:
-					OnShowARPCache();
+					PrintARPCache(m_stream, g_ethProtocol);
 					break;
 
 				default:
 					break;
 			}
 			break;
-		*/
+
 		case CMD_FLASH:
 			OnShowFlash();
 			break;
@@ -832,11 +808,11 @@ void DumptruckCLISessionContext::OnShowCommand()
 				case CMD_AUTHORIZED:
 					OnShowSSHKeys();
 					break;
-				/*
+
 				case CMD_FINGERPRINT:
-					OnShowSSHFingerprint();
+					PrintSSHHostKey(m_stream);
 					break;
-				*/
+
 				default:
 					break;
 			}
@@ -852,35 +828,6 @@ void DumptruckCLISessionContext::OnShowCommand()
 	}
 }
 
-/*
-void DumptruckCLISessionContext::OnShowARPCache()
-{
-	auto cache = g_ethProtocol->GetARP()->GetCache();
-
-	uint32_t ways = cache->GetWays();
-	uint32_t lines = cache->GetLines();
-	m_stream->Printf("ARP cache is %d ways of %d lines, %d spaces total\n", ways, lines, ways*lines);
-
-	m_stream->Printf("Expiration  HWaddress           Address\n");
-
-	for(uint32_t i=0; i<ways; i++)
-	{
-		auto way = cache->GetWay(i);
-		for(uint32_t j=0; j<lines; j++)
-		{
-			auto& line = way->m_lines[j];
-			if(line.m_valid)
-			{
-				m_stream->Printf("%10d  %02x:%02x:%02x:%02x:%02x:%02x   %d.%d.%d.%d\n",
-					line.m_lifetime,
-					line.m_mac[0], line.m_mac[1], line.m_mac[2], line.m_mac[3], line.m_mac[4], line.m_mac[5],
-					line.m_ip.m_octets[0], line.m_ip.m_octets[1], line.m_ip.m_octets[2], line.m_ip.m_octets[3]
-				);
-			}
-		}
-	}
-}
-*/
 void DumptruckCLISessionContext::OnShowFlash()
 {
 	//No details requested? Show root dir listing
@@ -1074,15 +1021,7 @@ void DumptruckCLISessionContext::OnShowSSHKeys()
 		}
 	}
 }
-/*
-void DumptruckCLISessionContext::OnShowSSHFingerprint()
-{
-	char buf[64] = {0};
-	DeviceCryptoEngine tmp;
-	tmp.GetHostKeyFingerprint(buf, sizeof(buf));
-	m_stream->Printf("ED25519 key fingerprint is SHA256:%s.\n", buf);
-}
-*/
+
 /*
 void DumptruckCLISessionContext::OnShowVersion()
 {

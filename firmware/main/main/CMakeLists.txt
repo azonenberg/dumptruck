@@ -1,5 +1,6 @@
 add_executable(main
 	DumptruckCLISessionContext.cpp
+	DumptruckSSHTransportServer.cpp
 	DumptruckTCPProtocol.cpp
 	DumptruckUDPProtocol.cpp
 	SocketDetectionTask.cpp

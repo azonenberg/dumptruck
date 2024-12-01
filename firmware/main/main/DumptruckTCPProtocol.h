@@ -31,7 +31,7 @@
 #define DumptruckTCPProtocol_h
 
 #include <fpga/AcceleratedCryptoEngine.h>
-//#include "DumptruckSSHTransportServer.h"
+#include "DumptruckSSHTransportServer.h"
 
 class DumptruckTCPProtocol : public TCPProtocol
 {
@@ -46,7 +46,7 @@ protected:
 
 	virtual uint32_t GenerateInitialSequenceNumber() override;
 
-	//DumptruckSSHTransportServer m_ssh;
+	DumptruckSSHTransportServer m_ssh;
 	AcceleratedCryptoEngine m_crypt;
 };
 

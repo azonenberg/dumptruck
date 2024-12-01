@@ -38,17 +38,6 @@
 #include <common-embedded-platform/services/Iperf3Server.h>
 
 #include <embedded-utils/StringBuffer.h>
-#include "DumptruckUDPProtocol.h"
-#include "DumptruckTCPProtocol.h"
-
-extern Iperf3Server* g_iperfServer;
-extern DumptruckUDPProtocol* g_udp;
-extern DumptruckTCPProtocol* g_tcp;
-
-void InitLEDs();
-void InitSensors();
-
-//extern ManagementSSHTransportServer* g_sshd;
 
 enum channelid_t
 {
@@ -59,6 +48,16 @@ enum channelid_t
 	CHANNEL_NONE
 };
 
+#include "DumptruckUDPProtocol.h"
+#include "DumptruckTCPProtocol.h"
+
+extern Iperf3Server* g_iperfServer;
+extern DumptruckUDPProtocol* g_udp;
+extern DumptruckTCPProtocol* g_tcp;
+
+void InitLEDs();
+void InitSensors();
+
 //RGB LED color constants
 #define RGB_OFF		0x000000
 #define RGB_RED		0x200000
@@ -68,5 +67,7 @@ enum channelid_t
 
 class SocketDetectionTask;
 extern SocketDetectionTask* g_detectionTask;
+
+extern DumptruckSSHTransportServer* g_sshd;
 
 #endif

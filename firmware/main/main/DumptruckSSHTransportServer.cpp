@@ -28,73 +28,120 @@
 ***********************************************************************************************************************/
 
 #include "dumptruck.h"
-#include "DumptruckTCPProtocol.h"
-
-#define SSH_PORT	22
+#include "DumptruckSSHTransportServer.h"
+#include <algorithm>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Construction / destruction
 
-DumptruckTCPProtocol::DumptruckTCPProtocol(IPv4Protocol* ipv4)
-	: TCPProtocol(ipv4)
-	, m_ssh(*this)
+DumptruckSSHTransportServer::DumptruckSSHTransportServer(TCPProtocol& tcp)
+	: SSHTransportServer(tcp)
+	, m_auth(g_sshUsername, g_keyMgr)
 {
+	g_log("Initializing SSH server\n");
+	LogIndenter li(g_log);
+
+	g_sshd = this;
+
+	//Initialize crypto and SFTP state
+	for(size_t i=0; i<SSH_TABLE_SIZE; i++)
+	{
+		m_state[i].m_crypto = &m_engine[i];
+		//m_state[i].m_sftpState = &m_sftpState[i];
+	}
+
+	//Find the keys, generating if required
+	unsigned char pub[ECDSA_KEY_SIZE] = {0};
+	unsigned char priv[ECDSA_KEY_SIZE] = {0};
+
+	bool found = true;
+	if(!g_kvs->ReadObject("ssh.hostpub", pub, ECDSA_KEY_SIZE))
+		found = false;
+	if(!g_kvs->ReadObject("ssh.hostpriv", priv, ECDSA_KEY_SIZE))
+		found = false;
+
+	if(found)
+	{
+		g_log("Using existing SSH host key\n");
+		CryptoEngine::SetHostKey(pub, priv);
+	}
+
+	else
+	{
+		g_log("No SSH host key in flash, generating new key pair\n");
+		m_state[0].m_crypto->GenerateHostKey();
+
+		if(!g_kvs->StoreObject("ssh.hostpub", CryptoEngine::GetHostPublicKey(), ECDSA_KEY_SIZE))
+			g_log(Logger::ERROR, "Unable to store SSH host public key to flash\n");
+		if(!g_kvs->StoreObject("ssh.hostpriv", CryptoEngine::GetHostPrivateKey(), ECDSA_KEY_SIZE))
+			g_log(Logger::ERROR, "Unable to store SSH host private key to flash\n");
+	}
+
+	char buf[64] = {0};
+	m_state[0].m_crypto->GetHostKeyFingerprint(buf, sizeof(buf));
+	g_log("ED25519 key fingerprint is SHA256:%s.\n", buf);
+
+	//Load the SSH username
+	LoadUsername();
+
+	//Load authorized keys
+	g_keyMgr.LoadFromKVS();
+
+	//Set up authenticators
+	UsePasswordAuthenticator(nullptr);
+	UsePubkeyAuthenticator(&m_auth);
+
+	//Set up SFTP server
+	//UseSFTPServer(&m_sftp);
+}
+
+void DumptruckSSHTransportServer::LoadUsername()
+{
+	memset(g_sshUsername, 0, sizeof(g_sshUsername));
+
+	//Read hostname, set to default value if not found
+	auto hlog = g_kvs->FindObject(g_usernameObjectID);
+	if(hlog)
+		strncpy(g_sshUsername, (const char*)g_kvs->MapObject(hlog), std::min((size_t)hlog->m_len, sizeof(g_sshUsername)-1));
+	else
+		strncpy(g_sshUsername, g_defaultSshUsername, sizeof(g_sshUsername)-1);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Message handlers
+// Shell helpers
 
-bool DumptruckTCPProtocol::IsPortOpen(uint16_t port)
+void DumptruckSSHTransportServer::InitializeShell(int id, TCPTableEntry* socket)
 {
-	return (port == SSH_PORT);
+	m_context[id].Initialize(id, socket, this, m_state[id].m_username);
+	m_context[id].PrintPrompt();
+
+	//TODO: only if we "terminal monitor" or similar?
+	g_logSink->AddSink(m_context[id].GetSSHStream());
 }
 
-void DumptruckTCPProtocol::OnConnectionAccepted(TCPTableEntry* state)
+void DumptruckSSHTransportServer::GracefulDisconnect(int id, TCPTableEntry* socket)
 {
-	switch(state->m_localPort)
-	{
-		case SSH_PORT:
-			m_ssh.OnConnectionAccepted(state);
-			break;
-
-		default:
-			break;
-	}
+	g_logSink->RemoveSink(m_context[id].GetSSHStream());
+	SSHTransportServer::GracefulDisconnect(id, socket);
 }
 
-void DumptruckTCPProtocol::OnConnectionClosed(TCPTableEntry* state)
+void DumptruckSSHTransportServer::DropConnection(int id, TCPTableEntry* socket)
 {
-	//Call base class to free memory
-	TCPProtocol::OnConnectionClosed(state);
-
-	switch(state->m_localPort)
-	{
-		case SSH_PORT:
-			m_ssh.OnConnectionClosed(state);
-			break;
-
-		default:
-			break;
-	}
+	g_logSink->RemoveSink(m_context[id].GetSSHStream());
+	SSHTransportServer::DropConnection(id, socket);
 }
 
-void DumptruckTCPProtocol::OnRxData(TCPTableEntry* state, uint8_t* payload, uint16_t payloadLen)
+void DumptruckSSHTransportServer::OnRxShellData(int id, [[maybe_unused]] TCPTableEntry* socket, char* data, uint16_t len)
 {
-	switch(state->m_localPort)
-	{
-		case SSH_PORT:
-			m_ssh.OnRxData(state, payload, payloadLen);
-			break;
-
-		//ignore it
-		default:
-			break;
-	}
+	for(uint16_t i=0; i<len; i++)
+		m_context[id].OnKeystroke(data[i]);
 }
 
-uint32_t DumptruckTCPProtocol::GenerateInitialSequenceNumber()
+void DumptruckSSHTransportServer::DoExecRequest(int id, TCPTableEntry* socket, const char* cmd, uint16_t len)
 {
-	uint32_t ret;
-	m_crypt.GenerateRandom(reinterpret_cast<uint8_t*>(&ret), sizeof(ret));
-	return ret;
+	m_context[id].Initialize(id, socket, this, m_state[id].m_username);
+
+	for(uint16_t i=0; i<len; i++)
+		m_context[id].OnKeystroke(cmd[i], false);
+	m_context[id].SilentExecute();
 }

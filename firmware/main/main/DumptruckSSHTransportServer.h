@@ -29,90 +29,41 @@
 
 /**
 	@file
-	@brief Declaration of DumptruckCLISessionContext
+	@brief Declaration of DumptruckSSHTransportServer
  */
-#ifndef DumptruckCLISessionContext_h
-#define DumptruckCLISessionContext_h
+#ifndef DumptruckSSHTransportServer_h
+#define DumptruckSSHTransportServer_h
 
-#include <embedded-cli/CLIOutputStream.h>
-#include <embedded-cli/CLISessionContext.h>
-#include <staticnet/cli/SSHOutputStream.h>
+#include <staticnet/ssh/SSHTransportServer.h>
+#include <fpga/AcceleratedCryptoEngine.h>
+#include <tcpip/KeyManagerPubkeyAuthenticator.h>
+//#include "DumptruckSFTPServer.h"
+#include "DumptruckCLISessionContext.h"
 
-#include "SocketDetectionTask.h"
-
-class DumptruckCLISessionContext : public CLISessionContext
+/**
+	@brief SSH server class for the bridge test
+ */
+class DumptruckSSHTransportServer : public SSHTransportServer
 {
 public:
-	DumptruckCLISessionContext();
+	DumptruckSSHTransportServer(TCPProtocol& tcp);
 
-	void Initialize(int sessid, TCPTableEntry* socket, SSHTransportServer* server, const char* username)
-	{
-		m_sshstream.Initialize(sessid, socket, server);
-		Initialize(&m_sshstream, username);
-	}
-
-	//Generic init for non-SSH streams
-	void Initialize(CLIOutputStream* stream, const char* username)
-	{
-		m_stream = stream;
-		LoadHostname();
-		CLISessionContext::Initialize(m_stream, username);
-	}
-
-	SSHOutputStream* GetSSHStream()
-	{ return &m_sshstream; }
-
-	virtual void PrintPrompt();
+	void LoadUsername();
 
 protected:
+	virtual void InitializeShell(int id, TCPTableEntry* socket);
+	virtual void GracefulDisconnect(int id, TCPTableEntry* socket);
+	virtual void DropConnection(int id, TCPTableEntry* socket);
+	virtual void OnRxShellData(int id, TCPTableEntry* socket, char* data, uint16_t len);
+	virtual void DoExecRequest(int id, TCPTableEntry* socket, const char* cmd, uint16_t len) override;
 
-	//bool ParseIPAddress(const char* addr, IPv4Address& ip);
-	//bool ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask);
+	KeyManagerPubkeyAuthenticator m_auth;
 
-	void LoadHostname();
+	DumptruckCLISessionContext m_context[SSH_TABLE_SIZE];
 
-	virtual void OnExecute();
-	void OnExecuteRoot();
-
-	void OnCommit();
-	//void OnDFU();
-	void OnEepromCommand();
-	void OnEepromProgram(DutSocketType stype);
-
-	//void OnIPCommand();
-	//void OnIPAddress(const char* addr);
-	//void OnIPGateway(const char* gw);
-
-	void OnNoCommand();
-	void OnNoSSHCommand();
-
-	//void OnNtpServer(const char* addr);
-
-	void OnReload();
-	void OnRollback();
-	void OnShowCommand();
-	void OnShowFlash();
-	void OnShowFlashDetail();
-	void OnShowHardware();
-	/*
-	void OnShowIPAddress();
-	void OnShowIPRoute();
-	void OnShowNtp();
-	*/
-	void OnShowSSHKeys();
-	//void OnShowVersion();
-	void OnSSHCommand();
-
-	SSHOutputStream m_sshstream;
-	CLIOutputStream* m_stream;
-
-	///@brief Hostname (only used for display)
-	char m_hostname[33];
-
-	void PrintPowerRail(const char* name, dsuperregs_t vreg, dsuperregs_t ireg);
-
-	void PrintPowerRail(const char* name, superregs_t vreg, dsuperregs_t ireg)
-	{ PrintPowerRail(name, static_cast<dsuperregs_t>(vreg), ireg); }
+	AcceleratedCryptoEngine m_engine[SSH_TABLE_SIZE];
+	//SFTPConnectionState m_sftpState[SSH_TABLE_SIZE];
+	//DumptruckSFTPServer m_sftp;
 };
 
 #endif

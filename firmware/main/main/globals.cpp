@@ -31,7 +31,7 @@
 #include <peripheral/ITMStream.h>
 
 ///@brief The SSH server
-//ManagementSSHTransportServer* g_sshd = nullptr;
+DumptruckSSHTransportServer* g_sshd = nullptr;
 
 //extern Iperf3Server* g_iperfServer;
 
