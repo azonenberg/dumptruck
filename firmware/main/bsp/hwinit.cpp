@@ -54,6 +54,22 @@ volatile APB_SerialLED FRGBLED __attribute__((section(".frgbled")));
 volatile APB_EthernetTxBuffer_10G FETHTX __attribute__((section(".fethtx")));
 volatile APB_EthernetRxBuffer FETHRX __attribute__((section(".fethrx")));
 
+volatile APB_IOMuxConfig F1V2_MUXCFG __attribute__((section(".f1v2_muxcfg")));
+volatile APB_GPIO F1V2_GPIO __attribute__((section(".f1v2_gpio")));
+volatile APB_SPIHostInterface F1V2_SPI __attribute__((section(".f1v2_spi")));
+
+volatile APB_IOMuxConfig F1V8_MUXCFG __attribute__((section(".f1v8_muxcfg")));
+volatile APB_GPIO F1V8_GPIO __attribute__((section(".f1v8_gpio")));
+volatile APB_SPIHostInterface F1V8_SPI  __attribute__((section(".f1v8_spi")));
+
+volatile APB_IOMuxConfig F2V5_MUXCFG __attribute__((section(".f2v5_muxcfg")));
+volatile APB_GPIO F2V5_GPIO __attribute__((section(".f2v5_gpio")));
+volatile APB_SPIHostInterface F2V5_SPI  __attribute__((section(".f2v5_spi")));
+
+volatile APB_IOMuxConfig F3V3_MUXCFG __attribute__((section(".f3v3_muxcfg")));
+volatile APB_GPIO F3V3_GPIO __attribute__((section(".f3v3_gpio")));
+volatile APB_SPIHostInterface F3V3_SPI  __attribute__((section(".f3v3_spi")));
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Common peripherals used by application and bootloader
 
@@ -345,4 +361,18 @@ uint16_t ReadSupervisorRegister(superregs_t regid)
 	g_superCS_n = 1;
 
 	return ret;
+}
+
+void SendSupervisorCommand(dsuperregs_t regid)
+{
+	g_superCS_n = 0;
+
+	//Send the register
+	g_superSPI.BlockingWrite(regid);
+	g_superSPI.WaitForWrites();
+	g_superSPI.DiscardRxData();
+
+	g_superSPI.BlockingRead();	//discard dummy byte sent in response to the command
+
+	g_superCS_n = 1;
 }

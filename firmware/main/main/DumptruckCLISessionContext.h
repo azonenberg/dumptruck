@@ -76,6 +76,8 @@ protected:
 
 	void OnCommit();
 	//void OnDFU();
+	void OnDump();
+	void OnDumpQspi(volatile APB_IOMuxConfig* muxcfg, volatile APB_SPIHostInterface* spi);
 	void OnEepromCommand();
 	void OnEepromProgram(DutSocketType stype);
 

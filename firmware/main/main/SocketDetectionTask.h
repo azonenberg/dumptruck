@@ -93,6 +93,12 @@ public:
 	void Redetect()
 	{ OnRemove(); }
 
+	channelid_t GetActiveChannel()
+	{ return m_activeChannel; }
+
+	DutSocketType GetSocketType()
+	{ return m_descriptor.socketType; }
+
 protected:
 	virtual void OnTimer() override;
 	virtual void Iteration() override;

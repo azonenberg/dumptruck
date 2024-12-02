@@ -33,7 +33,9 @@
 /**
 	@brief Controller for a single flash socket channel
  */
-module TargetChannel(
+module TargetChannel#(
+	parameter DEBUG = 0
+)(
 
 	//APB to root bridge
 	APB.completer 		apb,
@@ -149,7 +151,7 @@ module TargetChannel(
 	);
 
 	//Hardwire MISO to be IO3
-	assign spi_so = gpio_in[3];
+	assign spi_so = io_in[3];
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// I/O muxing

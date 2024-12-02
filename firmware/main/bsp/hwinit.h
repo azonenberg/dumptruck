@@ -76,6 +76,7 @@ extern SPI<64, 64> g_superSPI;
 extern GPIOPin* g_superSPICS;
 uint16_t ReadSupervisorRegister(superregs_t regid);
 uint16_t ReadSupervisorRegister(dsuperregs_t regid);
+void SendSupervisorCommand(dsuperregs_t regid);
 
 //Common hardware interface stuff (mostly Ethernet related)
 extern GPIOPin g_leds[4];
@@ -102,10 +103,41 @@ void RegisterProtocolHandlers(IPv4Protocol& ipv4);
 extern APBSpiFlashInterface* g_fpgaFlash;
 */
 
+enum class IOMuxConfig
+{
+	Inactive	= 0,
+	X1_SPI		= 1
+};
+
+struct APB_IOMuxConfig
+{
+	uint32_t	muxsel;
+};
+
 extern volatile APB_XADC FXADC;
 extern volatile APB_GPIO FPGA_GPIOA;
 extern volatile APB_Curve25519 FCURVE25519;
 extern volatile APB_SerialLED FRGBLED;
 extern volatile APB_DeviceInfo_7series FDEVINFO;
+
+//1V2 flash
+extern volatile APB_IOMuxConfig	F1V2_MUXCFG;
+extern volatile APB_GPIO F1V2_GPIO;
+extern volatile APB_SPIHostInterface F1V2_SPI;
+
+//1V8 flash
+extern volatile APB_IOMuxConfig	F1V8_MUXCFG;
+extern volatile APB_GPIO F1V8_GPIO;
+extern volatile APB_SPIHostInterface F1V8_SPI;
+
+//2V5 flash
+extern volatile APB_IOMuxConfig	F2V5_MUXCFG;
+extern volatile APB_GPIO F2V5_GPIO;
+extern volatile APB_SPIHostInterface F2V5_SPI;
+
+//3V3 flash
+extern volatile APB_IOMuxConfig	F3V3_MUXCFG;
+extern volatile APB_GPIO F3V3_GPIO;
+extern volatile APB_SPIHostInterface F3V3_SPI;
 
 #endif
