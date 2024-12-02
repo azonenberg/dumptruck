@@ -56,7 +56,7 @@ protected:
 		m_step = 0;
 	}
 
-	int m_codeInProgress;
+	uint16_t m_codeInProgress;
 };
 
 extern uint16_t g_vvbus;
@@ -66,6 +66,10 @@ extern uint16_t g_v1v8;
 extern uint16_t g_v1v2;
 extern uint16_t g_v1v0;
 extern uint16_t g_vdutvdd;
+extern uint16_t g_vio33;
+extern uint16_t g_vio25;
+extern uint16_t g_vio18;
+extern uint16_t g_vio12;
 
 extern uint16_t g_i3v3_sb;
 extern uint16_t g_ivbus;
@@ -75,6 +79,10 @@ extern uint16_t g_i1v8;
 extern uint16_t g_i1v2;
 extern uint16_t g_i1v0;
 extern uint16_t g_idutvdd;
+extern uint16_t g_iio33;
+extern uint16_t g_iio25;
+extern uint16_t g_iio18;
+extern uint16_t g_iio12;
 
 extern uint16_t g_ltcTemp;
 

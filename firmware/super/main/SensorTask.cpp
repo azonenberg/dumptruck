@@ -37,6 +37,10 @@ uint16_t g_v1v8 = 0;
 uint16_t g_v1v2 = 0;
 uint16_t g_v1v0 = 0;
 uint16_t g_vdutvdd = 0;
+uint16_t g_vio33 = 0;
+uint16_t g_vio25 = 0;
+uint16_t g_vio18 = 0;
+uint16_t g_vio12 = 0;
 
 uint16_t g_i3v3_sb = 0;
 uint16_t g_ivbus = 0;
@@ -46,6 +50,10 @@ uint16_t g_i1v8 = 0;
 uint16_t g_i1v2 = 0;
 uint16_t g_i1v0 = 0;
 uint16_t g_idutvdd = 0;
+uint16_t g_iio33 = 0;
+uint16_t g_iio25 = 0;
+uint16_t g_iio18 = 0;
+uint16_t g_iio12 = 0;
 
 uint16_t g_ltcTemp = 0;
 
@@ -119,53 +127,101 @@ void SensorTask::Iteration()
 				NextStep();
 			break;
 
+		//Read DUT_VCCIO 3.3V
+		case 10:
+			if(ReadVoltageIteration(INA_VIO33, g_vio33))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 2.5V
+		case 11:
+			if(ReadVoltageIteration(INA_VIO25, g_vio25))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 1.8V
+		case 12:
+			if(ReadVoltageIteration(INA_VIO18, g_vio18))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 1.2V
+		case 13:
+			if(ReadVoltageIteration(INA_VIO12, g_vio12))
+				NextStep();
+			break;
+
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Currents
 
-		case 10:
+		case 14:
 			if(ReadCurrentIteration(INA_3V3_SB, g_i3v3_sb))
 				NextStep();
 			break;
 
 		//Read VBUS
-		case 11:
+		case 15:
 			if(ReadCurrentIteration(INA_VBUS, g_ivbus))
 				NextStep();
 			break;
 
 		//Read 3V3
-		case 12:
+		case 16:
 			if(ReadCurrentIteration(INA_3V3, g_i3v3))
 				NextStep();
 			break;
 
 		//Read 2V5
-		case 13:
+		case 17:
 			if(ReadCurrentIteration(INA_2V5, g_i2v5))
 				NextStep();
 			break;
 
 		//Read 1V8
-		case 14:
+		case 18:
 			if(ReadCurrentIteration(INA_1V8, g_i1v8))
 				NextStep();
 			break;
 
 		//Read 1V2
-		case 15:
+		case 19:
 			if(ReadCurrentIteration(INA_1V2, g_i1v2))
 				NextStep();
 			break;
 
 		//Read 1V0
-		case 16:
+		case 20:
 			if(ReadCurrentIteration(INA_1V0, g_i1v0))
 				NextStep();
 			break;
 
 		//Read DUT_VDD
-		case 17:
+		case 21:
 			if(ReadCurrentIteration(INA_DUT_VDD, g_idutvdd))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 3.3V
+		case 22:
+			if(ReadCurrentIteration(INA_VIO33, g_iio33))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 2.5V
+		case 23:
+			if(ReadCurrentIteration(INA_VIO25, g_iio25))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 1.8V
+		case 24:
+			if(ReadCurrentIteration(INA_VIO18, g_iio18))
+				NextStep();
+			break;
+
+		//Read DUT_VCCIO 1.2V
+		case 25:
+			if(ReadCurrentIteration(INA_VIO12, g_iio12))
 				NextStep();
 			break;
 
@@ -225,7 +281,13 @@ bool SensorTask::ReadVoltageIteration(uint8_t i2cAddr, uint16_t& mv)
 
 		//1.25 mV / LSB
 		case 8:
+
+			//Voltage should always be positive but may go slightly negative due to noise if rail is off
+			//Clamp negative values to zero
 			m_codeInProgress |= g_i2c.GetReadData();
+			if(m_codeInProgress & 0x8000)
+				m_codeInProgress = 0;
+
 			mv = static_cast<int>(1.25 * m_codeInProgress);
 			return true;
 	}
@@ -283,7 +345,12 @@ bool SensorTask::ReadCurrentIteration(uint8_t i2cAddr, uint16_t& ma)
 		//2.5 uV/LSB, 25 milliohm shunt
 		case 8:
 			{
+				//Current should always be positive but may go slightly negative due to noise if rail is off
+				//Clamp negative values to zero
 				m_codeInProgress |= g_i2c.GetReadData();
+				if(m_codeInProgress & 0x8000)
+					m_codeInProgress = 0;
+
 				float vshunt = m_codeInProgress * 0.0000025;
 				float ishunt = vshunt / 0.025;
 				ma = ishunt * 1000;

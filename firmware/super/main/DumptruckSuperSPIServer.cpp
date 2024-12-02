@@ -66,6 +66,22 @@ void DumptruckSuperSPIServer::OnApplicationCommand(uint8_t b)
 			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vdutvdd, sizeof(g_vdutvdd));
 			break;
 
+		case SUPER_REG_VIO_33:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vio33, sizeof(g_vio33));
+			break;
+
+		case SUPER_REG_VIO_25:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vio25, sizeof(g_vio25));
+			break;
+
+		case SUPER_REG_VIO_18:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vio18, sizeof(g_vio18));
+			break;
+
+		case SUPER_REG_VIO_12:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_vio12, sizeof(g_vio12));
+			break;
+
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Currents
 
@@ -99,6 +115,45 @@ void DumptruckSuperSPIServer::OnApplicationCommand(uint8_t b)
 
 		case SUPER_REG_I3V3_SB:
 			m_spi.NonblockingWriteFifo((const uint8_t*)&g_i3v3_sb, sizeof(g_i3v3_sb));
+			break;
+
+		case SUPER_REG_IIO_33:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_iio33, sizeof(g_iio33));
+			break;
+
+		case SUPER_REG_IIO_25:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_iio25, sizeof(g_iio25));
+			break;
+
+		case SUPER_REG_IIO_18:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_iio18, sizeof(g_iio18));
+			break;
+
+		case SUPER_REG_IIO_12:
+			m_spi.NonblockingWriteFifo((const uint8_t*)&g_iio12, sizeof(g_iio12));
+			break;
+
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Power switching
+
+		case SUPER_REG_VDD_ON:
+			g_dutVddEn = 1;
+			g_log("Turning on DUT_VDD\n");
+			break;
+
+		case SUPER_REG_VDD_OFF:
+			g_dutVddEn = 0;
+			g_log("Turning off DUT_VDD\n");
+			break;
+
+		case SUPER_REG_VCCIO_ON:
+			g_dutVccioEn = 1;
+			g_log("Turning on DUT_VCCIO\n");
+			break;
+
+		case SUPER_REG_VCCIO_OFF:
+			g_dutVccioEn = 0;
+			g_log("Turning off DUT_VCCIO\n");
 			break;
 
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////

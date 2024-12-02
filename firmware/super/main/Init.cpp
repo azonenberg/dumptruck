@@ -40,13 +40,6 @@
 #include "../../../../common-ibc/firmware/main/regids.h"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// System status indicator LEDs
-
-GPIOPin g_pgoodLED(&GPIOB, 9, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_faultLED(&GPIOB, 8, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-GPIOPin g_sysokLED(&GPIOH, 0, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Power rail descriptors
 
 GPIOPin g_1v0_en(&GPIOH, 1, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);

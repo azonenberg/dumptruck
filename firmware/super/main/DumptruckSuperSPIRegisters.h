@@ -40,6 +40,11 @@ enum dsuperregs_t
 	SUPER_REG_V1V2		= 0x84,
 	SUPER_REG_V1V0		= 0x85,
 	SUPER_REG_VDUTVDD	= 0x86,
+	//0x87 reserved since 3V3_SB voltage is a separate register
+	SUPER_REG_VIO_33	= 0x88,
+	SUPER_REG_VIO_25	= 0x89,
+	SUPER_REG_VIO_18	= 0x8a,
+	SUPER_REG_VIO_12	= 0x8b,
 
 	//Rail currents starting 0x90 (in mA)
 	SUPER_REG_IVBUS		= 0x90,
@@ -50,9 +55,19 @@ enum dsuperregs_t
 	SUPER_REG_I1V0		= 0x95,
 	SUPER_REG_IDUTVDD	= 0x96,
 	SUPER_REG_I3V3_SB	= 0x97,
+	SUPER_REG_IIO_33	= 0x98,
+	SUPER_REG_IIO_25	= 0x99,
+	SUPER_REG_IIO_18	= 0x9a,
+	SUPER_REG_IIO_12	= 0x9b,
 
-	//Temperatures starting 0xa0 (in 8.8 degC
-	SUPER_REG_LTC_TEMP	= 0xa0
+	//Temperatures starting 0xa0 (in 8.8 degC)
+	SUPER_REG_LTC_TEMP	= 0xa0,
+
+	//Commands starting 0xb0 (no response, just single byte opcode)
+	SUPER_REG_VDD_ON	= 0xb0,
+	SUPER_REG_VDD_OFF	= 0xb1,
+	SUPER_REG_VCCIO_ON	= 0xb2,
+	SUPER_REG_VCCIO_OFF	= 0xb3
 };
 
 #endif

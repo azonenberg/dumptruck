@@ -55,6 +55,9 @@ extern GPIOPin g_pgoodLED;
 extern GPIOPin g_faultLED;
 extern GPIOPin g_sysokLED;
 
+extern GPIOPin g_dutVddEn;
+extern GPIOPin g_dutVccioEn;
+
 void InitGPIOs();
 
 enum Ina230I2CAddress
@@ -66,7 +69,11 @@ enum Ina230I2CAddress
 	INA_1V8		= 0x88,
 	INA_1V2		= 0x8a,
 	INA_1V0		= 0x8c,
-	INA_DUT_VDD = 0x8e
+	INA_DUT_VDD = 0x8e,
+	INA_VIO33	= 0x90,
+	INA_VIO25	= 0x92,
+	INA_VIO18	= 0x94,
+	INA_VIO12	= 0x96
 };
 
 float GetLTCTemp();

@@ -41,6 +41,16 @@ void InitSPI();
 void InitRailSensors();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// System status indicator LEDs
+
+GPIOPin g_pgoodLED(&GPIOB, 9, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+GPIOPin g_faultLED(&GPIOB, 8, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+GPIOPin g_sysokLED(&GPIOH, 0, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+
+GPIOPin g_dutVddEn(&GPIOC, 14, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+GPIOPin g_dutVccioEn(&GPIOA, 12, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Common global hardware config used by both bootloader and application
 
 //UART console
@@ -52,8 +62,8 @@ SPI<64, 64> g_spi(&SPI1, true, 2, false);
 
 //I2C1 defaults to running of APB clock (80 MHz)
 //Prescale by 4 to get 20 MHz
-//Divide by 200 after that to get 100 kHz
-I2C g_i2c(&I2C1, 4, 200);
+//Divide by 50 after that to get 400 kHz
+I2C g_i2c(&I2C1, 4, 50);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Low level init
@@ -126,6 +136,10 @@ void InitGPIOs()
 	//Set up GPIOs for I2C bus
 	static GPIOPin i2c_scl(&GPIOB, 6, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
 	static GPIOPin i2c_sda(&GPIOB, 7, GPIOPin::MODE_PERIPHERAL, GPIOPin::SLEW_SLOW, 4, true);
+
+	//Turn off DUT power
+	g_dutVddEn = 0;
+	g_dutVccioEn = 0;
 }
 
 void InitRailSensors()
