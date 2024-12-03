@@ -40,7 +40,7 @@ static const char* hostname_objid = "hostname";
 //List of all valid commands
 enum cmdid_t
 {
-	//CMD_ADDRESS,
+	CMD_ADDRESS,
 	CMD_ARP,
 	CMD_AUTHORIZED,
 	CMD_CACHE,
@@ -56,10 +56,10 @@ enum cmdid_t
 	CMD_EXIT,
 	CMD_FINGERPRINT,
 	CMD_FLASH,
-	//CMD_GATEWAY,
+	CMD_GATEWAY,
 	CMD_HARDWARE,
 	CMD_HOSTNAME,
-	//CMD_IP,
+	CMD_IP,
 	CMD_KEY,
 	CMD_KEYS,
 	CMD_NO,
@@ -68,14 +68,13 @@ enum cmdid_t
 	CMD_RESCAN,
 	CMD_RELOAD,
 	CMD_ROLLBACK,
-	//CMD_ROUTE,
+	CMD_ROUTE,
 	CMD_SERVER,
 	CMD_SHOW,
 	CMD_SSH,
 	CMD_SSH_ED25519,
-	//CMD_STATUS,
 	CMD_USERNAME,
-	//CMD_VERSION,
+	CMD_VERSION,
 	CMD_ZEROIZE
 };
 
@@ -113,13 +112,13 @@ static const clikeyword_t g_hostnameCommands[] =
 	{"<string>",	FREEFORM_TOKEN,		nullptr,	"New host name"},
 	{nullptr,		INVALID_COMMAND,	nullptr,	nullptr}
 };
-/*
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ip"
 
 static const clikeyword_t g_ipAddressCommands[] =
 {
-	{"dhcp",		CMD_DHCP,			nullptr,				"Use DHCP for IP configuration"},
+	//{"dhcp",		CMD_DHCP,			nullptr,				"Use DHCP for IP configuration"},
 	{"<address>",	FREEFORM_TOKEN,		nullptr,				"New IPv4 address and subnet mask in x.x.x.x/yy format"},
 	{nullptr,		INVALID_COMMAND,	nullptr,				nullptr}
 };
@@ -137,7 +136,7 @@ static const clikeyword_t g_ipCommands[] =
 
 	{nullptr,		INVALID_COMMAND,	nullptr,				nullptr}
 };
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "no"
 
@@ -177,14 +176,14 @@ static const clikeyword_t g_showArpCommands[] =
 	{"cache",			CMD_CACHE,				nullptr,				"Show contents of the ARP cache"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-/*
+
 static const clikeyword_t g_showIpCommands[] =
 {
 	{"address",			CMD_ADDRESS,			nullptr,				"Show the IPv4 address and subnet mask"},
 	{"route",			CMD_ROUTE,				nullptr,				"Show the IPv4 routing table"},
 	{nullptr,			INVALID_COMMAND,		nullptr,				nullptr}
 };
-*/
+
 static const clikeyword_t g_showSshAuthorized[] =
 {
 	{"keys",			CMD_KEYS,				nullptr,				"Show authorized keys"},
@@ -216,10 +215,10 @@ static const clikeyword_t g_showCommands[] =
 	{"arp",				CMD_ARP,			g_showArpCommands,			"Print ARP information"},
 	{"flash",			CMD_FLASH,			g_showFlashCommands,		"Display flash usage and log data"},
 	{"hardware",		CMD_HARDWARE,		nullptr,					"Print hardware information"},
-	//{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
-	//{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
+	{"ip",				CMD_IP,				g_showIpCommands,			"Print IPv4 information"},
+	{"ntp",				CMD_NTP,			nullptr,					"Print NTP information"},
 	{"ssh",				CMD_SSH,			g_showSshCommands,			"Print SSH information"},
-	//{"version",			CMD_VERSION,		nullptr,					"Show firmware / FPGA version"},
+	{"version",			CMD_VERSION,		nullptr,					"Show firmware / FPGA version"},
 	{nullptr,			INVALID_COMMAND,	nullptr,					nullptr}
 };
 
@@ -256,7 +255,7 @@ static const clikeyword_t g_sshCommands[] =
 	{"username",		CMD_USERNAME,			g_sshCommandsUsername,		"Sets the SSH username"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-/*
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ntp"
 
@@ -271,7 +270,6 @@ static const clikeyword_t g_ntpCommands[] =
 	{"server",			CMD_SERVER,				g_ntpServerCommands,		"Sets the NTP server to use"},
 	{nullptr,			INVALID_COMMAND,		nullptr,					nullptr}
 };
-*/
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // zeroize
@@ -288,7 +286,6 @@ static const clikeyword_t g_zeroizeCommands[] =
 //Top level commands in root mode
 static const clikeyword_t g_rootCommands[] =
 {
-	//{"clear",		CMD_CLEAR,			g_clearCommands,		"Clear performance counters and other debugging state"},
 	{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
 	//{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
 	{"dump",		CMD_DUMP,			nullptr,				"Dump flash DEV ONLY TEST"},
@@ -296,9 +293,9 @@ static const clikeyword_t g_rootCommands[] =
 	{"exit",		CMD_EXIT,			nullptr,				"Log out"},
 	{"flash",		CMD_FLASH,			g_flashCommands,		"Maintenance operations on flash"},
 	{"hostname",	CMD_HOSTNAME,		g_hostnameCommands,		"Change the host name"},
-	//{"ip",			CMD_IP,				g_ipCommands,			"Configure IP addresses"},
+	{"ip",			CMD_IP,				g_ipCommands,			"Configure IP addresses"},
 	{"no",			CMD_NO,				g_noCommands,			"Remove or disable features"},
-	//{"ntp",			CMD_NTP,			g_ntpCommands,			"Configure NTP client"},
+	{"ntp",			CMD_NTP,			g_ntpCommands,			"Configure NTP client"},
 	{"reload",		CMD_RELOAD,			nullptr,				"Restart the system"},
 	{"rollback",	CMD_ROLLBACK,		nullptr,				"Revert changes made since last commit"},
 	{"show",		CMD_SHOW,			g_showCommands,			"Print information"},
@@ -405,28 +402,28 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			memset(m_hostname, 0, sizeof(m_hostname));
 			strncpy(m_hostname, m_command[1].m_text, sizeof(m_hostname)-1);
 			break;
-		/*
+
 		case CMD_IP:
 			OnIPCommand();
 			break;
-		*/
+
 		case CMD_NO:
 			OnNoCommand();
 			break;
-		/*
+
 		case CMD_NTP:
 			if(m_command[1].m_commandID == CMD_SERVER)
 				OnNtpServer(m_command[2].m_text);
 			break;
-		*/
+
 		case CMD_RELOAD:
 			OnReload();
 			break;
-		/*
+
 		case CMD_ROLLBACK:
 			OnRollback();
 			break;
-		*/
+
 		case CMD_SHOW:
 			OnShowCommand();
 			break;
@@ -465,7 +462,7 @@ void DumptruckCLISessionContext::OnCommit()
 
 	//Save service configuration
 	//g_dhcpClient->SaveConfigToKVS();
-	//g_ntpClient->SaveConfigToKVS();
+	g_udp->GetNTP().SaveConfigToKVS();
 
 	//Save IP configuration
 	if(!g_kvs->StoreObjectIfNecessary<IPv4Address>(g_ipConfig.m_address, g_defaultIP, "ip.address"))
@@ -540,108 +537,10 @@ void DumptruckCLISessionContext::OnEepromProgram(DutSocketType stype)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ip"
-/*
-bool DumptruckCLISessionContext::ParseIPAddress(const char* addr, IPv4Address& ip)
-{
-	int len = strlen(addr);
-
-	int nfield = 0;
-	unsigned int fields[4] = {0};
-
-	//Parse
-	for(int i=0; i<len; i++)
-	{
-		//Dot = move to next field
-		if( (addr[i] == '.') && (nfield < 3) )
-			nfield ++;
-
-		//Digit = update current field
-		else if(isdigit(addr[i]))
-			fields[nfield] = (fields[nfield] * 10) + (addr[i] - '0');
-
-		else
-			return false;
-	}
-
-	//Validate
-	if(nfield != 3)
-		return false;
-	for(int i=0; i<4; i++)
-	{
-		if(fields[i] > 255)
-			return false;
-	}
-
-	//Set the IP
-	for(int i=0; i<4; i++)
-		ip.m_octets[i] = fields[i];
-	return true;
-}
-
-bool DumptruckCLISessionContext::ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask)
-{
-	int len = strlen(addr);
-
-	int nfield = 0;	//0-3 = IP, 4 = netmask
-	unsigned int fields[5] = {0};
-
-	//Parse
-	for(int i=0; i<len; i++)
-	{
-		//Dot = move to next field
-		if( (addr[i] == '.') && (nfield < 3) )
-			nfield ++;
-
-		//Slash = move to netmask
-		else if( (addr[i] == '/') && (nfield == 3) )
-			nfield ++;
-
-		//Digit = update current field
-		else if(isdigit(addr[i]))
-			fields[nfield] = (fields[nfield] * 10) + (addr[i] - '0');
-
-		else
-			return false;
-	}
-
-	//Validate
-	if(nfield != 4)
-		return false;
-	for(int i=0; i<4; i++)
-	{
-		if(fields[i] > 255)
-			return false;
-	}
-	if( (fields[4] > 32) || (fields[4] == 0) )
-		return false;
-
-	//Set the IP
-	for(int i=0; i<4; i++)
-		ip.m_octets[i] = fields[i];
-
-	mask = 0xffffffff << (32 - fields[4]);
-	return true;
-}
 
 void DumptruckCLISessionContext::OnIPAddress(const char* addr)
 {
-	//Parse the base IP address
-	uint32_t mask = 0;
-	if(!ParseIPAddressWithSubnet(addr, g_ipConfig.m_address, mask))
-	{
-		m_stream->Printf("Usage: ip address x.x.x.x/yy\n");
-		return;
-	}
-
-	//Calculate the netmask
-	g_ipConfig.m_netmask.m_octets[0] = (mask >> 24) & 0xff;
-	g_ipConfig.m_netmask.m_octets[1] = (mask >> 16) & 0xff;
-	g_ipConfig.m_netmask.m_octets[2] = (mask >> 8) & 0xff;
-	g_ipConfig.m_netmask.m_octets[3] = (mask >> 0) & 0xff;
-
-	//Calculate the broadcast address
-	for(int i=0; i<4; i++)
-		g_ipConfig.m_broadcast.m_octets[i] = g_ipConfig.m_address.m_octets[i] | ~g_ipConfig.m_netmask.m_octets[i];
+	SetIPAddress(m_stream, addr);
 }
 
 void DumptruckCLISessionContext::OnIPGateway(const char* gw)
@@ -655,15 +554,15 @@ void DumptruckCLISessionContext::OnIPCommand()
 	switch(m_command[1].m_commandID)
 	{
 		case CMD_ADDRESS:
-			if(m_command[2].m_commandID == CMD_DHCP)
+			/*if(m_command[2].m_commandID == CMD_DHCP)
 			{
 				g_usingDHCP = true;
 				g_dhcpClient->Enable();
 			}
-			else
+			else*/
 			{
-				g_usingDHCP = false;
-				g_dhcpClient->Disable();
+				//g_usingDHCP = false;
+				//g_dhcpClient->Disable();
 				OnIPAddress(m_command[2].m_text);
 			}
 			break;
@@ -677,10 +576,10 @@ void DumptruckCLISessionContext::OnIPCommand()
 			break;
 	}
 }
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ntp"
-/*
+
 void DumptruckCLISessionContext::OnNtpServer(const char* addr)
 {
 	//Parse the base IP address
@@ -691,10 +590,10 @@ void DumptruckCLISessionContext::OnNtpServer(const char* addr)
 		return;
 	}
 
-	g_ntpClient->Enable();
-	g_ntpClient->SetServerAddress(iaddr);
+	g_udp->GetNTP().Enable();
+	g_udp->GetNTP().SetServerAddress(iaddr);
 }
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "no"
 
@@ -719,9 +618,9 @@ void DumptruckCLISessionContext::OnNoCommand()
 			RemoveFlashKey(m_stream, m_command[2].m_text);
 			break;
 
-		//case CMD_NTP:
-		//	g_ntpClient->Disable();
-		//	break;
+		case CMD_NTP:
+			g_udp->GetNTP().Disable();
+			break;
 
 		case CMD_SSH:
 			OnNoSSHCommand();
@@ -754,10 +653,10 @@ void DumptruckCLISessionContext::OnRollback()
 	g_keyMgr.LoadFromKVS(false);
 
 	//g_dhcpClient->LoadConfigFromKVS();
-	//g_ntpClient->LoadConfigFromKVS();
+	g_udp->GetNTP().LoadConfigFromKVS();
 	ConfigureIP();
 	LoadHostname();
-	//g_sshd->LoadUsername();
+	g_sshd->LoadUsername();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -787,16 +686,15 @@ void DumptruckCLISessionContext::OnShowCommand()
 			OnShowHardware();
 			break;
 
-		/*
 		case CMD_IP:
 			switch(m_command[2].m_commandID)
 			{
 				case CMD_ADDRESS:
-					OnShowIPAddress();
+					PrintIPAddress(m_stream);
 					break;
 
 				case CMD_ROUTE:
-					OnShowIPRoute();
+					PrintDefaultRoute(m_stream);
 					break;
 
 				default:
@@ -805,14 +703,14 @@ void DumptruckCLISessionContext::OnShowCommand()
 			break;
 
 		case CMD_NTP:
-			OnShowNtp();
+			PrintNTP(m_stream, g_udp->GetNTP());
 			break;
-		*/
+
 		case CMD_SSH:
 			switch(m_command[2].m_commandID)
 			{
 				case CMD_AUTHORIZED:
-					OnShowSSHKeys();
+					PrintSSHKeys(m_stream, g_keyMgr);
 					break;
 
 				case CMD_FINGERPRINT:
@@ -823,11 +721,11 @@ void DumptruckCLISessionContext::OnShowCommand()
 					break;
 			}
 			break;
-		/*
+
 		case CMD_VERSION:
 			OnShowVersion();
 			break;
-		*/
+
 		default:
 			m_stream->Printf("Unrecognized command\n");
 			break;
@@ -937,105 +835,13 @@ void DumptruckCLISessionContext::PrintPowerRail(const char* name, dsuperregs_t v
 		name, v / 1000, v % 1000, i / 1000, i % 1000, p / 1000, p % 1000);
 }
 
-/*
-void DumptruckCLISessionContext::OnShowIPAddress()
-{
-	m_stream->Printf("IPv4 address: %d.%d.%d.%d\n",
-		g_ipConfig.m_address.m_octets[0],
-		g_ipConfig.m_address.m_octets[1],
-		g_ipConfig.m_address.m_octets[2],
-		g_ipConfig.m_address.m_octets[3]
-	);
-
-	m_stream->Printf("Subnet mask:  %d.%d.%d.%d\n",
-		g_ipConfig.m_netmask.m_octets[0],
-		g_ipConfig.m_netmask.m_octets[1],
-		g_ipConfig.m_netmask.m_octets[2],
-		g_ipConfig.m_netmask.m_octets[3]
-	);
-
-	m_stream->Printf("Broadcast:    %d.%d.%d.%d\n",
-		g_ipConfig.m_broadcast.m_octets[0],
-		g_ipConfig.m_broadcast.m_octets[1],
-		g_ipConfig.m_broadcast.m_octets[2],
-		g_ipConfig.m_broadcast.m_octets[3]
-	);
-}
-
-void DumptruckCLISessionContext::OnShowIPRoute()
-{
-	m_stream->Printf("IPv4 routing table\n");
-	m_stream->Printf("Destination     Gateway\n");
-	m_stream->Printf("0.0.0.0         %d.%d.%d.%d\n",
-		g_ipConfig.m_gateway.m_octets[0],
-		g_ipConfig.m_gateway.m_octets[1],
-		g_ipConfig.m_gateway.m_octets[2],
-		g_ipConfig.m_gateway.m_octets[3]);
-}
-
-void DumptruckCLISessionContext::OnShowNtp()
-{
-	if(g_ntpClient->IsEnabled())
-	{
-		m_stream->Printf("NTP client enabled\n");
-		auto ip = g_ntpClient->GetServerAddress();
-
-		if(g_ntpClient->IsSynchronized())
-		{
-			tm synctime;
-			uint16_t syncsub;
-			g_ntpClient->GetLastSync(synctime, syncsub);
-
-			m_stream->Printf("Last synchronized to server %d.%d.%d.%d at %04d-%02d-%02dT%02d:%02d:%02d.%04d\n",
-				ip.m_octets[0], ip.m_octets[1], ip.m_octets[2], ip.m_octets[3],
-				synctime.tm_year + 1900,
-				synctime.tm_mon+1,
-				synctime.tm_mday,
-				synctime.tm_hour,
-				synctime.tm_min,
-				synctime.tm_sec,
-				syncsub);
-		}
-		else
-		{
-			m_stream->Printf("Using server %d.%d.%d.%d (not currently synchronized)\n",
-				ip.m_octets[0], ip.m_octets[1], ip.m_octets[2], ip.m_octets[3] );
-		}
-
-	}
-	else
-		m_stream->Printf("NTP client disabled\n");
-}
-*/
-void DumptruckCLISessionContext::OnShowSSHKeys()
-{
-	m_stream->Printf("Authorized keys:\n");
-	m_stream->Printf("Slot  Nickname                        Fingerprint\n");
-
-	AcceleratedCryptoEngine tmp;
-	char fingerprint[64];
-
-	for(int i=0; i<MAX_SSH_KEYS; i++)
-	{
-		if(g_keyMgr.m_authorizedKeys[i].m_nickname[0] != '\0')
-		{
-			tmp.GetKeyFingerprint(fingerprint, sizeof(fingerprint), g_keyMgr.m_authorizedKeys[i].m_pubkey);
-			m_stream->Printf("%2d    %-30s  SHA256:%s\n",
-				i,
-				g_keyMgr.m_authorizedKeys[i].m_nickname,
-				fingerprint);
-		}
-	}
-}
-
-/*
 void DumptruckCLISessionContext::OnShowVersion()
 {
-	m_stream->Printf("Trigger crossbar v0.1\n");
+	m_stream->Printf("DUMPTRUCK v0.1\n");
 	m_stream->Printf("by Andrew D. Zonenberg\n");
 	m_stream->Printf("\n");
 	m_stream->Printf("This system is open hardware! Board design files and firmware/gateware source code are at:\n");
-	m_stream->Printf("https://github.com/azonenberg/triggercrossbar\n");
+	m_stream->Printf("https://github.com/azonenberg/dumptruck\n");
 	m_stream->Printf("\n");
 	m_stream->Printf("Firmware compiled at %s on %s\n", __TIME__, __DATE__);
 	#ifdef __GNUC__
@@ -1043,7 +849,7 @@ void DumptruckCLISessionContext::OnShowVersion()
 	m_stream->Printf("CLI source code last modified: %s\n", __TIMESTAMP__);
 	#endif
 }
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // "ssh"
 
@@ -1222,6 +1028,7 @@ void DumptruckCLISessionContext::OnDumpQspi(volatile APB_IOMuxConfig* muxcfg, vo
 	muxcfg->muxsel = (uint32_t)IOMuxConfig::Inactive;
 
 	//Turn off power
+	g_log("Turning off DUT power\n");
 	SendSupervisorCommand(SUPER_REG_VDD_OFF);
 	SendSupervisorCommand(SUPER_REG_VCCIO_OFF);
 

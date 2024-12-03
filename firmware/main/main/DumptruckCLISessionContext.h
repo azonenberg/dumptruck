@@ -66,9 +66,6 @@ public:
 
 protected:
 
-	//bool ParseIPAddress(const char* addr, IPv4Address& ip);
-	//bool ParseIPAddressWithSubnet(const char* addr, IPv4Address& ip, uint32_t& mask);
-
 	void LoadHostname();
 
 	virtual void OnExecute();
@@ -81,14 +78,14 @@ protected:
 	void OnEepromCommand();
 	void OnEepromProgram(DutSocketType stype);
 
-	//void OnIPCommand();
-	//void OnIPAddress(const char* addr);
-	//void OnIPGateway(const char* gw);
+	void OnIPCommand();
+	void OnIPAddress(const char* addr);
+	void OnIPGateway(const char* gw);
 
 	void OnNoCommand();
 	void OnNoSSHCommand();
 
-	//void OnNtpServer(const char* addr);
+	void OnNtpServer(const char* addr);
 
 	void OnReload();
 	void OnRollback();
@@ -96,13 +93,8 @@ protected:
 	void OnShowFlash();
 	void OnShowFlashDetail();
 	void OnShowHardware();
-	/*
-	void OnShowIPAddress();
-	void OnShowIPRoute();
-	void OnShowNtp();
-	*/
-	void OnShowSSHKeys();
-	//void OnShowVersion();
+
+	void OnShowVersion();
 	void OnSSHCommand();
 
 	SSHOutputStream m_sshstream;
