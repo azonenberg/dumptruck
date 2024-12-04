@@ -47,7 +47,7 @@ DumptruckSSHTransportServer::DumptruckSSHTransportServer(TCPProtocol& tcp)
 	for(size_t i=0; i<SSH_TABLE_SIZE; i++)
 	{
 		m_state[i].m_crypto = &m_engine[i];
-		//m_state[i].m_sftpState = &m_sftpState[i];
+		m_state[i].m_sftpState = &m_sftpState[i];
 	}
 
 	//Find the keys, generating if required
@@ -92,7 +92,7 @@ DumptruckSSHTransportServer::DumptruckSSHTransportServer(TCPProtocol& tcp)
 	UsePubkeyAuthenticator(&m_auth);
 
 	//Set up SFTP server
-	//UseSFTPServer(&m_sftp);
+	UseSFTPServer(&m_sftp);
 }
 
 void DumptruckSSHTransportServer::LoadUsername()

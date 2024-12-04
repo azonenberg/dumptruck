@@ -27,111 +27,124 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef hwinit_h
-#define hwinit_h
+/**
+	@file
+	@brief Implementation of DumptruckSFTPServer
+ */
+#include "dumptruck.h"
+#include "DumptruckSFTPServer.h"
+#include <staticnet/sftp/SFTPOpenPacket.h>
 
-#include <cli/UARTOutputStream.h>
+const char* g_fpgaDfuPath = "/dfu/fpga";
 
-#include <peripheral/CRC.h>
-#include <peripheral/Flash.h>
-#include <peripheral/GPIO.h>
-#include <peripheral/SPI.h>
-#include <peripheral/UART.h>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Filesystem wrapper APIs
 
-#include <APB_Curve25519.h>
-#include <APB_DeviceInfo_7series.h>
-#include <APB_GPIO.h>
-#include <APB_SerialLED.h>
-#include <APB_SPIHostInterface.h>
-#include <APB_XADC.h>
-#include <APB_EthernetRxBuffer.h>
-#include <APB_EthernetTxBuffer_10G.h>
-
-#include <tcpip/CommonTCPIP.h>
-#include <fpga/Ethernet.h>
-#include <staticnet/drivers/stm32/STM32CryptoEngine.h>
-#include <staticnet/ssh/SSHTransportServer.h>
-//#include "ManagementDHCPClient.h"
-#include <tcpip/SSHKeyManager.h>
-
-#include <embedded-utils/LogSink.h>
-
-#include <bootloader/BootloaderAPI.h>
-
-#include <supervisor/SupervisorSPIRegisters.h>
-#include "../../super/main/DumptruckSuperSPIRegisters.h"
-
-#include <boilerplate/h735/StandardBSP.h>
-#include <fpga/FMCUtils.h>
-
-void App_Init();
-void InitFMC();
-void InitFPGAFlash();
-void InitI2C();
-void InitSupervisor();
-
-//Interface to supervisor MCU
-extern SPI<64, 64> g_superSPI;
-extern GPIOPin* g_superSPICS;
-uint16_t ReadSupervisorRegister(superregs_t regid);
-uint16_t ReadSupervisorRegister(dsuperregs_t regid);
-void SendSupervisorCommand(dsuperregs_t regid);
-
-//Common hardware interface stuff (mostly Ethernet related)
-extern GPIOPin g_leds[4];
-extern APB_GPIOPin g_fpgaLEDs[4];
-
-//extern bool g_usingDHCP;
-//extern ManagementDHCPClient* g_dhcpClient;
-
-extern SSHKeyManager g_keyMgr;
-
-extern const char* g_defaultSshUsername;
-extern const char* g_usernameObjectID;
-extern char g_sshUsername[CLI_USERNAME_MAX];
-
-void UART4_Handler();
-/*
-void OnEthernetLinkStateChanged();
-bool CheckForFPGAEvents();
-*/
-void RegisterProtocolHandlers(IPv4Protocol& ipv4);
-
-enum class IOMuxConfig
+bool DumptruckSFTPServer::DoesFileExist(const char* path)
 {
-	Inactive	= 0,
-	X1_SPI		= 1
-};
+	if(!strcmp(path, g_fpgaDfuPath))
+		return true;
 
-struct APB_IOMuxConfig
+	//no other files to match
+	return false;
+}
+
+bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags)
 {
-	uint32_t	muxsel;
-};
+	//If we already have an open file, abort
+	//(we don't support concurrent file operations)
+	if(m_openFile != FILE_ID_NONE)
+		return false;
 
-extern volatile APB_XADC FXADC;
-extern volatile APB_GPIO FPGA_GPIOA;
-extern volatile APB_Curve25519 FCURVE25519;
-extern volatile APB_SerialLED FRGBLED;
-extern volatile APB_DeviceInfo_7series FDEVINFO;
+	//Check if this is a DFU file path
+	bool isDFU = false;
+	if(!strcmp(path, g_fpgaDfuPath))
+		isDFU = true;
 
-//1V2 flash
-extern volatile APB_IOMuxConfig	F1V2_MUXCFG;
-extern volatile APB_GPIO F1V2_GPIO;
-extern volatile APB_SPIHostInterface F1V2_SPI;
+	//DFU files must be opened in overwrite/truncate mode
+	if(isDFU)
+	{
+		switch(flags & SFTPOpenPacket::SSH_FXF_ACCESS_DISPOSITION)
+		{
+			//valid modes
+			case SFTPOpenPacket::SSH_FXF_CREATE_NEW:
+			case SFTPOpenPacket::SSH_FXF_CREATE_TRUNCATE:
+			case SFTPOpenPacket::SSH_FXF_TRUNCATE_EXISTING:
+				break;
 
-//1V8 flash
-extern volatile APB_IOMuxConfig	F1V8_MUXCFG;
-extern volatile APB_GPIO F1V8_GPIO;
-extern volatile APB_SPIHostInterface F1V8_SPI;
+			//anything else isn't allowed
+			default:
+				return false;
+		}
 
-//2V5 flash
-extern volatile APB_IOMuxConfig	F2V5_MUXCFG;
-extern volatile APB_GPIO F2V5_GPIO;
-extern volatile APB_SPIHostInterface F2V5_SPI;
+		//access mask must request write data
+		if( (accessMask & SFTPPacket::ACE4_WRITE_DATA) == 0)
+			return false;
 
-//3V3 flash
-extern volatile APB_IOMuxConfig	F3V3_MUXCFG;
-extern volatile APB_GPIO F3V3_GPIO;
-extern volatile APB_SPIHostInterface F3V3_SPI;
+		//no readback allowed for the ELF binaries
+		//(since they're not actually stored as ELF and we don't want to synthesize one on the fly!)
+		//TODO: allow readback of bitstream binaries?
+		if( (accessMask & SFTPPacket::ACE4_READ_DATA) != 0)
+			return false;
 
-#endif
+		//otherwise we're good
+		return true;
+	}
+
+	//If we get here, no go
+	return false;
+}
+
+uint32_t DumptruckSFTPServer::OpenFile(
+	const char* path,
+	[[maybe_unused]] uint32_t accessMask,
+	[[maybe_unused]] uint32_t flags)
+{
+	g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
+
+	//For now, all of our files are stored in a single handle
+	//See which one to use
+	if(!strcmp(path, g_fpgaDfuPath))
+	{
+		m_openFile = FILE_ID_FPGA_DFU;
+		m_fpgaUpdater.OnDeviceOpened();
+	}
+
+	//Return the constant handle zero for all open requests
+	return 0;
+}
+
+void DumptruckSFTPServer::WriteFile(
+	[[maybe_unused]] uint32_t handle,
+	[[maybe_unused]] uint64_t offset,
+	const uint8_t* data,
+	uint32_t len)
+{
+	//Ignore handle since we only support one right now
+	switch(m_openFile)
+	{
+		case FILE_ID_FPGA_DFU:
+			m_fpgaUpdater.OnRxData(data, len);
+			break;
+
+		default:
+			break;
+	}
+}
+
+bool DumptruckSFTPServer::CloseFile([[maybe_unused]] uint32_t handle)
+{
+	switch(m_openFile)
+	{
+		case FILE_ID_FPGA_DFU:
+			m_fpgaUpdater.OnDeviceClosed();
+			break;
+
+		default:
+			break;
+	}
+
+	//always allowed, we no longer have an open file
+	m_openFile = FILE_ID_NONE;
+	return true;
+}

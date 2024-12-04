@@ -11,6 +11,8 @@ Bugs in the v0.1 PCB
 * JTAG connector VCC is connected to 3.3V. We need to supply 1.8 here. Temporary workaround: six pin extension cable, pass through JTAG + GND and supply 1.8V to dongle externally. Long term fix: interposer board
 * DONE on FPGA is 1.8V signal driving 3.3V input on supervisor, too low for Vih. Rework: add 1.8V gate drive NMOS to pull low when done, invert logic in firmware
 
+TODO: add HF caps to VCAP on STM32
+
 ## Breakout board errata
 
 * v0.1 of parallel-nor-csp56 and dip8-qspi had EEPROM at 0xa0 which conflicted with MAC address EEPROM. Future breakouts use 0xa2 to avoid conflict

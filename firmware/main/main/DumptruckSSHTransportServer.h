@@ -37,7 +37,7 @@
 #include <staticnet/ssh/SSHTransportServer.h>
 #include <fpga/AcceleratedCryptoEngine.h>
 #include <tcpip/KeyManagerPubkeyAuthenticator.h>
-//#include "DumptruckSFTPServer.h"
+#include "DumptruckSFTPServer.h"
 #include "DumptruckCLISessionContext.h"
 
 /**
@@ -62,8 +62,8 @@ protected:
 	DumptruckCLISessionContext m_context[SSH_TABLE_SIZE];
 
 	AcceleratedCryptoEngine m_engine[SSH_TABLE_SIZE];
-	//SFTPConnectionState m_sftpState[SSH_TABLE_SIZE];
-	//DumptruckSFTPServer m_sftp;
+	SFTPConnectionState m_sftpState[SSH_TABLE_SIZE];
+	DumptruckSFTPServer m_sftp;
 };
 
 #endif

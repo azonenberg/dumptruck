@@ -39,6 +39,7 @@
 #include <peripheral/ITM.h>
 #include <ctype.h>
 #include <embedded-utils/CoreSightRom.h>
+#include <fpga/FPGAFirmwareUpdater.h>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Memory mapped SFRs on the FPGA
@@ -145,9 +146,6 @@ SPI<64, 64> g_superSPI(&SPI5, true, 64);
 
 ///@brief Version string for supervisor MCU
 char g_superVersion[20] = {0};
-
-///@brief SPI flash controller for FPGA
-APB_SpiFlashInterface* g_fpgaFlash;
 
 ///@brief Database of authorized SSH keys
 SSHKeyManager g_keyMgr;
