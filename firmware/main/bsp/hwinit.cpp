@@ -269,7 +269,8 @@ void InitFPGAFlash()
 	g_log("Initializing FPGA flash\n");
 	LogIndenter li(g_log);
 
-	static APB_SpiFlashInterface flash(&FSPI1, 4);	//100 MHz PCLK = 25 MHz SCK
+	static APB_SpiFlashInterface flash(&FSPI1, 2);	//100 MHz PCLK = 50 MHz SCK
+													//(divide by 1 not allowed by this peripheral)
 	g_fpgaFlash = &flash;
 }
 
