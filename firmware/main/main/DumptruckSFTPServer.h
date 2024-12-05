@@ -46,10 +46,13 @@ public:
 		, m_fpgaUpdater("7s100fgga484", 0x0000'0000, 0x0040'0000)
 	{}
 
+protected:
 	virtual bool DoesFileExist(const char* path) override;
+	virtual uint64_t GetFileSize(const char* path) override;
 	virtual bool CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
 	virtual uint32_t OpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
 	virtual void WriteFile(uint32_t handle, uint64_t offset, const uint8_t* data, uint32_t len) override;
+	virtual uint32_t ReadFile(uint32_t handle, uint64_t offset, uint8_t* data, uint32_t len) override;
 	virtual bool CloseFile(uint32_t handle) override;
 
 protected:

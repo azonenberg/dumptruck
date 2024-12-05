@@ -84,8 +84,10 @@
 	@brief Number of (1500 byte + metadata) transmit buffers to allocate
 
 	This should be as large as possible to enable lots of outstanding un-ACKed TCP segments
+
+	We need a minimum of 32 to support SFTP reads
  */
-#define APB_TX_BUFCOUNT 16
+#define APB_TX_BUFCOUNT 32
 
 /**
 	@brief Number of (1500 byte + metadata) receive buffers to allocate
@@ -100,7 +102,7 @@
 
 	This is essentially a cap on window size in segments (vs bytes).
  */
-#define TCP_MAX_UNACKED 16
+#define TCP_MAX_UNACKED APB_TX_BUFCOUNT
 
 ///@brief Maximum age for a TCP segment before deciding to retransmit (in 100ms ticks)
 #define TCP_RETRANSMIT_TIMEOUT 2

@@ -98,3 +98,9 @@ uint32_t DumptruckTCPProtocol::GenerateInitialSequenceNumber()
 	m_crypt.GenerateRandom(reinterpret_cast<uint8_t*>(&ret), sizeof(ret));
 	return ret;
 }
+
+void DumptruckTCPProtocol::OnAgingTick10x()
+{
+	TCPProtocol::OnAgingTick10x();
+	m_ssh.OnAgingTick10x();
+}

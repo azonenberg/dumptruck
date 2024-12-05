@@ -31,7 +31,8 @@
 #include <ctype.h>
 //#include "../super/superregs.h"
 #include "../bsp/FPGATask.h"
-#include <tcpip/IPAgingTask.h>
+#include <tcpip/IPAgingTask1Hz.h>
+#include <tcpip/IPAgingTask10Hz.h>
 #include <tcpip/PhyPollTask.h>
 #include "LocalConsoleTask.h"
 #include "SocketDetectionTask.h"
@@ -95,18 +96,21 @@ void App_Init()
 
 	static FPGATask fpgaTask;
 	static PhyPollTask phyTask;
-	static IPAgingTask ipAgingTask;
+	static IPAgingTask1Hz ipAgingTask1Hz;
+	static IPAgingTask10Hz ipAgingTask10Hz;
 	static LocalConsoleTask localConsoleTask;
 	static SocketDetectionTask socketDetectionTask;
 
 	g_tasks.push_back(&fpgaTask);
 	g_tasks.push_back(&phyTask);
-	g_tasks.push_back(&ipAgingTask);
+	g_tasks.push_back(&ipAgingTask1Hz);
+	g_tasks.push_back(&ipAgingTask10Hz);
 	g_tasks.push_back(&localConsoleTask);
 	g_tasks.push_back(&socketDetectionTask);
 
 	g_timerTasks.push_back(&phyTask);
-	g_timerTasks.push_back(&ipAgingTask);
+	g_timerTasks.push_back(&ipAgingTask1Hz);
+	g_timerTasks.push_back(&ipAgingTask10Hz);
 	g_timerTasks.push_back(&socketDetectionTask);
 
 	g_detectionTask = &socketDetectionTask;

@@ -49,6 +49,16 @@ bool DumptruckSFTPServer::DoesFileExist(const char* path)
 	return false;
 }
 
+uint64_t DumptruckSFTPServer::GetFileSize(const char* path)
+{
+	//Return size of the file we're trying to read
+	if(!strcmp(path, g_fpgaDfuPath))
+		return 0x0040'0000;
+
+	//default to empty
+	return 0;
+}
+
 bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags)
 {
 	//If we already have an open file, abort
@@ -72,12 +82,24 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 			case SFTPOpenPacket::SSH_FXF_TRUNCATE_EXISTING:
 				break;
 
+			//Allow readback for debug
+			case SFTPOpenPacket::SSH_FXF_OPEN_EXISTING:
+				break;
+
 			//anything else isn't allowed
 			default:
 				return false;
 		}
 
-		//access mask must request write data
+		//Special case for FPGA readback
+		if( (!strcmp(path, g_fpgaDfuPath)) &&
+			(accessMask & SFTPPacket::ACE4_READ_DATA) &&
+			( (accessMask & SFTPPacket::ACE4_WRITE_DATA) == 0) )
+		{
+			return true;
+		}
+
+		//We have to request write access to do a DFU
 		if( (accessMask & SFTPPacket::ACE4_WRITE_DATA) == 0)
 			return false;
 
@@ -107,11 +129,45 @@ uint32_t DumptruckSFTPServer::OpenFile(
 	if(!strcmp(path, g_fpgaDfuPath))
 	{
 		m_openFile = FILE_ID_FPGA_DFU;
-		m_fpgaUpdater.OnDeviceOpened();
+		if(accessMask & SFTPPacket::ACE4_WRITE_DATA)
+			m_fpgaUpdater.OnDeviceOpened();
+		else
+		{
+			g_log("TODO: open FPGA readback\n");
+		}
 	}
 
 	//Return the constant handle zero for all open requests
 	return 0;
+}
+
+uint32_t DumptruckSFTPServer::ReadFile(
+	[[maybe_unused]] uint32_t handle,
+	uint64_t offset,
+	uint8_t* data,
+	uint32_t len)
+{
+	//Bound the actual read operation
+	uint32_t fileSize = 0x0040'0000;
+
+	//If start position is at or after end, we have nothing to read
+	if(offset > fileSize)
+		return 0;
+
+	//If EOF is inside the requested block, truncate the return buffer
+	if( (offset + len) >= fileSize)
+		len = fileSize - offset;
+
+	/*g_log("ReadFile handle=%d offset=%08x len=%d\n",
+		handle,
+		(uint32_t)offset,
+		len);*/
+
+	//for now, return constant garbage rather than reading real data
+	memset(data, 0x42, len);
+
+	//Return actual number of bytes read after truncation if needed
+	return len;
 }
 
 void DumptruckSFTPServer::WriteFile(

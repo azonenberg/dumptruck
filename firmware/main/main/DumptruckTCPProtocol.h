@@ -38,6 +38,8 @@ class DumptruckTCPProtocol : public TCPProtocol
 public:
 	DumptruckTCPProtocol(IPv4Protocol* ipv4);
 
+	virtual void OnAgingTick10x() override;
+
 protected:
 	virtual bool IsPortOpen(uint16_t port) override;
 	virtual void OnConnectionAccepted(TCPTableEntry* state) override;

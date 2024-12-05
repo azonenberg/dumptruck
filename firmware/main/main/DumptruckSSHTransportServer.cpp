@@ -116,18 +116,18 @@ void DumptruckSSHTransportServer::InitializeShell(int id, TCPTableEntry* socket)
 	m_context[id].PrintPrompt();
 
 	//TODO: only if we "terminal monitor" or similar?
-	g_logSink->AddSink(m_context[id].GetSSHStream());
+	//g_logSink->AddSink(m_context[id].GetSSHStream());
 }
 
 void DumptruckSSHTransportServer::GracefulDisconnect(int id, TCPTableEntry* socket)
 {
-	g_logSink->RemoveSink(m_context[id].GetSSHStream());
+	//g_logSink->RemoveSink(m_context[id].GetSSHStream());
 	SSHTransportServer::GracefulDisconnect(id, socket);
 }
 
 void DumptruckSSHTransportServer::DropConnection(int id, TCPTableEntry* socket)
 {
-	g_logSink->RemoveSink(m_context[id].GetSSHStream());
+	//g_logSink->RemoveSink(m_context[id].GetSSHStream());
 	SSHTransportServer::DropConnection(id, socket);
 }
 
