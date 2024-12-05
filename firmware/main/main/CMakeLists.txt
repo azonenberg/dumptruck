@@ -4,6 +4,7 @@ add_executable(main
 	DumptruckSSHTransportServer.cpp
 	DumptruckTCPProtocol.cpp
 	DumptruckUDPProtocol.cpp
+
 	SocketDetectionTask.cpp
 
 	globals.cpp

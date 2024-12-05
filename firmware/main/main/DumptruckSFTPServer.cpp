@@ -38,6 +38,16 @@
 const char* g_fpgaDfuPath = "/dfu/fpga";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Construction / destruction
+
+DumptruckSFTPServer::DumptruckSFTPServer()
+	: m_openFile(FILE_ID_NONE)
+	, m_fpgaUpdater("7s100fgga484", 0x0000'0000, 0x0040'0000)
+	, m_dumper(nullptr)
+{
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Filesystem wrapper APIs
 
 bool DumptruckSFTPServer::DoesFileExist(const char* path)
@@ -122,18 +132,26 @@ uint32_t DumptruckSFTPServer::OpenFile(
 	[[maybe_unused]] uint32_t accessMask,
 	[[maybe_unused]] uint32_t flags)
 {
-	g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
+	//g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
 
 	//For now, all of our files are stored in a single handle
 	//See which one to use
 	if(!strcmp(path, g_fpgaDfuPath))
 	{
-		m_openFile = FILE_ID_FPGA_DFU;
 		if(accessMask & SFTPPacket::ACE4_WRITE_DATA)
+		{
+			g_log("Opening FPGA flash for DFU\n");
+
+			m_openFile = FILE_ID_FPGA_DFU;
 			m_fpgaUpdater.OnDeviceOpened();
+		}
 		else
 		{
-			g_log("TODO: open FPGA readback\n");
+			g_log("Opening FPGA flash for readback\n");
+
+			m_openFile = FILE_ID_FPGA_READBACK;
+			m_vdumper = FPGAFlashDumper();
+			m_dumper = &etl::get<FPGAFlashDumper>(m_vdumper);
 		}
 	}
 
@@ -158,13 +176,13 @@ uint32_t DumptruckSFTPServer::ReadFile(
 	if( (offset + len) >= fileSize)
 		len = fileSize - offset;
 
-	/*g_log("ReadFile handle=%d offset=%08x len=%d\n",
-		handle,
-		(uint32_t)offset,
-		len);*/
+	//Actually dump!
+	if(m_dumper)
+		m_dumper->ReadFile(offset, data, len);
 
-	//for now, return constant garbage rather than reading real data
-	memset(data, 0x42, len);
+	//bail if we have no dumper to read
+	else
+		return 0;
 
 	//Return actual number of bytes read after truncation if needed
 	return len;
@@ -202,5 +220,7 @@ bool DumptruckSFTPServer::CloseFile([[maybe_unused]] uint32_t handle)
 
 	//always allowed, we no longer have an open file
 	m_openFile = FILE_ID_NONE;
+	m_vdumper = NullFlashDumper();
+	m_dumper = nullptr;
 	return true;
 }

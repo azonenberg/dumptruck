@@ -84,10 +84,8 @@
 	@brief Number of (1500 byte + metadata) transmit buffers to allocate
 
 	This should be as large as possible to enable lots of outstanding un-ACKed TCP segments
-
-	We need a minimum of 32 to support SFTP reads
  */
-#define APB_TX_BUFCOUNT 32
+#define APB_TX_BUFCOUNT 16
 
 /**
 	@brief Number of (1500 byte + metadata) receive buffers to allocate

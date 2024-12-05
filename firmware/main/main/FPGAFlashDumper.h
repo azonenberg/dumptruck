@@ -27,58 +27,31 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
+#ifndef FPGAFlashDumper_h
+#define FPGAFlashDumper_h
+
 /**
-	@file
-	@brief Declaration of DumptruckSFTPServer
+	@brief Debug helper (mostly) for dumping the FPGA boot flash
  */
-#ifndef DumptruckSFTPServer_h
-#define DumptruckSFTPServer_h
-
-#include <fpga/FPGAFirmwareUpdater.h>
-
-#include "FlashDumper.h"
-#include "FPGAFlashDumper.h"
-#include "NullFlashDumper.h"
-
-//suppress warning in standard library headers
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-#include <etl/variant.h>
-#pragma GCC diagnostic pop
-
-class DumptruckSFTPServer : public SFTPServer
+class FPGAFlashDumper : public FlashDumper
 {
 public:
-	DumptruckSFTPServer();
+	FPGAFlashDumper()
+	{}
 
-protected:
-	virtual bool DoesFileExist(const char* path) override;
-	virtual uint64_t GetFileSize(const char* path) override;
-	virtual bool CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
-	virtual uint32_t OpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
-	virtual void WriteFile(uint32_t handle, uint64_t offset, const uint8_t* data, uint32_t len) override;
-	virtual uint32_t ReadFile(uint32_t handle, uint64_t offset, uint8_t* data, uint32_t len) override;
-	virtual bool CloseFile(uint32_t handle) override;
-
-protected:
-	enum FileID
+	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) override
 	{
-		FILE_ID_NONE,
-		FILE_ID_SUPER_DFU,
-		FILE_ID_FPGA_DFU,
-		FILE_ID_FPGA_READBACK
-	} m_openFile;
+		g_fpgaFlash->ReadData(offset, data, len);
+		return len;
+	}
 
-	//Firmware updater drivers
-	FPGAFirmwareUpdater m_fpgaUpdater;
+	//FPGA flash is always powered
+	virtual void PowerOn() override
+	{};
 
-	///@brief Pointer to our active flash dumper (if any)
-	FlashDumper* m_dumper;
-
-	///@brief Variant container for our dumpers
-	etl::variant<
-		NullFlashDumper,
-		FPGAFlashDumper> m_vdumper;
+	//FPGA flash is always powered
+	virtual void PowerOff() override
+	{}
 };
 
 #endif
