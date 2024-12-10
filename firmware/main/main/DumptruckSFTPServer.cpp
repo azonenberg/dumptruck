@@ -150,7 +150,7 @@ uint32_t DumptruckSFTPServer::OpenFile(
 			g_log("Opening FPGA flash for readback\n");
 
 			m_openFile = FILE_ID_FPGA_READBACK;
-			m_vdumper = FPGAFlashDumper();
+			m_vdumper = std::move(FPGAFlashDumper());
 			m_dumper = &etl::get<FPGAFlashDumper>(m_vdumper);
 		}
 	}

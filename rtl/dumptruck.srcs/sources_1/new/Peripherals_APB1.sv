@@ -229,6 +229,39 @@ module Peripherals_APB1(
 		.spi_cs_n(flash_cs_n)
 	);
 
+	//DEBUG
+	ila_0 ila(
+		.clk(apb_flash.pclk),
+		.probe0(apb_flash.penable),
+		.probe1(apb_flash.psel),
+		.probe2(apb_flash.pready),
+		.probe3(apb_flash.paddr),
+		.probe4(apb_flash.pwdata),
+		.probe5(apb_flash.prdata),
+		.probe6(cclk),
+		.probe7(flash_si),
+		.probe8(flash_so),
+		.probe9(flash_cs_n),
+		.probe10(flash.shift_en),
+		.probe11(flash.shift_data),
+		.probe12(flash.shift_busy),
+		.probe13(flash.burst_busy),
+		.probe14(flash.shift_done),
+		.probe15(flash.burst_wptr),
+		.probe16(flash.burst_wr),
+		.probe17(flash.rx_data),
+
+		.probe18(flash.clkdiv),
+		.probe19(apb_flash.pwrite),
+		.probe20(apb1[3].penable),
+		.probe21(apb1[3].psel),
+		.probe22(apb.penable),
+		.probe23(apb.psel),
+		.probe24(flash.spi.toggle),
+		.probe25(flash.spi.active),
+		.probe26(flash.spi.clkcount)
+	);
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// XADC for on-die sensors (c000_1000)
 

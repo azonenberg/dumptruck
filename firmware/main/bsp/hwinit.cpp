@@ -98,10 +98,10 @@ GPIOPin g_leds[4] =
  */
 APB_GPIOPin g_fpgaLEDs[4] =
 {
-	APB_GPIOPin(&FPGA_GPIOA, 0, APB_GPIOPin::MODE_OUTPUT),
-	APB_GPIOPin(&FPGA_GPIOA, 1, APB_GPIOPin::MODE_OUTPUT),
-	APB_GPIOPin(&FPGA_GPIOA, 2, APB_GPIOPin::MODE_OUTPUT),
-	APB_GPIOPin(&FPGA_GPIOA, 3, APB_GPIOPin::MODE_OUTPUT)
+	APB_GPIOPin(&FPGA_GPIOA, 0, APB_GPIOPin::MODE_OUTPUT, APB_GPIOPin::INIT_DEFERRED),
+	APB_GPIOPin(&FPGA_GPIOA, 1, APB_GPIOPin::MODE_OUTPUT, APB_GPIOPin::INIT_DEFERRED),
+	APB_GPIOPin(&FPGA_GPIOA, 2, APB_GPIOPin::MODE_OUTPUT, APB_GPIOPin::INIT_DEFERRED),
+	APB_GPIOPin(&FPGA_GPIOA, 3, APB_GPIOPin::MODE_OUTPUT, APB_GPIOPin::INIT_DEFERRED)
 };
 
 /**
@@ -157,6 +157,20 @@ void InitITM();
 
 void BSP_Init()
 {
+	//Set up PLL2 to run the external memory bus
+	//We have some freedom with how fast we clock this!
+	//Doesn't have to be a multiple of 500 since separate VCO from the main system
+	RCCHelper::InitializePLL(
+		2,		//PLL2
+		25,		//input is 25 MHz from the HSE
+		2,		//25/2 = 12.5 MHz at the PFD
+		20,		//12.5 * 20 = 250 MHz at the VCO
+		32,		//div P (not used for now)
+		32,		//div Q (not used for now)
+		1,		//div R (250 MHz FMC kernel clock = 125 MHz FMC clock)
+		RCCHelper::CLOCK_SOURCE_HSE
+	);
+
 	InitRTCFromHSE();
 	InitSupervisor();
 	InitFMC();
@@ -255,6 +269,10 @@ void InitFMC()
 	fmc_nwait.SetPullMode(GPIOPin::PULL_UP);
 
 	InitFMCForFPGA();
+
+	//Initialize the LEDs
+	for(auto& led : g_fpgaLEDs)
+		led.DeferredInit();
 }
 
 void InitI2C()
@@ -269,8 +287,8 @@ void InitFPGAFlash()
 	g_log("Initializing FPGA flash\n");
 	LogIndenter li(g_log);
 
-	static APB_SpiFlashInterface flash(&FSPI1, 2);	//100 MHz PCLK = 50 MHz SCK
-													//(divide by 1 not allowed by this peripheral)
+	static APB_SpiFlashInterface flash(&FSPI1, 2);	//100 MHz PCLK = 25 MHz SCK
+													//(even dividers required, /2 fails for reasons TBD)
 	g_fpgaFlash = &flash;
 }
 

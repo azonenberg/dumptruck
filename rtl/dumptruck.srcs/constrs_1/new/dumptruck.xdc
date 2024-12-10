@@ -1,3 +1,342 @@
+set_max_delay -datapath_only -from [get_cells [list apb1/devinfo/sync_die_serial/sync_en/rx_a_ff_reg \
+          apb1/devinfo/sync_idcode/sync_en/rx_a_ff_reg \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[0]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[10]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[1]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[2]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[3]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[4]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[5]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[6]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[7]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[8]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_a_ff_reg[9]} \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/sync_en/rx_a_ff_reg \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[0]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[10]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[1]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[2]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[3]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[4]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[5]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[6]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[7]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[8]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_a_ff_reg[9]} \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/sync_en/rx_a_ff_reg \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[0]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[10]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[11]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[12]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[1]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[2]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[3]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[4]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[5]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[6]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[7]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[8]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_a_ff_reg[9]} \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/sync_en/rx_a_ff_reg \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[0]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[10]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[11]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[12]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[1]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[2]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[3]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[4]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[5]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[6]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[7]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[8]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_a_ff_reg[9]} \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/sync_en/rx_a_ff_reg \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[0]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[10]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[11]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[12]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[1]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[2]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[3]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[4]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[5]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[6]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[7]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[8]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_a_ff_reg[9]} \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_ack/rx_a_ff_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_en/rx_a_ff_reg \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[0]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[10]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[11]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[12]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[1]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[2]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[3]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[4]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[5]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[6]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[7]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[8]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_a_ff_reg[9]} \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_ack/rx_a_ff_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_en/rx_a_ff_reg \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[0]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[1]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[2]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[3]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[4]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_a_ff_reg[5]} \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_ack/rx_a_ff_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_en/rx_a_ff_reg \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[0]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[1]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[2]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[3]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[4]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_a_ff_reg[5]} \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_ack/rx_a_ff_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_en/rx_a_ff_reg \
+          {apb2/port_mgmt0/rgmii_bridge/sync_link_speed/reg_a_ff_reg[0]} \
+          {apb2/port_mgmt0/rgmii_bridge/sync_link_speed/reg_a_ff_reg[1]} \
+          apb2/port_mgmt0/rgmii_bridge/sync_link_speed/sync_en/rx_a_ff_reg]] -to [get_cells [list {apb1/devinfo/sync_die_serial/reg_b_reg[0]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[10]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[11]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[12]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[13]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[14]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[15]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[16]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[17]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[18]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[19]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[1]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[20]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[21]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[22]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[23]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[24]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[25]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[26]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[27]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[28]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[29]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[2]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[30]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[31]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[32]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[33]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[34]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[35]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[36]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[37]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[38]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[39]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[3]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[40]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[41]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[42]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[43]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[44]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[45]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[46]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[47]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[48]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[49]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[4]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[50]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[51]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[52]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[53]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[54]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[55]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[56]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[57]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[58]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[59]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[5]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[60]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[61]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[62]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[63]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[6]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[7]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[8]} \
+          {apb1/devinfo/sync_die_serial/reg_b_reg[9]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[0]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[10]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[11]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[12]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[13]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[14]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[15]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[16]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[17]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[18]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[19]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[1]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[20]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[21]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[22]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[23]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[24]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[25]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[26]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[27]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[28]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[29]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[2]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[30]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[31]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[3]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[4]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[5]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[6]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[7]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[8]} \
+          {apb1/devinfo/sync_idcode/reg_b_reg[9]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[0]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[10]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[1]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[2]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[3]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[4]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[5]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[6]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[7]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[8]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/reg_b_reg[9]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[0]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[10]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[1]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[2]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[3]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[4]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[5]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[6]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[7]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[8]} \
+          {apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/reg_b_reg[9]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[0]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[10]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[11]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[12]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[1]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[2]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[3]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[4]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[5]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[6]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[7]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[8]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/reg_b_reg[9]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[0]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[10]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[11]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[12]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[1]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[2]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[3]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[4]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[5]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[6]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[7]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[8]} \
+          {apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/reg_b_reg[9]} \
+          {apb2/eth_tx_fifo/sync_link_up/reg_b[12]_i_1__0} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[0]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[10]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[11]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[12]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[1]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[2]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[3]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[4]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[5]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[6]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[7]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[8]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/reg_b_reg[9]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[0]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[10]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[11]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[12]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[1]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[2]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[3]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[4]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[5]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[6]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[7]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[8]} \
+          {apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/reg_b_reg[9]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[0]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[1]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[2]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[3]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[4]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/reg_b_reg[5]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[0]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[1]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[2]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[3]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[4]} \
+          {apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/reg_b_reg[5]} \
+          {apb2/port_mgmt0/rgmii_bridge/sync_link_speed/reg_b_reg[0]} \
+          {apb2/port_mgmt0/rgmii_bridge/sync_link_speed/reg_b_reg[1]} \
+          {apb2/sync_rgmii_link_up/reg_b[12]_i_1}]] 4.000
+set_max_delay -from [get_cells [list apb1/devinfo/sync_die_serial/sync_ack/sync/dout0_reg \
+          apb1/devinfo/sync_die_serial/sync_en/sync/dout0_reg \
+          apb1/devinfo/sync_idcode/sync_ack/sync/dout0_reg \
+          apb1/devinfo/sync_idcode/sync_en/sync/dout0_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/sync_ack/sync/dout0_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/sync_en/sync/dout0_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/sync_ack/sync/dout0_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/sync_en/sync/dout0_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/sync_ack/sync/dout0_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/sync_en/sync/dout0_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/sync_ack/sync/dout0_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/sync_en/sync/dout0_reg \
+          apb2/eth_tx_fifo/sync_link_up/dout0_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_ack/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_en/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_ack/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_en/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_ack/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_en/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_ack/sync/dout0_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_en/sync/dout0_reg \
+          apb2/port_mgmt0/mac/sync_link_speed_0/dout0_reg \
+          apb2/port_mgmt0/mac/sync_link_speed_1/dout0_reg \
+          apb2/port_mgmt0/rgmii_bridge/sync_link_speed/sync_ack/sync/dout0_reg \
+          apb2/port_mgmt0/rgmii_bridge/sync_link_speed/sync_en/sync/dout0_reg \
+          apb2/sync_rgmii_link_up/dout0_reg]] -to [get_cells [list apb1/devinfo/sync_die_serial/sync_ack/sync/dout1_reg \
+          apb1/devinfo/sync_die_serial/sync_en/sync/dout1_reg \
+          apb1/devinfo/sync_idcode/sync_ack/sync/dout1_reg \
+          apb1/devinfo/sync_idcode/sync_en/sync/dout1_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/sync_ack/sync/dout1_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_head/sync_en/sync/dout1_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/sync_ack/sync/dout1_reg \
+          apb2/eth_rx_cdc/rx_cdc_fifo/sync_tail/sync_en/sync/dout1_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/sync_ack/sync/dout1_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_head/sync_en/sync/dout1_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/sync_ack/sync/dout1_reg \
+          apb2/eth_rx_fifo/rx_cdc_fifo/sync_tail/sync_en/sync/dout1_reg \
+          apb2/eth_tx_fifo/sync_link_up/dout1_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_ack/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_rd_ptr/sync_en/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_ack/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_cdc_fifo/sync_wr_ptr/sync_en/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_ack/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_rd_ptr/sync_en/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_ack/sync/dout1_reg \
+          apb2/eth_tx_fifo/tx_framelen_fifo/sync_wr_ptr/sync_en/sync/dout1_reg \
+          apb2/port_mgmt0/mac/sync_link_speed_0/dout1_reg \
+          apb2/port_mgmt0/mac/sync_link_speed_1/dout1_reg \
+          apb2/port_mgmt0/rgmii_bridge/sync_link_speed/sync_ack/sync/dout1_reg \
+          apb2/port_mgmt0/rgmii_bridge/sync_link_speed/sync_en/sync/dout1_reg \
+          apb2/sync_rgmii_link_up/dout1_reg]] 4.000
 ########################################################################################################################
 # IO pinout constraints
 
@@ -584,7 +923,9 @@ set_property PACKAGE_PIN AA22 [get_ports ram_clk_psc_p]
 # Clock constraints
 
 create_clock -period 40.000 -name clk_25mhz -waveform {0.000 20.000} [get_ports clk_25mhz]
-create_clock -period 10.000 -name fmc_clk -waveform {0.000 5.000} [get_ports fmc_clk]
+
+#125 MHz (8 ns period) FMC clock
+create_clock -period 8.000 -name fmc_clk -waveform {0.000 4.000} [get_ports fmc_clk]
 
 create_generated_clock -name clk_125mhz -source [get_pins clocks/pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins clocks/pll/CLKOUT0]
 create_generated_clock -name clk_250mhz -source [get_pins clocks/pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins clocks/pll/CLKOUT1]
@@ -606,27 +947,27 @@ set_clock_groups -asynchronous -group [get_clocks clk_25mhz] -group [get_clocks 
 create_pblock pblock_crypt25519
 add_cells_to_pblock [get_pblocks pblock_crypt25519] [get_cells -quiet [list apb1/crypt25519]]
 resize_pblock [get_pblocks pblock_crypt25519] -add {CLOCKREGION_X0Y0:CLOCKREGION_X1Y0}
-set_property IS_SOFT FALSE pblock_crypt25519
 
 create_pblock pblock_apb6_3v3
 add_cells_to_pblock [get_pblocks pblock_apb6_3v3] [get_cells -quiet [list apb6_flash_3v3]]
 resize_pblock [get_pblocks pblock_apb6_3v3] -add {CLOCKREGION_X0Y3:CLOCKREGION_X0Y3}
-set_property IS_SOFT FALSE pblock_apb6_3v3
 
 create_pblock pblock_apb5_2v5
 add_cells_to_pblock [get_pblocks pblock_apb5_2v5] [get_cells -quiet [list apb5_flash_2v5]]
 resize_pblock [get_pblocks pblock_apb5_2v5] -add {CLOCKREGION_X1Y3:CLOCKREGION_X1Y3}
-set_property IS_SOFT FALSE pblock_apb5_2v5
 
 create_pblock pblock_apb4_1v8
 add_cells_to_pblock [get_pblocks pblock_apb4_1v8] [get_cells -quiet [list apb4_flash_1v8]]
 resize_pblock [get_pblocks pblock_apb4_1v8] -add {CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
-set_property IS_SOFT FALSE pblock_apb4_1v8
 
 create_pblock pblock_apb3_1v2
 add_cells_to_pblock [get_pblocks pblock_apb3_1v2] [get_cells -quiet [list apb3_flash_1v2]]
 resize_pblock [get_pblocks pblock_apb3_1v2] -add {CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
-set_property IS_SOFT FALSE pblock_apb3_1v2
+
+# debug ila
+create_pblock pblock_mgmt
+add_cells_to_pblock [get_pblocks pblock_mgmt] [get_cells -quiet [list apb1/ila apb2]]
+resize_pblock [get_pblocks pblock_mgmt] -add {CLOCKREGION_X0Y1:CLOCKREGION_X1Y2}
 
 ######################################################
 # Put the timestamp in the bitstream USERCODE
@@ -644,3 +985,18 @@ set_property CONFIG_VOLTAGE 1.8 [current_design]
 set_property CFGBVS GND [current_design]
 set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
 set_property CONFIG_MODE SPIx4 [current_design]
+
+set_property SLEW FAST [get_ports {flash_dq[3]}]
+set_property SLEW FAST [get_ports {flash_dq[2]}]
+set_property SLEW FAST [get_ports {flash_dq[1]}]
+set_property SLEW FAST [get_ports {flash_dq[0]}]
+set_property DRIVE 8 [get_ports {flash_dq[3]}]
+set_property DRIVE 8 [get_ports {flash_dq[2]}]
+set_property DRIVE 8 [get_ports {flash_dq[1]}]
+set_property DRIVE 8 [get_ports {flash_dq[0]}]
+set_property DRIVE 8 [get_ports flash_cs_n]
+set_property SLEW FAST [get_ports flash_cs_n]
+set_property C_CLK_INPUT_FREQ_HZ 300000000 [get_debug_cores dbg_hub]
+set_property C_ENABLE_CLK_DIVIDER false [get_debug_cores dbg_hub]
+set_property C_USER_SCAN_CHAIN 1 [get_debug_cores dbg_hub]
+connect_debug_port dbg_hub/clk [get_nets fmc_apb\\.pclk]
