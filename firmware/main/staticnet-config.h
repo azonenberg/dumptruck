@@ -85,7 +85,7 @@
 
 	This should be as large as possible to enable lots of outstanding un-ACKed TCP segments
  */
-#define APB_TX_BUFCOUNT 16
+#define APB_TX_BUFCOUNT 24
 
 /**
 	@brief Number of (1500 byte + metadata) receive buffers to allocate
@@ -94,6 +94,11 @@
 	More importantly, we typically do most of our RX buffering on the FPGA and just pull from that as data shows up.
  */
 #define APB_RX_BUFCOUNT 2
+
+/**
+	@brief Max number of requests we allow outstanding to a single SFTP endpoint
+ */
+#define SFTP_MAX_REQUESTS 20
 
 /**
 	@brief Max pending (not ACKed) TCP segments for a given socket
