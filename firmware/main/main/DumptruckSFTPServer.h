@@ -39,6 +39,7 @@
 #include "FlashDumper.h"
 #include "FPGAFlashDumper.h"
 #include "NullFlashDumper.h"
+#include "SPIFlashDumper.h"
 
 //suppress warning in standard library headers
 #pragma GCC diagnostic push
@@ -61,12 +62,16 @@ protected:
 	virtual bool CloseFile(uint32_t handle) override;
 
 protected:
+	bool CreateDumper(const char* path, bool opening);
+	bool CreateDumperForSocket(channelid_t id, bool opening);
+
 	enum FileID
 	{
 		FILE_ID_NONE,
 		FILE_ID_SUPER_DFU,
 		FILE_ID_FPGA_DFU,
-		FILE_ID_FPGA_READBACK
+		FILE_ID_FPGA_READBACK,
+		FILE_ID_SOCKET
 	} m_openFile;
 
 	//Firmware updater drivers
@@ -78,7 +83,10 @@ protected:
 	///@brief Variant container for our dumpers
 	etl::variant<
 		NullFlashDumper,
-		FPGAFlashDumper> m_vdumper;
+		FPGAFlashDumper,
+		SPIFlashDumper> m_vdumper;
+
+	uint32_t m_fileSize;
 };
 
 #endif

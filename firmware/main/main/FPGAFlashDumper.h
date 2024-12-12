@@ -38,40 +38,32 @@ class FPGAFlashDumper : public FlashDumper
 public:
 	FPGAFlashDumper()
 	{
-		m_channel = g_mdma.AllocateChannel();
-		g_log("FPGAFlashDumper: Allocate MDMA channel %d\n", m_channel->GetIndex());
+		m_dmachannel = g_mdma.AllocateChannel();
+		g_log("FPGAFlashDumper: Allocate MDMA channel %d\n", m_dmachannel->GetIndex());
 	}
 
 	FPGAFlashDumper(FPGAFlashDumper&& rhs)
 	{
-		m_channel = rhs.m_channel;
-		rhs.m_channel = nullptr;
+		m_dmachannel = rhs.m_dmachannel;
+		rhs.m_dmachannel = nullptr;
 	}
 
 	~FPGAFlashDumper()
 	{
-		if(m_channel)
+		if(m_dmachannel)
 		{
-			//g_log("FPGAFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_channel->GetIndex(), m_channel, this);
-			g_mdma.FreeChannel(m_channel);
+			g_log("FPGAFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_dmachannel->GetIndex(), m_dmachannel, this);
+			g_mdma.FreeChannel(m_dmachannel);
 		}
 	}
 
 	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) override
 	{
-		g_fpgaFlash->ReadData(offset, data, len, m_channel);
+		g_fpgaFlash->ReadData(offset, data, len, m_dmachannel);
 		return len;
 	}
 
-	//FPGA flash is always powered
-	virtual void PowerOn() override
-	{};
-
-	//FPGA flash is always powered
-	virtual void PowerOff() override
-	{}
-
-	MDMAChannel* m_channel;
+	MDMAChannel* m_dmachannel;
 };
 
 #endif

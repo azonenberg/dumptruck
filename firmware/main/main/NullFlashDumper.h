@@ -47,14 +47,6 @@ public:
 		memset(data, 0, len);
 		return len;
 	}
-
-	//Null flash has no power
-	virtual void PowerOn() override
-	{};
-
-	//Null flash has no power
-	virtual void PowerOff() override
-	{}
 };
 
 #endif

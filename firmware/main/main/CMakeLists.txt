@@ -5,6 +5,8 @@ add_executable(main
 	DumptruckTCPProtocol.cpp
 	DumptruckUDPProtocol.cpp
 
+	SocketedFlashDumper.cpp
+
 	SocketDetectionTask.cpp
 
 	globals.cpp

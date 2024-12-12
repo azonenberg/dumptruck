@@ -27,22 +27,45 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef FlashDumper_h
-#define FlashDumper_h
+#ifndef SocketedFlashDumper_h
+#define SocketedFlashDumper_h
 
 /**
-	@brief Abstract base class for all supported flash dumpers
+	@brief Abstract base class for all flash dumpers which interface with the four DUT sockets
  */
-class FlashDumper
+class SocketedFlashDumper : public FlashDumper
 {
 public:
-	FlashDumper()
+	SocketedFlashDumper(channelid_t chan);
+
+	~SocketedFlashDumper()
 	{}
 
-	~FlashDumper()
-	{}
+	void SetMuxConfig(IOMuxConfig cfg)
+	{
+		//Set mux selector
+		m_muxcfg->muxsel = (uint32_t)cfg;
 
-	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) =0;
+		//Wait 5ms after enabling IOs before trying to talk to the flash
+		g_logTimer.Sleep(50);
+	}
+
+	bool PowerOn();
+	void PowerOff();
+
+protected:
+
+	volatile APB_IOMuxConfig* GetMuxConfig(channelid_t chan);
+	volatile APB_SPIHostInterface* GetSPI(channelid_t chan);
+	dsuperregs_t GetVIORegister(channelid_t chan);
+	dsuperregs_t GetIIORegister(channelid_t chan);
+	uint16_t GetNominalVIOMillivolts(channelid_t chan);
+
+	///@brief Which channel the DUT is on
+	channelid_t m_channel;
+
+	///@brief Mux config for the I/O bank
+	volatile APB_IOMuxConfig* m_muxcfg;
 };
 
 #endif

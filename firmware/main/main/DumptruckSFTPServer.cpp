@@ -36,24 +36,118 @@
 #include <staticnet/sftp/SFTPOpenPacket.h>
 
 const char* g_fpgaDfuPath = "/dfu/fpga";
+const char* g_3v3Path = "/socket/3v3";
+const char* g_2v5Path = "/socket/2v5";
+const char* g_1v8Path = "/socket/1v8";
+const char* g_1v2Path = "/socket/1v2";
+//TODO: /dev/zero for performance benchmarking the sftp stack
+
+const uint32_t g_fpgaImageSize = 0x0040'0000;
+const uint32_t g_debugFlashSize = 0x0100'0000;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Construction / destruction
 
 DumptruckSFTPServer::DumptruckSFTPServer()
 	: m_openFile(FILE_ID_NONE)
-	, m_fpgaUpdater("7s100fgga484", 0x0000'0000, 0x0040'0000)
+	, m_fpgaUpdater("7s100fgga484", 0x0000'0000, g_fpgaImageSize)
 	, m_dumper(nullptr)
+	, m_fileSize(0)
 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Filesystem wrapper APIs
 
+bool DumptruckSFTPServer::CreateDumper(const char* path, bool opening)
+{
+	//g_log("CreateDumper %s\n", path);
+
+	//If we already have a dumper, use it until we close our file and open a new one
+	//TODO: is this going to cause problems if a client drops??
+	//if(m_dumper != nullptr)
+	//	return true;
+
+	//For now, just recreate the dumper every time we do a get-size request without an open handle.
+	//This is wasteful, but will get the job done
+	if(!strcmp(path, g_fpgaDfuPath))
+	{
+		g_log("Opening FPGA flash for readback\n");
+
+		if(opening)
+			m_openFile = FILE_ID_FPGA_READBACK;
+
+		m_vdumper = std::move(FPGAFlashDumper());
+		m_dumper = &etl::get<FPGAFlashDumper>(m_vdumper);
+
+		m_fileSize = g_fpgaImageSize;
+		return true;
+	}
+	else if(!strcmp(path, g_3v3Path))
+		return CreateDumperForSocket(CHANNEL_3V3, opening);
+	else if(!strcmp(path, g_2v5Path))
+		return CreateDumperForSocket(CHANNEL_2V5, opening);
+	else if(!strcmp(path, g_1v8Path))
+		return CreateDumperForSocket(CHANNEL_1V8, opening);
+	else if(!strcmp(path, g_1v2Path))
+		return CreateDumperForSocket(CHANNEL_1V2, opening);
+	else
+		return false;
+}
+
+bool DumptruckSFTPServer::CreateDumperForSocket(channelid_t id, bool opening)
+{
+	if(opening)
+		m_openFile = FILE_ID_SOCKET;
+
+	/*
+	//Figure out which socket is selected and choose the appropriate dump configuration based on that
+	auto socktype = g_detectionTask->GetSocketType();
+	switch(socktype)
+	{
+		case DutSocketType::Dip8Qspi:
+			OnDumpQspi(muxcfg, spi);
+			break;
+
+		default:
+			m_stream->Printf("Unknown socket type, can't dump\n");
+			break;
+	}
+	*/
+
+	//TODO: figure out what kind of flash it is and how big the image is
+	//(this will mean reading SFDP headers etc)
+
+	//for now assume it's SPI
+	m_vdumper = std::move(SPIFlashDumper(id));
+	auto dumper = &etl::get<SPIFlashDumper>(m_vdumper);
+	m_dumper = dumper;
+
+	//Turn power on
+	if(!dumper->PowerOn())
+	{
+		g_log(Logger::ERROR, "Failed to enable DUT power, shorted device or socket?\n");
+		m_dumper = nullptr;
+		return false;
+	}
+
+	//
+	m_fileSize = g_debugFlashSize;
+
+	return true;
+}
+
 bool DumptruckSFTPServer::DoesFileExist(const char* path)
 {
-	if(!strcmp(path, g_fpgaDfuPath))
+	//Check against all known file names
+	if(	!strcmp(path, g_fpgaDfuPath) ||
+		!strcmp(path, g_3v3Path) ||
+		!strcmp(path, g_2v5Path) ||
+		!strcmp(path, g_1v8Path) ||
+		!strcmp(path, g_1v2Path) )
+	{
 		return true;
+	}
 
 	//no other files to match
 	return false;
@@ -61,12 +155,15 @@ bool DumptruckSFTPServer::DoesFileExist(const char* path)
 
 uint64_t DumptruckSFTPServer::GetFileSize(const char* path)
 {
-	//Return size of the file we're trying to read
-	if(!strcmp(path, g_fpgaDfuPath))
-		return 0x0040'0000;
+	g_log("GetFileSize %s\n", path);
+	LogIndenter li(g_log);
 
-	//default to empty
-	return 0;
+	//Make the dumper. If it fails, file is empty
+	if(!CreateDumper(path, false))
+		return 0;
+
+	//Return the size calculated by the dumper
+	return m_fileSize;
 }
 
 bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags)
@@ -80,6 +177,21 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 	bool isDFU = false;
 	if(!strcmp(path, g_fpgaDfuPath))
 		isDFU = true;
+
+	//TODO: Sanity check that we're trying to dump a channel that actually has something there
+	//or change the SFTP paths to just be /dev/socket maybe?
+	//auto chan = g_detectionTask->GetActiveChannel();
+
+	//Check if this is a socket path
+	bool isSocket = false;
+	if(!strcmp(path, g_3v3Path))
+		isSocket = true;
+	else if(!strcmp(path, g_2v5Path))
+		isSocket = true;
+	else if(!strcmp(path, g_1v8Path))
+		isSocket = true;
+	else if(!strcmp(path, g_1v2Path))
+		isSocket = true;
 
 	//DFU files must be opened in overwrite/truncate mode
 	if(isDFU)
@@ -123,37 +235,39 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 		return true;
 	}
 
+	//Socket files must be opened in read mode
+	else if(isSocket)
+	{
+		//TODO: check not in write mode etc?
+		if(accessMask & SFTPPacket::ACE4_READ_DATA)
+			return true;
+	}
+
 	//If we get here, no go
 	return false;
 }
 
 uint32_t DumptruckSFTPServer::OpenFile(
 	const char* path,
-	[[maybe_unused]] uint32_t accessMask,
+	uint32_t accessMask,
 	[[maybe_unused]] uint32_t flags)
 {
-	//g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
+	g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
+	LogIndenter li(g_log);
 
-	//For now, all of our files are stored in a single handle
-	//See which one to use
-	if(!strcmp(path, g_fpgaDfuPath))
+	//Handle firmware updates separately
+	if(accessMask & SFTPPacket::ACE4_WRITE_DATA)
 	{
-		if(accessMask & SFTPPacket::ACE4_WRITE_DATA)
+		if(!strcmp(path, g_fpgaDfuPath))
 		{
-			g_log("Opening FPGA flash for DFU\n");
-
 			m_openFile = FILE_ID_FPGA_DFU;
 			m_fpgaUpdater.OnDeviceOpened();
 		}
-		else
-		{
-			g_log("Opening FPGA flash for readback\n");
-
-			m_openFile = FILE_ID_FPGA_READBACK;
-			m_vdumper = std::move(FPGAFlashDumper());
-			m_dumper = &etl::get<FPGAFlashDumper>(m_vdumper);
-		}
 	}
+
+	//DUT sockets, for now, must be read only (we don't support writing to sockets yet)
+	else if(accessMask & SFTPPacket::ACE4_READ_DATA)
+		CreateDumper(path, true);
 
 	//Return the constant handle zero for all open requests
 	return 0;
@@ -165,16 +279,13 @@ uint32_t DumptruckSFTPServer::ReadFile(
 	uint8_t* data,
 	uint32_t len)
 {
-	//Bound the actual read operation
-	uint32_t fileSize = 0x0040'0000;
-
 	//If start position is at or after end, we have nothing to read
-	if(offset > fileSize)
+	if(offset > m_fileSize)
 		return 0;
 
 	//If EOF is inside the requested block, truncate the return buffer
-	if( (offset + len) >= fileSize)
-		len = fileSize - offset;
+	if( (offset + len) >= m_fileSize)
+		len = m_fileSize - offset;
 
 	//Actually dump!
 	if(m_dumper)

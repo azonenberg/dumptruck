@@ -49,7 +49,7 @@ GPIOPin g_1v2_en(&GPIOB, 10, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
 RailDescriptorWithEnableAndADC g_1v2("1V2", g_1v2_en, 8, 1.15, 1.25, 2.0, g_logTimer, 50);
 
 GPIOPin g_1v8_en(&GPIOB, 2, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
-RailDescriptorWithEnableAndADC g_1v8("1V8", g_1v8_en, 15, 1.75, 1.85, 2.0, g_logTimer, 50);
+RailDescriptorWithEnableAndADC g_1v8("1V8", g_1v8_en, 15, 1.7, 1.85, 2.0, g_logTimer, 50);
 
 GPIOPin g_3v3_en(&GPIOC, 15, GPIOPin::MODE_OUTPUT, GPIOPin::SLEW_SLOW);
 RailDescriptorWithEnableAndADC g_3v3("3V3", g_3v3_en, 6, 3.15, 3.35, 2.0, g_logTimer, 50);

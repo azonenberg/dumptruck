@@ -27,22 +27,53 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef FlashDumper_h
-#define FlashDumper_h
+#ifndef SPIFlashDumper_h
+#define SPIFlashDumper_h
+
+#include "SocketedFlashDumper.h"
 
 /**
-	@brief Abstract base class for all supported flash dumpers
+	@brief Dumper class for x1 SPI flash
  */
-class FlashDumper
+class SPIFlashDumper : public SocketedFlashDumper
 {
 public:
-	FlashDumper()
-	{}
+	SPIFlashDumper(channelid_t chan)
+		: SocketedFlashDumper(chan)
+	{
+		m_dmachannel = g_mdma.AllocateChannel();
+		g_log("SPIFlashDumper: Allocate MDMA channel %d\n", m_dmachannel->GetIndex());
+	}
 
-	~FlashDumper()
-	{}
+	///@brief allow std::move from this object
+	SPIFlashDumper(SPIFlashDumper&& rhs)
+		: SocketedFlashDumper(rhs.m_channel)
+	{
+		m_dmachannel = rhs.m_dmachannel;
+		rhs.m_dmachannel = nullptr;
+	}
 
-	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) =0;
+	~SPIFlashDumper()
+	{
+		if(m_dmachannel)
+		{
+			g_log("SPIFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_dmachannel->GetIndex(), m_dmachannel, this);
+			g_mdma.FreeChannel(m_dmachannel);
+
+			//only power off if we're a live object, not one that's been moved from
+			PowerOff();
+		}
+	}
+
+	virtual uint32_t ReadFile([[maybe_unused]] uint64_t offset, uint8_t* data, uint32_t len) override
+	{
+		//TODO
+		//g_fpgaFlash->ReadData(offset, data, len, m_channel);
+		memset(data, 0, len);
+		return len;
+	}
+
+	MDMAChannel* m_dmachannel;
 };
 
 #endif
