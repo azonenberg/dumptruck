@@ -165,9 +165,6 @@ bool SocketedFlashDumper::PowerOn()
 
 	//TODO: check for overcurrent on VCCIO
 
-	//Power is stable. Set mux config to use this flash
-	//muxcfg->muxsel = (uint32_t)IOMuxConfig::X1_SPI;
-
 	//Try to talk to the flash
 	//APB_SpiFlashInterface flash(spi, 10);	//100 MHz PCLK = 10 MHz SCK
 

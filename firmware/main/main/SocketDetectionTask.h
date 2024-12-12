@@ -99,6 +99,14 @@ public:
 	DutSocketType GetSocketType()
 	{ return m_descriptor.socketType; }
 
+	/**
+		@brief Return a cache key indicating that we are dumping the same DUT (socket has not been removed)
+
+		If the key is unchanged, it is safe to cache memory size, etc.
+	 */
+	uint64_t GetCacheKey()
+	{ return m_cacheKey; }
+
 protected:
 	virtual void OnTimer() override;
 	virtual void Iteration() override;
@@ -119,6 +127,8 @@ protected:
 	bool ReadEEPROM();
 
 	DutSocketDescriptor m_descriptor;
+
+	uint64_t m_cacheKey;
 };
 
 #endif

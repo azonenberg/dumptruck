@@ -42,6 +42,9 @@ public:
 	~FlashDumper()
 	{}
 
+	virtual bool Init()
+	{ return true; }
+
 	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) =0;
 };
 

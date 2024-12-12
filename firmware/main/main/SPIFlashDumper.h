@@ -31,6 +31,7 @@
 #define SPIFlashDumper_h
 
 #include "SocketedFlashDumper.h"
+#include <etl/optional.h>
 
 /**
 	@brief Dumper class for x1 SPI flash
@@ -57,7 +58,6 @@ public:
 	{
 		if(m_dmachannel)
 		{
-			g_log("SPIFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_dmachannel->GetIndex(), m_dmachannel, this);
 			g_mdma.FreeChannel(m_dmachannel);
 
 			//only power off if we're a live object, not one that's been moved from
@@ -65,15 +65,34 @@ public:
 		}
 	}
 
-	virtual uint32_t ReadFile([[maybe_unused]] uint64_t offset, uint8_t* data, uint32_t len) override
+	virtual bool Init() override
 	{
-		//TODO
-		//g_fpgaFlash->ReadData(offset, data, len, m_channel);
-		memset(data, 0, len);
+		//Turn power on
+		if(!PowerOn())
+		{
+			g_log(Logger::ERROR, "Failed to enable DUT power, shorted device or socket?\n");
+			return false;
+		}
+
+		//Power is stable. Set mux config to use this flash
+		SetMuxConfig(IOMuxConfig::X1_SPI);
+
+		//Create our actual flash dumper
+		m_flashInterface = APB_SpiFlashInterface(GetSPI(m_channel), 2);	//Fixed PCLK/2 divider for now
+		return true;
+	}
+
+	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) override
+	{
+		m_flashInterface->ReadData(offset, data, len, m_dmachannel);
 		return len;
 	}
 
+	///@brief DMA channel for reads
 	MDMAChannel* m_dmachannel;
+
+	///@brief Flash controller
+	etl::optional<APB_SpiFlashInterface> m_flashInterface;
 };
 
 #endif

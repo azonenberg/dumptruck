@@ -64,6 +64,7 @@ protected:
 protected:
 	bool CreateDumper(const char* path, bool opening);
 	bool CreateDumperForSocket(channelid_t id, bool opening);
+	bool CreateDumperForSPI(channelid_t id);
 
 	enum FileID
 	{
@@ -87,6 +88,8 @@ protected:
 		SPIFlashDumper> m_vdumper;
 
 	uint32_t m_fileSize;
+
+	uint64_t m_dumpCacheKey;
 };
 
 #endif

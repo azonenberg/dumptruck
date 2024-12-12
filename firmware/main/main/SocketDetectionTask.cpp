@@ -40,6 +40,7 @@ SocketDetectionTask::SocketDetectionTask()
 	, m_1v8Present(&GPIOC, 10, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW)
 	, m_1v2Present(&GPIOH, 13, GPIOPin::MODE_INPUT, GPIOPin::SLEW_SLOW)
 	, m_detectPending(false)
+	, m_cacheKey(0)
 {
 	m_3v3Present.SetPullMode(GPIOPin::PULL_DOWN);
 	m_2v5Present.SetPullMode(GPIOPin::PULL_DOWN);
@@ -115,6 +116,8 @@ void SocketDetectionTask::OnConflict(channelid_t chan1, channelid_t chan2)
 	//Set LEDs for the offending channels red
 	FRGBLED.framebuffer[2 + (int)chan1] = RGB_RED;
 	FRGBLED.framebuffer[2 + (int)chan2] = RGB_RED;
+
+	m_cacheKey ++;
 }
 
 /**
@@ -135,6 +138,8 @@ void SocketDetectionTask::OnInsert(channelid_t chan)
 	//Wait 1 sec before detecting to make sure that the I2C bus has made contact too
 	m_detectPending = true;
 	Restart();
+
+	m_cacheKey ++;
 }
 
 /**
@@ -151,6 +156,8 @@ void SocketDetectionTask::OnRemove()
 	//Turn all channel LEDs off
 	for(int i=0; i<4; i++)
 		FRGBLED.framebuffer[2 + i] = RGB_OFF;
+
+	m_cacheKey ++;
 }
 
 /**

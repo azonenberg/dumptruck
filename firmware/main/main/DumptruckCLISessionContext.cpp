@@ -51,7 +51,6 @@ enum cmdid_t
 	//CMD_DFU,
 	//CMD_DHCP,
 	CMD_DIP8_QSPI,
-	CMD_DUMP,
 	CMD_EEPROM,
 	CMD_EXIT,
 	CMD_FINGERPRINT,
@@ -288,7 +287,6 @@ static const clikeyword_t g_rootCommands[] =
 {
 	{"commit",		CMD_COMMIT,			nullptr,				"Commit volatile config changes to flash memory"},
 	//{"dfu",			CMD_DFU,			nullptr,				"Reboot in DFU mode for firmware updating the main CPU"},
-	{"dump",		CMD_DUMP,			nullptr,				"Dump flash DEV ONLY TEST"},
 	{"eeprom",		CMD_EEPROM,			g_eepromCommands,		"Program or dump socket EEPROM"},
 	{"exit",		CMD_EXIT,			nullptr,				"Log out"},
 	{"flash",		CMD_FLASH,			g_flashCommands,		"Maintenance operations on flash"},
@@ -368,10 +366,6 @@ void DumptruckCLISessionContext::OnExecuteRoot()
 			}
 			break;
 		*/
-
-		case CMD_DUMP:
-			OnDump();
-			break;
 
 		case CMD_EEPROM:
 			OnEepromCommand();
@@ -873,165 +867,4 @@ void DumptruckCLISessionContext::OnSSHCommand()
 			m_stream->Printf("Unrecognized command\n");
 			break;
 	}
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// "dump"
-
-void DumptruckCLISessionContext::OnDump()
-{
-	m_stream->Printf("Dump test\n");
-
-	volatile APB_IOMuxConfig* muxcfg = nullptr;
-	volatile APB_SPIHostInterface* spi = nullptr;
-
-	//Figure out which channel is selected and choose the appropriate peripherals based on that
-	auto chan = g_detectionTask->GetActiveChannel();
-	switch(chan)
-	{
-		case CHANNEL_3V3:
-			muxcfg = &F3V3_MUXCFG;
-			spi = &F3V3_SPI;
-			break;
-
-		case CHANNEL_2V5:
-			muxcfg = &F2V5_MUXCFG;
-			spi = &F2V5_SPI;
-			break;
-
-		case CHANNEL_1V8:
-			muxcfg = &F1V8_MUXCFG;
-			spi = &F1V8_SPI;
-			break;
-
-		case CHANNEL_1V2:
-			muxcfg = &F1V2_MUXCFG;
-			spi = &F1V2_SPI;
-			break;
-
-		case CHANNEL_NONE:
-		default:
-			m_stream->Printf("No socket present, can't dump\n");
-			return;
-	}
-
-	//Figure out which socket is selected and choose the appropriate dump configuration based on that
-	auto socktype = g_detectionTask->GetSocketType();
-	switch(socktype)
-	{
-		case DutSocketType::Dip8Qspi:
-			OnDumpQspi(muxcfg, spi);
-			break;
-
-		default:
-			m_stream->Printf("Unknown socket type, can't dump\n");
-			break;
-	}
-}
-
-void DumptruckCLISessionContext::OnDumpQspi(volatile APB_IOMuxConfig* muxcfg, volatile APB_SPIHostInterface* spi)
-{
-	auto chan = g_detectionTask->GetActiveChannel();
-
-	g_log("Dumping QSPI flash on channel %s\n",
-		SocketDetectionTask::GetNameOfChannel(chan));
-	LogIndenter li(g_log);
-
-	//Figure out power registers for the target channel
-	dsuperregs_t regv = SUPER_REG_VIO_33;
-	dsuperregs_t regi = SUPER_REG_IIO_33;
-	uint16_t expectedVCCIO = 3300;
-	switch(chan)
-	{
-		case CHANNEL_3V3:
-			regv = SUPER_REG_VIO_33;
-			regi = SUPER_REG_IIO_33;
-			expectedVCCIO = 3300;
-			break;
-
-		case CHANNEL_2V5:
-			regv = SUPER_REG_VIO_25;
-			regi = SUPER_REG_IIO_25;
-			expectedVCCIO = 2500;
-			break;
-
-		case CHANNEL_1V8:
-			regv = SUPER_REG_VIO_18;
-			regi = SUPER_REG_IIO_18;
-			expectedVCCIO = 1800;
-			break;
-
-		case CHANNEL_1V2:
-			regv = SUPER_REG_VIO_12;
-			regi = SUPER_REG_IIO_12;
-			expectedVCCIO = 1200;
-			break;
-
-		default:
-			break;
-	}
-
-	//Set the LED to blue
-	FRGBLED.framebuffer[2 + (int)chan] = RGB_BLUE;
-
-	//Turn on power, then wait 50ms for it to stabilize and ADCs to sample it
-	//(load switch has about a 15ms ramp)
-	g_log("Turning on DUT power\n");
-	SendSupervisorCommand(SUPER_REG_VDD_ON);
-	SendSupervisorCommand(SUPER_REG_VCCIO_ON);
-	g_logTimer.Sleep(500);
-
-	//For some reason, we need to read and throw away one reading
-	//This needs investigation...
-	ReadSupervisorRegister(regv);
-	ReadSupervisorRegister(regi);
-
-	//Read and use second readings
-	auto vio = ReadSupervisorRegister(regv);
-	auto iio = ReadSupervisorRegister(regi);
-	auto vcore = ReadSupervisorRegister(SUPER_REG_VDUTVDD);
-	auto icore = ReadSupervisorRegister(SUPER_REG_IDUTVDD);
-	g_log("VCCIO:  %d.%03dV, %d.%03dA \n", vio / 1000, vio % 1000, iio / 1000, iio % 1000);
-	g_log("VDD:    %d.%03dV, %d.%03dA \n", vcore / 1000, vcore % 1000, icore / 1000, icore % 1000);
-
-	//TODO: Validate VDD if we can?
-
-	//TODO: check for overcurrent on VDD
-
-	//Validate VCCIO is within range
-	int vio_delta = vio - expectedVCCIO;
-	if(abs(vio_delta) < 75)
-		g_log("VCCIO delta: %d mV (OK)\n", vio_delta);
-	else
-	{
-		g_log("VCCIO delta: %d mV (FAULT)\n", vio_delta);
-		SendSupervisorCommand(SUPER_REG_VDD_OFF);
-		SendSupervisorCommand(SUPER_REG_VCCIO_OFF);
-
-		//Set the LED to red
-		FRGBLED.framebuffer[2 + (int)chan] = RGB_RED;
-		return;
-	}
-
-	//TODO: check for overcurrent on VCCIO
-
-	//Power is stable. Set mux config to use this flash
-	muxcfg->muxsel = (uint32_t)IOMuxConfig::X1_SPI;
-
-	//Wait 50ms after enabling IOs before trying to talk to the flash
-	g_logTimer.Sleep(50);
-
-	//Try to talk to the flash
-	APB_SpiFlashInterface flash(spi, 10);	//100 MHz PCLK = 10 MHz SCK
-
-	//Tristate the pins when we're done
-	muxcfg->muxsel = (uint32_t)IOMuxConfig::Inactive;
-
-	//Turn off power
-	g_log("Turning off DUT power\n");
-	SendSupervisorCommand(SUPER_REG_VDD_OFF);
-	SendSupervisorCommand(SUPER_REG_VCCIO_OFF);
-
-	//Set the LED to green
-	FRGBLED.framebuffer[2 + (int)chan] = RGB_GREEN;
 }

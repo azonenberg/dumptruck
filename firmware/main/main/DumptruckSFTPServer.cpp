@@ -53,6 +53,7 @@ DumptruckSFTPServer::DumptruckSFTPServer()
 	, m_fpgaUpdater("7s100fgga484", 0x0000'0000, g_fpgaImageSize)
 	, m_dumper(nullptr)
 	, m_fileSize(0)
+	, m_dumpCacheKey(0)
 {
 }
 
@@ -65,8 +66,19 @@ bool DumptruckSFTPServer::CreateDumper(const char* path, bool opening)
 
 	//If we already have a dumper, use it until we close our file and open a new one
 	//TODO: is this going to cause problems if a client drops??
-	//if(m_dumper != nullptr)
-	//	return true;
+	if( (m_dumper != nullptr) && (m_dumpCacheKey == g_detectionTask->GetCacheKey()) )
+	{
+		//Set the open file if needed
+		if(opening)
+		{
+			if(!strcmp(path, g_fpgaDfuPath))
+				m_openFile = FILE_ID_FPGA_READBACK;
+			else
+				m_openFile = FILE_ID_SOCKET;
+		}
+
+		return true;
+	}
 
 	//For now, just recreate the dumper every time we do a get-size request without an open handle.
 	//This is wasteful, but will get the job done
@@ -100,40 +112,48 @@ bool DumptruckSFTPServer::CreateDumperForSocket(channelid_t id, bool opening)
 	if(opening)
 		m_openFile = FILE_ID_SOCKET;
 
-	/*
+	m_dumpCacheKey = g_detectionTask->GetCacheKey();
+
 	//Figure out which socket is selected and choose the appropriate dump configuration based on that
 	auto socktype = g_detectionTask->GetSocketType();
 	switch(socktype)
 	{
 		case DutSocketType::Dip8Qspi:
-			OnDumpQspi(muxcfg, spi);
-			break;
+			//TODO: see if x1 or x4 mode etc
+			return CreateDumperForSPI(id);
 
 		default:
-			m_stream->Printf("Unknown socket type, can't dump\n");
-			break;
+			g_log(Logger::ERROR, "Unknown socket type, can't dump\n");
+			return false;
 	}
-	*/
+	return true;
+}
 
-	//TODO: figure out what kind of flash it is and how big the image is
-	//(this will mean reading SFDP headers etc)
-
-	//for now assume it's SPI
+/**
+	@brief Create x1 SPI flash dumper
+ */
+bool DumptruckSFTPServer::CreateDumperForSPI(channelid_t id)
+{
+	//Create the dumper
 	m_vdumper = std::move(SPIFlashDumper(id));
 	auto dumper = &etl::get<SPIFlashDumper>(m_vdumper);
 	m_dumper = dumper;
 
-	//Turn power on
-	if(!dumper->PowerOn())
+	//Initialize it
+	if(!dumper->Init())
 	{
 		g_log(Logger::ERROR, "Failed to enable DUT power, shorted device or socket?\n");
 		m_dumper = nullptr;
 		return false;
 	}
 
+	//Initialize
+
+	//TODO: figure out what kind of flash it is and how big the image is
+	//(this will mean reading SFDP headers etc)
+
 	//
 	m_fileSize = g_debugFlashSize;
-
 	return true;
 }
 
@@ -155,9 +175,6 @@ bool DumptruckSFTPServer::DoesFileExist(const char* path)
 
 uint64_t DumptruckSFTPServer::GetFileSize(const char* path)
 {
-	g_log("GetFileSize %s\n", path);
-	LogIndenter li(g_log);
-
 	//Make the dumper. If it fails, file is empty
 	if(!CreateDumper(path, false))
 		return 0;
@@ -252,8 +269,7 @@ uint32_t DumptruckSFTPServer::OpenFile(
 	uint32_t accessMask,
 	[[maybe_unused]] uint32_t flags)
 {
-	g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
-	LogIndenter li(g_log);
+	//g_log("OpenFile(%s, access=%x, flags=%x)\n", path, accessMask, flags);
 
 	//Handle firmware updates separately
 	if(accessMask & SFTPPacket::ACE4_WRITE_DATA)
