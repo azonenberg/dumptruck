@@ -27,72 +27,29 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
+#ifndef ZeroFlashDumper_h
+#define ZeroFlashDumper_h
+
 /**
-	@file
-	@brief Declaration of DumptruckSFTPServer
+	@brief Placeholder that returns 1 Gbit of all zeroes
  */
-#ifndef DumptruckSFTPServer_h
-#define DumptruckSFTPServer_h
-
-#include <fpga/FPGAFirmwareUpdater.h>
-
-#include "FlashDumper.h"
-#include "FPGAFlashDumper.h"
-#include "NullFlashDumper.h"
-#include "SPIFlashDumper.h"
-#include "ZeroFlashDumper.h"
-
-//suppress warning in standard library headers
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wpedantic"
-#include <etl/variant.h>
-#pragma GCC diagnostic pop
-
-class DumptruckSFTPServer : public SFTPServer
+class ZeroFlashDumper : public FlashDumper
 {
 public:
-	DumptruckSFTPServer();
+	ZeroFlashDumper()
+	{}
 
-protected:
-	virtual bool DoesFileExist(const char* path) override;
-	virtual uint64_t GetFileSize(const char* path) override;
-	virtual bool CanOpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
-	virtual uint32_t OpenFile(const char* path, uint32_t accessMask, uint32_t flags) override;
-	virtual void WriteFile(uint32_t handle, uint64_t offset, const uint8_t* data, uint32_t len) override;
-	virtual uint32_t ReadFile(uint32_t handle, uint64_t offset, uint8_t* data, uint32_t len) override;
-	virtual bool CloseFile(uint32_t handle) override;
+	virtual uint64_t GetCapacity() override
+	{ return 0x0800'0000; }
 
-protected:
-	bool CreateDumper(const char* path, bool opening);
-	bool CreateDumperForSocket(channelid_t id, bool opening);
-	bool CreateDumperForSPI(channelid_t id);
-
-	enum FileID
+	virtual uint32_t ReadFile(
+		[[maybe_unused]] uint64_t offset,
+		uint8_t* data,
+		uint32_t len) override
 	{
-		FILE_ID_NONE,
-		FILE_ID_SUPER_DFU,
-		FILE_ID_FPGA_DFU,
-		FILE_ID_FPGA_READBACK,
-		FILE_ID_SOCKET,
-		FILE_ID_ZERO
-	} m_openFile;
-
-	//Firmware updater drivers
-	FPGAFirmwareUpdater m_fpgaUpdater;
-
-	///@brief Pointer to our active flash dumper (if any)
-	FlashDumper* m_dumper;
-
-	///@brief Variant container for our dumpers
-	etl::variant<
-		NullFlashDumper,
-		ZeroFlashDumper,
-		FPGAFlashDumper,
-		SPIFlashDumper> m_vdumper;
-
-	uint32_t m_fileSize;
-
-	uint64_t m_dumpCacheKey;
+		memset(data, 0, len);
+		return len;
+	}
 };
 
 #endif

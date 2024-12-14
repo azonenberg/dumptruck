@@ -57,6 +57,9 @@ public:
 		}
 	}
 
+	virtual uint64_t GetCapacity() override
+	{ return g_fpgaFlash->GetCapacity(); }
+
 	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) override
 	{
 		g_fpgaFlash->ReadData(offset, data, len, m_dmachannel);

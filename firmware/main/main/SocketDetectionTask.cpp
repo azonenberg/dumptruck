@@ -58,47 +58,35 @@ void SocketDetectionTask::Iteration()
 	//call base class to do timer stuff
 	TimerTask::Iteration();
 
-	switch(m_activeChannel)
+	//Figure out what channels are present
+	etl::vector<channelid_t, 4> channelsPresent;
+	if(m_3v3Present)
+		channelsPresent.push_back(CHANNEL_3V3);
+	if(m_2v5Present)
+		channelsPresent.push_back(CHANNEL_2V5);
+	if(m_1v8Present)
+		channelsPresent.push_back(CHANNEL_1V8);
+	if(m_1v2Present)
+		channelsPresent.push_back(CHANNEL_1V2);
+
+	//Detect and report conflicts
+	if( (channelsPresent.size() > 1) && (m_activeChannel != CHANNEL_CONFLICT) )
 	{
-		//No socket? Wait until one is mated
-		case CHANNEL_NONE:
-			if(m_3v3Present)
-				OnInsert(CHANNEL_3V3);
-			else if(m_2v5Present)
-				OnInsert(CHANNEL_2V5);
-			else if(m_1v8Present)
-				OnInsert(CHANNEL_1V8);
-			else if(m_1v2Present)
-				OnInsert(CHANNEL_1V2);
-			break;
-
-		//Detect removal of currently mated socket
-		case CHANNEL_3V3:
-			if(!m_3v3Present)
-				OnRemove();
-
-			//If any OTHER signal is present, we have a conflict
-
-			break;
-
-		case CHANNEL_2V5:
-			if(!m_2v5Present)
-				OnRemove();
-			break;
-
-		case CHANNEL_1V8:
-			if(!m_1v8Present)
-				OnRemove();
-			break;
-
-		case CHANNEL_1V2:
-			if(!m_1v2Present)
-				OnRemove();
-			break;
-
-		default:
-			break;
+		OnConflict(channelsPresent[0], channelsPresent[1]);
+		return;
 	}
+
+	//If we do not have an active channel, and one was added, handle that
+	if( (m_activeChannel == CHANNEL_NONE) && !channelsPresent.empty())
+		OnInsert(channelsPresent[0]);
+
+	//If we had an active channel, and it was removed, handle that
+	else if( (m_activeChannel != CHANNEL_NONE) && channelsPresent.empty())
+		OnRemove();
+
+	//If we were conflicted, but now only have one channel, handle that
+	else if( (m_activeChannel == CHANNEL_CONFLICT) && (channelsPresent.size() == 1) )
+		Redetect();
 }
 
 /**
@@ -108,6 +96,8 @@ void SocketDetectionTask::OnConflict(channelid_t chan1, channelid_t chan2)
 {
 	g_log(Logger::ERROR, "DUT socket detected on channel %s and %s simultaneously. Only one socket should be used at a time.\n",
 		GetNameOfChannel(chan1), GetNameOfChannel(chan2) );
+
+	m_activeChannel = CHANNEL_CONFLICT;
 
 	//Turn all other LEDs off
 	for(int i=0; i<4; i++)

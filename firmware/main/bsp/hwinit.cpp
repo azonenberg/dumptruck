@@ -392,4 +392,7 @@ void SendSupervisorCommand(dsuperregs_t regid)
 	g_superSPI.BlockingRead();	//discard dummy byte sent in response to the command
 
 	g_superCS_n = 1;
+
+	//Wait a short time between commands
+	g_logTimer.Sleep(2);
 }

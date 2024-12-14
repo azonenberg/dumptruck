@@ -35,6 +35,7 @@
 #include "DumptruckSFTPServer.h"
 #include <staticnet/sftp/SFTPOpenPacket.h>
 
+const char* g_zeroPath = "/dev/zero";
 const char* g_fpgaDfuPath = "/dfu/fpga";
 const char* g_3v3Path = "/socket/3v3";
 const char* g_2v5Path = "/socket/2v5";
@@ -91,8 +92,17 @@ bool DumptruckSFTPServer::CreateDumper(const char* path, bool opening)
 
 		m_vdumper = std::move(FPGAFlashDumper());
 		m_dumper = &etl::get<FPGAFlashDumper>(m_vdumper);
+		m_fileSize = m_dumper->GetCapacity();
+		return true;
+	}
+	else if(!strcmp(path, g_zeroPath))
+	{
+		if(opening)
+			m_openFile = FILE_ID_ZERO;
 
-		m_fileSize = g_fpgaImageSize;
+		m_vdumper = std::move(ZeroFlashDumper());
+		m_dumper = &etl::get<ZeroFlashDumper>(m_vdumper);
+		m_fileSize = m_dumper->GetCapacity();
 		return true;
 	}
 	else if(!strcmp(path, g_3v3Path))
@@ -147,13 +157,7 @@ bool DumptruckSFTPServer::CreateDumperForSPI(channelid_t id)
 		return false;
 	}
 
-	//Initialize
-
-	//TODO: figure out what kind of flash it is and how big the image is
-	//(this will mean reading SFDP headers etc)
-
-	//
-	m_fileSize = g_debugFlashSize;
+	m_fileSize = m_dumper->GetCapacity();
 	return true;
 }
 
@@ -161,6 +165,7 @@ bool DumptruckSFTPServer::DoesFileExist(const char* path)
 {
 	//Check against all known file names
 	if(	!strcmp(path, g_fpgaDfuPath) ||
+		!strcmp(path, g_zeroPath) ||
 		!strcmp(path, g_3v3Path) ||
 		!strcmp(path, g_2v5Path) ||
 		!strcmp(path, g_1v8Path) ||
@@ -201,6 +206,7 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 
 	//Check if this is a socket path
 	bool isSocket = false;
+	bool isZero = false;
 	if(!strcmp(path, g_3v3Path))
 		isSocket = true;
 	else if(!strcmp(path, g_2v5Path))
@@ -209,6 +215,9 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 		isSocket = true;
 	else if(!strcmp(path, g_1v2Path))
 		isSocket = true;
+
+	else if(!strcmp(path, g_zeroPath))
+		isZero = true;
 
 	//DFU files must be opened in overwrite/truncate mode
 	if(isDFU)
@@ -256,6 +265,13 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 	else if(isSocket)
 	{
 		//TODO: check not in write mode etc?
+		if(accessMask & SFTPPacket::ACE4_READ_DATA)
+			return true;
+	}
+
+	// /dev/zero must be opened in read mode
+	else if(isZero)
+	{
 		if(accessMask & SFTPPacket::ACE4_READ_DATA)
 			return true;
 	}

@@ -124,19 +124,13 @@ bool SocketedFlashDumper::PowerOn()
 	//Set the channel LED to blue
 	FRGBLED.framebuffer[2 + (int)m_channel] = RGB_BLUE;
 
-	//Turn on power, then wait 100ms for it to stabilize and ADCs to sample it
+	//Turn on power, then wait 25 ms for it to stabilize and ADCs to sample it
 	//(load switch has about a 15ms ramp)
-	g_log("Turning on DUT power\n");
 	SendSupervisorCommand(SUPER_REG_VDD_ON);
 	SendSupervisorCommand(SUPER_REG_VCCIO_ON);
-	g_logTimer.Sleep(1000);
+	g_logTimer.Sleep(250);
 
-	//For some reason, we need to read and throw away one reading
-	//This needs investigation...
-	ReadSupervisorRegister(regv);
-	ReadSupervisorRegister(regi);
-
-	//Read and use second readings
+	//Read voltages a couple of times
 	auto vio = ReadSupervisorRegister(regv);
 	auto iio = ReadSupervisorRegister(regi);
 	auto vcore = ReadSupervisorRegister(SUPER_REG_VDUTVDD);
@@ -154,7 +148,7 @@ bool SocketedFlashDumper::PowerOn()
 		g_log("VCCIO delta: %d mV (OK)\n", vio_delta);
 	else
 	{
-		g_log("VCCIO delta: %d mV (FAULT)\n", vio_delta);
+		g_log(Logger::ERROR, "VCCIO delta: %d mV (FAULT)\n", vio_delta);
 		SendSupervisorCommand(SUPER_REG_VDD_OFF);
 		SendSupervisorCommand(SUPER_REG_VCCIO_OFF);
 
@@ -174,11 +168,12 @@ bool SocketedFlashDumper::PowerOn()
 
 void SocketedFlashDumper::PowerOff()
 {
+	g_log("Turning off DUT power\n");
+
 	//Tristate the pins when we're done
-	g_log("Tristating DUT socket I/Os\n");
 	m_muxcfg->muxsel = (uint32_t)IOMuxConfig::Inactive;
 
-	g_log("Turning off DUT power\n");
+	//Remove power from both rails
 	SendSupervisorCommand(SUPER_REG_VDD_OFF);
 	SendSupervisorCommand(SUPER_REG_VCCIO_OFF);
 

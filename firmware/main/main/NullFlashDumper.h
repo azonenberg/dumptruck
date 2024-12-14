@@ -39,6 +39,9 @@ public:
 	NullFlashDumper()
 	{}
 
+	virtual uint64_t GetCapacity() override
+	{ return 0; }
+
 	virtual uint32_t ReadFile(
 		[[maybe_unused]] uint64_t offset,
 		uint8_t* data,

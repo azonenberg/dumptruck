@@ -45,7 +45,8 @@ enum channelid_t
 	CHANNEL_1V8,
 	CHANNEL_2V5,
 	CHANNEL_3V3,
-	CHANNEL_NONE
+	CHANNEL_NONE,
+	CHANNEL_CONFLICT	//more than one socket inserted simultaneously
 };
 
 #include "DumptruckUDPProtocol.h"

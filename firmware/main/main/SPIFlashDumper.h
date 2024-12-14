@@ -82,6 +82,9 @@ public:
 		return true;
 	}
 
+	virtual uint64_t GetCapacity() override
+	{ return m_flashInterface->GetCapacity(); }
+
 	virtual uint32_t ReadFile(uint64_t offset, uint8_t* data, uint32_t len) override
 	{
 		m_flashInterface->ReadData(offset, data, len, m_dmachannel);
