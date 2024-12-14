@@ -41,10 +41,8 @@ const char* g_3v3Path = "/socket/3v3";
 const char* g_2v5Path = "/socket/2v5";
 const char* g_1v8Path = "/socket/1v8";
 const char* g_1v2Path = "/socket/1v2";
-//TODO: /dev/zero for performance benchmarking the sftp stack
 
 const uint32_t g_fpgaImageSize = 0x0040'0000;
-const uint32_t g_debugFlashSize = 0x0100'0000;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Construction / destruction
