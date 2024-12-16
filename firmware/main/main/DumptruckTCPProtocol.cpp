@@ -32,13 +32,17 @@
 
 #define SSH_PORT	22
 
+Iperf3Server* g_iperfServer = nullptr;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Construction / destruction
 
-DumptruckTCPProtocol::DumptruckTCPProtocol(IPv4Protocol* ipv4)
+DumptruckTCPProtocol::DumptruckTCPProtocol(IPv4Protocol* ipv4, UDPProtocol& udp)
 	: TCPProtocol(ipv4)
 	, m_ssh(*this)
+	, m_iperf(*this, udp)
 {
+	g_iperfServer = &m_iperf;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +50,15 @@ DumptruckTCPProtocol::DumptruckTCPProtocol(IPv4Protocol* ipv4)
 
 bool DumptruckTCPProtocol::IsPortOpen(uint16_t port)
 {
-	return (port == SSH_PORT);
+	switch(port)
+	{
+		case SSH_PORT:
+		case IPERF3_PORT:
+			return true;
+
+		default:
+			return false;
+	}
 }
 
 void DumptruckTCPProtocol::OnConnectionAccepted(TCPTableEntry* state)
@@ -55,6 +67,10 @@ void DumptruckTCPProtocol::OnConnectionAccepted(TCPTableEntry* state)
 	{
 		case SSH_PORT:
 			m_ssh.OnConnectionAccepted(state);
+			break;
+
+		case IPERF3_PORT:
+			m_iperf.OnConnectionAccepted(state);
 			break;
 
 		default:
@@ -73,6 +89,10 @@ void DumptruckTCPProtocol::OnConnectionClosed(TCPTableEntry* state)
 			m_ssh.OnConnectionClosed(state);
 			break;
 
+		case IPERF3_PORT:
+			m_iperf.OnConnectionClosed(state);
+			break;
+
 		default:
 			break;
 	}
@@ -84,6 +104,10 @@ void DumptruckTCPProtocol::OnRxData(TCPTableEntry* state, uint8_t* payload, uint
 	{
 		case SSH_PORT:
 			m_ssh.OnRxData(state, payload, payloadLen);
+			break;
+
+		case IPERF3_PORT:
+			m_iperf.OnRxData(state, payload, payloadLen);
 			break;
 
 		//ignore it

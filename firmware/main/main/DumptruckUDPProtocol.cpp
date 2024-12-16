@@ -65,6 +65,10 @@ void DumptruckUDPProtocol::OnRxData(
 			m_dhcp.OnRxData(srcip, sport, dport, payload, payloadLen);
 			break;*/
 
+		case IPERF3_PORT:
+			g_iperfServer->OnRxUdpData(srcip, sport, dport, payload, payloadLen);
+			break;
+
 		case NTP_PORT:
 			m_ntp.OnRxData(srcip, sport, dport, payload, payloadLen);
 			break;

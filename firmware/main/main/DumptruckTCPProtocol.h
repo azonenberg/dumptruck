@@ -32,11 +32,14 @@
 
 #include <fpga/AcceleratedCryptoEngine.h>
 #include "DumptruckSSHTransportServer.h"
+#include <services/Iperf3Server.h>
+
+class UDPProtocol;
 
 class DumptruckTCPProtocol : public TCPProtocol
 {
 public:
-	DumptruckTCPProtocol(IPv4Protocol* ipv4);
+	DumptruckTCPProtocol(IPv4Protocol* ipv4, UDPProtocol& udp);
 
 	virtual void OnAgingTick10x() override;
 
@@ -49,7 +52,11 @@ protected:
 	virtual uint32_t GenerateInitialSequenceNumber() override;
 
 	DumptruckSSHTransportServer m_ssh;
+	Iperf3Server m_iperf;
+
 	AcceleratedCryptoEngine m_crypt;
 };
+
+extern Iperf3Server* g_iperfServer;
 
 #endif
