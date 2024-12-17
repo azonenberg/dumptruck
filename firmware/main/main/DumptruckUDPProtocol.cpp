@@ -52,6 +52,9 @@ void DumptruckUDPProtocol::OnAgingTick()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Message handlers
 
+#ifdef HAVE_ITCM
+__attribute__((section(".tcmtext")))
+#endif
 void DumptruckUDPProtocol::OnRxData(
 	IPv4Address srcip,
 	uint16_t sport,

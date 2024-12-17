@@ -98,6 +98,9 @@ void DumptruckTCPProtocol::OnConnectionClosed(TCPTableEntry* state)
 	}
 }
 
+#ifdef HAVE_ITCM
+__attribute__((section(".tcmtext")))
+#endif
 void DumptruckTCPProtocol::OnRxData(TCPTableEntry* state, uint8_t* payload, uint16_t payloadLen)
 {
 	switch(state->m_localPort)

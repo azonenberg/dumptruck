@@ -303,6 +303,9 @@ uint32_t DumptruckSFTPServer::OpenFile(
 	return 0;
 }
 
+#ifdef HAVE_ITCM
+__attribute__((section(".tcmtext")))
+#endif
 uint32_t DumptruckSFTPServer::ReadFile(
 	[[maybe_unused]] uint32_t handle,
 	uint64_t offset,
