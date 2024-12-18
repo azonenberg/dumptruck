@@ -166,35 +166,18 @@ module Peripherals_APB1(
 	// SPI flash controller for boot flash (c000_0c00). For now x1 not quad
 
 	wire	cclk;
+	wire[3:0]	flash_dq_out;
+	wire[3:0]	flash_dq_in;
+	wire[3:0]	flash_dq_tris;
 
-	//DQ2 / WP and DQ3 / HOLD aren't used for now, tie high
-	IOBUF iobuf_flash_dq3(
-		.I(1'b1),
-		.O(),
-		.T(1'b0),
-		.IO(flash_dq[3]));
-	IOBUF iobuf_flash_dq2(
-		.I(1'b1),
-		.O(),
-		.T(1'b0),
-		.IO(flash_dq[2]));
+	for(genvar g=0; g<4; g=g+1) begin : flash_iobufs
+		IOBUF iobuf(
+			.I(flash_dq_out[g]),
+			.O(flash_dq_in[g]),
+			.T(flash_dq_tris[g]),
+			.IO(flash_dq[g]));
 
-	//Drive DQ1 / SO to high-Z
-	wire	flash_so;
-	IOBUF iobuf_flash_dq1(
-		.I(1'b0),
-		.O(flash_so),
-		.T(1'b1),
-		.IO(flash_dq[1]));
-
-	//Drive DQ0 / SI with our serial data
-	wire	flash_si;
-	wire	flash_si_echo;
-	IOBUF iobuf_flash_dq0(
-		.I(flash_si),
-		.O(flash_si_echo),
-		.T(1'b0),
-		.IO(flash_dq[0]));
+	end
 
 	//STARTUP block
 	wire	ring_clk;
@@ -220,13 +203,14 @@ module Peripherals_APB1(
 		.upstream(apb1[3]),
 		.downstream(apb_flash));
 
-	APB_SPIHostInterface flash(
+	APB_QSPIHostInterface flash(
 		.apb(apb_flash),
 
-		.spi_sck(cclk),
-		.spi_mosi(flash_si),
-		.spi_miso(flash_so),
-		.spi_cs_n(flash_cs_n)
+		.qspi_sck(cclk),
+		.qspi_dq_out(flash_dq_out),
+		.qspi_dq_in(flash_dq_in),
+		.qspi_dq_tris(flash_dq_tris),
+		.qspi_cs_n(flash_cs_n)
 	);
 
 	//DEBUG
@@ -239,27 +223,28 @@ module Peripherals_APB1(
 		.probe4(apb_flash.pwdata),
 		.probe5(apb_flash.prdata),
 		.probe6(cclk),
-		.probe7(flash_si),
-		.probe8(flash_so),
+		.probe7(flash_dq_out),
+		.probe8(flash_dq_in),
 		.probe9(flash_cs_n),
 		.probe10(flash.shift_en),
 		.probe11(flash.shift_data),
 		.probe12(flash.shift_busy),
-		.probe13(flash.burst_busy),
+		.probe13(flash.burst_mode),
 		.probe14(flash.shift_done),
 		.probe15(flash.burst_wptr),
 		.probe16(flash.burst_wr),
 		.probe17(flash.rx_data),
 
 		.probe18(flash.clkdiv),
-		.probe19(apb_flash.pwrite),
-		.probe20(apb1[3].penable),
-		.probe21(apb1[3].psel),
-		.probe22(apb.penable),
-		.probe23(apb.psel),
+		.probe19(flash.spi.clkcount),
+		.probe20(flash.quad_shift_en),
+		.probe21(flash.burst_count),
+		.probe22(flash_dq_tris),
+		.probe23(flash.spi.active),
 		.probe24(flash.spi.toggle),
-		.probe25(flash.spi.active),
-		.probe26(flash.spi.clkcount)
+		.probe25(flash.auto_restart),
+		.probe26(flash.spi.almost_done),
+		.probe27(flash.spi.count)
 	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

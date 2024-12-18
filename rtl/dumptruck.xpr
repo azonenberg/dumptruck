@@ -65,13 +65,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="18"/>
-    <Option Name="WTModelSimExportSim" Val="18"/>
-    <Option Name="WTQuestaExportSim" Val="18"/>
+    <Option Name="WTXSimExportSim" Val="24"/>
+    <Option Name="WTModelSimExportSim" Val="24"/>
+    <Option Name="WTQuestaExportSim" Val="24"/>
     <Option Name="WTIesExportSim" Val="0"/>
-    <Option Name="WTVcsExportSim" Val="18"/>
-    <Option Name="WTRivieraExportSim" Val="18"/>
-    <Option Name="WTActivehdlExportSim" Val="18"/>
+    <Option Name="WTVcsExportSim" Val="24"/>
+    <Option Name="WTRivieraExportSim" Val="24"/>
+    <Option Name="WTActivehdlExportSim" Val="24"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -174,6 +174,13 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../antikernel-ipcores/interface/ethernet/APB_MDIO.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../antikernel-ipcores/interface/qspi/APB_QSPIHostInterface.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -314,6 +321,13 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../antikernel-ipcores/clock/crossing/PulseSynchronizer.sv">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../antikernel-ipcores/interface/qspi/QSPIHostInterface.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

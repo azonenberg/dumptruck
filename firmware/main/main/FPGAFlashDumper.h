@@ -52,7 +52,7 @@ public:
 	{
 		if(m_dmachannel)
 		{
-			g_log("FPGAFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_dmachannel->GetIndex(), m_dmachannel, this);
+			//g_log("FPGAFlashDumper: free MDMA channel %d (%08x), this = %08x\n", m_dmachannel->GetIndex(), m_dmachannel, this);
 			g_mdma.FreeChannel(m_dmachannel);
 		}
 	}
