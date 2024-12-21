@@ -100,7 +100,7 @@ void RegisterProtocolHandlers(IPv4Protocol& ipv4);
 enum class IOMuxConfig
 {
 	Inactive	= 0,
-	X1_SPI		= 1
+	X4_SPI		= 1
 };
 
 struct APB_IOMuxConfig

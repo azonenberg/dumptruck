@@ -27,23 +27,15 @@
 *                                                                                                                      *
 ***********************************************************************************************************************/
 
-#ifndef FPGATask_h
-#define FPGATask_h
+#include "hwinit.h"
+#include "FPGATask.h"
 
-#include <core/Task.h>
-
-class FPGATask : public Task
+void FPGATask::Iteration()
 {
-public:
-	FPGATask()
-		: m_irq(&FPGA_GPIOA, 6, APB_GPIOPin::MODE_INPUT)
-	{}
-
-	virtual void Iteration() override;
-
-protected:
-	APB_GPIOPin m_irq;
-};
-
-#endif
-
+	if(m_irq)
+	{
+		auto frame = g_ethIface.GetRxFrame();
+		if(frame != nullptr)
+			g_ethProtocol->OnRxFrame(frame);
+	}
+}

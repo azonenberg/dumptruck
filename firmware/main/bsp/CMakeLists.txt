@@ -8,6 +8,7 @@ add_library(bsp STATIC
 	#ManagementPubkeyAuthenticator.cpp
 
 	common-vectors.cpp
+	FPGATask.cpp
 	hwinit.cpp
 	)
 

@@ -164,10 +164,10 @@ void BSP_Init()
 		2,		//PLL2
 		25,		//input is 25 MHz from the HSE
 		2,		//25/2 = 12.5 MHz at the PFD
-		20,		//12.5 * 20 = 250 MHz at the VCO
+		22,		//12.5 * 22 = 275 MHz at the VCO
 		32,		//div P (not used for now)
 		32,		//div Q (not used for now)
-		1,		//div R (250 MHz FMC kernel clock = 125 MHz FMC clock)
+		1,		//div R (275 MHz FMC kernel clock = 137.5 MHz FMC clock)
 		RCCHelper::CLOCK_SOURCE_HSE
 	);
 
@@ -199,7 +199,7 @@ void InitITM()
 	//Enable ITM, enable PC sampling, and turn on forwarding to the TPIU
 	#ifdef _DEBUG
 		ITM::Enable();
-		DWT::EnablePCSampling(DWT::PC_SAMPLE_FAST);
+		DWT::EnablePCSampling(DWT::PC_SAMPLE_SLOW);
 		ITM::EnableDwtForwarding();
 	#endif
 }
