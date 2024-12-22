@@ -113,4 +113,7 @@
 ///@brief If true, we have hardware offload for UDP checksums and should not waste time calculating them in firmware
 #define HAVE_UDP_V4_CHECKSUM_OFFLOAD
 
+///@brief If true, we have hardware offload for TCP checksums and should not waste time calculating them in firmware
+#define HAVE_TCP_V4_CHECKSUM_OFFLOAD
+
 #endif
