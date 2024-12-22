@@ -38,6 +38,9 @@ module Peripherals_APB1(
 	//Low speed clock for device info
 	input wire			clk_25mhz,
 
+	//Clock for crypto accelerator (may be slower than main PCLK)
+	input wire			clk_crypt,
+
 	//GPIO LEDs
 	output wire[3:0]	led,
 	output wire			led_ctrl,
@@ -214,6 +217,7 @@ module Peripherals_APB1(
 	);
 
 	//DEBUG
+	/*
 	ila_0 ila(
 		.clk(apb_flash.pclk),
 		.probe0(apb_flash.penable),
@@ -243,9 +247,10 @@ module Peripherals_APB1(
 		.probe23(flash.spi.active),
 		.probe24(flash.spi.toggle),
 		.probe25(flash.auto_restart),
-		.probe26(flash.spi.almost_done),
+		.probe26(apb_flash.pwrite),
 		.probe27(flash.spi.count)
 	);
+	*/
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// XADC for on-die sensors (c000_1000)
@@ -255,21 +260,24 @@ module Peripherals_APB1(
 		.upstream(apb1[4]),
 		.downstream(apb_xadc));
 
-	APB_XADC xadc(
-		.apb(apb_xadc)
-	);
+	APB_XADC xadc(.apb(apb_xadc));
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Curve25519 crypto_scalarmult accelerator (c000_1400)
 
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(ADDR_WIDTH), .USER_WIDTH(0)) cryptBus();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(ADDR_WIDTH), .USER_WIDTH(0)) cryptBusUp();
 
-	APBRegisterSlice #(.UP_REG(1), .DOWN_REG(0))
-		apb_regslice_crypt( .upstream(apb1[5]), .downstream(cryptBus) );
+	APBRegisterSlice #(.UP_REG(1), .DOWN_REG(1))
+		apb_regslice_crypt( .upstream(apb1[5]), .downstream(cryptBusUp) );
 
-	APB_Curve25519 crypt25519(
-		.apb(cryptBus)
+	APB_CDC apb_cdc_crypt(
+		.upstream(cryptBusUp),
+		.downstream_pclk(clk_crypt),
+		.downstream(cryptBus)
 	);
+
+	APB_Curve25519 crypt25519(.apb(cryptBus));
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// RGB LED controller (c000_1800)

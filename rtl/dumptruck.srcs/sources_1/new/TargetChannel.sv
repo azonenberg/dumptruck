@@ -128,7 +128,7 @@ module TargetChannel#(
 	assign gpio_in = 32'h0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// x1 SPI controller (0xc00x_0800)
+	// Quad SPI controller (0xc00x_0800)
 
 	//SPI bus controller
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(ADDR_WIDTH), .USER_WIDTH(0)) apb_spi();
@@ -136,22 +136,27 @@ module TargetChannel#(
 		.upstream(apb_int[2]),
 		.downstream(apb_spi));
 
-	wire	spi_sck;
-	wire	spi_si;
-	wire	spi_so;
-	wire	spi_cs_n;
+	wire		qspi_sck;
+	wire[3:0]	qspi_dq_out;
+	wire[3:0]	qspi_dq_in;
+	wire[3:0]	qspi_dq_tris;
+	wire		qspi_cs_n;
 
-	APB_SPIHostInterface spi(
+	APB_QSPIHostInterface spi(
 		.apb(apb_spi),
 
-		.spi_sck(spi_sck),
-		.spi_mosi(spi_si),
-		.spi_miso(spi_so),
-		.spi_cs_n(spi_cs_n)
+		.qspi_sck(qspi_sck),
+		.qspi_dq_out(qspi_dq_out),
+		.qspi_dq_in(qspi_dq_in),
+		.qspi_dq_tris(qspi_dq_tris),
+		.qspi_cs_n(qspi_cs_n)
 	);
 
-	//Hardwire MISO to be IO3
-	assign spi_so = io_in[3];
+	//Inputs
+	assign qspi_dq_in[0] = io_in[2];
+	assign qspi_dq_in[1] = io_in[3];
+	assign qspi_dq_in[2] = io_in[1];
+	assign qspi_dq_in[3] = io_in[4];
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// I/O muxing
@@ -161,8 +166,8 @@ module TargetChannel#(
 		//Not using this port, all IOs tristated
 		MUX_SEL_INACTIVE	= 0,
 
-		//x1 SPI (peripheral may be quad capable, but using it in x1 mode)
-		MUX_SEL_X1_SPI		= 1
+		//x4 SPI (peripheral may be used in x1 or x4 mode)
+		MUX_SEL_X4_SPI		= 1
 	} muxsel_t;
 
 	always_comb begin
@@ -177,31 +182,31 @@ module TargetChannel#(
 			MUX_SEL_INACTIVE: begin
 			end
 
-			//x1 SPI
-			MUX_SEL_X1_SPI: begin
+			//x4 SPI
+			MUX_SEL_X4_SPI: begin
 
 				//IO0 is clock
-				io_out[0]	= spi_sck;
+				io_out[0]	= qspi_sck;
 				io_tris[0]	= 1'h0;
 
-				//IO1 is WP#/IO2, tie high
-				io_out[1]	= 1'h1;
-				io_tris[1]	= 1'h1;
+				//IO1 is WP#/IO2
+				io_out[1]	= qspi_dq_out[2];
+				io_tris[1]	= qspi_dq_tris[2];
 
 				//IO2 is DI/IO0
-				io_out[2]	= spi_si;
-				io_tris[2]	= 1'h0;
+				io_out[2]	= qspi_dq_out[0];
+				io_tris[2]	= qspi_dq_tris[0];
 
 				//IO3 is DO/IO1
-				io_out[3]	= 1'h0;
-				io_tris[3]	= 1'h1;
+				io_out[3]	= qspi_dq_out[1];
+				io_tris[3]	= qspi_dq_tris[1];
 
 				//IO4 is HOLD# / IO3, tie high
-				io_out[4]	= 1'h1;
-				io_tris[4]	= 1'h0;
+				io_out[4]	= qspi_dq_out[3];
+				io_tris[4]	= qspi_dq_tris[3];
 
 				//IO5 is CS#
-				io_out[5]	= spi_cs_n;
+				io_out[5]	= qspi_cs_n;
 				io_tris[5]	= 1'h0;
 
 			end

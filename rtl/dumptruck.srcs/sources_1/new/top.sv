@@ -99,12 +99,14 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Clock synthesis
 
+	wire	clk_crypt;
 	wire	clk_125mhz;
 	wire	clk_250mhz;
 
 	ClockGeneration clocks(
 		.clk_25mhz(clk_25mhz),
 
+		.clk_crypt(clk_crypt),
 		.clk_125mhz(clk_125mhz),
 		.clk_250mhz(clk_250mhz)
 	);
@@ -169,6 +171,7 @@ module top(
 		.apb(rootAPB[0]),
 
 		.clk_25mhz(clk_25mhz),
+		.clk_crypt(clk_crypt),
 
 		.led(led),
 		.led_ctrl(led_ctrl),

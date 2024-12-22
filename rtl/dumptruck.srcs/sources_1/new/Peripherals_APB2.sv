@@ -152,12 +152,24 @@ module Peripherals_APB2(
 		.upstream(apb2[1]),
 		.downstream(apb_tx_fifo));
 
+	wire			fifo_tx_ready;
+	EthernetTxBus	fifo_tx_bus;
+
 	APB_EthernetTxBuffer_x32_1G eth_tx_fifo(
 		.apb(apb_tx_fifo),
 		.tx_clk(clk_125mhz),
-		.tx_bus(mgmt0_tx_bus),
-		.tx_ready(mgmt0_tx_ready),
+		.tx_bus(fifo_tx_bus),
+		.tx_ready(fifo_tx_ready),
 		.link_up_pclk(rgmii_link_up_core)
+	);
+
+	EthernetChecksumOffload eth_offload(
+		.clk(clk_125mhz),
+		.link_up(rgmii_link_up_core),
+		.buf_tx_ready(fifo_tx_ready),
+		.buf_tx_bus(fifo_tx_bus),
+		.mac_tx_ready(mgmt0_tx_ready),
+		.mac_tx_bus(mgmt0_tx_bus)
 	);
 
 endmodule

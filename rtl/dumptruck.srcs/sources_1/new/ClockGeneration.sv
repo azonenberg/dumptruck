@@ -33,6 +33,7 @@
 module ClockGeneration(
 	input wire	clk_25mhz,
 
+	output wire	clk_crypt,
 	output wire	clk_125mhz,
 	output wire	clk_250mhz
 );
@@ -40,6 +41,7 @@ module ClockGeneration(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Clock synthesis PLL for Ethernet and other internal stuff
 
+	wire	clk_crypt_raw;
 	wire	clk_125mhz_raw;
 	wire	clk_250mhz_raw;
 	wire	pll_lock;
@@ -53,9 +55,9 @@ module ClockGeneration(
 		.CLKIN1_PERIOD(40),
 		.STARTUP_WAIT("FALSE"),
 
-		.CLKOUT0_DIVIDE(8),	//125 MHz
-		.CLKOUT1_DIVIDE(4),	//250 MHz
-		.CLKOUT2_DIVIDE(5),
+		.CLKOUT0_DIVIDE(8),		//125 MHz
+		.CLKOUT1_DIVIDE(4),		//250 MHz
+		.CLKOUT2_DIVIDE(10),	//100 MHz
 		.CLKOUT3_DIVIDE(5),
 		.CLKOUT4_DIVIDE(5),
 		.CLKOUT5_DIVIDE(5),
@@ -80,12 +82,18 @@ module ClockGeneration(
 		.RST(1'b0),
 		.CLKOUT0(clk_125mhz_raw),
 		.CLKOUT1(clk_250mhz_raw),
-		.CLKOUT2(),
+		.CLKOUT2(clk_crypt_raw),
 		.CLKOUT3(),
 		.CLKOUT4(),
 		.CLKOUT5(),
 		.LOCKED(pll_lock),
 		.PWRDWN(0)
+	);
+
+	BUFGCE bufg_clk_crypt(
+		.I(clk_crypt_raw),
+		.O(clk_crypt),
+		.CE(pll_lock)
 	);
 
 	BUFGCE bufg_clk_125mhz(

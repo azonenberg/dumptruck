@@ -110,4 +110,7 @@
 ///@brief Maximum age for a TCP segment before deciding to retransmit (in 100ms ticks)
 #define TCP_RETRANSMIT_TIMEOUT 2
 
+///@brief If true, we have hardware offload for UDP checksums and should not waste time calculating them in firmware
+#define HAVE_UDP_V4_CHECKSUM_OFFLOAD
+
 #endif

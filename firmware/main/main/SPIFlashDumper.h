@@ -34,7 +34,7 @@
 #include <etl/optional.h>
 
 /**
-	@brief Dumper class for x1 SPI flash
+	@brief Dumper class for x1 or x4 SPI flash
  */
 class SPIFlashDumper : public SocketedFlashDumper
 {
@@ -75,7 +75,7 @@ public:
 		}
 
 		//Power is stable. Set mux config to use this flash
-		SetMuxConfig(IOMuxConfig::X1_SPI);
+		SetMuxConfig(IOMuxConfig::X4_SPI);
 
 		//Create our actual flash dumper
 		m_flashInterface = APB_SpiFlashInterface(GetSPI(m_channel), 2);	//Fixed PCLK/2 divider for now
