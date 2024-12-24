@@ -117,10 +117,10 @@ module top(
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb();
 
 	FMC_APBBridge #(
-		.CLOCK_PERIOD(10),	//100 MHz
-		.VCO_MULT(10),		//1 GHz VCO
+		.CLOCK_PERIOD(6.66),	//150 MHz
+		.VCO_MULT(8),			//1.25 GHz VCO
 		.CAPTURE_CLOCK_PHASE(-30),
-		.LAUNCH_CLOCK_PHASE(-30)
+		.LAUNCH_CLOCK_PHASE(-60)
 	) fmcbridge(
 		.apb(fmc_apb),
 

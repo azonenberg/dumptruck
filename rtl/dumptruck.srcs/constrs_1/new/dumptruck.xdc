@@ -589,10 +589,10 @@ create_clock -period 40.000 -name clk_25mhz -waveform {0.000 20.000} [get_ports 
 #create_clock -period 8.000 -name fmc_clk -waveform {0.000 4.000} [get_ports fmc_clk]
 
 #137.5 MHz (7.27 ns period) FMC clock
-create_clock -period 7.270 -name fmc_clk -waveform {0.000 3.635} [get_ports fmc_clk]
+#create_clock -period 7.270 -name fmc_clk -waveform {0.000 3.635} [get_ports fmc_clk]
 
 #150 MHz (6.66 ns period) FMC clock
-#create_clock -period 6.66 -name fmc_clk -waveform {0.000 3.333} [get_ports fmc_clk]
+create_clock -period 6.66 -name fmc_clk -waveform {0.000 3.33} [get_ports fmc_clk]
 
 create_generated_clock -name clk_crypt -source [get_pins clocks/pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins clocks/pll/CLKOUT2]
 create_generated_clock -name clk_125mhz -source [get_pins clocks/pll/CLKIN1] -master_clock [get_clocks clk_25mhz] [get_pins clocks/pll/CLKOUT0]
@@ -616,10 +616,10 @@ set_clock_groups -asynchronous -group [get_clocks clk_25mhz] -group [get_clocks 
 ######################################################
 # IO timing constraints
 
-set_input_delay -clock [get_clocks fmc_clk] -min -add_delay 3.735 [get_ports {{fmc_a_hi[*]} {fmc_nbl[*]} fmc_ne1 fmc_ne3 fmc_nl_nadv fmc_nwe}]
-set_input_delay -clock [get_clocks fmc_clk] -max -add_delay 4.935 [get_ports {{fmc_a_hi[*]} {fmc_nbl[*]} fmc_ne1 fmc_ne3 fmc_nl_nadv fmc_nwe}]
-set_input_delay -clock [get_clocks fmc_clk] -min -add_delay 3.735 [get_ports {fmc_ad[*]}]
-set_input_delay -clock [get_clocks fmc_clk] -max -add_delay 4.935 [get_ports {fmc_ad[*]}]
+#set_input_delay -clock [get_clocks fmc_clk] -min -add_delay 3.735 [get_ports {{fmc_a_hi[*]} {fmc_nbl[*]} fmc_ne1 fmc_ne3 fmc_nl_nadv fmc_nwe}]
+#set_input_delay -clock [get_clocks fmc_clk] -max -add_delay 4.935 [get_ports {{fmc_a_hi[*]} {fmc_nbl[*]} fmc_ne1 fmc_ne3 fmc_nl_nadv fmc_nwe}]
+#set_input_delay -clock [get_clocks fmc_clk] -min -add_delay 3.735 [get_ports {fmc_ad[*]}]
+#set_input_delay -clock [get_clocks fmc_clk] -max -add_delay 4.935 [get_ports {fmc_ad[*]}]
 
 ######################################################
 # Floorplanning
