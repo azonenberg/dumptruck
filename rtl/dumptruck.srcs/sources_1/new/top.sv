@@ -114,15 +114,20 @@ module top(
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// FMC to APB bridge
 
-	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb();
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(25), .USER_WIDTH(0)) fmc_apb();
+
+	APB #(.DATA_WIDTH(64), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb64();
 
 	FMC_APBBridge #(
 		.CLOCK_PERIOD(6.66),	//150 MHz
 		.VCO_MULT(8),			//1.25 GHz VCO
 		.CAPTURE_CLOCK_PHASE(-30),
-		.LAUNCH_CLOCK_PHASE(-60)
+		.LAUNCH_CLOCK_PHASE(-60),
+		.BASE_X64(32'h00800000)
 	) fmcbridge(
-		.apb(fmc_apb),
+
+		.apb_x32(fmc_apb),
+		.apb_x64(fmc_apb64),
 
 		.clk_mgmt(clk_125mhz),
 
@@ -133,9 +138,22 @@ module top(
 		.fmc_nwe(fmc_nwe),
 		.fmc_nbl(fmc_nbl),
 		.fmc_nl_nadv(fmc_nl_nadv),
-		.fmc_a_hi(fmc_a_hi),
+		.fmc_a_hi({2'b0, fmc_a_hi[7:0]}),	//A24 is acting funny, not sure why. for now ignore it
 		.fmc_cs_n(fmc_ne1)
 	);
+
+	//Bridge the 64-bit APB to 32 bit
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb64_to32_raw();
+	APB_WriteBuffer64To32 wbuf64(
+		.up(fmc_apb64),
+		.down(fmc_apb64_to32_raw)
+	);
+
+	//Pipeline stage for timing
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb64_to32();
+	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(1)) regslice_apb_root64(
+		.upstream(fmc_apb64_to32_raw),
+		.downstream(fmc_apb64_to32));
 
 	//Pipeline stage for timing
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(20), .USER_WIDTH(0)) fmc_apb_pipe();
@@ -197,6 +215,7 @@ module top(
 
 	Peripherals_APB2 apb2(
 		.apb(rootAPB[1]),
+		.apb64(fmc_apb64_to32),
 
 		.clk_125mhz(clk_125mhz),
 		.clk_250mhz(clk_250mhz),

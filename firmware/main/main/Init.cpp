@@ -84,6 +84,8 @@ void InitSensors()
 	g_log("FPGA VCCAUX:                        %uhk V\n", volt);
 }
 
+extern "C" void WriteTestx64(volatile void* ptr);
+
 void App_Init()
 {
 	//Enable interrupts early on since we use them for e.g. debug logging during boot

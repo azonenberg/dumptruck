@@ -7,6 +7,8 @@ MEMORY
 	FMC_APB4(RW):	ORIGIN = 0xc0030000, LENGTH = 64K
 	FMC_APB5(RW):	ORIGIN = 0xc0040000, LENGTH = 64K
 	FMC_APB6(RW):	ORIGIN = 0xc0050000, LENGTH = 64K
+
+	FMC_APB64(RW):	ORIGIN = 0xc0800000, LENGTH = 1M
 }
 
 SECTIONS
@@ -38,11 +40,14 @@ SECTIONS
 	{
 		. = ALIGN(4096);
 		KEEP (*(.fethrx))
+	} > FMC_APB2
+
+	/* 64-bit APB segment for fast data output */
+	.sfr_fpga_apb64 (NOLOAD):
+	{
 		. = ALIGN(4096);
 		KEEP (*(.fethtx))
-
-		/*TODO after here*/
-	} > FMC_APB2
+	} > FMC_APB64
 
 	/* Memory controllers on 1V2 port */
 	.sfr_fpga_apb3  (NOLOAD):

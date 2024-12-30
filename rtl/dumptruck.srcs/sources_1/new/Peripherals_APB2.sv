@@ -34,6 +34,7 @@ module Peripherals_APB2(
 
 	//APB to root bridge
 	APB.completer 			apb,
+	APB.completer			apb64,
 
 	//Clocks from top level PLL
 	input wire				clk_125mhz,
@@ -81,6 +82,17 @@ module Peripherals_APB2(
 	) bridge (
 		.upstream(apb2_root),
 		.downstream(apb2)
+	);
+
+	//APB64
+	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(ADDR_WIDTH), .USER_WIDTH(0)) apb2_64[NUM_PERIPHERALS-1:0]();
+	APBBridge #(
+		.BASE_ADDR(32'h0000_0000),
+		.BLOCK_SIZE(BLOCK_SIZE),
+		.NUM_PORTS(NUM_PERIPHERALS)
+	) bridge64 (
+		.upstream(apb64),
+		.downstream(apb2_64)
 	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -145,11 +157,11 @@ module Peripherals_APB2(
 	);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Ethernet TX FIFO (c001_1000)
+	// Ethernet TX FIFO (c080_0000)
 
 	APB #(.DATA_WIDTH(32), .ADDR_WIDTH(ADDR_WIDTH), .USER_WIDTH(0)) apb_tx_fifo();
 	APBRegisterSlice #(.DOWN_REG(1), .UP_REG(0)) regslice_apb_tx_fifo(
-		.upstream(apb2[1]),
+		.upstream(apb2_64[0]),
 		.downstream(apb_tx_fifo));
 
 	wire			fifo_tx_ready;
