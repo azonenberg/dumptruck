@@ -2,7 +2,7 @@
 *                                                                                                                      *
 * DUMPTRUCK                                                                                                       *
 *                                                                                                                      *
-* Copyright (c) 2023-2024 Andrew D. Zonenberg and contributors                                                         *
+* Copyright (c) 2023-2025 Andrew D. Zonenberg and contributors                                                         *
 * All rights reserved.                                                                                                 *
 *                                                                                                                      *
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the     *
@@ -34,7 +34,7 @@
 #include "SensorTask.h"
 #include <math.h>
 #include <peripheral/DWT.h>
-#include <peripheral/ITM.h>
+#include "ITMTask.h"
 
 //TODO: fix this path somehow?
 #include "../../../../common-ibc/firmware/main/regids.h"
@@ -137,14 +137,23 @@ void App_Init()
 	static ButtonTask buttonTask;
 	static DumptruckSuperSPIServer spiserver(g_spi);
 	static SensorTask sensorTask;
+	#ifdef _DEBUG
+		static ITMTask itmTask;
+	#endif
 
 	g_tasks.push_back(&ledTask);
 	g_tasks.push_back(&buttonTask);
 	g_tasks.push_back(&g_super);
 	g_tasks.push_back(&spiserver);
 	g_tasks.push_back(&sensorTask);
+	#ifdef _DEBUG
+		g_tasks.push_back(&itmTask);
+	#endif
 
 	g_timerTasks.push_back(&ledTask);
+	#ifdef _DEBUG
+		g_timerTasks.push_back(&itmTask);
+	#endif
 
 	//Add external pull to 3V3_SB due to reworked level shifter
 	g_fpgaDone.SetPullMode(GPIOPin::PULL_UP);

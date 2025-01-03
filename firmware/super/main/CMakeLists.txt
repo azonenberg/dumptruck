@@ -1,6 +1,7 @@
 add_executable(main
 	DumptruckSuperSPIServer.cpp
 	Init.cpp
+	ITMTask.cpp
 	SensorTask.cpp
 
 	vectors.cpp)
