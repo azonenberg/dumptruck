@@ -40,7 +40,8 @@ public:
 		, m_pwrButton(&GPIOB, 13, GPIOPin::MODE_INPUT, 0, false)
 		, m_rstButton(&GPIOB, 14, GPIOPin::MODE_INPUT, 0, false)
 	{
-
+		m_pwrButton.SetPullMode(GPIOPin::PULL_DOWN);
+		m_rstButton.SetPullMode(GPIOPin::PULL_DOWN);
 	}
 
 	virtual void Iteration()
