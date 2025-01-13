@@ -627,27 +627,33 @@ set_clock_groups -asynchronous -group [get_clocks clk_25mhz] -group [get_clocks 
 create_pblock pblock_crypt25519
 add_cells_to_pblock [get_pblocks pblock_crypt25519] [get_cells -quiet [list apb1/crypt25519]]
 resize_pblock [get_pblocks pblock_crypt25519] -add {CLOCKREGION_X0Y0:CLOCKREGION_X1Y0}
+set_property IS_SOFT 0 [get_pblocks pblock_crypt25519]
 
 create_pblock pblock_apb6_3v3
 add_cells_to_pblock [get_pblocks pblock_apb6_3v3] [get_cells -quiet [list apb6_flash_3v3]]
 resize_pblock [get_pblocks pblock_apb6_3v3] -add {CLOCKREGION_X0Y3:CLOCKREGION_X0Y3}
+set_property IS_SOFT 0 [get_pblocks pblock_apb6_3v3]
 
 create_pblock pblock_apb5_2v5
 add_cells_to_pblock [get_pblocks pblock_apb5_2v5] [get_cells -quiet [list apb5_flash_2v5]]
 resize_pblock [get_pblocks pblock_apb5_2v5] -add {CLOCKREGION_X1Y3:CLOCKREGION_X1Y3}
+set_property IS_SOFT 0 [get_pblocks pblock_apb5_2v5]
 
 create_pblock pblock_apb4_1v8
 add_cells_to_pblock [get_pblocks pblock_apb4_1v8] [get_cells -quiet [list apb4_flash_1v8]]
 resize_pblock [get_pblocks pblock_apb4_1v8] -add {CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
+set_property IS_SOFT 0 [get_pblocks pblock_apb4_1v8]
 
 create_pblock pblock_apb3_1v2
 add_cells_to_pblock [get_pblocks pblock_apb3_1v2] [get_cells -quiet [list apb3_flash_1v2]]
 resize_pblock [get_pblocks pblock_apb3_1v2] -add {CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
+set_property IS_SOFT 0 [get_pblocks pblock_apb3_1v2]
 
 # debug ila
 create_pblock pblock_mgmt
-add_cells_to_pblock [get_pblocks pblock_mgmt] [get_cells -quiet [list apb1/ila apb2]]
-resize_pblock [get_pblocks pblock_mgmt] -add {CLOCKREGION_X0Y1:CLOCKREGION_X1Y2}
+add_cells_to_pblock [get_pblocks pblock_mgmt] [get_cells -quiet [list apb2 fmcbridge regslice_apb_root regslice_apb_root64 wbuf64]]
+resize_pblock [get_pblocks pblock_mgmt] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y2}
+set_property IS_SOFT 0 [get_pblocks pblock_mgmt]
 
 ######################################################
 # Put the timestamp in the bitstream USERCODE
