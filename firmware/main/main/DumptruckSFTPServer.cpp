@@ -2,7 +2,7 @@
 *                                                                                                                      *
 * DUMPTRUCK                                                                                                            *
 *                                                                                                                      *
-* Copyright (c) 2023-2024 Andrew D. Zonenberg and contributors                                                         *
+* Copyright (c) 2023-2025 Andrew D. Zonenberg and contributors                                                         *
 * All rights reserved.                                                                                                 *
 *                                                                                                                      *
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the     *
@@ -36,11 +36,8 @@
 #include <staticnet/sftp/SFTPOpenPacket.h>
 
 const char* g_zeroPath = "/dev/zero";
-const char* g_fpgaDfuPath = "/dfu/fpga";
-const char* g_3v3Path = "/socket/3v3";
-const char* g_2v5Path = "/socket/2v5";
-const char* g_1v8Path = "/socket/1v8";
-const char* g_1v2Path = "/socket/1v2";
+const char* g_fpgaDfuPath = "/dev/dfu/fpga";
+const char* g_socketPath = "/dev/dumper";
 
 const uint32_t g_fpgaImageSize = 0x0040'0000;
 
@@ -103,32 +100,25 @@ bool DumptruckSFTPServer::CreateDumper(const char* path, bool opening)
 		m_fileSize = m_dumper->GetCapacity();
 		return true;
 	}
-	else if(!strcmp(path, g_3v3Path))
-		return CreateDumperForSocket(CHANNEL_3V3, opening);
-	else if(!strcmp(path, g_2v5Path))
-		return CreateDumperForSocket(CHANNEL_2V5, opening);
-	else if(!strcmp(path, g_1v8Path))
-		return CreateDumperForSocket(CHANNEL_1V8, opening);
-	else if(!strcmp(path, g_1v2Path))
-		return CreateDumperForSocket(CHANNEL_1V2, opening);
+	else if(!strcmp(path, g_socketPath))
+		return CreateDumperForSocket(opening);
 	else
 		return false;
 }
 
-bool DumptruckSFTPServer::CreateDumperForSocket(channelid_t id, bool opening)
+bool DumptruckSFTPServer::CreateDumperForSocket(bool opening)
 {
 	if(opening)
 		m_openFile = FILE_ID_SOCKET;
 
-	m_dumpCacheKey = g_detectionTask->GetCacheKey();
-
 	//Figure out which socket is selected and choose the appropriate dump configuration based on that
 	auto socktype = g_detectionTask->GetSocketType();
+	auto channelID = g_detectionTask->GetActiveChannel();
+	m_dumpCacheKey = g_detectionTask->GetCacheKey();
 	switch(socktype)
 	{
 		case DutSocketType::Dip8Qspi:
-			//TODO: see if x1 or x4 mode etc
-			return CreateDumperForSPI(id);
+			return CreateDumperForSPI(channelID);
 
 		default:
 			g_log(Logger::ERROR, "Unknown socket type, can't dump\n");
@@ -164,10 +154,7 @@ bool DumptruckSFTPServer::DoesFileExist(const char* path)
 	//Check against all known file names
 	if(	!strcmp(path, g_fpgaDfuPath) ||
 		!strcmp(path, g_zeroPath) ||
-		!strcmp(path, g_3v3Path) ||
-		!strcmp(path, g_2v5Path) ||
-		!strcmp(path, g_1v8Path) ||
-		!strcmp(path, g_1v2Path) )
+		!strcmp(path, g_socketPath) )
 	{
 		return true;
 	}
@@ -205,13 +192,7 @@ bool DumptruckSFTPServer::CanOpenFile(const char* path, uint32_t accessMask, uin
 	//Check if this is a socket path
 	bool isSocket = false;
 	bool isZero = false;
-	if(!strcmp(path, g_3v3Path))
-		isSocket = true;
-	else if(!strcmp(path, g_2v5Path))
-		isSocket = true;
-	else if(!strcmp(path, g_1v8Path))
-		isSocket = true;
-	else if(!strcmp(path, g_1v2Path))
+	if(!strcmp(path, g_socketPath))
 		isSocket = true;
 
 	else if(!strcmp(path, g_zeroPath))
